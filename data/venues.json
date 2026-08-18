@@ -1,0 +1,294 @@
+[
+  {
+    "id": "lost-taiwan",
+    "name": "LOST Taiwan 迷の密失",
+    "district": "萬華／大安／中正",
+    "address": "台北市萬華區成都路4號6樓（西門店）；另有忠孝與站前店",
+    "website": "https://losttw.com/",
+    "booking_url": "https://losttw.com/",
+    "google_rating": 4.8,
+    "rating_source": "公開店家資訊頁引用 Google 評價",
+    "rating_checked_at": "2026-08-18",
+    "rating_note": "不同分店評價可能不同，正式合作版應以 Google Maps API 或人工即時核對",
+    "themes": [
+      {
+        "name": "九龍寨城",
+        "players": "2–6",
+        "horror": 1,
+        "brain": 4,
+        "styles": [
+          "機關解謎",
+          "沉浸劇情"
+        ]
+      },
+      {
+        "name": "猛鬼大廈",
+        "players": "4–8",
+        "horror": 5,
+        "brain": 3,
+        "styles": [
+          "恐怖驚悚",
+          "真人互動"
+        ]
+      },
+      {
+        "name": "潛入任務",
+        "players": "2–6",
+        "horror": 1,
+        "brain": 4,
+        "styles": [
+          "任務推理",
+          "機關解謎"
+        ]
+      }
+    ],
+    "pros": [
+      "台北多館選擇，交通方便",
+      "品牌強調機關、謎題與劇情整合",
+      "主題類型跨度大，適合不同隊伍"
+    ],
+    "cons": [
+      "熱門分店與主題較需要提早訂位",
+      "不同館別體驗尺度與風格差異明顯"
+    ],
+    "source_urls": [
+      "https://losttw.com/",
+      "https://www.myfunnow.com/zh-tw/branches/3050710159112"
+    ],
+    "last_source_fetch": "2026-08-18"
+  },
+  {
+    "id": "stupid-particle",
+    "name": "笨蛋工作室",
+    "district": "松山／大安",
+    "address": "台北市松山區南京東路五段399號9樓；另有台北館別",
+    "website": "https://stupidparticle.com/",
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "google_rating": 3.8,
+    "rating_source": "公開台北密室評比頁的 Google 評分快照",
+    "rating_checked_at": "2026-08-18",
+    "rating_note": "公開評比頁數值可能為分店或抓取時點快照，正式合作版應即時核對",
+    "themes": [
+      {
+        "name": "平安戲院",
+        "players": "4–8",
+        "horror": 2,
+        "brain": 3,
+        "styles": [
+          "大型機關",
+          "微恐"
+        ]
+      },
+      {
+        "name": "奪命記憶",
+        "players": "2–6",
+        "horror": 3,
+        "brain": 4,
+        "styles": [
+          "機關解謎",
+          "劇情推理"
+        ]
+      },
+      {
+        "name": "荒宅探險",
+        "players": "4–8",
+        "horror": 5,
+        "brain": 3,
+        "styles": [
+          "恐怖驚悚",
+          "沉浸體驗"
+        ]
+      }
+    ],
+    "pros": [
+      "本土密室設計經驗深，品牌辨識度高",
+      "大型機關與沉浸式故事線是主要賣點",
+      "適合企業、慶生與多人團體"
+    ],
+    "cons": [
+      "館別與主題較多，第一次選擇時需要比較",
+      "部分熱門主題可能有年齡或膽量門檻"
+    ],
+    "source_urls": [
+      "https://stupidparticle.com/",
+      "https://stupidparticle.com/taipei/",
+      "https://www.twosevenths.com/game/escape-taipei-room/"
+    ],
+    "last_source_fetch": "2026-08-18"
+  },
+  {
+    "id": "funlock",
+    "name": "FUNLOCK 放樂工作室",
+    "district": "中山",
+    "address": "台北市中山區中山北路二段112號7樓之4（瑞星大樓）",
+    "website": "https://funlockstudio.com/",
+    "booking_url": "https://funlockstudio.com/game_time",
+    "google_rating": null,
+    "rating_source": "尚未從穩定公開頁面核對",
+    "rating_checked_at": "2026-08-18",
+    "rating_note": "保留欄位，避免以非 Google 或過時數據代填",
+    "themes": [
+      {
+        "name": "噬夢",
+        "players": "2–5",
+        "horror": 3,
+        "brain": 3,
+        "styles": [
+          "新手友善",
+          "劇情解謎"
+        ]
+      },
+      {
+        "name": "鎮魂曲：迴憶宅邸",
+        "players": "4–6",
+        "horror": 4,
+        "brain": 4,
+        "styles": [
+          "恐怖驚悚",
+          "沉浸劇情"
+        ]
+      },
+      {
+        "name": "幻境奇航II：最終的航道",
+        "players": "4–8",
+        "horror": 1,
+        "brain": 3,
+        "styles": [
+          "奇幻冒險",
+          "機關解謎"
+        ]
+      }
+    ],
+    "pros": [
+      "官方明確定位新手入門，2人即可包場",
+      "主題從奇幻、冒險到微恐都有",
+      "官方頁面公開人數與遊戲時間，便於比較"
+    ],
+    "cons": [
+      "場館位於商辦大樓，初訪者需留意入口",
+      "不同主題的恐怖與難度落差較大"
+    ],
+    "source_urls": [
+      "https://funlockstudio.com/",
+      "https://www.twosevenths.com/game/escape-taipei-room/"
+    ],
+    "last_source_fetch": "2026-08-18"
+  },
+  {
+    "id": "enterspace",
+    "name": "EnterSpace 密室逃脫",
+    "district": "中山／大直",
+    "address": "台北市中山區明水路581巷15號B1（捷運大直站步行約5分鐘）",
+    "website": "https://www.enterspace.tw/",
+    "booking_url": "https://www.enterspace.tw/",
+    "google_rating": 4.9,
+    "rating_source": "公開社群貼文引用 Google 評論快照",
+    "rating_checked_at": "2026-08-18",
+    "rating_note": "公開貼文數值與評論數可能變動，正式合作版應即時核對",
+    "themes": [
+      {
+        "name": "百鬼夜行",
+        "players": "2–6",
+        "horror": 3,
+        "brain": 4,
+        "styles": [
+          "日系解謎",
+          "沉浸劇情"
+        ]
+      },
+      {
+        "name": "魔幻菜市場",
+        "players": "2–8",
+        "horror": 1,
+        "brain": 3,
+        "styles": [
+          "奇幻冒險",
+          "機關解謎"
+        ]
+      },
+      {
+        "name": "新年接招了",
+        "players": "4–10",
+        "horror": 1,
+        "brain": 2,
+        "styles": [
+          "節慶互動",
+          "多人同樂"
+        ]
+      }
+    ],
+    "pros": [
+      "官方主題量大，2–10人都有選擇",
+      "大直站步行可達，交通動線清楚",
+      "兼具密室、活動包場與團隊體驗"
+    ],
+    "cons": [
+      "主題庫較大，需要先用風格與人數篩選",
+      "部分活動型內容與傳統密室玩法不同"
+    ],
+    "source_urls": [
+      "https://www.enterspace.tw/",
+      "https://www.instagram.com/reel/DCrFD2-TV8y/"
+    ],
+    "last_source_fetch": "2026-08-18"
+  },
+  {
+    "id": "taog-taipei",
+    "name": "神不在場｜台北體驗點",
+    "district": "中山／大直",
+    "address": "台北市中山區明水路581巷15號B1（由 EnterSpace 經營）",
+    "website": "https://taog-game.com/",
+    "booking_url": "https://taog-game.com/taipeibooking/",
+    "google_rating": null,
+    "rating_source": "尚未從穩定公開頁面核對",
+    "rating_checked_at": "2026-08-18",
+    "rating_note": "官方頁面註明台北體驗點非神不在場直營，評價應分店別核對",
+    "themes": [
+      {
+        "name": "神不在場",
+        "players": "4–8",
+        "horror": 4,
+        "brain": 4,
+        "styles": [
+          "生存壓迫",
+          "恐怖驚悚"
+        ]
+      },
+      {
+        "name": "戰鬥陀螺",
+        "players": "2–6",
+        "horror": 1,
+        "brain": 3,
+        "styles": [
+          "機關解謎",
+          "任務挑戰"
+        ]
+      },
+      {
+        "name": "憶釀：亡命輪迴",
+        "players": "4–8",
+        "horror": 4,
+        "brain": 4,
+        "styles": [
+          "沉浸劇情",
+          "恐怖驚悚"
+        ]
+      }
+    ],
+    "pros": [
+      "官方品牌定位鮮明，主打孤立無援的生存壓力",
+      "有完整線上預約與交通資訊",
+      "適合想要高情緒張力與故事感的玩家"
+    ],
+    "cons": [
+      "台北點為合作經營場館，預約前要確認實際營運資訊",
+      "高壓與恐怖取向不一定適合怕黑或新手隊伍"
+    ],
+    "source_urls": [
+      "https://taog-game.com/",
+      "https://taog-game.com/taipeibooking/",
+      "https://www.enterspace.tw/"
+    ],
+    "last_source_fetch": "2026-08-18"
+  }
+]
