@@ -82,3 +82,9 @@
 
 - [x] 新增真正掛載首頁的 Playwright 分頁互動測試；第 2 頁後變更搜尋、地區、恐怖篩選與排序均回到第 1 頁，並可直接跳到第 10 頁。
 - [x] 新增手機 viewport 的 Playwright DOM 版面測試；頁面 scrollWidth 375 等於 viewport 375，頁碼控制保留 overflow-x-auto 且無整頁水平溢出。
+
+## 回到頂部懸浮按鈕
+
+- [x] 新增右下角懸浮按鈕，僅在頁面向下滾動超過 520px 後顯示。
+- [x] 點擊按鈕以平滑行為回到頁面最上方，並提供 aria-label、title 與可見 focus 狀態。
+- [x] 以 Chromium 驗證桌面／手機版顯示切換與點擊後 scrollY < 8；測試、型別檢查與 production build 通過。

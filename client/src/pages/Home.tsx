@@ -3,7 +3,7 @@
  * Content model: 一張卡片 = 一個可被比較與預約的密室遊戲主題。
  */
 import { useEffect, useMemo, useState } from "react";
-import { ArrowDownUp, Brain, Check, Clock3, Compass, ExternalLink, Flame, MapPin, Search, Star, Users, X } from "lucide-react";
+import { ArrowDownUp, ArrowUp, Brain, Check, Clock3, Compass, ExternalLink, Flame, MapPin, Search, Star, Users, X } from "lucide-react";
 import topics from "../../../data/topics.json";
 
 type Filter = "all" | "2-4" | "5-plus" | "beginner" | "brainy" | "horror" | "puzzle";
@@ -34,6 +34,7 @@ export default function Home() {
   const [activeCity, setActiveCity] = useState<string>("全台");
   const [sortMode, setSortMode] = useState<SortMode>("rating");
   const [page, setPage] = useState(1);
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const filtered = useMemo(() => {
     const matched = topics.filter((topic) => {
     const q = query.toLowerCase().trim();
@@ -53,6 +54,12 @@ export default function Home() {
   const visibleTopics = useMemo(() => filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE), [filtered, page]);
   useEffect(() => { setPage(1); }, [query, activeFilters, activeCity, sortMode]);
   useEffect(() => { if (page > pageCount) setPage(pageCount); }, [page, pageCount]);
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 520);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const toggleFilter = (filter: Filter) => setActiveFilters((current) => current.includes(filter) ? current.filter((item) => item !== filter) : [...current, filter]);
 
   return <div className="min-h-screen bg-[#0c0e0d] text-[#e8e4db] selection:bg-[#c89b5c] selection:text-[#0c0e0d]">
@@ -64,6 +71,7 @@ export default function Home() {
       <section id="catalog" className="mx-auto max-w-[1400px] px-5 py-20 lg:px-10 lg:py-28"><div className="mb-14 flex items-end justify-between gap-5"><div><div className="mb-4 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.3em] text-[#5e8b92]"><span className="h-px w-8 bg-[#5e8b92]" /> Room files</div><h2 className="font-serif text-4xl font-bold text-[#f3efe7] sm:text-5xl">每一場，單獨比較。<br /><span className="text-white/45">找到你的今晚。</span></h2></div><div className="hidden text-right font-mono text-[10px] leading-6 tracking-wider text-white/35 sm:block">LAST INDEXED<br />19 AUG 2026 / TOPIC FIRST</div></div>{filtered.length === 0 ? <div className="border border-dashed border-white/20 py-24 text-center"><Compass className="mx-auto mb-5 text-[#c89b5c]" size={30} /><p className="font-serif text-2xl">沒有符合條件的主題</p><button onClick={() => { setActiveFilters([]); setActiveCity("全台"); setQuery(""); }} className="mt-5 font-mono text-xs tracking-widest text-[#c89b5c] underline underline-offset-4">清除線索</button></div> : <><div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">{visibleTopics.map((topic, index) => <TopicCard key={topic.id} topic={topic} index={(page - 1) * PAGE_SIZE + index} />)}</div>{filtered.length > 0 && <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row"><div className="font-mono text-[10px] tracking-widest text-white/40">PAGE {String(page).padStart(2, "0")} / {String(pageCount).padStart(2, "0")} · SHOWING {((page - 1) * PAGE_SIZE) + 1}–{Math.min(page * PAGE_SIZE, filtered.length)} OF {filtered.length}</div><div className="flex w-full min-w-0 items-center gap-2 overflow-x-auto sm:w-auto sm:overflow-visible"><button type="button" disabled={page === 1} onClick={() => setPage((current) => Math.max(1, current - 1))} className="border border-white/15 px-4 py-2 font-mono text-[10px] tracking-wider text-white/65 transition hover:border-[#c89b5c] hover:text-[#c89b5c] disabled:cursor-not-allowed disabled:opacity-25">← 上一頁</button><div className="flex max-w-[calc(100vw-2.5rem)] items-center gap-1 overflow-x-auto"><span className="hidden font-mono text-[10px] text-white/35 sm:inline">JUMP /</span>{Array.from({ length: pageCount }, (_, index) => index + 1).map((pageNumber) => <button key={pageNumber} type="button" aria-current={page === pageNumber ? "page" : undefined} onClick={() => setPage(pageNumber)} className={`min-w-8 border px-2 py-2 font-mono text-[10px] transition ${page === pageNumber ? "border-[#c89b5c] bg-[#c89b5c] font-bold text-[#0c0e0d]" : "border-white/15 text-white/55 hover:border-[#c89b5c]/70 hover:text-[#c89b5c]"}`}>{pageNumber}</button>)}</div><span className="sr-only">目前第 {page} 頁</span><button type="button" disabled={page === pageCount} onClick={() => setPage((current) => Math.min(pageCount, current + 1))} className="border border-[#c89b5c]/60 bg-[#c89b5c] px-4 py-2 font-mono text-[10px] font-bold tracking-wider text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-25">下一頁 →</button></div></div>}</>}</section>
       <section id="method" className="border-y border-white/10 bg-[#111412] py-20"><div className="mx-auto grid max-w-[1400px] gap-12 px-5 lg:grid-cols-[.8fr_1.2fr] lg:px-10"><div><div className="mb-4 font-mono text-[10px] uppercase tracking-[.3em] text-[#c89b5c]">01 / Method</div><h2 className="font-serif text-4xl font-bold">主題先行。<br /><span className="text-white/45">店家只是座標。</span></h2></div><div className="grid gap-8 sm:grid-cols-3"><div><Users className="mb-5 text-[#c89b5c]" size={20} /><h3 className="mb-2 font-bold">比較隊伍</h3><p className="text-sm leading-7 text-white/45">人數直接對照，不讓店家品牌遮住真正選項。</p></div><div><Flame className="mb-5 text-[#c89b5c]" size={20} /><h3 className="mb-2 font-bold">拆開恐怖</h3><p className="text-sm leading-7 text-white/45">恐怖與燒腦分開標記，跨店家比較才有意義。</p></div><div><Check className="mb-5 text-[#c89b5c]" size={20} /><h3 className="mb-2 font-bold">直達主題</h3><p className="text-sm leading-7 text-white/45">每張卡都直達該店官方預約入口，核對檔期與票價。</p></div></div></div></section>
     </main><footer className="border-t border-white/10 px-5 py-8 lg:px-10"><div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-4 font-mono text-[10px] uppercase tracking-[.2em] text-white/35 sm:flex-row"><span>© 2026 The Escape Index / Taiwan</span><span>Built for curious teams</span></div></footer>
+    {showBackToTop && <button type="button" aria-label="回到頂部" title="回到頂部" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-5 right-5 z-30 flex h-12 w-12 items-center justify-center border border-[#c89b5c]/70 bg-[#151917]/95 text-[#c89b5c] shadow-[0_8px_30px_rgba(0,0,0,.45)] backdrop-blur-md transition duration-200 hover:-translate-y-1 hover:bg-[#c89b5c] hover:text-[#0c0e0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0e0d] motion-reduce:transition-none"><ArrowUp size={18} strokeWidth={1.8} /></button>}
   </div>;
 }
 
