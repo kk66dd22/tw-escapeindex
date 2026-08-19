@@ -1,15 +1,12 @@
 [
   {
-    "id": "lost-taiwan--1",
+    "id": "popular-001",
     "name": "九龍寨城",
     "venue_name": "LOST Taiwan 迷の密失",
-    "venue_id": "lost-taiwan",
     "city": "台北市",
     "district": "萬華／大安／中正",
-    "address": "台北市萬華區成都路4號6樓（西門店）；另有忠孝與站前店",
-    "website": "https://losttw.com/",
-    "booking_url": "https://losttw.com/",
     "google_rating": 4.8,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
     "duration": "待核對",
     "horror": 1,
@@ -20,29 +17,26 @@
     ],
     "pros": [
       "台北多館選擇，交通方便",
-      "品牌強調機關、謎題與劇情整合"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "熱門分店與主題較需要提早訂位",
-      "不同館別體驗尺度與風格差異明顯"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://losttw.com/",
     "source_urls": [
       "https://losttw.com/",
       "https://www.myfunnow.com/zh-tw/branches/3050710159112"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "lost-taiwan--2",
+    "id": "popular-002",
     "name": "猛鬼大廈",
     "venue_name": "LOST Taiwan 迷の密失",
-    "venue_id": "lost-taiwan",
     "city": "台北市",
     "district": "萬華／大安／中正",
-    "address": "台北市萬華區成都路4號6樓（西門店）；另有忠孝與站前店",
-    "website": "https://losttw.com/",
-    "booking_url": "https://losttw.com/",
     "google_rating": 4.8,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
     "horror": 5,
@@ -53,29 +47,26 @@
     ],
     "pros": [
       "台北多館選擇，交通方便",
-      "品牌強調機關、謎題與劇情整合"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "熱門分店與主題較需要提早訂位",
-      "不同館別體驗尺度與風格差異明顯"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://losttw.com/",
     "source_urls": [
       "https://losttw.com/",
       "https://www.myfunnow.com/zh-tw/branches/3050710159112"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "lost-taiwan--3",
+    "id": "popular-003",
     "name": "潛入任務",
     "venue_name": "LOST Taiwan 迷の密失",
-    "venue_id": "lost-taiwan",
     "city": "台北市",
     "district": "萬華／大安／中正",
-    "address": "台北市萬華區成都路4號6樓（西門店）；另有忠孝與站前店",
-    "website": "https://losttw.com/",
-    "booking_url": "https://losttw.com/",
     "google_rating": 4.8,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
     "duration": "待核對",
     "horror": 1,
@@ -86,230 +77,26 @@
     ],
     "pros": [
       "台北多館選擇，交通方便",
-      "品牌強調機關、謎題與劇情整合"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "熱門分店與主題較需要提早訂位",
-      "不同館別體驗尺度與風格差異明顯"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://losttw.com/",
     "source_urls": [
       "https://losttw.com/",
       "https://www.myfunnow.com/zh-tw/branches/3050710159112"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "stupid-particle--1",
-    "name": "平安戲院",
-    "venue_name": "笨蛋工作室",
-    "venue_id": "stupid-particle",
-    "city": "台北市",
-    "district": "松山／大安",
-    "address": "台北市松山區南京東路五段399號9樓；另有台北館別",
-    "website": "https://stupidparticle.com/",
-    "booking_url": "https://stupidparticle.com/taipei/",
-    "google_rating": 3.8,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 2,
-    "brain": 3,
-    "styles": [
-      "大型機關",
-      "微恐"
-    ],
-    "pros": [
-      "本土密室設計經驗深，品牌辨識度高",
-      "大型機關與沉浸式故事線是主要賣點"
-    ],
-    "cons": [
-      "館別與主題較多，第一次選擇時需要比較",
-      "部分熱門主題可能有年齡或膽量門檻"
-    ],
-    "source_urls": [
-      "https://stupidparticle.com/",
-      "https://stupidparticle.com/taipei/",
-      "https://www.twosevenths.com/game/escape-taipei-room/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "stupid-particle--2",
-    "name": "奪命記憶",
-    "venue_name": "笨蛋工作室",
-    "venue_id": "stupid-particle",
-    "city": "台北市",
-    "district": "松山／大安",
-    "address": "台北市松山區南京東路五段399號9樓；另有台北館別",
-    "website": "https://stupidparticle.com/",
-    "booking_url": "https://stupidparticle.com/taipei/",
-    "google_rating": 3.8,
-    "players": "2–6",
-    "duration": "待核對",
-    "horror": 3,
-    "brain": 4,
-    "styles": [
-      "機關解謎",
-      "劇情推理"
-    ],
-    "pros": [
-      "本土密室設計經驗深，品牌辨識度高",
-      "大型機關與沉浸式故事線是主要賣點"
-    ],
-    "cons": [
-      "館別與主題較多，第一次選擇時需要比較",
-      "部分熱門主題可能有年齡或膽量門檻"
-    ],
-    "source_urls": [
-      "https://stupidparticle.com/",
-      "https://stupidparticle.com/taipei/",
-      "https://www.twosevenths.com/game/escape-taipei-room/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "stupid-particle--3",
-    "name": "荒宅探險",
-    "venue_name": "笨蛋工作室",
-    "venue_id": "stupid-particle",
-    "city": "台北市",
-    "district": "松山／大安",
-    "address": "台北市松山區南京東路五段399號9樓；另有台北館別",
-    "website": "https://stupidparticle.com/",
-    "booking_url": "https://stupidparticle.com/taipei/",
-    "google_rating": 3.8,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 5,
-    "brain": 3,
-    "styles": [
-      "恐怖驚悚",
-      "沉浸體驗"
-    ],
-    "pros": [
-      "本土密室設計經驗深，品牌辨識度高",
-      "大型機關與沉浸式故事線是主要賣點"
-    ],
-    "cons": [
-      "館別與主題較多，第一次選擇時需要比較",
-      "部分熱門主題可能有年齡或膽量門檻"
-    ],
-    "source_urls": [
-      "https://stupidparticle.com/",
-      "https://stupidparticle.com/taipei/",
-      "https://www.twosevenths.com/game/escape-taipei-room/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "funlock--1",
-    "name": "噬夢",
-    "venue_name": "FUNLOCK 放樂工作室",
-    "venue_id": "funlock",
-    "city": "台北市",
-    "district": "中山",
-    "address": "台北市中山區中山北路二段112號7樓之4（瑞星大樓）",
-    "website": "https://funlockstudio.com/",
-    "booking_url": "https://funlockstudio.com/game_time",
-    "google_rating": null,
-    "players": "2–5",
-    "duration": "待核對",
-    "horror": 3,
-    "brain": 3,
-    "styles": [
-      "新手友善",
-      "劇情解謎"
-    ],
-    "pros": [
-      "官方明確定位新手入門，2人即可包場",
-      "主題從奇幻、冒險到微恐都有"
-    ],
-    "cons": [
-      "場館位於商辦大樓，初訪者需留意入口",
-      "不同主題的恐怖與難度落差較大"
-    ],
-    "source_urls": [
-      "https://funlockstudio.com/",
-      "https://www.twosevenths.com/game/escape-taipei-room/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "funlock--2",
-    "name": "鎮魂曲：迴憶宅邸",
-    "venue_name": "FUNLOCK 放樂工作室",
-    "venue_id": "funlock",
-    "city": "台北市",
-    "district": "中山",
-    "address": "台北市中山區中山北路二段112號7樓之4（瑞星大樓）",
-    "website": "https://funlockstudio.com/",
-    "booking_url": "https://funlockstudio.com/game_time",
-    "google_rating": null,
-    "players": "4–6",
-    "duration": "待核對",
-    "horror": 4,
-    "brain": 4,
-    "styles": [
-      "恐怖驚悚",
-      "沉浸劇情"
-    ],
-    "pros": [
-      "官方明確定位新手入門，2人即可包場",
-      "主題從奇幻、冒險到微恐都有"
-    ],
-    "cons": [
-      "場館位於商辦大樓，初訪者需留意入口",
-      "不同主題的恐怖與難度落差較大"
-    ],
-    "source_urls": [
-      "https://funlockstudio.com/",
-      "https://www.twosevenths.com/game/escape-taipei-room/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "funlock--3",
-    "name": "幻境奇航II：最終的航道",
-    "venue_name": "FUNLOCK 放樂工作室",
-    "venue_id": "funlock",
-    "city": "台北市",
-    "district": "中山",
-    "address": "台北市中山區中山北路二段112號7樓之4（瑞星大樓）",
-    "website": "https://funlockstudio.com/",
-    "booking_url": "https://funlockstudio.com/game_time",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 1,
-    "brain": 3,
-    "styles": [
-      "奇幻冒險",
-      "機關解謎"
-    ],
-    "pros": [
-      "官方明確定位新手入門，2人即可包場",
-      "主題從奇幻、冒險到微恐都有"
-    ],
-    "cons": [
-      "場館位於商辦大樓，初訪者需留意入口",
-      "不同主題的恐怖與難度落差較大"
-    ],
-    "source_urls": [
-      "https://funlockstudio.com/",
-      "https://www.twosevenths.com/game/escape-taipei-room/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "enterspace--1",
+    "id": "popular-004",
     "name": "百鬼夜行",
     "venue_name": "EnterSpace 密室逃脫",
-    "venue_id": "enterspace",
     "city": "台北市",
     "district": "中山／大直",
-    "address": "台北市中山區明水路581巷15號B1（捷運大直站步行約5分鐘）",
-    "website": "https://www.enterspace.tw/",
-    "booking_url": "https://www.enterspace.tw/",
     "google_rating": 4.9,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
     "duration": "待核對",
     "horror": 3,
@@ -320,29 +107,26 @@
     ],
     "pros": [
       "官方主題量大，2–10人都有選擇",
-      "大直站步行可達，交通動線清楚"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "主題庫較大，需要先用風格與人數篩選",
-      "部分活動型內容與傳統密室玩法不同"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
       "https://www.enterspace.tw/",
       "https://www.instagram.com/reel/DCrFD2-TV8y/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "enterspace--2",
+    "id": "popular-005",
     "name": "魔幻菜市場",
     "venue_name": "EnterSpace 密室逃脫",
-    "venue_id": "enterspace",
     "city": "台北市",
     "district": "中山／大直",
-    "address": "台北市中山區明水路581巷15號B1（捷運大直站步行約5分鐘）",
-    "website": "https://www.enterspace.tw/",
-    "booking_url": "https://www.enterspace.tw/",
     "google_rating": 4.9,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–8",
     "duration": "待核對",
     "horror": 1,
@@ -353,29 +137,26 @@
     ],
     "pros": [
       "官方主題量大，2–10人都有選擇",
-      "大直站步行可達，交通動線清楚"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "主題庫較大，需要先用風格與人數篩選",
-      "部分活動型內容與傳統密室玩法不同"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
       "https://www.enterspace.tw/",
       "https://www.instagram.com/reel/DCrFD2-TV8y/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "enterspace--3",
+    "id": "popular-006",
     "name": "新年接招了",
     "venue_name": "EnterSpace 密室逃脫",
-    "venue_id": "enterspace",
     "city": "台北市",
     "district": "中山／大直",
-    "address": "台北市中山區明水路581巷15號B1（捷運大直站步行約5分鐘）",
-    "website": "https://www.enterspace.tw/",
-    "booking_url": "https://www.enterspace.tw/",
     "google_rating": 4.9,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–10",
     "duration": "待核對",
     "horror": 1,
@@ -386,547 +167,26 @@
     ],
     "pros": [
       "官方主題量大，2–10人都有選擇",
-      "大直站步行可達，交通動線清楚"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "主題庫較大，需要先用風格與人數篩選",
-      "部分活動型內容與傳統密室玩法不同"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
       "https://www.enterspace.tw/",
       "https://www.instagram.com/reel/DCrFD2-TV8y/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "taog-taipei--1",
-    "name": "神不在場",
-    "venue_name": "神不在場｜台北體驗點",
-    "venue_id": "taog-taipei",
-    "city": "台北市",
-    "district": "中山／大直",
-    "address": "台北市中山區明水路581巷15號B1（由 EnterSpace 經營）",
-    "website": "https://taog-game.com/",
-    "booking_url": "https://taog-game.com/taipeibooking/",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 4,
-    "brain": 4,
-    "styles": [
-      "生存壓迫",
-      "恐怖驚悚"
-    ],
-    "pros": [
-      "官方品牌定位鮮明，主打孤立無援的生存壓力",
-      "有完整線上預約與交通資訊"
-    ],
-    "cons": [
-      "台北點為合作經營場館，預約前要確認實際營運資訊",
-      "高壓與恐怖取向不一定適合怕黑或新手隊伍"
-    ],
-    "source_urls": [
-      "https://taog-game.com/",
-      "https://taog-game.com/taipeibooking/",
-      "https://www.enterspace.tw/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "taog-taipei--2",
-    "name": "戰鬥陀螺",
-    "venue_name": "神不在場｜台北體驗點",
-    "venue_id": "taog-taipei",
-    "city": "台北市",
-    "district": "中山／大直",
-    "address": "台北市中山區明水路581巷15號B1（由 EnterSpace 經營）",
-    "website": "https://taog-game.com/",
-    "booking_url": "https://taog-game.com/taipeibooking/",
-    "google_rating": null,
-    "players": "2–6",
-    "duration": "待核對",
-    "horror": 1,
-    "brain": 3,
-    "styles": [
-      "機關解謎",
-      "任務挑戰"
-    ],
-    "pros": [
-      "官方品牌定位鮮明，主打孤立無援的生存壓力",
-      "有完整線上預約與交通資訊"
-    ],
-    "cons": [
-      "台北點為合作經營場館，預約前要確認實際營運資訊",
-      "高壓與恐怖取向不一定適合怕黑或新手隊伍"
-    ],
-    "source_urls": [
-      "https://taog-game.com/",
-      "https://taog-game.com/taipeibooking/",
-      "https://www.enterspace.tw/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "taog-taipei--3",
-    "name": "憶釀：亡命輪迴",
-    "venue_name": "神不在場｜台北體驗點",
-    "venue_id": "taog-taipei",
-    "city": "台北市",
-    "district": "中山／大直",
-    "address": "台北市中山區明水路581巷15號B1（由 EnterSpace 經營）",
-    "website": "https://taog-game.com/",
-    "booking_url": "https://taog-game.com/taipeibooking/",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 4,
-    "brain": 4,
-    "styles": [
-      "沉浸劇情",
-      "恐怖驚悚"
-    ],
-    "pros": [
-      "官方品牌定位鮮明，主打孤立無援的生存壓力",
-      "有完整線上預約與交通資訊"
-    ],
-    "cons": [
-      "台北點為合作經營場館，預約前要確認實際營運資訊",
-      "高壓與恐怖取向不一定適合怕黑或新手隊伍"
-    ],
-    "source_urls": [
-      "https://taog-game.com/",
-      "https://taog-game.com/taipeibooking/",
-      "https://www.enterspace.tw/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "stupid-particle-taichung--1",
-    "name": "武仁新村",
-    "venue_name": "笨蛋工作室｜台中館",
-    "venue_id": "stupid-particle-taichung",
-    "city": "台中市",
-    "district": "西區",
-    "address": "台中市西區美村路一段36號B1；另有中港笨蛋館",
-    "website": "https://stupidparticle.com/taichung/",
-    "booking_url": "https://booking.stupidparticle.com/activities/wurenvillage",
-    "google_rating": null,
-    "players": "6–10",
-    "duration": "待核對",
-    "horror": 3,
-    "brain": 4,
-    "styles": [
-      "眷村沉浸",
-      "懸疑微恐"
-    ],
-    "pros": [
-      "官方頁面列出 9 大主題與兩個台中館別",
-      "場景、美術與沉浸互動是品牌強項"
-    ],
-    "cons": [
-      "多數主題建議 4–8 人以上",
-      "兩個館別地址不同，預約前需確認館別"
-    ],
-    "source_urls": [
-      "https://stupidparticle.com/taichung/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "stupid-particle-taichung--2",
-    "name": "入學式",
-    "venue_name": "笨蛋工作室｜台中館",
-    "venue_id": "stupid-particle-taichung",
-    "city": "台中市",
-    "district": "西區",
-    "address": "台中市西區美村路一段36號B1；另有中港笨蛋館",
-    "website": "https://stupidparticle.com/taichung/",
-    "booking_url": "https://booking.stupidparticle.com/activities/wurenvillage",
-    "google_rating": null,
-    "players": "6–8",
-    "duration": "待核對",
-    "horror": 4,
-    "brain": 4,
-    "styles": [
-      "日式校舍",
-      "沉浸劇情"
-    ],
-    "pros": [
-      "官方頁面列出 9 大主題與兩個台中館別",
-      "場景、美術與沉浸互動是品牌強項"
-    ],
-    "cons": [
-      "多數主題建議 4–8 人以上",
-      "兩個館別地址不同，預約前需確認館別"
-    ],
-    "source_urls": [
-      "https://stupidparticle.com/taichung/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "stupid-particle-taichung--3",
-    "name": "鬼新娘",
-    "venue_name": "笨蛋工作室｜台中館",
-    "venue_id": "stupid-particle-taichung",
-    "city": "台中市",
-    "district": "西區",
-    "address": "台中市西區美村路一段36號B1；另有中港笨蛋館",
-    "website": "https://stupidparticle.com/taichung/",
-    "booking_url": "https://booking.stupidparticle.com/activities/wurenvillage",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 5,
-    "brain": 3,
-    "styles": [
-      "恐怖驚悚",
-      "場景探索"
-    ],
-    "pros": [
-      "官方頁面列出 9 大主題與兩個台中館別",
-      "場景、美術與沉浸互動是品牌強項"
-    ],
-    "cons": [
-      "多數主題建議 4–8 人以上",
-      "兩個館別地址不同，預約前需確認館別"
-    ],
-    "source_urls": [
-      "https://stupidparticle.com/taichung/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "sogoods-taichung--1",
-    "name": "解鑰",
-    "venue_name": "So Goods 說故事工作室",
-    "venue_id": "sogoods-taichung",
-    "city": "台中市",
-    "district": "北區／西屯",
-    "address": "台中市北區山西路一段51號B1；另有何厝館",
-    "website": "https://www.sogoods.com.tw/",
-    "booking_url": "https://www.sogoods.com.tw/EscapeRoomPrice/",
-    "google_rating": null,
-    "players": "2–4",
-    "duration": "待核對",
-    "horror": 1,
-    "brain": 2,
-    "styles": [
-      "新手入門",
-      "短時體驗"
-    ],
-    "pros": [
-      "官方公開人數、時間與多軸難度標示",
-      "主題從新手、推理到高恐怖都有"
-    ],
-    "cons": [
-      "主題數量多，需先依膽量與人數篩選",
-      "不同館別與主題的體驗尺度差異大"
-    ],
-    "source_urls": [
-      "https://www.sogoods.com.tw/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "sogoods-taichung--2",
-    "name": "封鎖",
-    "venue_name": "So Goods 說故事工作室",
-    "venue_id": "sogoods-taichung",
-    "city": "台中市",
-    "district": "北區／西屯",
-    "address": "台中市北區山西路一段51號B1；另有何厝館",
-    "website": "https://www.sogoods.com.tw/",
-    "booking_url": "https://www.sogoods.com.tw/EscapeRoomPrice/",
-    "google_rating": null,
-    "players": "2–8",
-    "duration": "待核對",
-    "horror": 1,
-    "brain": 4,
-    "styles": [
-      "推理懸疑",
-      "故事解謎"
-    ],
-    "pros": [
-      "官方公開人數、時間與多軸難度標示",
-      "主題從新手、推理到高恐怖都有"
-    ],
-    "cons": [
-      "主題數量多，需先依膽量與人數篩選",
-      "不同館別與主題的體驗尺度差異大"
-    ],
-    "source_urls": [
-      "https://www.sogoods.com.tw/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "sogoods-taichung--3",
-    "name": "交替",
-    "venue_name": "So Goods 說故事工作室",
-    "venue_id": "sogoods-taichung",
-    "city": "台中市",
-    "district": "北區／西屯",
-    "address": "台中市北區山西路一段51號B1；另有何厝館",
-    "website": "https://www.sogoods.com.tw/",
-    "booking_url": "https://www.sogoods.com.tw/EscapeRoomPrice/",
-    "google_rating": null,
-    "players": "2–8",
-    "duration": "待核對",
-    "horror": 5,
-    "brain": 4,
-    "styles": [
-      "恐怖驚悚",
-      "聲光沉浸"
-    ],
-    "pros": [
-      "官方公開人數、時間與多軸難度標示",
-      "主題從新手、推理到高恐怖都有"
-    ],
-    "cons": [
-      "主題數量多，需先依膽量與人數篩選",
-      "不同館別與主題的體驗尺度差異大"
-    ],
-    "source_urls": [
-      "https://www.sogoods.com.tw/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "loop-taichung--1",
-    "name": "魅妄廟",
-    "venue_name": "Loop 迴圈密室逃脫",
-    "venue_id": "loop-taichung",
-    "city": "台中市",
-    "district": "北屯／文心",
-    "address": "台中市北屯區文心路四段81號17樓；另有旗艦館與恐怖館",
-    "website": "https://loopescape.com/",
-    "booking_url": "https://loopescape.com/",
-    "google_rating": null,
-    "players": "4–10",
-    "duration": "待核對",
-    "horror": 5,
-    "brain": 4,
-    "styles": [
-      "恐怖驚悚",
-      "大型機關"
-    ],
-    "pros": [
-      "主打高強度恐怖與大型場景機關",
-      "官方公開多館資訊與主題時長、人數"
-    ],
-    "cons": [
-      "部分主題不適合幽閉恐懼或怕黑玩家",
-      "大型恐怖主題通常需要較多人數與較高預算"
-    ],
-    "source_urls": [
-      "https://loopescape.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "loop-taichung--2",
-    "name": "獄謀",
-    "venue_name": "Loop 迴圈密室逃脫",
-    "venue_id": "loop-taichung",
-    "city": "台中市",
-    "district": "北屯／文心",
-    "address": "台中市北屯區文心路四段81號17樓；另有旗艦館與恐怖館",
-    "website": "https://loopescape.com/",
-    "booking_url": "https://loopescape.com/",
-    "google_rating": null,
-    "players": "4–12",
-    "duration": "待核對",
-    "horror": 2,
-    "brain": 4,
-    "styles": [
-      "越獄任務",
-      "開放流程"
-    ],
-    "pros": [
-      "主打高強度恐怖與大型場景機關",
-      "官方公開多館資訊與主題時長、人數"
-    ],
-    "cons": [
-      "部分主題不適合幽閉恐懼或怕黑玩家",
-      "大型恐怖主題通常需要較多人數與較高預算"
-    ],
-    "source_urls": [
-      "https://loopescape.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "loop-taichung--3",
-    "name": "惠貞女子高校",
-    "venue_name": "Loop 迴圈密室逃脫",
-    "venue_id": "loop-taichung",
-    "city": "台中市",
-    "district": "北屯／文心",
-    "address": "台中市北屯區文心路四段81號17樓；另有旗艦館與恐怖館",
-    "website": "https://loopescape.com/",
-    "booking_url": "https://loopescape.com/",
-    "google_rating": null,
-    "players": "4–12",
-    "duration": "待核對",
-    "horror": 5,
-    "brain": 3,
-    "styles": [
-      "校園恐怖",
-      "分組合作"
-    ],
-    "pros": [
-      "主打高強度恐怖與大型場景機關",
-      "官方公開多館資訊與主題時長、人數"
-    ],
-    "cons": [
-      "部分主題不適合幽閉恐懼或怕黑玩家",
-      "大型恐怖主題通常需要較多人數與較高預算"
-    ],
-    "source_urls": [
-      "https://loopescape.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "doors-cy--1",
-    "name": "許多門主題選集",
-    "venue_name": "許多門密室逃脫｜嘉義館",
-    "venue_id": "doors-cy",
-    "city": "嘉義市",
-    "district": "東區",
-    "address": "嘉義市東區民族路246號2樓",
-    "website": "https://www.doorsss.com/",
-    "booking_url": "https://www.doorsss.com/",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 3,
-    "brain": 3,
-    "styles": [
-      "團體冒險",
-      "故事解謎"
-    ],
-    "pros": [
-      "官方跨台中、嘉義、台南、高雄設館",
-      "交通與預約資訊清楚"
-    ],
-    "cons": [
-      "各館主題與營運狀態需依官方最新公告確認",
-      "主題細節公開程度依館別不同"
-    ],
-    "source_urls": [
-      "https://www.doorsss.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "doors-cy--2",
-    "name": "倒數 60 分鐘",
-    "venue_name": "許多門密室逃脫｜嘉義館",
-    "venue_id": "doors-cy",
-    "city": "嘉義市",
-    "district": "東區",
-    "address": "嘉義市東區民族路246號2樓",
-    "website": "https://www.doorsss.com/",
-    "booking_url": "https://www.doorsss.com/",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 2,
-    "brain": 3,
-    "styles": [
-      "限時解謎",
-      "機關操作"
-    ],
-    "pros": [
-      "官方跨台中、嘉義、台南、高雄設館",
-      "交通與預約資訊清楚"
-    ],
-    "cons": [
-      "各館主題與營運狀態需依官方最新公告確認",
-      "主題細節公開程度依館別不同"
-    ],
-    "source_urls": [
-      "https://www.doorsss.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "taog-tainan--1",
-    "name": "神不在場",
-    "venue_name": "神不在場｜台南創始館",
-    "venue_id": "taog-tainan",
-    "city": "台南市",
-    "district": "永康區",
-    "address": "台南市永康區中華路1-2號3F",
-    "website": "https://taog-game.com/",
-    "booking_url": "https://taog-game.com/",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 4,
-    "brain": 4,
-    "styles": [
-      "生存壓迫",
-      "恐怖驚悚"
-    ],
-    "pros": [
-      "品牌創始館，主題故事定位鮮明",
-      "高情緒張力與沉浸式任務適合重度玩家"
-    ],
-    "cons": [
-      "高壓恐怖取向不一定適合新手",
-      "預約前應確認現行主題與場館公告"
-    ],
-    "source_urls": [
-      "https://taog-game.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "taog-tainan--2",
-    "name": "憶釀：亡命輪迴",
-    "venue_name": "神不在場｜台南創始館",
-    "venue_id": "taog-tainan",
-    "city": "台南市",
-    "district": "永康區",
-    "address": "台南市永康區中華路1-2號3F",
-    "website": "https://taog-game.com/",
-    "booking_url": "https://taog-game.com/",
-    "google_rating": null,
-    "players": "4–8",
-    "duration": "待核對",
-    "horror": 4,
-    "brain": 4,
-    "styles": [
-      "沉浸劇情",
-      "高壓任務"
-    ],
-    "pros": [
-      "品牌創始館，主題故事定位鮮明",
-      "高情緒張力與沉浸式任務適合重度玩家"
-    ],
-    "cons": [
-      "高壓恐怖取向不一定適合新手",
-      "預約前應確認現行主題與場館公告"
-    ],
-    "source_urls": [
-      "https://taog-game.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
-  },
-  {
-    "id": "mystoto-kaohsiung--1",
+    "id": "popular-007",
     "name": "異形覆沒",
     "venue_name": "Mystoto Escape Games",
-    "venue_id": "mystoto-kaohsiung",
     "city": "高雄市",
     "district": "苓雅區",
-    "address": "高雄市苓雅區中華四路2號B1F",
-    "website": "https://www.mystotoescape.com/",
-    "booking_url": "https://www.mystotoescape.com/",
     "google_rating": 5.0,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
     "horror": 1,
@@ -937,28 +197,25 @@
     ],
     "pros": [
       "官方支援中文與英文提示系統",
-      "主打高科技機關、互動與電影級場景"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "多數主題建議至少 4 人",
-      "高沉浸主題需先確認膽量與怕黑程度"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "mystoto-kaohsiung--2",
+    "id": "popular-008",
     "name": "嬰魂嚇水道",
     "venue_name": "Mystoto Escape Games",
-    "venue_id": "mystoto-kaohsiung",
     "city": "高雄市",
     "district": "苓雅區",
-    "address": "高雄市苓雅區中華四路2號B1F",
-    "website": "https://www.mystotoescape.com/",
-    "booking_url": "https://www.mystotoescape.com/",
     "google_rating": 5.0,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
     "horror": 5,
@@ -969,28 +226,25 @@
     ],
     "pros": [
       "官方支援中文與英文提示系統",
-      "主打高科技機關、互動與電影級場景"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "多數主題建議至少 4 人",
-      "高沉浸主題需先確認膽量與怕黑程度"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "mystoto-kaohsiung--3",
+    "id": "popular-009",
     "name": "奪魂獄",
     "venue_name": "Mystoto Escape Games",
-    "venue_id": "mystoto-kaohsiung",
     "city": "高雄市",
     "district": "苓雅區",
-    "address": "高雄市苓雅區中華四路2號B1F",
-    "website": "https://www.mystotoescape.com/",
-    "booking_url": "https://www.mystotoescape.com/",
     "google_rating": 5.0,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
     "horror": 4,
@@ -1001,111 +255,1349 @@
     ],
     "pros": [
       "官方支援中文與英文提示系統",
-      "主打高科技機關、互動與電影級場景"
+      "主題資訊可供跨店家比較"
     ],
     "cons": [
       "多數主題建議至少 4 人",
-      "高沉浸主題需先確認膽量與怕黑程度"
+      "預約前請核對最新公告"
     ],
+    "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "mr-bomb-kaohsiung--1",
-    "name": "噩夢首部曲：記憶牢籠",
-    "venue_name": "MR.Bomb 爆炸先生",
-    "venue_id": "mr-bomb-kaohsiung",
-    "city": "高雄市",
-    "district": "三民區／高雄車站",
-    "address": "高雄市高雄車站前站附近（預約制，請以官方最新資訊為準）",
-    "website": "https://www.mr-bomb.com/",
-    "booking_url": "https://www.mr-bomb.com/",
-    "google_rating": null,
+    "id": "popular-010",
+    "name": "我們的秘密",
+    "venue_name": "笨蛋工作室｜台北館",
+    "city": "台北市",
+    "district": "大安／松山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ]
+  },
+  {
+    "id": "popular-011",
+    "name": "竹本家",
+    "venue_name": "笨蛋工作室｜台北館",
+    "city": "台北市",
+    "district": "大安／松山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ]
+  },
+  {
+    "id": "popular-012",
+    "name": "深處",
+    "venue_name": "笨蛋工作室｜台北館",
+    "city": "台北市",
+    "district": "大安／松山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ]
+  },
+  {
+    "id": "popular-013",
+    "name": "奪命鎖鏈",
+    "venue_name": "笨蛋工作室｜台北館",
+    "city": "台北市",
+    "district": "大安／松山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ]
+  },
+  {
+    "id": "popular-014",
+    "name": "奪命鎖鏈2",
+    "venue_name": "笨蛋工作室｜台北館",
+    "city": "台北市",
+    "district": "大安／松山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ]
+  },
+  {
+    "id": "popular-015",
+    "name": "顛倒之室",
+    "venue_name": "笨蛋工作室｜台北館",
+    "city": "台北市",
+    "district": "大安／松山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ]
+  },
+  {
+    "id": "popular-016",
+    "name": "奪命記憶",
+    "venue_name": "笨蛋工作室｜台北館",
+    "city": "台北市",
+    "district": "大安／松山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taipei/",
+    "source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ]
+  },
+  {
+    "id": "popular-017",
+    "name": "武仁新村",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-018",
+    "name": "入學式",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-019",
+    "name": "平安戲院",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-020",
+    "name": "咖波與飢餓迷宮",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-021",
+    "name": "羅伯班克",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-022",
+    "name": "奪命鎖鏈",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-023",
+    "name": "顛倒之室",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-024",
+    "name": "鬼新娘",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-025",
+    "name": "竹本家",
+    "venue_name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "district": "西區",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://stupidparticle.com/taichung/",
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "popular-026",
+    "name": "噬夢",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-027",
+    "name": "感染",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-028",
+    "name": "稻荷之歌",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-029",
+    "name": "病變",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-030",
+    "name": "永生劫",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-031",
+    "name": "蜀山",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-032",
+    "name": "天方夜譚",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-033",
+    "name": "鄉間小盜",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-034",
+    "name": "幻境奇航II：最終的航道",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-035",
+    "name": "失落魔境：序章",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-036",
+    "name": "鎮魂曲：迴憶宅邸",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
     "duration": "待核對",
     "horror": 4,
     "brain": 3,
     "styles": [
-      "恐怖劇情",
-      "記憶謎團"
+      "主題解謎",
+      "官方現行主題"
     ],
     "pros": [
-      "官方提供多種 2–6 人主題，適合小隊伍",
-      "主題涵蓋恐怖、奇幻、戰爭與博物館任務"
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
     ],
     "cons": [
-      "預約制，出發前需再次確認館址與營業時間",
-      "部分恐怖主題需要先確認膽量"
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
     ],
+    "booking_url": "https://funlockstudio.com/",
     "source_urls": [
-      "https://www.mr-bomb.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+      "https://funlockstudio.com/"
+    ]
   },
   {
-    "id": "mr-bomb-kaohsiung--2",
+    "id": "popular-037",
+    "name": "彼岸花：夢返",
+    "venue_name": "FUNLOCK 放樂工作室",
+    "city": "台北市",
+    "district": "中山",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://funlockstudio.com/",
+    "source_urls": [
+      "https://funlockstudio.com/"
+    ]
+  },
+  {
+    "id": "popular-038",
+    "name": "瞞天越獄",
+    "venue_name": "極限密室逃脫 Limitless",
+    "city": "台北市",
+    "district": "公館／中正",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://limitlessescaperoom.com/",
+    "source_urls": [
+      "https://limitlessescaperoom.com/"
+    ]
+  },
+  {
+    "id": "popular-039",
+    "name": "搜索令",
+    "venue_name": "極限密室逃脫 Limitless",
+    "city": "台北市",
+    "district": "公館／中正",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://limitlessescaperoom.com/",
+    "source_urls": [
+      "https://limitlessescaperoom.com/"
+    ]
+  },
+  {
+    "id": "popular-040",
+    "name": "戰鬥陀螺",
+    "venue_name": "EnterSpace 密室逃脫",
+    "city": "台北市",
+    "district": "大直",
+    "google_rating": 4.9,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.enterspace.tw/",
+    "source_urls": [
+      "https://www.enterspace.tw/"
+    ]
+  },
+  {
+    "id": "popular-041",
+    "name": "憶釀：亡命輪迴",
+    "venue_name": "EnterSpace 密室逃脫",
+    "city": "台北市",
+    "district": "大直",
+    "google_rating": 4.9,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "2–6",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.enterspace.tw/",
+    "source_urls": [
+      "https://www.enterspace.tw/"
+    ]
+  },
+  {
+    "id": "popular-042",
+    "name": "絕命旅舍",
+    "venue_name": "Mystoto Escape Games",
+    "city": "高雄市",
+    "district": "苓雅",
+    "google_rating": 5.0,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.mystotoescape.com/",
+    "source_urls": [
+      "https://www.mystotoescape.com/"
+    ]
+  },
+  {
+    "id": "popular-043",
+    "name": "法老謎城",
+    "venue_name": "Mystoto Escape Games",
+    "city": "高雄市",
+    "district": "苓雅",
+    "google_rating": 5.0,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.mystotoescape.com/",
+    "source_urls": [
+      "https://www.mystotoescape.com/"
+    ]
+  },
+  {
+    "id": "popular-044",
+    "name": "噩夢首部曲：記憶牢籠",
+    "venue_name": "MR.Bomb 爆炸先生",
+    "city": "高雄市",
+    "district": "三民／高雄車站",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.mr-bomb.com/",
+    "source_urls": [
+      "https://www.mr-bomb.com/"
+    ]
+  },
+  {
+    "id": "popular-045",
+    "name": "噩夢二部曲：戰慄空間",
+    "venue_name": "MR.Bomb 爆炸先生",
+    "city": "高雄市",
+    "district": "三民／高雄車站",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.mr-bomb.com/",
+    "source_urls": [
+      "https://www.mr-bomb.com/"
+    ]
+  },
+  {
+    "id": "popular-046",
+    "name": "噬魂森靈：奪命樹海",
+    "venue_name": "MR.Bomb 爆炸先生",
+    "city": "高雄市",
+    "district": "三民／高雄車站",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.mr-bomb.com/",
+    "source_urls": [
+      "https://www.mr-bomb.com/"
+    ]
+  },
+  {
+    "id": "popular-047",
     "name": "玩具總動員",
     "venue_name": "MR.Bomb 爆炸先生",
-    "venue_id": "mr-bomb-kaohsiung",
     "city": "高雄市",
-    "district": "三民區／高雄車站",
-    "address": "高雄市高雄車站前站附近（預約制，請以官方最新資訊為準）",
-    "website": "https://www.mr-bomb.com/",
-    "booking_url": "https://www.mr-bomb.com/",
-    "google_rating": null,
-    "players": "2–6",
+    "district": "三民／高雄車站",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
     "duration": "待核對",
-    "horror": 1,
+    "horror": 2,
     "brain": 3,
     "styles": [
-      "奇幻冒險",
-      "團隊任務"
+      "主題解謎",
+      "官方現行主題"
     ],
     "pros": [
-      "官方提供多種 2–6 人主題，適合小隊伍",
-      "主題涵蓋恐怖、奇幻、戰爭與博物館任務"
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
     ],
     "cons": [
-      "預約制，出發前需再次確認館址與營業時間",
-      "部分恐怖主題需要先確認膽量"
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
     ],
+    "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    ]
   },
   {
-    "id": "mr-bomb-kaohsiung--3",
-    "name": "持碑天兵",
+    "id": "popular-048",
+    "name": "越南大戰",
     "venue_name": "MR.Bomb 爆炸先生",
-    "venue_id": "mr-bomb-kaohsiung",
     "city": "高雄市",
-    "district": "三民區／高雄車站",
-    "address": "高雄市高雄車站前站附近（預約制，請以官方最新資訊為準）",
-    "website": "https://www.mr-bomb.com/",
-    "booking_url": "https://www.mr-bomb.com/",
-    "google_rating": null,
-    "players": "2–6",
+    "district": "三民／高雄車站",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
     "duration": "待核對",
-    "horror": 1,
+    "horror": 2,
     "brain": 3,
     "styles": [
-      "博物館任務",
-      "機關解謎"
+      "主題解謎",
+      "官方現行主題"
     ],
     "pros": [
-      "官方提供多種 2–6 人主題，適合小隊伍",
-      "主題涵蓋恐怖、奇幻、戰爭與博物館任務"
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
     ],
     "cons": [
-      "預約制，出發前需再次確認館址與營業時間",
-      "部分恐怖主題需要先確認膽量"
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
     ],
+    "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
+    ]
+  },
+  {
+    "id": "popular-049",
+    "name": "持碑天兵",
+    "venue_name": "MR.Bomb 爆炸先生",
+    "city": "高雄市",
+    "district": "三民／高雄車站",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
     ],
-    "duration_note": "官方資料未穩定公開遊戲時間時標示待核對，避免推測。"
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.mr-bomb.com/",
+    "source_urls": [
+      "https://www.mr-bomb.com/"
+    ]
+  },
+  {
+    "id": "popular-050",
+    "name": "神不在場",
+    "venue_name": "神不在場實境遊戲｜台南館",
+    "city": "台南市",
+    "district": "永康",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://taog-game.com/",
+    "source_urls": [
+      "https://taog-game.com/"
+    ]
+  },
+  {
+    "id": "popular-051",
+    "name": "憶釀：亡命輪迴",
+    "venue_name": "神不在場實境遊戲｜台南館",
+    "city": "台南市",
+    "district": "永康",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://taog-game.com/",
+    "source_urls": [
+      "https://taog-game.com/"
+    ]
+  },
+  {
+    "id": "popular-052",
+    "name": "瘋狂追殺",
+    "venue_name": "神不在場實境遊戲｜台南館",
+    "city": "台南市",
+    "district": "永康",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 4,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://taog-game.com/",
+    "source_urls": [
+      "https://taog-game.com/"
+    ]
+  },
+  {
+    "id": "popular-053",
+    "name": "往生錄",
+    "venue_name": "神不在場實境遊戲｜台南館",
+    "city": "台南市",
+    "district": "永康",
+    "google_rating": 4.6,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 4,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://taog-game.com/",
+    "source_urls": [
+      "https://taog-game.com/"
+    ]
+  },
+  {
+    "id": "popular-054",
+    "name": "倒數 60 分鐘",
+    "venue_name": "許多門密室逃脫｜南部館別",
+    "city": "高雄市",
+    "district": "左營／新左營",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.doorsss.com/",
+    "source_urls": [
+      "https://www.doorsss.com/"
+    ]
+  },
+  {
+    "id": "popular-055",
+    "name": "許多門主題選集",
+    "venue_name": "許多門密室逃脫｜南部館別",
+    "city": "高雄市",
+    "district": "左營／新左營",
+    "google_rating": 4.5,
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+    "players": "4–8",
+    "duration": "待核對",
+    "horror": 2,
+    "brain": 3,
+    "styles": [
+      "主題解謎",
+      "官方現行主題"
+    ],
+    "pros": [
+      "官方頁面列為現行主題",
+      "可與其他主題橫向比較"
+    ],
+    "cons": [
+      "評價屬店家／分店級代理值",
+      "預約前請核對最新檔期"
+    ],
+    "booking_url": "https://www.doorsss.com/",
+    "source_urls": [
+      "https://www.doorsss.com/"
+    ]
   }
 ]
