@@ -1,0 +1,37 @@
+import { chromium } from "playwright";
+
+const url = process.env.PREVIEW_URL || "https://3000-iw3rse3x054z7jdrzizt7-2fccb066.sg1.manus.computer/";
+const browser = await chromium.launch({ headless: true, executablePath: "/usr/bin/chromium", args: ["--no-sandbox"] });
+const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
+await page.goto(url, { waitUntil: "networkidle", timeout: 30_000 });
+await page.locator('section#catalog').scrollIntoViewIfNeeded();
+await page.getByRole("button", { name: "2", exact: true }).click();
+await page.getByText("PAGE 02 / 10").waitFor();
+if ((await page.locator("section#catalog article").count()) !== 10) throw new Error("第 2 頁未呈現 10 張主題卡片");
+await page.locator('input[placeholder*="搜尋主題"]').fill("恐怖");
+await page.getByText(/PAGE 01 \/ \d+/).waitFor();
+if ((await page.locator('button[aria-current="page"]').innerText()) !== "1") throw new Error("搜尋變更後未重設第 1 頁");
+await page.locator('input[placeholder*="搜尋主題"]').fill("");
+await page.getByRole("button", { name: "台中", exact: true }).click();
+await page.getByText(/PAGE 01 \/ \d+/).waitFor();
+await page.getByRole("button", { name: "恐怖驚悚", exact: true }).click();
+await page.getByText(/PAGE 01 \/ \d+/).waitFor();
+await page.locator("#room-sort").selectOption("brain");
+await page.getByText(/PAGE 01 \/ \d+/).waitFor();
+await page.locator('input[placeholder*="搜尋主題"]').fill("");
+await page.getByRole("button", { name: "全台", exact: true }).click();
+await page.getByRole("button", { name: "全部主題", exact: true }).click();
+await page.locator("#room-sort").selectOption("rating");
+await page.getByText("PAGE 01 / 10").waitFor();
+await page.getByRole("button", { name: "10", exact: true }).click();
+await page.getByText(/PAGE 10 \/ 10/).waitFor();
+
+const mobile = await browser.newPage({ viewport: { width: 375, height: 812 } });
+await mobile.goto(url, { waitUntil: "networkidle", timeout: 30_000 });
+await mobile.locator('section#catalog').scrollIntoViewIfNeeded();
+const overflow = await mobile.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth }));
+if (overflow.scrollWidth > overflow.innerWidth + 1) throw new Error(`手機頁面水平溢出：${overflow.scrollWidth} > ${overflow.innerWidth}`);
+const pageNumberCount = await mobile.locator('button[aria-current="page"]').count();
+if (pageNumberCount !== 1) throw new Error("手機版沒有唯一目前頁碼");
+console.log(JSON.stringify({ url, desktopResetCases: 4, desktopJumpedTo: 10, mobileOverflow: overflow, mobileCurrentPageButtons: pageNumberCount }, null, 2));
+await browser.close();
