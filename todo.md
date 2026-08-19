@@ -161,3 +161,15 @@
 
 - [x] 新增 768px 瀏覽器版面斷言，檢查 Badge、頁碼列與篩選控制列的 scrollWidth／clientWidth、行數與高度，確認無異常擠壓。
 - [x] 重新執行 768px 平板驗收並保存明確輸出：單欄卡片、Badge 皆單行 26px 且 overflow-x-auto 可控、頁碼列 698／698px、控制列 768／1440px 可橫向操作、整頁 768／768px 無溢出。
+
+## 真正桌機滿版修正
+
+- [x] 移除目錄區桌機 `max-w-[95%]` 與 `lg:max-w-[1400px]` 限制，改為 `w-full max-w-none`。
+- [x] 保留桌機 32px 左右安全 padding，讓兩欄卡片延伸至可用寬度且不貼邊；手機／平板維持 `w-full px-4` 與單欄。
+- [x] 驗證 1891px 超寬桌機、768px 與 375px 的左右留白、Grid、搜尋／篩選／排序／分頁及水平溢出；768px 斷言與 production build 通過，超寬桌機截圖確認卡片區已延展。
+
+## 真正滿版數值驗收補強
+
+- [x] 新增 1891px Playwright／DOM 斷言，量測 catalog 容器左右內距、Grid 欄數與整頁 scrollWidth，保存明確數值輸出。
+- [x] 重新執行 375px 的搜尋／篩選／排序／分頁與 overflow 回歸測試，確認真正滿版修改後手機互動仍正常。
+- [x] 將 1891px 與 375px 驗證結果寫入 research/layout-validation.md，附上可核對數值。
