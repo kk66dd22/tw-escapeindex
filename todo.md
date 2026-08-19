@@ -173,3 +173,15 @@
 - [x] 新增 1891px Playwright／DOM 斷言，量測 catalog 容器左右內距、Grid 欄數與整頁 scrollWidth，保存明確數值輸出。
 - [x] 重新執行 375px 的搜尋／篩選／排序／分頁與 overflow 回歸測試，確認真正滿版修改後手機互動仍正常。
 - [x] 將 1891px 與 375px 驗證結果寫入 research/layout-validation.md，附上可核對數值。
+
+## 主要輔助文字提升至 14px
+
+- [x] 將目前主要 UI 的 12px 輔助文字提升至 14px，包含導覽、篩選、搜尋說明、卡片輔助資訊、Badge、優缺點、頁碼與 footer；標題層級維持不變。
+- [x] 驗證 1891px、1280px、768px 與 375px 的文字換行、卡片高度、搜尋／篩選／排序／分頁互動及整頁水平溢出；最小可見字級 14px，手機標籤溢出已修正。
+- [x] 更新 layout-validation.md 並保存 14px 字級版本 checkpoint。
+
+## 14px 字級驗收補強
+
+- [x] 重新執行 768px 的搜尋／恐怖篩選／排序／分頁重置回歸測試，確認 14px 字級後互動與無溢出仍成立。
+- [x] 新增 1891px DOM／Playwright 驗證，量測 14px 字級後卡片高度、關鍵文字換行與整頁無溢出，保存明確數值輸出。
+- [ ] 完成上述驗收後保存新的 14px 字級 checkpoint，並把 checkpoint 版本號記錄到 todo 或研究紀錄。
