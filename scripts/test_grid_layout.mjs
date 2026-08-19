@@ -3,7 +3,7 @@ import { chromium } from "playwright";
 const url = process.env.PREVIEW_URL || "https://3000-iw3rse3x054z7jdrzizt7-2fccb066.sg1.manus.computer/";
 const browser = await chromium.launch({ headless: true, executablePath: "/usr/bin/chromium", args: ["--no-sandbox"] });
 const results = [];
-for (const viewport of [{ width: 1280, height: 720 }, { width: 375, height: 812 }]) {
+for (const viewport of [{ width: 1280, height: 720 }, { width: 768, height: 1024 }, { width: 375, height: 812 }]) {
   const page = await browser.newPage({ viewport });
   await page.goto(url, { waitUntil: "networkidle", timeout: 30_000 });
   await page.locator("#catalog-search").scrollIntoViewIfNeeded();
