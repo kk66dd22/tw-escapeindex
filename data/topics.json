@@ -27,7 +27,12 @@
     "source_urls": [
       "https://losttw.com/",
       "https://www.myfunnow.com/zh-tw/branches/3050710159112"
-    ]
+    ],
+    "google_place_id": "ChIJv6_XQfepQjQRjhlaS_bSCmo",
+    "google_review_count": 534,
+    "google_rating_checked_at": "2026-08-19T06:53:36.184Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "100台灣臺北市中正區黎明里許昌街30號7樓"
   },
   {
     "id": "popular-002",
@@ -57,7 +62,12 @@
     "source_urls": [
       "https://losttw.com/",
       "https://www.myfunnow.com/zh-tw/branches/3050710159112"
-    ]
+    ],
+    "google_place_id": "ChIJv6_XQfepQjQRjhlaS_bSCmo",
+    "google_review_count": 534,
+    "google_rating_checked_at": "2026-08-19T06:53:36.184Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "100台灣臺北市中正區黎明里許昌街30號7樓"
   },
   {
     "id": "popular-003",
@@ -87,7 +97,12 @@
     "source_urls": [
       "https://losttw.com/",
       "https://www.myfunnow.com/zh-tw/branches/3050710159112"
-    ]
+    ],
+    "google_place_id": "ChIJv6_XQfepQjQRjhlaS_bSCmo",
+    "google_review_count": 534,
+    "google_rating_checked_at": "2026-08-19T06:53:36.184Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "100台灣臺北市中正區黎明里許昌街30號7樓"
   },
   {
     "id": "popular-004",
@@ -117,7 +132,12 @@
     "source_urls": [
       "https://www.enterspace.tw/",
       "https://www.instagram.com/reel/DCrFD2-TV8y/"
-    ]
+    ],
+    "google_place_id": "ChIJUx5wqQ-sQjQRCFs-DKqgcJ0",
+    "google_review_count": 5831,
+    "google_rating_checked_at": "2026-08-19T06:53:32.932Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1"
   },
   {
     "id": "popular-005",
@@ -147,7 +167,12 @@
     "source_urls": [
       "https://www.enterspace.tw/",
       "https://www.instagram.com/reel/DCrFD2-TV8y/"
-    ]
+    ],
+    "google_place_id": "ChIJUx5wqQ-sQjQRCFs-DKqgcJ0",
+    "google_review_count": 5831,
+    "google_rating_checked_at": "2026-08-19T06:53:32.932Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1"
   },
   {
     "id": "popular-006",
@@ -177,7 +202,12 @@
     "source_urls": [
       "https://www.enterspace.tw/",
       "https://www.instagram.com/reel/DCrFD2-TV8y/"
-    ]
+    ],
+    "google_place_id": "ChIJUx5wqQ-sQjQRCFs-DKqgcJ0",
+    "google_review_count": 5831,
+    "google_rating_checked_at": "2026-08-19T06:53:32.932Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1"
   },
   {
     "id": "popular-007",
@@ -185,7 +215,7 @@
     "venue_name": "Mystoto Escape Games",
     "city": "高雄市",
     "district": "苓雅區",
-    "google_rating": 5.0,
+    "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
@@ -206,7 +236,12 @@
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ9YUmC2gDbjQR52vZK-6epNc",
+    "google_review_count": 9783,
+    "google_rating_checked_at": "2026-08-19T06:53:51.651Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F"
   },
   {
     "id": "popular-008",
@@ -214,7 +249,7 @@
     "venue_name": "Mystoto Escape Games",
     "city": "高雄市",
     "district": "苓雅區",
-    "google_rating": 5.0,
+    "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
@@ -235,7 +270,12 @@
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ9YUmC2gDbjQR52vZK-6epNc",
+    "google_review_count": 9783,
+    "google_rating_checked_at": "2026-08-19T06:53:51.651Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F"
   },
   {
     "id": "popular-009",
@@ -243,7 +283,7 @@
     "venue_name": "Mystoto Escape Games",
     "city": "高雄市",
     "district": "苓雅區",
-    "google_rating": 5.0,
+    "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
@@ -264,7 +304,12 @@
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ9YUmC2gDbjQR52vZK-6epNc",
+    "google_review_count": 9783,
+    "google_rating_checked_at": "2026-08-19T06:53:51.651Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F"
   },
   {
     "id": "popular-010",
@@ -293,7 +338,12 @@
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
       "https://stupidparticle.com/taipei/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-011",
@@ -322,7 +372,12 @@
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
       "https://stupidparticle.com/taipei/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-012",
@@ -351,7 +406,12 @@
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
       "https://stupidparticle.com/taipei/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-013",
@@ -380,7 +440,12 @@
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
       "https://stupidparticle.com/taipei/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-014",
@@ -409,7 +474,12 @@
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
       "https://stupidparticle.com/taipei/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-015",
@@ -438,7 +508,12 @@
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
       "https://stupidparticle.com/taipei/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-016",
@@ -467,7 +542,12 @@
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
       "https://stupidparticle.com/taipei/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-017",
@@ -496,7 +576,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-018",
@@ -525,7 +610,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-019",
@@ -554,7 +644,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-020",
@@ -583,7 +678,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-021",
@@ -612,7 +712,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-022",
@@ -641,7 +746,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-023",
@@ -670,7 +780,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-024",
@@ -699,7 +814,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-025",
@@ -728,7 +848,12 @@
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "popular-026",
@@ -757,7 +882,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-027",
@@ -786,7 +916,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-028",
@@ -815,7 +950,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-029",
@@ -844,7 +984,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-030",
@@ -873,7 +1018,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-031",
@@ -902,7 +1052,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-032",
@@ -931,7 +1086,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-033",
@@ -960,7 +1120,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-034",
@@ -989,7 +1154,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-035",
@@ -1018,7 +1188,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-036",
@@ -1047,7 +1222,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-037",
@@ -1076,7 +1256,12 @@
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
       "https://funlockstudio.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "popular-038",
@@ -1163,7 +1348,12 @@
     "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
       "https://www.enterspace.tw/"
-    ]
+    ],
+    "google_place_id": "ChIJUx5wqQ-sQjQRCFs-DKqgcJ0",
+    "google_review_count": 5831,
+    "google_rating_checked_at": "2026-08-19T06:53:32.932Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1"
   },
   {
     "id": "popular-041",
@@ -1192,7 +1382,12 @@
     "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
       "https://www.enterspace.tw/"
-    ]
+    ],
+    "google_place_id": "ChIJUx5wqQ-sQjQRCFs-DKqgcJ0",
+    "google_review_count": 5831,
+    "google_rating_checked_at": "2026-08-19T06:53:32.932Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1"
   },
   {
     "id": "popular-042",
@@ -1200,7 +1395,7 @@
     "venue_name": "Mystoto Escape Games",
     "city": "高雄市",
     "district": "苓雅",
-    "google_rating": 5.0,
+    "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
@@ -1221,7 +1416,12 @@
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ9YUmC2gDbjQR52vZK-6epNc",
+    "google_review_count": 9783,
+    "google_rating_checked_at": "2026-08-19T06:53:51.651Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F"
   },
   {
     "id": "popular-043",
@@ -1229,7 +1429,7 @@
     "venue_name": "Mystoto Escape Games",
     "city": "高雄市",
     "district": "苓雅",
-    "google_rating": 5.0,
+    "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
     "duration": "待核對",
@@ -1250,7 +1450,12 @@
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ9YUmC2gDbjQR52vZK-6epNc",
+    "google_review_count": 9783,
+    "google_rating_checked_at": "2026-08-19T06:53:51.651Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F"
   },
   {
     "id": "popular-044",
@@ -1279,7 +1484,12 @@
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ]
+    ],
+    "google_place_id": "ChIJXXyDtvQEbjQRXq1xpUYVweI",
+    "google_review_count": 798,
+    "google_rating_checked_at": "2026-08-19T06:53:54.245Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號"
   },
   {
     "id": "popular-045",
@@ -1308,7 +1518,12 @@
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ]
+    ],
+    "google_place_id": "ChIJXXyDtvQEbjQRXq1xpUYVweI",
+    "google_review_count": 798,
+    "google_rating_checked_at": "2026-08-19T06:53:54.245Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號"
   },
   {
     "id": "popular-046",
@@ -1337,7 +1552,12 @@
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ]
+    ],
+    "google_place_id": "ChIJXXyDtvQEbjQRXq1xpUYVweI",
+    "google_review_count": 798,
+    "google_rating_checked_at": "2026-08-19T06:53:54.245Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號"
   },
   {
     "id": "popular-047",
@@ -1366,7 +1586,12 @@
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ]
+    ],
+    "google_place_id": "ChIJXXyDtvQEbjQRXq1xpUYVweI",
+    "google_review_count": 798,
+    "google_rating_checked_at": "2026-08-19T06:53:54.245Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號"
   },
   {
     "id": "popular-048",
@@ -1395,7 +1620,12 @@
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ]
+    ],
+    "google_place_id": "ChIJXXyDtvQEbjQRXq1xpUYVweI",
+    "google_review_count": 798,
+    "google_rating_checked_at": "2026-08-19T06:53:54.245Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號"
   },
   {
     "id": "popular-049",
@@ -1424,7 +1654,12 @@
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ]
+    ],
+    "google_place_id": "ChIJXXyDtvQEbjQRXq1xpUYVweI",
+    "google_review_count": 798,
+    "google_rating_checked_at": "2026-08-19T06:53:54.245Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號"
   },
   {
     "id": "popular-050",
@@ -1453,7 +1688,12 @@
     "booking_url": "https://taog-game.com/",
     "source_urls": [
       "https://taog-game.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ-5kT4ok9aTQRIT7YjCMFyJ8",
+    "google_review_count": 1265,
+    "google_rating_checked_at": "2026-08-19T06:53:42.921Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "400台灣臺中市中區平等街34號"
   },
   {
     "id": "popular-051",
@@ -1482,7 +1722,12 @@
     "booking_url": "https://taog-game.com/",
     "source_urls": [
       "https://taog-game.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ-5kT4ok9aTQRIT7YjCMFyJ8",
+    "google_review_count": 1265,
+    "google_rating_checked_at": "2026-08-19T06:53:42.921Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "400台灣臺中市中區平等街34號"
   },
   {
     "id": "popular-052",
@@ -1511,7 +1756,12 @@
     "booking_url": "https://taog-game.com/",
     "source_urls": [
       "https://taog-game.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ-5kT4ok9aTQRIT7YjCMFyJ8",
+    "google_review_count": 1265,
+    "google_rating_checked_at": "2026-08-19T06:53:42.921Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "400台灣臺中市中區平等街34號"
   },
   {
     "id": "popular-053",
@@ -1540,7 +1790,12 @@
     "booking_url": "https://taog-game.com/",
     "source_urls": [
       "https://taog-game.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ-5kT4ok9aTQRIT7YjCMFyJ8",
+    "google_review_count": 1265,
+    "google_rating_checked_at": "2026-08-19T06:53:42.921Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "400台灣臺中市中區平等街34號"
   },
   {
     "id": "popular-054",
@@ -1569,7 +1824,12 @@
     "booking_url": "https://www.doorsss.com/",
     "source_urls": [
       "https://www.doorsss.com/"
-    ]
+    ],
+    "google_place_id": "ChIJnbHY7It2bjQRuV5A7W2NTJg",
+    "google_review_count": 5605,
+    "google_rating_checked_at": "2026-08-19T06:53:49.672Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "700台灣臺南市中西區城隍里北門路一段101號6樓"
   },
   {
     "id": "popular-055",
@@ -1598,6 +1858,11 @@
     "booking_url": "https://www.doorsss.com/",
     "source_urls": [
       "https://www.doorsss.com/"
-    ]
+    ],
+    "google_place_id": "ChIJnbHY7It2bjQRuV5A7W2NTJg",
+    "google_review_count": 5605,
+    "google_rating_checked_at": "2026-08-19T06:53:49.672Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "700台灣臺南市中西區城隍里北門路一段101號6樓"
   }
 ]

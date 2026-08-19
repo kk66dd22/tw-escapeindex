@@ -37,3 +37,11 @@
 - [x] 生成核驗版 topics.json，主題 ID 唯一、去重，僅保留代理 Google 評價 4.5 以上項目。
 - [x] 將複合篩選改為可同時套用城市、恐怖、燒腦、人數與風格條件，並保留排序功能。
 - [x] 瘦身主題卡片、優缺點標籤化，加入 content-visibility 懶渲染提示；production build、桌面與手機版驗證完成。
+
+## Google Places API 補齊流程
+
+- [x] 確認採用 Manus 內建 Google Maps／Places proxy；不需要也不暴露外部 API key。
+- [x] 建立獨立 places_candidates.json 掃描輸出，並保留原 55 筆主題作為正式回退資料。
+- [x] 透過 admin-only tRPC procedure 與內建 Maps proxy 查詢 62 個候選，取得名稱、地址、評分、評論數、Place ID、營運狀態與核對時間。
+- [x] 將可穩定匹配的 Places metadata 合併到 12 家 venues 與 53 筆既有 topics；主題數量維持 55，未把只有店家頁的候選冒充成單一遊戲主題。
+- [x] Places 單元測試、既有 auth 測試、TypeScript、production build 均通過；前端仍以靜態 55 筆索引載入，API 失敗不影響公開目錄。

@@ -57,7 +57,12 @@
     ],
     "last_source_fetch": "2026-08-18",
     "city": "台北市",
-    "region": "北部"
+    "region": "北部",
+    "google_place_id": "ChIJv6_XQfepQjQRjhlaS_bSCmo",
+    "google_review_count": 534,
+    "google_rating_checked_at": "2026-08-19T06:53:36.184Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "100台灣臺北市中正區黎明里許昌街30號7樓"
   },
   {
     "id": "stupid-particle",
@@ -118,7 +123,12 @@
     ],
     "last_source_fetch": "2026-08-18",
     "city": "台北市",
-    "region": "北部"
+    "region": "北部",
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "funlock",
@@ -178,7 +188,12 @@
     ],
     "last_source_fetch": "2026-08-18",
     "city": "台北市",
-    "region": "北部"
+    "region": "北部",
+    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
+    "google_review_count": 7837,
+    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓"
   },
   {
     "id": "enterspace",
@@ -238,7 +253,12 @@
     ],
     "last_source_fetch": "2026-08-18",
     "city": "台北市",
-    "region": "北部"
+    "region": "北部",
+    "google_place_id": "ChIJUx5wqQ-sQjQRCFs-DKqgcJ0",
+    "google_review_count": 5831,
+    "google_rating_checked_at": "2026-08-19T06:53:32.932Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1"
   },
   {
     "id": "taog-taipei",
@@ -299,7 +319,12 @@
     ],
     "last_source_fetch": "2026-08-18",
     "city": "台北市",
-    "region": "北部"
+    "region": "北部",
+    "google_place_id": "ChIJ-5kT4ok9aTQRIT7YjCMFyJ8",
+    "google_review_count": 1265,
+    "google_rating_checked_at": "2026-08-19T06:53:42.921Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "400台灣臺中市中區平等街34號"
   },
   {
     "id": "stupid-particle-taichung",
@@ -357,7 +382,12 @@
     ],
     "source_urls": [
       "https://stupidparticle.com/taichung/"
-    ]
+    ],
+    "google_place_id": "ChIJMdZKkg-sQjQRl_TEJpsw7Zw",
+    "google_review_count": 4617,
+    "google_rating_checked_at": "2026-08-19T06:53:33.277Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓"
   },
   {
     "id": "sogoods-taichung",
@@ -415,7 +445,12 @@
     ],
     "source_urls": [
       "https://www.sogoods.com.tw/"
-    ]
+    ],
+    "google_place_id": "ChIJ8xXQg249aTQRWydxt4Qf_2Y",
+    "google_review_count": 1584,
+    "google_rating_checked_at": "2026-08-19T06:53:43.649Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "40462台灣臺中市北區賴厝里山西路一段51號B1入口在面向警衛室左邊透明櫥窗"
   },
   {
     "id": "loop-taichung",
@@ -473,7 +508,12 @@
     ],
     "source_urls": [
       "https://loopescape.com/"
-    ]
+    ],
+    "google_place_id": "ChIJwW4Ek9EXaTQRlyz4-N9Usvg",
+    "google_review_count": 4201,
+    "google_rating_checked_at": "2026-08-19T06:53:45.443Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "406台灣臺中市北屯區水湳里文心路四段81號17 樓 華南 銀行 樓 上"
   },
   {
     "id": "doors-cy",
@@ -521,7 +561,12 @@
     ],
     "source_urls": [
       "https://www.doorsss.com/"
-    ]
+    ],
+    "google_place_id": "ChIJnbHY7It2bjQRuV5A7W2NTJg",
+    "google_review_count": 5605,
+    "google_rating_checked_at": "2026-08-19T06:53:49.672Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "700台灣臺南市中西區城隍里北門路一段101號6樓"
   },
   {
     "id": "taog-tainan",
@@ -569,7 +614,12 @@
     ],
     "source_urls": [
       "https://taog-game.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ-5kT4ok9aTQRIT7YjCMFyJ8",
+    "google_review_count": 1265,
+    "google_rating_checked_at": "2026-08-19T06:53:42.921Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "400台灣臺中市中區平等街34號"
   },
   {
     "id": "mystoto-kaohsiung",
@@ -580,7 +630,7 @@
     "address": "高雄市苓雅區中華四路2號B1F",
     "website": "https://www.mystotoescape.com/",
     "booking_url": "https://www.mystotoescape.com/",
-    "google_rating": 5.0,
+    "google_rating": 5,
     "rating_source": "官方網站公開 Google 評論資訊",
     "rating_checked_at": "2026-08-19",
     "rating_note": "官方頁面顯示 5.0／9,347 則評論，數值會變動",
@@ -627,7 +677,12 @@
     ],
     "source_urls": [
       "https://www.mystotoescape.com/"
-    ]
+    ],
+    "google_place_id": "ChIJ9YUmC2gDbjQR52vZK-6epNc",
+    "google_review_count": 9783,
+    "google_rating_checked_at": "2026-08-19T06:53:51.651Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F"
   },
   {
     "id": "mr-bomb-kaohsiung",
@@ -685,6 +740,11 @@
     ],
     "source_urls": [
       "https://www.mr-bomb.com/"
-    ]
+    ],
+    "google_place_id": "ChIJXXyDtvQEbjQRXq1xpUYVweI",
+    "google_review_count": 798,
+    "google_rating_checked_at": "2026-08-19T06:53:54.245Z",
+    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號"
   }
 ]
