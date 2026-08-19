@@ -88,3 +88,9 @@
 - [x] 新增右下角懸浮按鈕，僅在頁面向下滾動超過 520px 後顯示。
 - [x] 點擊按鈕以平滑行為回到頁面最上方，並提供 aria-label、title 與可見 focus 狀態。
 - [x] 以 Chromium 驗證桌面／手機版顯示切換與點擊後 scrollY < 8；測試、型別檢查與 production build 通過。
+
+## 品牌名稱更新
+
+- [x] 將頁首品牌文字「全台主題案件庫」改為「全台密室逃脫案件庫」。
+- [x] 同步更新網站 title、description metadata、替代文字與可見品牌相關文案。
+- [x] 搜尋 client 原始碼確認無舊品牌名稱殘留；測試、TypeScript 與 production build 通過。
