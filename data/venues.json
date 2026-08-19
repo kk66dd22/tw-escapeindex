@@ -55,7 +55,9 @@
       "https://losttw.com/",
       "https://www.myfunnow.com/zh-tw/branches/3050710159112"
     ],
-    "last_source_fetch": "2026-08-18"
+    "last_source_fetch": "2026-08-18",
+    "city": "台北市",
+    "region": "北部"
   },
   {
     "id": "stupid-particle",
@@ -114,7 +116,9 @@
       "https://stupidparticle.com/taipei/",
       "https://www.twosevenths.com/game/escape-taipei-room/"
     ],
-    "last_source_fetch": "2026-08-18"
+    "last_source_fetch": "2026-08-18",
+    "city": "台北市",
+    "region": "北部"
   },
   {
     "id": "funlock",
@@ -172,7 +176,9 @@
       "https://funlockstudio.com/",
       "https://www.twosevenths.com/game/escape-taipei-room/"
     ],
-    "last_source_fetch": "2026-08-18"
+    "last_source_fetch": "2026-08-18",
+    "city": "台北市",
+    "region": "北部"
   },
   {
     "id": "enterspace",
@@ -230,7 +236,9 @@
       "https://www.enterspace.tw/",
       "https://www.instagram.com/reel/DCrFD2-TV8y/"
     ],
-    "last_source_fetch": "2026-08-18"
+    "last_source_fetch": "2026-08-18",
+    "city": "台北市",
+    "region": "北部"
   },
   {
     "id": "taog-taipei",
@@ -289,6 +297,394 @@
       "https://taog-game.com/taipeibooking/",
       "https://www.enterspace.tw/"
     ],
-    "last_source_fetch": "2026-08-18"
+    "last_source_fetch": "2026-08-18",
+    "city": "台北市",
+    "region": "北部"
+  },
+  {
+    "id": "stupid-particle-taichung",
+    "name": "笨蛋工作室｜台中館",
+    "city": "台中市",
+    "region": "中部",
+    "district": "西區",
+    "address": "台中市西區美村路一段36號B1；另有中港笨蛋館",
+    "website": "https://stupidparticle.com/taichung/",
+    "booking_url": "https://booking.stupidparticle.com/activities/wurenvillage",
+    "google_rating": null,
+    "rating_source": "尚未從穩定公開頁面核對",
+    "rating_checked_at": "2026-08-19",
+    "rating_note": "官方頁面提供館別、主題與人數，星等保留待核對",
+    "themes": [
+      {
+        "name": "武仁新村",
+        "players": "6–10",
+        "horror": 3,
+        "brain": 4,
+        "styles": [
+          "眷村沉浸",
+          "懸疑微恐"
+        ]
+      },
+      {
+        "name": "入學式",
+        "players": "6–8",
+        "horror": 4,
+        "brain": 4,
+        "styles": [
+          "日式校舍",
+          "沉浸劇情"
+        ]
+      },
+      {
+        "name": "鬼新娘",
+        "players": "4–8",
+        "horror": 5,
+        "brain": 3,
+        "styles": [
+          "恐怖驚悚",
+          "場景探索"
+        ]
+      }
+    ],
+    "pros": [
+      "官方頁面列出 9 大主題與兩個台中館別",
+      "場景、美術與沉浸互動是品牌強項",
+      "多人隊伍選擇充足"
+    ],
+    "cons": [
+      "多數主題建議 4–8 人以上",
+      "兩個館別地址不同，預約前需確認館別"
+    ],
+    "source_urls": [
+      "https://stupidparticle.com/taichung/"
+    ]
+  },
+  {
+    "id": "sogoods-taichung",
+    "name": "So Goods 說故事工作室",
+    "city": "台中市",
+    "region": "中部",
+    "district": "北區／西屯",
+    "address": "台中市北區山西路一段51號B1；另有何厝館",
+    "website": "https://www.sogoods.com.tw/",
+    "booking_url": "https://www.sogoods.com.tw/EscapeRoomPrice/",
+    "google_rating": null,
+    "rating_source": "尚未從穩定公開頁面核對",
+    "rating_checked_at": "2026-08-19",
+    "rating_note": "官方頁面提供主題、人數與難度標示，星等保留待核對",
+    "themes": [
+      {
+        "name": "解鑰",
+        "players": "2–4",
+        "horror": 1,
+        "brain": 2,
+        "styles": [
+          "新手入門",
+          "短時體驗"
+        ]
+      },
+      {
+        "name": "封鎖",
+        "players": "2–8",
+        "horror": 1,
+        "brain": 4,
+        "styles": [
+          "推理懸疑",
+          "故事解謎"
+        ]
+      },
+      {
+        "name": "交替",
+        "players": "2–8",
+        "horror": 5,
+        "brain": 4,
+        "styles": [
+          "恐怖驚悚",
+          "聲光沉浸"
+        ]
+      }
+    ],
+    "pros": [
+      "官方公開人數、時間與多軸難度標示",
+      "主題從新手、推理到高恐怖都有",
+      "定位清楚，適合第一次接觸故事型密室"
+    ],
+    "cons": [
+      "主題數量多，需先依膽量與人數篩選",
+      "不同館別與主題的體驗尺度差異大"
+    ],
+    "source_urls": [
+      "https://www.sogoods.com.tw/"
+    ]
+  },
+  {
+    "id": "loop-taichung",
+    "name": "Loop 迴圈密室逃脫",
+    "city": "台中市",
+    "region": "中部",
+    "district": "北屯／文心",
+    "address": "台中市北屯區文心路四段81號17樓；另有旗艦館與恐怖館",
+    "website": "https://loopescape.com/",
+    "booking_url": "https://loopescape.com/",
+    "google_rating": null,
+    "rating_source": "官方頁面未提供穩定 Google 星等數值",
+    "rating_checked_at": "2026-08-19",
+    "rating_note": "官方頁面提供主題、時長、人數、分館與玩家心得；星等保留待核對",
+    "themes": [
+      {
+        "name": "魅妄廟",
+        "players": "4–10",
+        "horror": 5,
+        "brain": 4,
+        "styles": [
+          "恐怖驚悚",
+          "大型機關"
+        ]
+      },
+      {
+        "name": "獄謀",
+        "players": "4–12",
+        "horror": 2,
+        "brain": 4,
+        "styles": [
+          "越獄任務",
+          "開放流程"
+        ]
+      },
+      {
+        "name": "惠貞女子高校",
+        "players": "4–12",
+        "horror": 5,
+        "brain": 3,
+        "styles": [
+          "校園恐怖",
+          "分組合作"
+        ]
+      }
+    ],
+    "pros": [
+      "主打高強度恐怖與大型場景機關",
+      "官方公開多館資訊與主題時長、人數",
+      "玩家心得能補足恐怖尺度與適合族群"
+    ],
+    "cons": [
+      "部分主題不適合幽閉恐懼或怕黑玩家",
+      "大型恐怖主題通常需要較多人數與較高預算"
+    ],
+    "source_urls": [
+      "https://loopescape.com/"
+    ]
+  },
+  {
+    "id": "doors-cy",
+    "name": "許多門密室逃脫｜嘉義館",
+    "city": "嘉義市",
+    "region": "南部",
+    "district": "東區",
+    "address": "嘉義市東區民族路246號2樓",
+    "website": "https://www.doorsss.com/",
+    "booking_url": "https://www.doorsss.com/",
+    "google_rating": null,
+    "rating_source": "尚未從穩定公開頁面核對",
+    "rating_checked_at": "2026-08-19",
+    "rating_note": "官方頁面提供多館地址，星等保留待核對",
+    "themes": [
+      {
+        "name": "許多門主題選集",
+        "players": "4–8",
+        "horror": 3,
+        "brain": 3,
+        "styles": [
+          "團體冒險",
+          "故事解謎"
+        ]
+      },
+      {
+        "name": "倒數 60 分鐘",
+        "players": "4–8",
+        "horror": 2,
+        "brain": 3,
+        "styles": [
+          "限時解謎",
+          "機關操作"
+        ]
+      }
+    ],
+    "pros": [
+      "官方跨台中、嘉義、台南、高雄設館",
+      "交通與預約資訊清楚",
+      "適合團體與企業活動"
+    ],
+    "cons": [
+      "各館主題與營運狀態需依官方最新公告確認",
+      "主題細節公開程度依館別不同"
+    ],
+    "source_urls": [
+      "https://www.doorsss.com/"
+    ]
+  },
+  {
+    "id": "taog-tainan",
+    "name": "神不在場｜台南創始館",
+    "city": "台南市",
+    "region": "南部",
+    "district": "永康區",
+    "address": "台南市永康區中華路1-2號3F",
+    "website": "https://taog-game.com/",
+    "booking_url": "https://taog-game.com/",
+    "google_rating": null,
+    "rating_source": "尚未從穩定公開頁面核對",
+    "rating_checked_at": "2026-08-19",
+    "rating_note": "官方頁面提供創始館地址與品牌主題資訊，星等保留待核對",
+    "themes": [
+      {
+        "name": "神不在場",
+        "players": "4–8",
+        "horror": 4,
+        "brain": 4,
+        "styles": [
+          "生存壓迫",
+          "恐怖驚悚"
+        ]
+      },
+      {
+        "name": "憶釀：亡命輪迴",
+        "players": "4–8",
+        "horror": 4,
+        "brain": 4,
+        "styles": [
+          "沉浸劇情",
+          "高壓任務"
+        ]
+      }
+    ],
+    "pros": [
+      "品牌創始館，主題故事定位鮮明",
+      "高情緒張力與沉浸式任務適合重度玩家",
+      "官方提供預約與營運資訊"
+    ],
+    "cons": [
+      "高壓恐怖取向不一定適合新手",
+      "預約前應確認現行主題與場館公告"
+    ],
+    "source_urls": [
+      "https://taog-game.com/"
+    ]
+  },
+  {
+    "id": "mystoto-kaohsiung",
+    "name": "Mystoto Escape Games",
+    "city": "高雄市",
+    "region": "南部",
+    "district": "苓雅區",
+    "address": "高雄市苓雅區中華四路2號B1F",
+    "website": "https://www.mystotoescape.com/",
+    "booking_url": "https://www.mystotoescape.com/",
+    "google_rating": 5.0,
+    "rating_source": "官方網站公開 Google 評論資訊",
+    "rating_checked_at": "2026-08-19",
+    "rating_note": "官方頁面顯示 5.0／9,347 則評論，數值會變動",
+    "themes": [
+      {
+        "name": "異形覆沒",
+        "players": "4–8",
+        "horror": 1,
+        "brain": 4,
+        "styles": [
+          "科幻冒險",
+          "機關操作"
+        ]
+      },
+      {
+        "name": "嬰魂嚇水道",
+        "players": "4–8",
+        "horror": 5,
+        "brain": 3,
+        "styles": [
+          "恐怖驚悚",
+          "場景探索"
+        ]
+      },
+      {
+        "name": "奪魂獄",
+        "players": "4–8",
+        "horror": 4,
+        "brain": 4,
+        "styles": [
+          "罪與罰",
+          "沉浸劇情"
+        ]
+      }
+    ],
+    "pros": [
+      "官方支援中文與英文提示系統",
+      "主打高科技機關、互動與電影級場景",
+      "官方公開評論數與場館地址"
+    ],
+    "cons": [
+      "多數主題建議至少 4 人",
+      "高沉浸主題需先確認膽量與怕黑程度"
+    ],
+    "source_urls": [
+      "https://www.mystotoescape.com/"
+    ]
+  },
+  {
+    "id": "mr-bomb-kaohsiung",
+    "name": "MR.Bomb 爆炸先生",
+    "city": "高雄市",
+    "region": "南部",
+    "district": "三民區／高雄車站",
+    "address": "高雄市高雄車站前站附近（預約制，請以官方最新資訊為準）",
+    "website": "https://www.mr-bomb.com/",
+    "booking_url": "https://www.mr-bomb.com/",
+    "google_rating": null,
+    "rating_source": "尚未從穩定公開頁面核對",
+    "rating_checked_at": "2026-08-19",
+    "rating_note": "官方頁面提供六大主題與人數，地址詳細度以最新預約資訊為準",
+    "themes": [
+      {
+        "name": "噩夢首部曲：記憶牢籠",
+        "players": "2–6",
+        "horror": 4,
+        "brain": 3,
+        "styles": [
+          "恐怖劇情",
+          "記憶謎團"
+        ]
+      },
+      {
+        "name": "玩具總動員",
+        "players": "2–6",
+        "horror": 1,
+        "brain": 3,
+        "styles": [
+          "奇幻冒險",
+          "團隊任務"
+        ]
+      },
+      {
+        "name": "持碑天兵",
+        "players": "2–6",
+        "horror": 1,
+        "brain": 3,
+        "styles": [
+          "博物館任務",
+          "機關解謎"
+        ]
+      }
+    ],
+    "pros": [
+      "官方提供多種 2–6 人主題，適合小隊伍",
+      "主題涵蓋恐怖、奇幻、戰爭與博物館任務",
+      "高雄車站周邊交通便利"
+    ],
+    "cons": [
+      "預約制，出發前需再次確認館址與營業時間",
+      "部分恐怖主題需要先確認膽量"
+    ],
+    "source_urls": [
+      "https://www.mr-bomb.com/"
+    ]
   }
 ]
