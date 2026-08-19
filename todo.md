@@ -195,4 +195,4 @@
 ## 響應式字級驗收補強
 
 - [x] 新增 1891px DOM 字級斷言，明確輸出最小可見字級、排序控制字級與卡片文字字級。
-- [ ] 保存本輪手機 12px／桌機平板 14px checkpoint，並將新版本號記錄到研究紀錄。
+- [x] 保存本輪手機 12px／桌機平板 14px checkpoint，並將新版本號 `25146cfd` 記錄到 research/layout-validation.md。
