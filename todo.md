@@ -184,4 +184,4 @@
 
 - [x] 重新執行 768px 的搜尋／恐怖篩選／排序／分頁重置回歸測試，確認 14px 字級後互動與無溢出仍成立。
 - [x] 新增 1891px DOM／Playwright 驗證，量測 14px 字級後卡片高度、關鍵文字換行與整頁無溢出，保存明確數值輸出。
-- [ ] 完成上述驗收後保存新的 14px 字級 checkpoint，並把 checkpoint 版本號記錄到 todo 或研究紀錄。
+- [x] 完成上述驗收後保存新的 14px 字級 checkpoint，並把 checkpoint 版本號 `53f1f7b1` 記錄到 research/layout-validation.md。
