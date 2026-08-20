@@ -35,7 +35,12 @@
     "google_address_verified": "100台灣臺北市中正區黎明里許昌街30號7樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《九龍寨城》邀你們踏上機關解謎冒險；循著沉浸劇情留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-002",
@@ -73,7 +78,12 @@
     "google_address_verified": "100台灣臺北市中正區黎明里許昌街30號7樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《猛鬼大廈》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當真人互動異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-003",
@@ -111,7 +121,12 @@
     "google_address_verified": "100台灣臺北市中正區黎明里許昌街30號7樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《潛入任務》邀你們踏上任務推理冒險；循著機關解謎留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-004",
@@ -149,7 +164,14 @@
     "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《百鬼夜行》，未說完的秘密正等你們追查；沿著日系解謎線索，在沉浸劇情與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://www.enterspace.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "逃脫 | 實境體驗 EnterSpace 密室逃脫 | 實境體驗 首頁 密室逃脫遊戲 遊戲總覽 微笑謎藏 以王之名 Vicky 宇宙脫逃 CONE 控制獄 洛克飯店：殺手困境 洛克飯店：維多莉亞的祕密 紅衣小女孩 噩夢再見 莎士比亞的邀請 百鬼夜行 接招吧！決戰除夕夜！ 被客人罵爆的我 決定要逆天改命 酬鬼戲 大直南市場 過往遊戲 生存遊戲 皮克蒙之書 破片推理 團隊介紹 交通資訊 最新活動 企業包場 FB 成為說書人 密室逃脫遊戲 遊戲總覽 微笑謎藏 以王之名 Vicky 宇宙脫逃 CONE 控制獄 洛克飯店：殺手困境 洛克飯店：維多莉亞的祕密 紅衣小女孩 噩夢再見 莎士比亞的邀請 百鬼夜行 接招吧！決戰除夕夜 被客人罵爆的我 決定要逆天改命 酬鬼戲 大直南市場 過往遊戲 皮克"
   },
   {
     "id": "popular-005",
@@ -187,7 +209,14 @@
     "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《魔幻菜市場》邀你們踏上奇幻冒險冒險；循著機關解謎留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://www.enterspace.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "無數神秘的大門，門後孕育眾多故事的起源， 更是象徵嶄新冒險的起點。 ‍ 選擇一扇門走入另個新世界，創造一個又一個全新的故事與傳說吧！ 立即展開冒險 scroll 過年接招了！ 為了買最新型的遊戲機， 小叔叔大姑姑們，得罪啦！ 搶紅包囉 ‍ 魔幻菜市場 來到這座市場後 每件事都在悄悄改變... 買菜買肉 日系解謎 百年一次的「百鬼夜行」， 人界與妖界將會短暫重疊... 尋找長生之法 年輕人專屬 2026「文化幣」玩密室 全館密室直接折扣！ 用文化幣 更划算 15 款主題任務等你挑戰 密室逃脫 在各種不同風格的主題中，體驗真實的故事場景，與夥伴一起互相討論、交換資訊、尋找線索。 藉由解開各種形式的謎題與關卡，了解最深層的故事內容，與設計者想傳達的意境。 遊戲介紹 Escape Game"
   },
   {
     "id": "popular-006",
@@ -225,7 +254,12 @@
     "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《新年接招了》邀你們踏上節慶互動冒險；循著多人同樂留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-007",
@@ -262,7 +296,12 @@
     "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《異形覆沒》邀你們踏上科幻冒險冒險；循著機關操作留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-008",
@@ -299,7 +338,12 @@
     "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《嬰魂嚇水道》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當場景探索異象逼近，唯有解開謎局，才能…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-009",
@@ -336,7 +380,14 @@
     "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《奪魂獄》的禁忌線索從未消失，你們循著罪與罰深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能帶著真…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://www.mystotoescape.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "率的團建首選！ 透過 Mystoto Escape Games 精心設計的密室謎題，為您的企業團隊或學校組織帶來充滿驚喜的團康活動，開創無限可能。攜手合作，讓您的團隊展現非凡合作力！ 立即預約 企業專區 觀賞影片 2 / 3 全新密室主題 奪魂獄，即刻開爐 你覺得你自己有罪嗎？ 你，是怎麼看待罪與罰呢？因為愧疚而形成的枷鎖，不斷扼住你的生命。 來吧，給自己一個重新選擇的機會。 立即預約 先睹為快 預告影片 3 / 3 全台玩家五星好評肯定 5.0 9,347 則 Google 評論 難以忘懷的密室逃脫旅程 前所未有的沉浸式實境冒險 Mystoto Escape Games 密室逃脫為台灣極具獨特性的密室逃脫遊戲創造者。 運用高科技打造機關型密室主題，採用高度互動的遊戲元素，跳脫"
   },
   {
     "id": "popular-010",
@@ -373,7 +424,14 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《我們的秘密》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "業訓練、慶生聯誼、假日休閒的最佳選擇。 Facebook-f Instagram Envelope 客服時間：10:00 ~ 18:00 聯絡電話：(02) 8787-4387 《笨蛋小天使》招募中！想要擁有不一樣的打工經驗嗎？ 寶清新館 我們的秘密 ６~８人 前往預約 一群多年交情的死黨，在別墅舉辦生日派對。凌晨你們突然驚醒，發現周遭的一切全變了樣…… 寶清新館 竹本家 5~６人 前往預約 你將進入『竹本家手作茶』飲料店當代班店員，三十年老店的命運就交給你們了~"
   },
   {
     "id": "popular-011",
@@ -410,7 +468,14 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《竹本家》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://stupidparticle.com/taipei/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "8:00 聯絡電話：(02) 8787-4387 《笨蛋小天使》招募中！想要擁有不一樣的打工經驗嗎？ 寶清新館 我們的秘密 ６~８人 前往預約 一群多年交情的死黨，在別墅舉辦生日派對。凌晨你們突然驚醒，發現周遭的一切全變了樣…… 寶清新館 竹本家 5~６人 前往預約 你將進入『竹本家手作茶』飲料店當代班店員，三十年老店的命運就交給你們了~"
   },
   {
     "id": "popular-012",
@@ -447,7 +512,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《深處》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-013",
@@ -484,7 +554,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《奪命鎖鏈》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-014",
@@ -521,7 +596,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《奪命鎖鏈2》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-015",
@@ -558,7 +638,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《顛倒之室》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-016",
@@ -595,7 +680,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《奪命記憶》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-017",
@@ -632,7 +722,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《武仁新村》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-018",
@@ -669,7 +764,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《入學式》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-019",
@@ -706,7 +806,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《平安戲院》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-020",
@@ -743,7 +848,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《咖波與飢餓迷宮》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-021",
@@ -780,7 +890,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《羅伯班克》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-022",
@@ -817,7 +932,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《奪命鎖鏈》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-023",
@@ -854,7 +974,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《顛倒之室》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-024",
@@ -891,7 +1016,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《鬼新娘》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有解開謎局，才能…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-025",
@@ -928,7 +1058,12 @@
     "google_address_verified": "105台灣台北市松山區安平里南京东路五段399號9樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《竹本家》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-026",
@@ -965,7 +1100,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《噬夢》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "07101822 Facebook Instagram ▼403台中市西區公益路130號3樓 ▼營業時間 平日13:00-21:00 假日10:00-21:00 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II："
   },
   {
     "id": "popular-027",
@@ -1002,7 +1144,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《感染》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "m ▼403台中市西區公益路130號3樓 ▼營業時間 平日13:00-21:00 假日10:00-21:00 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台"
   },
   {
     "id": "popular-028",
@@ -1039,7 +1188,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《稻荷之歌》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": " 平日13:00-21:00 假日10:00-21:00 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂"
   },
   {
     "id": "popular-029",
@@ -1076,7 +1232,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《病變》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "0 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約1"
   },
   {
     "id": "popular-030",
@@ -1113,7 +1276,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《永生劫》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": " Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★"
   },
   {
     "id": "popular-031",
@@ -1150,7 +1320,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《蜀山》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "0分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★"
   },
   {
     "id": "popular-032",
@@ -1187,7 +1364,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《天方夜譚》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ "
   },
   {
     "id": "popular-033",
@@ -1224,7 +1408,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《鄉間小盜》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3"
   },
   {
     "id": "popular-034",
@@ -1261,7 +1452,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《幻境奇航II：最終的航道》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": " 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台"
   },
   {
     "id": "popular-035",
@@ -1298,7 +1496,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《失落魔境：序章》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台"
   },
   {
     "id": "popular-036",
@@ -1335,7 +1540,14 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《鎮魂曲：迴憶宅邸》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有解開…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台"
   },
   {
     "id": "popular-037",
@@ -1372,7 +1584,12 @@
     "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《彼岸花：夢返》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-038",
@@ -1404,7 +1621,14 @@
     ],
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《瞞天越獄》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://limitlessescaperoom.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "極限密室逃脫 Limitless | Scheduling and Booking Website 極限密室逃脫 Limitless Escape Room 瞞天越獄 Prison Break 搜索令 驚悚 The Warrant Thriller 台北密室逃脫 Taipei Escape Room 台北好玩 Things to do in Taipei 台灣密室 Things to do in Taiwan 公館密室逃脫&amp;nbsp; &amp;nbsp;&amp;nbsp;Escape Room中英雙語&amp;nbsp; &amp;nbsp;&amp;nbsp;English Frien"
   },
   {
     "id": "popular-039",
@@ -1436,7 +1660,14 @@
     ],
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《搜索令》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有解開謎局，才能…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://limitlessescaperoom.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "極限密室逃脫 Limitless | Scheduling and Booking Website 極限密室逃脫 Limitless Escape Room 瞞天越獄 Prison Break 搜索令 驚悚 The Warrant Thriller 台北密室逃脫 Taipei Escape Room 台北好玩 Things to do in Taipei 台灣密室 Things to do in Taiwan 公館密室逃脫&amp;nbsp; &amp;nbsp;&amp;nbsp;Escape Room中英雙語&amp;nbsp; &amp;nbsp;&amp;nbsp;English Friendly一號出口走路3分鐘&amp;"
   },
   {
     "id": "popular-040",
@@ -1473,7 +1704,12 @@
     "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《戰鬥陀螺》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-041",
@@ -1510,7 +1746,12 @@
     "google_address_verified": "104台灣臺北市中山區永安里明水路581巷15號B1",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《憶釀：亡命輪迴》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有解開謎…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-042",
@@ -1547,7 +1788,12 @@
     "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《絕命旅舍》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-043",
@@ -1584,7 +1830,12 @@
     "google_address_verified": "80245台灣高雄市苓雅區文東里中華四路2號地下一樓(B1F",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《法老謎城》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-044",
@@ -1621,7 +1872,12 @@
     "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《噩夢首部曲：記憶牢籠》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-045",
@@ -1658,7 +1914,12 @@
     "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《噩夢二部曲：戰慄空間》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-046",
@@ -1695,7 +1956,12 @@
     "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《噬魂森靈：奪命樹海》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-047",
@@ -1732,7 +1998,12 @@
     "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《玩具總動員》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-048",
@@ -1769,7 +2040,12 @@
     "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《越南大戰》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-049",
@@ -1806,7 +2082,12 @@
     "google_address_verified": "807台灣高雄市三民區港西里建國三路46巷3號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《持碑天兵》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-050",
@@ -1843,7 +2124,14 @@
     "google_address_verified": "400台灣臺中市中區平等街34號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《神不在場》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有解開謎局，才…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://taog-game.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "神不在場｜全台最大密室逃脫、實境遊戲首選 | 官方首頁 探索超刺激《神不在場》實境密室逃脫！獨特主題讓你體驗孤立無援的極限求生。當被困密室，無人可幫、祈禱無效，唯有靠自己解謎突圍。本頁全面提供神不在場主題密室逃脫詳細內容與便捷首頁導覽。遊戲地點覆蓋台中、台南兩大熱點，是全台實境遊戲愛好者必玩首選！ 神不在場｜全台最大密室逃脫、實境遊戲首選 | 官方首頁 跳至主要內容 &#78;&#84;&#36; 0 購物車 會員中心 &#78;&#84;&#"
   },
   {
     "id": "popular-051",
@@ -1880,7 +2168,12 @@
     "google_address_verified": "400台灣臺中市中區平等街34號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《憶釀：亡命輪迴》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有解開謎…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-052",
@@ -1917,7 +2210,12 @@
     "google_address_verified": "400台灣臺中市中區平等街34號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《瘋狂追殺》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-053",
@@ -1954,7 +2252,12 @@
     "google_address_verified": "400台灣臺中市中區平等街34號",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《往生錄》的禁忌線索從未消失，你們循著主題解謎深入黑暗；當官方現行主題異象逼近，唯有解開謎局，才能…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-054",
@@ -1991,7 +2294,12 @@
     "google_address_verified": "700台灣臺南市中西區城隍里北門路一段101號6樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《倒數 60 分鐘》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-055",
@@ -2028,7 +2336,12 @@
     "google_address_verified": "700台灣臺南市中西區城隍里北門路一段101號6樓",
     "data_quality": "verified_catalog",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《許多門主題選集》，未說完的秘密正等你們追查；沿著主題解謎線索，在官方現行主題與未知之間找出出…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-056",
@@ -2061,7 +2374,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《彼岸花》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能帶著…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://www.funlockstudio.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": " 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台"
   },
   {
     "id": "popular-057",
@@ -2094,7 +2414,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《屍變》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當真人互動異象逼近，唯有解開謎局，才能帶著真…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://missgame.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "合作 互動式劇場 媒體報導 節目合作 影音報導 文字報導 關於我們 公司概述 品牌故事 歷史沿革 公司組織 More Use tab to navigate through the menu items. English 日本語 最新消息 屍變 荒村宅邸，燭火幽微 每當夜深，總有無辜之人，莫名消失於村鎮 傳聞，宅裡藏著不該存在的邪物 你能否看清真相，活著離開？ 流亡黯道&amp;奇術師 已於2026/5/3結束營業！ 法老 一股神秘能量讓探險隊發現一座從未被歷史記載的法老墓室，各位考古界的菁英受神秘組織邀請前往查探...清真相，活著離開？ 觀落陰 因故和女兒佩佩分隔兩地的美惠接到了佩佩失蹤的消息，馬上趕回夫家的老宅。就在那個房間裡，美惠彷彿看到佩佩的身影，正如過世的婆婆所說，"
   },
   {
     "id": "popular-058",
@@ -2127,7 +2454,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《法老》，未說完的秘密正等你們追查；沿著機關解謎線索，在沉浸劇情與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://missgame.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "menu items. English 日本語 最新消息 屍變 荒村宅邸，燭火幽微 每當夜深，總有無辜之人，莫名消失於村鎮 傳聞，宅裡藏著不該存在的邪物 你能否看清真相，活著離開？ 流亡黯道&amp;奇術師 已於2026/5/3結束營業！ 法老 一股神秘能量讓探險隊發現一座從未被歷史記載的法老墓室，各位考古界的菁英受神秘組織邀請前往查探...清真相，活著離開？ 觀落陰 因故和女兒佩佩分隔兩地的美惠接到了佩佩失蹤的消息，馬上趕回夫家的老宅。就在那個房間裡，美惠彷彿看到佩佩的身影，正如過世的婆婆所說，即使關上了門，仍恍似聽見佩佩在閣樓與好友一同玩耍的聲音。「觀落陰」是美惠的最後希望，她想知道女兒的下落，解開心中未解之謎；她需要去一趟「陰間」。然而美惠並不知道，「陰間」也正等待著她"
   },
   {
     "id": "popular-059",
@@ -2160,7 +2494,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《觀落陰》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當真人互動異象逼近，唯有解開謎局，才能帶著…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://missgame.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "MissGAME | 密室逃脫 | 台北市 MissGAME 全台評價最高恐怖主題－觀落陰、最療癒有真貓給吸的密室逃脫－喵境夢遊。兩人即可成團，西門徒步區出站五分鐘可到。大型機關+感人故事。企業團體活動首選！ --> MissGAME | 密室逃脫 | 台北市 top of page HOME 各館介紹 西門旗艦館 台北松江南京館 宜蘭傳藝館 松山文創 台中館 密室逃脫 2 - 4 人 5 - 6 人 7 - 10 人 30 - 50 人 50 - 200 人 謎題包 English 日本語 企業團體 騎士出任務 魔幻午宴 "
   },
   {
     "id": "popular-060",
@@ -2193,7 +2534,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《美夢｜咒雨》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://dream94zz.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "預測，而讓人更深陷 [&hellip;] 首頁 - 【夢遊王國｜夢境可以比現實更迷人】台北沉浸式劇場・密室逃脫・實境遊戲・團體活動 跳至主要內容 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 人生不只存在於清醒的片段， 有時，最真實的，是那些如夢般的瞬間 也許荒誕、也許失序，也正因無法預測，"
   },
   {
     "id": "popular-061",
@@ -2226,7 +2574,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《惡夢｜安雅》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://dream94zz.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "更深陷 [&hellip;] 首頁 - 【夢遊王國｜夢境可以比現實更迷人】台北沉浸式劇場・密室逃脫・實境遊戲・團體活動 跳至主要內容 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 人生不只存在於清醒的片段， 有時，最真實的，是那些如夢般的瞬間 也許荒誕、也許失序，也正因無法預測，而讓人更深陷"
   },
   {
     "id": "popular-062",
@@ -2259,7 +2614,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《惡夢｜籠中鳥》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-063",
@@ -2292,7 +2652,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《偵探夢｜抓狂首映會》邀你們踏上沉浸劇情冒險；循著機關解謎留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-064",
@@ -2325,7 +2690,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《明星夢｜偶像出道》邀你們踏上沉浸劇情冒險；循著機關解謎留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-065",
@@ -2358,7 +2728,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《極恐惡夢｜INSANE》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當沉浸劇情異象逼近，唯有解…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-066",
@@ -2391,7 +2766,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "待官方主題頁核對",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《玩偶之家 Dolls’ House》，未說完的秘密正等你們追查；沿著沉浸劇情線索，在機關解謎…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://dream94zz.com/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "時，最真實的，是那些如夢般的瞬間 也許荒誕、也許失序，也正因無法預測，而讓人更深陷 [&hellip;] 首頁 - 【夢遊王國｜夢境可以比現實更迷人】台北沉浸式劇場・密室逃脫・實境遊戲・團體活動 跳至主要內容 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 人生不只存在於清醒的片段， 有時，最真實的，是那些如夢般的瞬"
   },
   {
     "id": "popular-067",
@@ -2424,7 +2806,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《櫻花暖居》，未說完的秘密正等你們追查；沿著機關解謎線索，在沉浸劇情與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-068",
@@ -2457,7 +2844,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《夜蒐樓靜》的禁忌線索從未消失，你們循著機關解謎深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-069",
@@ -2490,7 +2882,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《醉後一杯》，未說完的秘密正等你們追查；沿著機關解謎線索，在沉浸劇情與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-070",
@@ -2523,7 +2920,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《黑暗倒影》的禁忌線索從未消失，你們循著機關解謎深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-071",
@@ -2556,7 +2958,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《嬰聲》的禁忌線索從未消失，你們循著機關解謎深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能帶著真…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-072",
@@ -2589,7 +2996,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《富得誰負》，未說完的秘密正等你們追查；沿著機關解謎線索，在沉浸劇情與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-073",
@@ -2622,7 +3034,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《櫻之雪》，未說完的秘密正等你們追查；沿著機關解謎線索，在沉浸劇情與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-074",
@@ -2655,7 +3072,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《罪夢真相》的禁忌線索從未消失，你們循著機關解謎深入黑暗；當沉浸劇情異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-075",
@@ -2688,7 +3110,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《等一個人‧盜墓》，未說完的秘密正等你們追查；沿著沉浸劇情線索，在機關解謎與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-076",
@@ -2721,7 +3148,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《這個Case有點Big》邀你們踏上沉浸劇情冒險；循著機關解謎留下的線索協力前進，揭開被藏起來的真…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://loginescape.com/landingpagegooglemap"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "n密室逃脫 | 2人即可包場 | 平日優惠 | 台北密室精選推薦 在台北營運至今斬獲超過3000則Google評論，滿分好評推薦，2人即可包場，平日預約享優惠價格。微驚悚密室逃脫「等一個人盜墓」，大型機關場景讓你身歷其境；溫馨懸疑密室逃脫「這個Case有點Big」，無恐怖元素的劇情和道具提供完全沉浸遊戲體驗；沉浸式密室逃脫「利維德酒吧」，超大場景空間加上演員現場互動帶來最極致的遊戲體驗。 LoGin密室逃脫 | 2人即可包場 | 平日優惠 | 台北密室精選推薦"
   },
   {
     "id": "popular-077",
@@ -2754,7 +3188,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《利維德酒吧》邀你們踏上沉浸劇情冒險；循著機關解謎留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://loginescape.com/landingpagegooglemap"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "過3000則Google評論，滿分好評推薦，2人即可包場，平日預約享優惠價格。微驚悚密室逃脫「等一個人盜墓」，大型機關場景讓你身歷其境；溫馨懸疑密室逃脫「這個Case有點Big」，無恐怖元素的劇情和道具提供完全沉浸遊戲體驗；沉浸式密室逃脫「利維德酒吧」，超大場景空間加上演員現場互動帶來最極致的遊戲體驗。 LoGin密室逃脫 | 2人即可包場 | 平日優惠 | 台北密室精選推薦"
   },
   {
     "id": "popular-078",
@@ -2787,7 +3228,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《森林之心》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://escer.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": " 超多主題任你選!越多人越便宜! 忠明南店關卡 民權店關卡 華美店關卡 獄門神社(忠明南店) 地址：台中市南區忠明南路758號4F 電話：04-22601755 &nbsp;&nbsp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路"
   },
   {
     "id": "popular-079",
@@ -2820,7 +3268,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《霸王》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://escer.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "美店關卡 獄門神社(忠明南店) 地址：台中市南區忠明南路758號4F 電話：04-22601755 &nbsp;&nbsp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&"
   },
   {
     "id": "popular-080",
@@ -2853,7 +3308,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《審判者》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://escer.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "58號4F 電話：04-22601755 &nbsp;&nbsp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡"
   },
   {
     "id": "popular-081",
@@ -2886,7 +3348,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《盜義有道》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://escer.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "sp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR"
   },
   {
     "id": "popular-082",
@@ -2919,7 +3388,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《小小鎮》邀你們踏上機關解謎冒險；循著VR密室留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://escer.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR"
   },
   {
     "id": "popular-083",
@@ -2952,7 +3428,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《是不是勇者》邀你們踏上機關解謎冒險；循著VR密室留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://escer.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": "霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR"
   },
   {
     "id": "popular-084",
@@ -2985,7 +3468,14 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《邪咒曲》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當機關解謎異象逼近，唯有解開謎局，才能帶著…",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
+    "story_summary_source_urls": [
+      "https://escer.com.tw/"
+    ],
+    "story_summary_note": "官方頁面可定位主題名稱，但未取得完整主題級劇情段落；摘要為編輯部根據主題名稱與導覽 metadata 重寫，非官方逐字引用。",
+    "story_summary_source_excerpt": " 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR"
   },
   {
     "id": "popular-085",
@@ -3018,7 +3508,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《輪迴》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-086",
@@ -3051,7 +3546,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《窒愛》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當機關解謎異象逼近，唯有解開謎局，才能帶著真…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-087",
@@ -3084,7 +3584,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《詭鄰驚怪》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當機關解謎異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-088",
@@ -3117,7 +3622,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《弗瑞克樂園》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-089",
@@ -3150,7 +3660,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《消失的聖誕禮物》邀你們踏上機關解謎冒險；循著VR密室留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-090",
@@ -3183,7 +3698,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《車諾比事件》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-091",
@@ -3216,7 +3736,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《愛麗絲仙境》邀你們踏上機關解謎冒險；循著VR密室留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-092",
@@ -3249,7 +3774,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《越獄逃生》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-093",
@@ -3282,7 +3812,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《恐懼聖所》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當機關解謎異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-094",
@@ -3315,7 +3850,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《噬魂之夜》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當機關解謎異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-095",
@@ -3348,7 +3888,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《惡靈詛咒》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當機關解謎異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-096",
@@ -3381,7 +3926,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《叢林探險》邀你們踏上機關解謎冒險；循著VR密室留下的線索協力前進，揭開被藏起來的真相。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-097",
@@ -3414,7 +3964,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "《喋血病院》的禁忌線索從未消失，你們循著恐怖驚悚深入黑暗；當機關解謎異象逼近，唯有解開謎局，才能帶…",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-098",
@@ -3447,7 +4002,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《拆解核危機》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-099",
@@ -3480,7 +4040,12 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《賽博龐克》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   },
   {
     "id": "popular-100",
@@ -3513,6 +4078,11 @@
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分"
+    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
+    "story_summary": "踏入《夢境駭客Ⅰ》，未說完的秘密正等你們追查；沿著機關解謎線索，在VR密室與未知之間找出出口。",
+    "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
+    "story_summary_source_urls": [],
+    "story_summary_note": "未找到可核對的主題級官方劇情；此為依主題名稱與 metadata 撰寫的編輯部導覽短評，非官方文案。",
+    "story_summary_source_excerpt": null
   }
 ]
