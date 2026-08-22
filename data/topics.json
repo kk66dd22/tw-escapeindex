@@ -8,20 +8,20 @@
     "google_rating": 4.8,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 1,
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "pros": [
-      "機關超級驚艷",
-      "老手玩起來很過癮"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "老手比較能享受這種高難度",
-      "預約前再確認場次長度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "booking_url": "https://losttw.com/",
     "source_urls": [
@@ -39,10 +39,10 @@
     "story_summary": "《九龍寨城》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-002",
@@ -53,7 +53,7 @@
     "google_rating": 4.8,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 5,
     "brain": 3,
     "styles": [
@@ -61,13 +61,10 @@
       "真人互動"
     ],
     "pros": [
-      "NPC互動節奏鮮明",
-      "恐怖演出很有感"
+      "NPC互動極具張力",
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "怕黑的玩家先想一下",
-      "活動活動活動檔期請見官方公告"
-    ],
+    "cons": [],
     "booking_url": "https://losttw.com/",
     "source_urls": [
       "https://losttw.com/",
@@ -84,10 +81,10 @@
     "story_summary": "《猛鬼大廈》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-003",
@@ -98,7 +95,7 @@
     "google_rating": 4.8,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 1,
     "brain": 4,
     "styles": [
@@ -106,12 +103,12 @@
       "機關解謎"
     ],
     "pros": [
-      "動手解鎖很有爽感",
-      "解題需要建立共識"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "線索關聯不易一次看懂",
-      "遊戲時間請見官方公告"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "booking_url": "https://losttw.com/",
     "source_urls": [
@@ -129,10 +126,10 @@
     "story_summary": "《潛入任務》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-004",
@@ -143,20 +140,20 @@
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 3,
     "brain": 4,
     "styles": [
       "日系解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "pros": [
-      "世界觀入口交代清楚",
-      "推理細節值得回頭檢查"
+      "沉浸式場景神還原",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "需要保留時間回頭驗證",
-      "活動活動檔期異動時體驗內容可能調整"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
@@ -176,10 +173,10 @@
     "story_summary_source_urls": [
       "https://www.enterspace.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "逃脫 | 實境體驗 EnterSpace 密室逃脫 | 實境體驗 首頁 密室逃脫遊戲 遊戲總覽 微笑謎藏 以王之名 Vicky 宇宙脫逃 CONE 控制獄 洛克飯店：殺手困境 洛克飯店：維多莉亞的祕密 紅衣小女孩 噩夢再見 莎士比亞的邀請 百鬼夜行 接招吧！決戰除夕夜！ 被客人罵爆的我 決定要逆天改命 酬鬼戲 大直南市場 過往遊戲 生存遊戲 皮克蒙之書 破片推理 團隊介紹 交通資訊 最新活動 企業包場 FB 成為說書人 密室逃脫遊戲 遊戲總覽 微笑謎藏 以王之名 Vicky 宇宙脫逃 CONE 控制獄 洛克飯店：殺手困境 洛克飯店：維多莉亞的祕密 紅衣小女孩 噩夢再見 莎士比亞的邀請 百鬼夜行 接招吧！決戰除夕夜 被客人罵爆的我 決定要逆天改命 酬鬼戲 大直南市場 過往遊戲 皮克",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-005",
@@ -190,7 +187,7 @@
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 1,
     "brain": 3,
     "styles": [
@@ -198,12 +195,11 @@
       "機關解謎"
     ],
     "pros": [
-      "機關與劇情互相呼應",
-      "氣氛與解謎比例舒服"
+      "機關控必玩神作",
+      "新手推坑首選"
     ],
     "cons": [
-      "建議先決定誰負責觀察",
-      "請先確認當日場次與報到時間"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
@@ -223,10 +219,10 @@
     "story_summary_source_urls": [
       "https://www.enterspace.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "無數神秘的大門，門後孕育眾多故事的起源， 更是象徵嶄新冒險的起點。 ‍ 選擇一扇門走入另個新世界，創造一個又一個全新的故事與傳說吧！ 立即展開冒險 scroll 過年接招了！ 為了買最新型的遊戲機， 小叔叔大姑姑們，得罪啦！ 搶紅包囉 ‍ 魔幻菜市場 來到這座市場後 每件事都在悄悄改變... 買菜買肉 日系解謎 百年一次的「百鬼夜行」， 人界與妖界將會短暫重疊... 尋找長生之法 年輕人專屬 2026「文化幣」玩密室 全館密室直接折扣！ 用文化幣 更划算 15 款主題任務等你挑戰 密室逃脫 在各種不同風格的主題中，體驗真實的故事場景，與夥伴一起互相討論、交換資訊、尋找線索。 藉由解開各種形式的謎題與關卡，了解最深層的故事內容，與設計者想傳達的意境。 遊戲介紹 Escape Game",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-006",
@@ -237,7 +233,7 @@
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–10",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 1,
     "brain": 2,
     "styles": [
@@ -245,12 +241,11 @@
       "多人同樂"
     ],
     "pros": [
-      "主題風格容易辨識",
-      "團隊默契會直接影響節奏"
+      "新手推坑首選"
     ],
     "cons": [
-      "適合有基本團隊默契的團隊",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約",
+      "老手可能會覺得偏簡單"
     ],
     "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
@@ -268,10 +263,10 @@
     "story_summary": "《新年接招了》從一個不尋常的線索開始，團隊沿著節慶互動、多人同樂往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-007",
@@ -282,7 +277,7 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 1,
     "brain": 4,
     "styles": [
@@ -290,12 +285,12 @@
       "機關操作"
     ],
     "pros": [
-      "場景互動點分布自然",
-      "解題過程有持續追蹤感"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "適合先分配觀察與記錄角色",
-      "預約時順便問清楚提示方式"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
@@ -312,10 +307,10 @@
     "story_summary": "《異形覆沒》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-008",
@@ -326,7 +321,7 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 5,
     "brain": 3,
     "styles": [
@@ -334,12 +329,11 @@
       "場景探索"
     ],
     "pros": [
-      "場景動線很有戲",
-      "想找刺激的團隊首選"
+      "沉浸式場景神還原",
+      "場景細節控必玩"
     ],
     "cons": [
-      "不習慣追逐感者先評估",
-      "主題資訊可能隨活動更新"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
@@ -356,10 +350,10 @@
     "story_summary": "《嬰魂嚇水道》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-009",
@@ -370,20 +364,20 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 4,
     "styles": [
       "罪與罰",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "pros": [
-      "場景與敘事互相支撐",
-      "恐怖主題辨識度明確"
+      "沉浸式場景神還原",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "氛圍緊繃時溝通更重要",
-      "建議以入場前最新公告為準"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
@@ -402,10 +396,10 @@
     "story_summary_source_urls": [
       "https://www.mystotoescape.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "率的團建首選！ 透過 Mystoto Escape Games 精心設計的密室謎題，為您的企業團隊或學校組織帶來充滿驚喜的團康活動，開創無限可能。攜手合作，讓您的團隊展現非凡合作力！ 立即預約 企業專區 觀賞影片 2 / 3 全新密室主題 奪魂獄，即刻開爐 你覺得你自己有罪嗎？ 你，是怎麼看待罪與罰呢？因為愧疚而形成的枷鎖，不斷扼住你的生命。 來吧，給自己一個重新選擇的機會。 立即預約 先睹為快 預告影片 3 / 3 全台玩家五星好評肯定 5.0 9,347 則 Google 評論 難以忘懷的密室逃脫旅程 前所未有的沉浸式實境冒險 Mystoto Escape Games 密室逃脫為台灣極具獨特性的密室逃脫遊戲創造者。 運用高科技打造機關型密室主題，採用高度互動的遊戲元素，跳脫",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-010",
@@ -416,7 +410,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -424,12 +418,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "適合先從特色入手挑選",
-      "主題風格容易理解"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "入場前請看官方公告",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
@@ -448,10 +441,10 @@
     "story_summary_source_urls": [
       "https://stupidparticle.com/taipei/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "業訓練、慶生聯誼、假日休閒的最佳選擇。 Facebook-f Instagram Envelope 客服時間：10:00 ~ 18:00 聯絡電話：(02) 8787-4387 《笨蛋小天使》招募中！想要擁有不一樣的打工經驗嗎？ 寶清新館 我們的秘密 ６~８人 前往預約 一群多年交情的死黨，在別墅舉辦生日派對。凌晨你們突然驚醒，發現周遭的一切全變了樣…… 寶清新館 竹本家 5~６人 前往預約 你將進入『竹本家手作茶』飲料店當代班店員，三十年老店的命運就交給你們了~",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-011",
@@ -462,7 +455,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -470,12 +463,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題辨識度鮮明",
-      "聚會揪團很可以"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "第一次玩可先問提示制度",
-      "預約前再確認場次長度"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
@@ -494,10 +486,10 @@
     "story_summary_source_urls": [
       "https://stupidparticle.com/taipei/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "8:00 聯絡電話：(02) 8787-4387 《笨蛋小天使》招募中！想要擁有不一樣的打工經驗嗎？ 寶清新館 我們的秘密 ６~８人 前往預約 一群多年交情的死黨，在別墅舉辦生日派對。凌晨你們突然驚醒，發現周遭的一切全變了樣…… 寶清新館 竹本家 5~６人 前往預約 你將進入『竹本家手作茶』飲料店當代班店員，三十年老店的命運就交給你們了~",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-012",
@@ -508,7 +500,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -516,12 +508,12 @@
       "官方現行主題"
     ],
     "pros": [
-      "想換口味的團隊很適合",
-      "多線索並行很有張力"
+      "劇情反轉超燒腦",
+      "小團2人即可開始"
     ],
     "cons": [
-      "線索很多，整理起來比較花時間",
-      "活動活動活動檔期請見官方公告"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
@@ -538,10 +530,10 @@
     "story_summary": "《深處》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-013",
@@ -552,7 +544,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -560,12 +552,12 @@
       "官方現行主題"
     ],
     "pros": [
-      "跨店家比較資訊完整",
-      "解題需要建立共識"
+      "劇情反轉超燒腦",
+      "小團2人即可開始"
     ],
     "cons": [
-      "線索關聯不易一次看懂",
-      "遊戲時間請見官方公告"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
@@ -582,10 +574,10 @@
     "story_summary": "《奪命鎖鏈》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-014",
@@ -596,7 +588,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -604,12 +596,12 @@
       "官方現行主題"
     ],
     "pros": [
-      "場景氛圍有記憶點",
-      "推理細節值得回頭檢查"
+      "劇情反轉超燒腦",
+      "小團2人即可開始"
     ],
     "cons": [
-      "需要保留時間回頭驗證",
-      "活動活動檔期異動時體驗內容可能調整"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
@@ -626,10 +618,10 @@
     "story_summary": "《奪命鎖鏈2》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-015",
@@ -640,7 +632,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -648,12 +640,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊討論感自然",
-      "氣氛與解謎比例舒服"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "不同分店規則可能不完全相同",
-      "請先確認當日場次與報到時間"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
@@ -670,10 +661,10 @@
     "story_summary": "《顛倒之室》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-016",
@@ -684,7 +675,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -692,12 +683,12 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題風格容易辨識",
-      "喜歡拆線索的玩家會上癮"
+      "劇情反轉超燒腦",
+      "小團2人即可開始"
     ],
     "cons": [
-      "對首次挑戰者較有壓力",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://stupidparticle.com/taipei/",
     "source_urls": [
@@ -714,10 +705,10 @@
     "story_summary": "《奪命記憶》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-017",
@@ -728,7 +719,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -736,12 +727,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "聚會揪團很可以",
-      "朋友聚會揪這場"
+      "新手推坑首選"
     ],
     "cons": [
-      "人多時要留意每人參與度",
-      "預約時順便問清楚提示方式"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -758,10 +747,10 @@
     "story_summary": "《武仁新村》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-018",
@@ -772,7 +761,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -780,12 +769,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "資訊整理方便事前比較",
-      "主題個性清楚好選擇"
+      "新手推坑首選"
     ],
     "cons": [
-      "分工混亂容易錯過關鍵提示",
-      "主題資訊可能隨活動更新"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -802,10 +789,10 @@
     "story_summary": "《入學式》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-019",
@@ -816,7 +803,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -824,12 +811,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊共識容易建立",
       "新手推坑首選"
     ],
     "cons": [
-      "人多線索量大，要記得互通",
-      "建議以入場前最新公告為準"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -846,10 +831,10 @@
     "story_summary": "《平安戲院》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-020",
@@ -860,7 +845,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -868,12 +853,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "適合先從特色入手挑選",
-      "主題風格容易理解"
+      "新手推坑首選"
     ],
     "cons": [
-      "沒分工容易漏掉關鍵線索",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -890,10 +873,10 @@
     "story_summary": "《咖波與飢餓迷宮》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-021",
@@ -904,7 +887,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -912,12 +895,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題辨識度鮮明",
-      "聚會揪團很可以"
+      "新手推坑首選"
     ],
     "cons": [
-      "人多先講好怎麼交換線索",
-      "預約前再確認場次長度"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -934,10 +915,10 @@
     "story_summary": "《羅伯班克》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-022",
@@ -948,7 +929,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -956,12 +937,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "想換口味的團隊很適合",
-      "多線索並行很有張力"
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "線索很多，整理起來比較花時間",
-      "活動活動活動檔期請見官方公告"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -978,10 +958,10 @@
     "story_summary": "《奪命鎖鏈》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-023",
@@ -992,7 +972,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1000,12 +980,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "跨店家比較資訊完整",
-      "第一次玩也不容易慌"
+      "新手推坑首選"
     ],
     "cons": [
-      "團隊太大時需要指定記錄者",
-      "遊戲時間請見官方公告"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -1022,10 +1000,10 @@
     "story_summary": "《顛倒之室》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-024",
@@ -1036,20 +1014,16 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "主題解謎",
       "官方現行主題"
     ],
-    "pros": [
-      "場景氛圍有記憶點",
-      "情緒張力持續在線"
-    ],
+    "pros": [],
     "cons": [
-      "黑暗環境可能放大緊張感",
-      "活動活動檔期異動時體驗內容可能調整"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -1066,10 +1040,10 @@
     "story_summary": "《鬼新娘》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-025",
@@ -1080,7 +1054,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1088,12 +1062,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊討論感自然",
-      "氣氛與解謎比例舒服"
+      "新手推坑首選"
     ],
     "cons": [
-      "建議先決定誰負責觀察",
-      "請先確認當日場次與報到時間"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://stupidparticle.com/taichung/",
     "source_urls": [
@@ -1110,10 +1082,10 @@
     "story_summary": "《竹本家》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-026",
@@ -1124,7 +1096,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1132,12 +1104,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題風格容易辨識",
-      "新手入門很友善"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "建議出發前再次查看通知",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1156,10 +1127,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "07101822 Facebook Instagram ▼403台中市西區公益路130號3樓 ▼營業時間 平日13:00-21:00 假日10:00-21:00 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-027",
@@ -1170,7 +1141,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1178,12 +1149,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "聚會揪團很可以",
-      "朋友聚會揪這場"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "熱門日期較需要提早安排",
-      "預約時順便問清楚提示方式"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1202,10 +1172,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "m ▼403台中市西區公益路130號3樓 ▼營業時間 平日13:00-21:00 假日10:00-21:00 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-028",
@@ -1216,7 +1186,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1224,12 +1194,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "資訊整理方便事前比較",
-      "主題個性清楚好選擇"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "可先確認是否有服裝或安全要求",
-      "主題資訊可能隨活動更新"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1248,10 +1217,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": " 平日13:00-21:00 假日10:00-21:00 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-029",
@@ -1262,7 +1231,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1270,12 +1239,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊共識容易建立",
-      "新手推坑首選"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "熱門時段要提早預約",
-      "建議以入場前最新公告為準"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1294,10 +1262,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "0 ▼電 話 0928002297 Facebook Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約1",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-030",
@@ -1308,7 +1276,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1316,12 +1284,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "適合先從特色入手挑選",
-      "主題風格容易理解"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "入場前請看官方公告",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1340,10 +1307,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": " Instagram 台北館 噬夢 ★★★ 2-5 約60分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-031",
@@ -1354,7 +1321,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1362,12 +1329,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題辨識度鮮明",
-      "聚會揪團很可以"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "第一次玩可先問提示制度",
-      "預約前再確認場次長度"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1386,10 +1352,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "0分鐘 立即預訂 台北館 感染 ★★★ 2-6 約60分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-032",
@@ -1400,7 +1366,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1408,12 +1374,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "想換口味的團隊很適合",
-      "節奏輕盈不易冷場"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "票價與場次請以官方公告為準",
-      "活動活動活動檔期請見官方公告"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1432,10 +1397,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "分鐘 立即預訂 台北館 稻荷之歌 ★★ 2-6 約60分鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ ",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-033",
@@ -1446,7 +1411,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1454,12 +1419,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "跨店家比較資訊完整",
-      "第一次玩也不容易慌"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "活動活動活動檔期可能影響可選時間",
-      "遊戲時間請見官方公告"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1478,10 +1442,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "鐘 立即預訂 台北館 病變 ★★★ 3-6 約60分鐘 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-034",
@@ -1492,7 +1456,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1500,12 +1464,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "場景氛圍有記憶點",
-      "適合想試試不同風格的團隊"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "預約前要確認館別與集合位置",
-      "活動活動檔期異動時體驗內容可能調整"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1524,10 +1487,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": " 立即預訂 台北館 永生劫 ★★★★ 2-6 約60分鐘 立即預訂 台北館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-035",
@@ -1538,7 +1501,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1546,12 +1509,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊討論感自然",
-      "氣氛與解謎比例舒服"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "不同分店規則可能不完全相同",
-      "請先確認當日場次與報到時間"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1570,10 +1532,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "館 蜀山 ★★★★ 3-6 約60分鐘 立即預訂 台北館 天方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-036",
@@ -1584,7 +1546,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
@@ -1592,12 +1554,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題風格容易辨識",
-      "高壓節奏很有記憶點"
+      "小團2人即可開始"
     ],
     "cons": [
-      "情緒壓力較高，需做好心理準備",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1616,10 +1576,10 @@
     "story_summary_source_urls": [
       "https://funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "方夜譚 ★★★ 2-6 約60分鐘 立即預訂 台北館 鄉間小盜 ★★ 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-037",
@@ -1630,7 +1590,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1638,12 +1598,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "聚會揪團很可以",
-      "朋友聚會揪這場"
+      "新手推坑首選",
+      "小團2人即可開始"
     ],
     "cons": [
-      "熱門日期較需要提早安排",
-      "預約時順便問清楚提示方式"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://funlockstudio.com/",
     "source_urls": [
@@ -1660,10 +1619,10 @@
     "story_summary": "《彼岸花：夢返》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-038",
@@ -1674,7 +1633,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -1682,12 +1641,12 @@
       "官方現行主題"
     ],
     "pros": [
-      "資訊整理方便事前比較",
-      "高難度團隊討論很過癮"
+      "劇情反轉超燒腦",
+      "小團2人即可開始"
     ],
     "cons": [
-      "解題節奏可能因討論變慢",
-      "主題資訊可能隨活動更新"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "booking_url": "https://limitlessescaperoom.com/",
     "source_urls": [
@@ -1701,10 +1660,10 @@
     "story_summary_source_urls": [
       "https://limitlessescaperoom.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "極限密室逃脫 Limitless | Scheduling and Booking Website 極限密室逃脫 Limitless Escape Room 瞞天越獄 Prison Break 搜索令 驚悚 The Warrant Thriller 台北密室逃脫 Taipei Escape Room 台北好玩 Things to do in Taipei 台灣密室 Things to do in Taiwan 公館密室逃脫&amp;nbsp; &amp;nbsp;&amp;nbsp;Escape Room中英雙語&amp;nbsp; &amp;nbsp;&amp;nbsp;English Frien",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-039",
@@ -1715,7 +1674,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
@@ -1723,13 +1682,9 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊共識容易建立",
-      "恐怖主題辨識度明確"
+      "小團2人即可開始"
     ],
-    "cons": [
-      "氛圍緊繃時溝通更重要",
-      "建議以入場前最新公告為準"
-    ],
+    "cons": [],
     "booking_url": "https://limitlessescaperoom.com/",
     "source_urls": [
       "https://limitlessescaperoom.com/"
@@ -1742,10 +1697,10 @@
     "story_summary_source_urls": [
       "https://limitlessescaperoom.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "極限密室逃脫 Limitless | Scheduling and Booking Website 極限密室逃脫 Limitless Escape Room 瞞天越獄 Prison Break 搜索令 驚悚 The Warrant Thriller 台北密室逃脫 Taipei Escape Room 台北好玩 Things to do in Taipei 台灣密室 Things to do in Taiwan 公館密室逃脫&amp;nbsp; &amp;nbsp;&amp;nbsp;Escape Room中英雙語&amp;nbsp; &amp;nbsp;&amp;nbsp;English Friendly一號出口走路3分鐘&amp;",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-040",
@@ -1756,7 +1711,7 @@
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -1764,12 +1719,12 @@
       "官方現行主題"
     ],
     "pros": [
-      "適合先從特色入手挑選",
-      "線索串起來很有成就感"
+      "劇情反轉超燒腦",
+      "小團2人即可開始"
     ],
     "cons": [
-      "部分謎題較跳躍，要多討論",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
@@ -1786,10 +1741,10 @@
     "story_summary": "《戰鬥陀螺》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-041",
@@ -1800,7 +1755,7 @@
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
@@ -1808,12 +1763,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題辨識度鮮明",
-      "高壓感很有記憶點"
+      "小團2人即可開始"
     ],
     "cons": [
-      "驚嚇強度高，先確認接受度",
-      "預約前再確認場次長度"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://www.enterspace.tw/",
     "source_urls": [
@@ -1830,10 +1783,10 @@
     "story_summary": "《憶釀：亡命輪迴》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-042",
@@ -1844,7 +1797,7 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -1852,12 +1805,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "想換口味的團隊很適合",
-      "節奏輕盈不易冷場"
+      "新手推坑首選"
     ],
     "cons": [
-      "多人同時行動可能互相干擾",
-      "活動活動活動檔期請見官方公告"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
@@ -1874,10 +1825,10 @@
     "story_summary": "《絕命旅舍》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-043",
@@ -1888,7 +1839,7 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -1896,12 +1847,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "跨店家比較資訊完整",
-      "解題需要建立共識"
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "線索關聯不易一次看懂",
-      "遊戲時間請見官方公告"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://www.mystotoescape.com/",
     "source_urls": [
@@ -1918,10 +1868,10 @@
     "story_summary": "《法老謎城》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-044",
@@ -1932,7 +1882,7 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 4,
     "styles": [
@@ -1940,12 +1890,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "場景氛圍有記憶點",
-      "情緒張力持續在線"
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "黑暗環境可能放大緊張感",
-      "活動活動檔期異動時體驗內容可能調整"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
@@ -1962,10 +1911,10 @@
     "story_summary": "《噩夢首部曲：記憶牢籠》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-045",
@@ -1976,21 +1925,15 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "主題解謎",
       "官方現行主題"
     ],
-    "pros": [
-      "團隊討論感自然",
-      "驚嚇與解謎互相推進"
-    ],
-    "cons": [
-      "怕驚嚇者建議先看分級",
-      "請先確認當日場次與報到時間"
-    ],
+    "pros": [],
+    "cons": [],
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
@@ -2006,10 +1949,10 @@
     "story_summary": "《噩夢二部曲：戰慄空間》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-046",
@@ -2020,7 +1963,7 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -2028,12 +1971,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "主題風格容易辨識",
-      "喜歡拆線索的玩家會上癮"
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "對首次挑戰者較有壓力",
-      "遊戲時間依官網為主"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
@@ -2050,10 +1992,10 @@
     "story_summary": "《噬魂森靈：奪命樹海》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-047",
@@ -2064,7 +2006,7 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -2072,13 +2014,9 @@
       "官方現行主題"
     ],
     "pros": [
-      "聚會揪團很可以",
-      "朋友聚會揪這場"
+      "新手推坑首選"
     ],
-    "cons": [
-      "人多時要留意每人參與度",
-      "預約時順便問清楚提示方式"
-    ],
+    "cons": [],
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
@@ -2094,10 +2032,10 @@
     "story_summary": "《玩具總動員》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-048",
@@ -2108,7 +2046,7 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -2116,13 +2054,9 @@
       "官方現行主題"
     ],
     "pros": [
-      "資訊整理方便事前比較",
-      "主題個性清楚好選擇"
+      "新手推坑首選"
     ],
-    "cons": [
-      "分工混亂容易錯過關鍵提示",
-      "主題資訊可能隨活動更新"
-    ],
+    "cons": [],
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
@@ -2138,10 +2072,10 @@
     "story_summary": "《越南大戰》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-049",
@@ -2152,7 +2086,7 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -2160,13 +2094,9 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊共識容易建立",
       "新手推坑首選"
     ],
-    "cons": [
-      "人多線索量大，要記得互通",
-      "建議以入場前最新公告為準"
-    ],
+    "cons": [],
     "booking_url": "https://www.mr-bomb.com/",
     "source_urls": [
       "https://www.mr-bomb.com/"
@@ -2182,10 +2112,10 @@
     "story_summary": "《持碑天兵》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-050",
@@ -2196,20 +2126,16 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "主題解謎",
       "官方現行主題"
     ],
-    "pros": [
-      "適合先從特色入手挑選",
-      "驚悚氣氛很到位"
-    ],
+    "pros": [],
     "cons": [
-      "低耐受度玩家可先詢問店家",
-      "遊戲時間依官網為主"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://taog-game.com/",
     "source_urls": [
@@ -2228,10 +2154,10 @@
     "story_summary_source_urls": [
       "https://taog-game.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "神不在場｜全台最大密室逃脫、實境遊戲首選 | 官方首頁 探索超刺激《神不在場》實境密室逃脫！獨特主題讓你體驗孤立無援的極限求生。當被困密室，無人可幫、祈禱無效，唯有靠自己解謎突圍。本頁全面提供神不在場主題密室逃脫詳細內容與便捷首頁導覽。遊戲地點覆蓋台中、台南兩大熱點，是全台實境遊戲愛好者必玩首選！ 神不在場｜全台最大密室逃脫、實境遊戲首選 | 官方首頁 跳至主要內容 &#78;&#84;&#36; 0 購物車 會員中心 &#78;&#84;&#",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-051",
@@ -2242,20 +2168,16 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "主題解謎",
       "官方現行主題"
     ],
-    "pros": [
-      "主題辨識度鮮明",
-      "高壓感很有記憶點"
-    ],
+    "pros": [],
     "cons": [
-      "驚嚇強度高，先確認接受度",
-      "預約前再確認場次長度"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://taog-game.com/",
     "source_urls": [
@@ -2272,10 +2194,10 @@
     "story_summary": "《憶釀：亡命輪迴》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-052",
@@ -2286,7 +2208,7 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 4,
     "styles": [
@@ -2294,12 +2216,11 @@
       "官方現行主題"
     ],
     "pros": [
-      "想換口味的團隊很適合",
-      "多線索並行很有張力"
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "線索很多，整理起來比較花時間",
-      "活動活動活動檔期請見官方公告"
+      "熱門時段較難預約",
+      "部分謎題較困難"
     ],
     "booking_url": "https://taog-game.com/",
     "source_urls": [
@@ -2316,10 +2237,10 @@
     "story_summary": "《瘋狂追殺》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-053",
@@ -2330,20 +2251,16 @@
     "google_rating": 4.6,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "主題解謎",
       "官方現行主題"
     ],
-    "pros": [
-      "跨店家比較資訊完整",
-      "黑暗場景帶入感強"
-    ],
+    "pros": [],
     "cons": [
-      "恐怖橋段密集，怕嚇先評估",
-      "遊戲時間請見官方公告"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://taog-game.com/",
     "source_urls": [
@@ -2360,10 +2277,10 @@
     "story_summary": "《往生錄》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-054",
@@ -2374,7 +2291,7 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -2382,12 +2299,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "場景氛圍有記憶點",
-      "適合想試試不同風格的團隊"
+      "新手推坑首選"
     ],
     "cons": [
-      "資訊交換不順會拖慢節奏",
-      "活動活動檔期異動時體驗內容可能調整"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://www.doorsss.com/",
     "source_urls": [
@@ -2404,10 +2319,10 @@
     "story_summary": "《倒數 60 分鐘》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-055",
@@ -2418,7 +2333,7 @@
     "google_rating": 4.5,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
@@ -2426,12 +2341,10 @@
       "官方現行主題"
     ],
     "pros": [
-      "團隊討論感自然",
-      "氣氛與解謎比例舒服"
+      "新手推坑首選"
     ],
     "cons": [
-      "建議先決定誰負責觀察",
-      "請先確認當日場次與報到時間"
+      "熱門時段較難預約"
     ],
     "booking_url": "https://www.doorsss.com/",
     "source_urls": [
@@ -2448,10 +2361,10 @@
     "story_summary": "《許多門主題選集》從一個不尋常的線索開始，團隊沿著主題解謎、官方現行主題往前查，最後能不能帶著真相平安離場，就看你們的默契。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-056",
@@ -2467,7 +2380,7 @@
     "brain": 4,
     "styles": [
       "恐怖驚悚",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://www.funlockstudio.com/",
     "source_urls": [
@@ -2475,12 +2388,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "劇情線索不只作為裝飾",
-      "高壓節奏很有記憶點"
+      "沉浸式場景神還原",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "情緒壓力較高，需做好心理準備",
-      "不熟悉解謎分工可能較吃力"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -2490,10 +2403,10 @@
     "story_summary_source_urls": [
       "https://www.funlockstudio.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": " 2-6 約60分鐘 立即預訂 台北館 幻境奇航II：最終的航道 ★★★ 4-8 約90分鐘 立即預訂 台北館 失落魔境：序章 ★★ 3-6 約90分鐘 立即預訂 台北館 鎮魂曲：迴憶宅邸 ★★★★ 4-6 約100分鐘 立即預訂 台北館 彼岸花 夢返｜神渡 ★★★★ 4-5 約90分鐘 立即預訂 台中館 病變 ★★★★ 4-6 約70分鐘 立即預訂 台中館 稻荷之歌 ★★ 2-8 約70分鐘 立即預訂 台中館 永生劫 ★★★ 3-6 約70分鐘 立即預訂 台",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-057",
@@ -2504,7 +2417,7 @@
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "2–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 5,
     "brain": 3,
     "styles": [
@@ -2517,13 +2430,10 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "演員介入節奏自然",
-      "氣氛音效加深沉浸感"
+      "NPC互動極具張力",
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "恐怖演出比例偏高",
-      "預約時順便問清楚提示方式"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
@@ -2532,10 +2442,10 @@
     "story_summary_source_urls": [
       "https://missgame.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "合作 互動式劇場 媒體報導 節目合作 影音報導 文字報導 關於我們 公司概述 品牌故事 歷史沿革 公司組織 More Use tab to navigate through the menu items. English 日本語 最新消息 屍變 荒村宅邸，燭火幽微 每當夜深，總有無辜之人，莫名消失於村鎮 傳聞，宅裡藏著不該存在的邪物 你能否看清真相，活著離開？ 流亡黯道&amp;奇術師 已於2026/5/3結束營業！ 法老 一股神秘能量讓探險隊發現一座從未被歷史記載的法老墓室，各位考古界的菁英受神秘組織邀請前往查探...清真相，活著離開？ 觀落陰 因故和女兒佩佩分隔兩地的美惠接到了佩佩失蹤的消息，馬上趕回夫家的老宅。就在那個房間裡，美惠彷彿看到佩佩的身影，正如過世的婆婆所說，",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-058",
@@ -2545,13 +2455,13 @@
     "district": "西門／大直／松江南京",
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
-    "players": "依官網為主",
-    "duration": "依官網為主",
+    "players": "依官網公告",
+    "duration": "依官網公告",
     "horror": 2,
     "brain": 3,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://missgame.com.tw/",
     "source_urls": [
@@ -2559,13 +2469,10 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "解鎖瞬間很有成就感",
-      "主題個性清楚好選擇"
+      "機關控必玩神作",
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "分工混亂容易錯過關鍵提示",
-      "主題資訊可能隨活動更新"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
@@ -2574,10 +2481,10 @@
     "story_summary_source_urls": [
       "https://missgame.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "menu items. English 日本語 最新消息 屍變 荒村宅邸，燭火幽微 每當夜深，總有無辜之人，莫名消失於村鎮 傳聞，宅裡藏著不該存在的邪物 你能否看清真相，活著離開？ 流亡黯道&amp;奇術師 已於2026/5/3結束營業！ 法老 一股神秘能量讓探險隊發現一座從未被歷史記載的法老墓室，各位考古界的菁英受神秘組織邀請前往查探...清真相，活著離開？ 觀落陰 因故和女兒佩佩分隔兩地的美惠接到了佩佩失蹤的消息，馬上趕回夫家的老宅。就在那個房間裡，美惠彷彿看到佩佩的身影，正如過世的婆婆所說，即使關上了門，仍恍似聽見佩佩在閣樓與好友一同玩耍的聲音。「觀落陰」是美惠的最後希望，她想知道女兒的下落，解開心中未解之謎；她需要去一趟「陰間」。然而美惠並不知道，「陰間」也正等待著她",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-059",
@@ -2587,8 +2494,8 @@
     "district": "西門／大直／松江南京",
     "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
-    "players": "依官網為主",
-    "duration": "依官網為主",
+    "players": "依官網公告",
+    "duration": "依官網公告",
     "horror": 5,
     "brain": 4,
     "styles": [
@@ -2601,12 +2508,11 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "沉浸感來自即時回應",
-      "恐怖主題辨識度明確"
+      "NPC互動極具張力",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "氛圍緊繃時溝通更重要",
-      "建議以入場前最新公告為準"
+      "部分謎題較困難"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
@@ -2616,10 +2522,10 @@
     "story_summary_source_urls": [
       "https://missgame.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "MissGAME | 密室逃脫 | 台北市 MissGAME 全台評價最高恐怖主題－觀落陰、最療癒有真貓給吸的密室逃脫－喵境夢遊。兩人即可成團，西門徒步區出站五分鐘可到。大型機關+感人故事。企業團體活動首選！ --> MissGAME | 密室逃脫 | 台北市 top of page HOME 各館介紹 西門旗艦館 台北松江南京館 宜蘭傳藝館 松山文創 台中館 密室逃脫 2 - 4 人 5 - 6 人 7 - 10 人 30 - 50 人 50 - 200 人 謎題包 English 日本語 企業團體 騎士出任務 魔幻午宴 ",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-060",
@@ -2630,12 +2536,12 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "3–6",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "恐怖驚悚",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://dream94zz.com/",
     "source_urls": [
@@ -2643,13 +2549,9 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "重視劇情的玩家必玩",
-      "驚悚氣氛很到位"
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "低耐受度玩家可先詢問店家",
-      "遊戲時間依官網為主"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
@@ -2658,10 +2560,10 @@
     "story_summary_source_urls": [
       "https://dream94zz.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "預測，而讓人更深陷 [&hellip;] 首頁 - 【夢遊王國｜夢境可以比現實更迷人】台北沉浸式劇場・密室逃脫・實境遊戲・團體活動 跳至主要內容 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 人生不只存在於清醒的片段， 有時，最真實的，是那些如夢般的瞬間 也許荒誕、也許失序，也正因無法預測，",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-061",
@@ -2672,12 +2574,12 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "6–10",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "恐怖驚悚",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://dream94zz.com/",
     "source_urls": [
@@ -2685,13 +2587,9 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "劇情反轉大作",
-      "高壓感很有記憶點"
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "驚嚇強度高，先確認接受度",
-      "預約前再確認場次長度"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
@@ -2700,10 +2598,10 @@
     "story_summary_source_urls": [
       "https://dream94zz.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "更深陷 [&hellip;] 首頁 - 【夢遊王國｜夢境可以比現實更迷人】台北沉浸式劇場・密室逃脫・實境遊戲・團體活動 跳至主要內容 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 人生不只存在於清醒的片段， 有時，最真實的，是那些如夢般的瞬間 也許荒誕、也許失序，也正因無法預測，而讓人更深陷",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-062",
@@ -2714,12 +2612,12 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "6–10",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 4,
     "brain": 3,
     "styles": [
       "恐怖驚悚",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://dream94zz.com/",
     "source_urls": [
@@ -2727,23 +2625,19 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "角色線索很帶感",
-      "恐怖演出很有感"
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "怕黑的玩家先想一下",
-      "活動活動活動檔期請見官方公告"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
     "story_summary": "《惡夢｜籠中鳥》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-063",
@@ -2754,11 +2648,11 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "10",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 1,
     "brain": 4,
     "styles": [
-      "沉浸劇情",
+      "沉浸式劇情",
       "機關解謎"
     ],
     "booking_url": "https://dream94zz.com/",
@@ -2767,12 +2661,11 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "動手解鎖很有爽感",
-      "解題需要建立共識"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "線索關聯不易一次看懂",
-      "遊戲時間請見官方公告"
+      "部分謎題較困難"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
@@ -2780,10 +2673,10 @@
     "story_summary": "《偵探夢｜抓狂首映會》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-064",
@@ -2794,11 +2687,11 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "6–10",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 1,
     "brain": 3,
     "styles": [
-      "沉浸劇情",
+      "沉浸式劇情",
       "機關解謎"
     ],
     "booking_url": "https://dream94zz.com/",
@@ -2807,23 +2700,20 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "實體線索回饋清楚",
-      "適合想試試不同風格的團隊"
+      "機關控必玩神作",
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "資訊交換不順會拖慢節奏",
-      "活動活動檔期異動時體驗內容可能調整"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
     "story_summary": "《明星夢｜偶像出道》把機關、場景和線索藏在同一條故事線裡，團隊要邊探索邊動手，才能一步步揭開背後的秘密。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-065",
@@ -2834,12 +2724,12 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "4–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 5,
     "brain": 3,
     "styles": [
       "恐怖驚悚",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://dream94zz.com/",
     "source_urls": [
@@ -2847,23 +2737,19 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "情緒轉折容易投入",
-      "驚嚇與解謎互相推進"
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "怕驚嚇者建議先看分級",
-      "請先確認當日場次與報到時間"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
     "story_summary": "《極恐惡夢｜INSANE》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-066",
@@ -2874,11 +2760,11 @@
     "google_rating": 5,
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "6–8",
-    "duration": "依官網為主",
+    "duration": "依官網公告",
     "horror": 3,
     "brain": 3,
     "styles": [
-      "沉浸劇情",
+      "沉浸式劇情",
       "機關解謎"
     ],
     "booking_url": "https://dream94zz.com/",
@@ -2887,13 +2773,10 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "操作感比純紙筆更強",
-      "新手入門很友善"
+      "機關控必玩神作",
+      "沉浸式場景神還原"
     ],
-    "cons": [
-      "適合有基本團隊默契的團隊",
-      "遊戲時間依官網為主"
-    ],
+    "cons": [],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "請見官方公告",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
@@ -2902,10 +2785,10 @@
     "story_summary_source_urls": [
       "https://dream94zz.com/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "時，最真實的，是那些如夢般的瞬間 也許荒誕、也許失序，也正因無法預測，而讓人更深陷 [&hellip;] 首頁 - 【夢遊王國｜夢境可以比現實更迷人】台北沉浸式劇場・密室逃脫・實境遊戲・團體活動 跳至主要內容 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 最新消息 關於我們 主題列表 玩偶之家 Dolls’ House 極恐惡夢 | INSANE 美夢｜咒雨 惡夢｜安雅 惡夢 | 籠中鳥 明星夢 | 偶像出道 偵探夢 | 抓狂首映會 企業訓練 常見問題 聯絡我們 立即預約 人生不只存在於清醒的片段， 有時，最真實的，是那些如夢般的瞬",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-067",
@@ -2921,7 +2804,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -2929,12 +2812,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "場景互動點分布自然",
-      "解題過程有持續追蹤感"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "適合先分配觀察與記錄角色",
-      "遇到卡關要及早整理已知資訊"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -2942,10 +2825,10 @@
     "story_summary": "《櫻花暖居》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-068",
@@ -2961,7 +2844,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -2969,12 +2852,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "解鎖瞬間很有成就感",
-      "想找刺激的團隊首選"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "不習慣追逐感者先評估",
-      "推理路線可能需要多次修正"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -2982,10 +2865,10 @@
     "story_summary": "《夜蒐樓靜》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-069",
@@ -3001,7 +2884,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -3009,12 +2892,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "手作機關細節有誠意",
-      "反轉燒腦很過癮"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "不喜歡長時間推理者先評估",
-      "細節觀察不足會影響後續進度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3022,10 +2905,10 @@
     "story_summary": "《醉後一杯》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-070",
@@ -3041,7 +2924,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -3049,12 +2932,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "喜歡動手探索會加分",
-      "驚悚氣氛很到位"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "低耐受度玩家可先詢問店家",
-      "高難度團隊要預留討論時間"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3062,10 +2945,10 @@
     "story_summary": "《黑暗倒影》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-071",
@@ -3081,7 +2964,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -3089,12 +2972,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關超級驚艷",
-      "高壓感很有記憶點"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "驚嚇強度高，先確認接受度",
-      "部分謎題較跳躍，卡關要多溝通"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3102,10 +2985,10 @@
     "story_summary": "《嬰聲》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-072",
@@ -3121,7 +3004,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -3129,12 +3012,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關細節很有料",
-      "多線索並行很有張力"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "線索很多，整理起來比較花時間",
-      "卡關記得善用提示，不要硬撐"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3142,10 +3025,10 @@
     "story_summary": "《富得誰負》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-073",
@@ -3161,7 +3044,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -3169,12 +3052,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "動手解鎖很有爽感",
-      "解題需要建立共識"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "線索關聯不易一次看懂",
-      "漏掉小細節會拖慢進度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3182,10 +3065,10 @@
     "story_summary": "《櫻之雪》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-074",
@@ -3201,7 +3084,7 @@
     "brain": 4,
     "styles": [
       "機關解謎",
-      "沉浸劇情"
+      "沉浸式劇情"
     ],
     "booking_url": "https://througher.com.tw/",
     "source_urls": [
@@ -3209,12 +3092,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "實體線索回饋清楚",
-      "情緒張力持續在線"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "黑暗環境可能放大緊張感",
-      "資訊量大時容易忽略小線索"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3222,10 +3105,10 @@
     "story_summary": "《罪夢真相》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-075",
@@ -3240,7 +3123,7 @@
     "horror": 3,
     "brain": 4,
     "styles": [
-      "沉浸劇情",
+      "沉浸式劇情",
       "機關解謎"
     ],
     "booking_url": "https://loginescape.com/landingpagegooglemap",
@@ -3249,12 +3132,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關與劇情互相呼應",
-      "謎題層次帶來成就感"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "資訊分散時容易漏看",
-      "部分關卡需要反覆確認假設"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3262,10 +3145,10 @@
     "story_summary": "《等一個人‧盜墓》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-076",
@@ -3280,7 +3163,7 @@
     "horror": 1,
     "brain": 4,
     "styles": [
-      "沉浸劇情",
+      "沉浸式劇情",
       "機關解謎"
     ],
     "booking_url": "https://loginescape.com/landingpagegooglemap",
@@ -3289,12 +3172,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "操作感比純紙筆更強",
-      "喜歡拆線索的玩家會上癮"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "對首次挑戰者較有壓力",
-      "不熟悉解謎分工可能較吃力"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3304,10 +3187,10 @@
     "story_summary_source_urls": [
       "https://loginescape.com/landingpagegooglemap"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "n密室逃脫 | 2人即可包場 | 平日優惠 | 台北密室精選推薦 在台北營運至今斬獲超過3000則Google評論，滿分好評推薦，2人即可包場，平日預約享優惠價格。微驚悚密室逃脫「等一個人盜墓」，大型機關場景讓你身歷其境；溫馨懸疑密室逃脫「這個Case有點Big」，無恐怖元素的劇情和道具提供完全沉浸遊戲體驗；沉浸式密室逃脫「利維德酒吧」，超大場景空間加上演員現場互動帶來最極致的遊戲體驗。 LoGin密室逃脫 | 2人即可包場 | 平日優惠 | 台北密室精選推薦",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-077",
@@ -3322,7 +3205,7 @@
     "horror": 1,
     "brain": 4,
     "styles": [
-      "沉浸劇情",
+      "沉浸式劇情",
       "機關解謎"
     ],
     "booking_url": "https://loginescape.com/landingpagegooglemap",
@@ -3331,12 +3214,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "場景互動點分布自然",
-      "解題過程有持續追蹤感"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "適合先分配觀察與記錄角色",
-      "遇到卡關要及早整理已知資訊"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3346,10 +3229,10 @@
     "story_summary_source_urls": [
       "https://loginescape.com/landingpagegooglemap"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "過3000則Google評論，滿分好評推薦，2人即可包場，平日預約享優惠價格。微驚悚密室逃脫「等一個人盜墓」，大型機關場景讓你身歷其境；溫馨懸疑密室逃脫「這個Case有點Big」，無恐怖元素的劇情和道具提供完全沉浸遊戲體驗；沉浸式密室逃脫「利維德酒吧」，超大場景空間加上演員現場互動帶來最極致的遊戲體驗。 LoGin密室逃脫 | 2人即可包場 | 平日優惠 | 台北密室精選推薦",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-078",
@@ -3373,12 +3256,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "解鎖瞬間很有成就感",
-      "高難度團隊討論很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "解題節奏可能因討論變慢",
-      "推理路線可能需要多次修正"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3388,10 +3271,10 @@
     "story_summary_source_urls": [
       "https://escer.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": " 超多主題任你選!越多人越便宜! 忠明南店關卡 民權店關卡 華美店關卡 獄門神社(忠明南店) 地址：台中市南區忠明南路758號4F 電話：04-22601755 &nbsp;&nbsp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-079",
@@ -3415,12 +3298,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "手作機關細節有誠意",
-      "反轉燒腦很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "不喜歡長時間推理者先評估",
-      "細節觀察不足會影響後續進度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3430,10 +3313,10 @@
     "story_summary_source_urls": [
       "https://escer.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "美店關卡 獄門神社(忠明南店) 地址：台中市南區忠明南路758號4F 電話：04-22601755 &nbsp;&nbsp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-080",
@@ -3457,12 +3340,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "喜歡動手探索會加分",
-      "線索串起來很有成就感"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "部分謎題較跳躍，要多討論",
-      "高難度團隊要預留討論時間"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3472,10 +3355,10 @@
     "story_summary_source_urls": [
       "https://escer.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "58號4F 電話：04-22601755 &nbsp;&nbsp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-081",
@@ -3499,12 +3382,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關超級驚艷",
-      "老手玩起來很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "老手比較能享受這種高難度",
-      "部分謎題較跳躍，卡關要多溝通"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3514,10 +3397,10 @@
     "story_summary_source_urls": [
       "https://escer.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "sp; 忠明南店關卡 全部關卡 4-8人關卡 2-4人關卡 森林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-082",
@@ -3541,12 +3424,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關細節很有料",
-      "多線索並行很有張力"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "線索很多，整理起來比較花時間",
-      "卡關記得善用提示，不要硬撐"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3556,10 +3439,10 @@
     "story_summary_source_urls": [
       "https://escer.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "林之心 4-8人 60分鐘 300-450 詳細介紹&預約 霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-083",
@@ -3583,12 +3466,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "動手解鎖很有爽感",
-      "解題需要建立共識"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "線索關聯不易一次看懂",
-      "漏掉小細節會拖慢進度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3598,10 +3481,10 @@
     "story_summary_source_urls": [
       "https://escer.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": "霸王 4-8人 60分鐘 300-450 詳細介紹&預約 審判者 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-084",
@@ -3625,12 +3508,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "實體線索回饋清楚",
-      "情緒張力持續在線"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "黑暗環境可能放大緊張感",
-      "資訊量大時容易忽略小線索"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3640,10 +3523,10 @@
     "story_summary_source_urls": [
       "https://escer.com.tw/"
     ],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": " 2-4人 60分鐘 300-450 詳細介紹&預約 盜義有道 4-8人 60分鐘 300-450 詳細介紹&預約 小小鎮 2-4人 60分鐘 300-450 詳細介紹&預約 是不是勇者 4-8人 60分鐘 300-450 詳細介紹&預約 邪咒曲 4-8人 60分鐘 300-450 詳細介紹&預約 地址：台中市北區民權路559號2F 電話：04-22030223 &nbsp;&nbsp; 民權店關卡 全部關卡 4-8人關卡 2-8人關卡 2-6人關卡(VR",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-085",
@@ -3667,12 +3550,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關與劇情互相呼應",
-      "謎題層次帶來成就感"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "資訊分散時容易漏看",
-      "部分關卡需要反覆確認假設"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3680,10 +3563,10 @@
     "story_summary": "《輪迴》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-086",
@@ -3707,12 +3590,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "操作感比純紙筆更強",
-      "高壓節奏很有記憶點"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "情緒壓力較高，需做好心理準備",
-      "不熟悉解謎分工可能較吃力"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3720,10 +3603,10 @@
     "story_summary": "《窒愛》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-087",
@@ -3747,12 +3630,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "場景互動點分布自然",
-      "氣氛音效加深沉浸感"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "恐怖演出比例偏高",
-      "遇到卡關要及早整理已知資訊"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3760,10 +3643,10 @@
     "story_summary": "《詭鄰驚怪》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-088",
@@ -3787,12 +3670,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "解鎖瞬間很有成就感",
-      "高難度團隊討論很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "解題節奏可能因討論變慢",
-      "推理路線可能需要多次修正"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3800,10 +3683,10 @@
     "story_summary": "《弗瑞克樂園》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-089",
@@ -3827,12 +3710,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "手作機關細節有誠意",
-      "反轉燒腦很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "不喜歡長時間推理者先評估",
-      "細節觀察不足會影響後續進度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3840,10 +3723,10 @@
     "story_summary": "《消失的聖誕禮物》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-090",
@@ -3867,12 +3750,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "喜歡動手探索會加分",
-      "線索串起來很有成就感"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "部分謎題較跳躍，要多討論",
-      "高難度團隊要預留討論時間"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3880,10 +3763,10 @@
     "story_summary": "《車諾比事件》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-091",
@@ -3907,12 +3790,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關超級驚艷",
-      "老手玩起來很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "老手比較能享受這種高難度",
-      "部分謎題較跳躍，卡關要多溝通"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3920,10 +3803,10 @@
     "story_summary": "《愛麗絲仙境》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-092",
@@ -3947,12 +3830,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關細節很有料",
-      "多線索並行很有張力"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "線索很多，整理起來比較花時間",
-      "卡關記得善用提示，不要硬撐"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -3960,10 +3843,10 @@
     "story_summary": "《越獄逃生》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-093",
@@ -3987,12 +3870,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "動手解鎖很有爽感",
-      "黑暗場景帶入感強"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "恐怖橋段密集，怕嚇先評估",
-      "漏掉小細節會拖慢進度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4000,10 +3883,10 @@
     "story_summary": "《恐懼聖所》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-094",
@@ -4027,12 +3910,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "實體線索回饋清楚",
-      "情緒張力持續在線"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "黑暗環境可能放大緊張感",
-      "資訊量大時容易忽略小線索"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4040,10 +3923,10 @@
     "story_summary": "《噬魂之夜》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-095",
@@ -4067,12 +3950,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "機關與劇情互相呼應",
-      "驚嚇與解謎互相推進"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "怕驚嚇者建議先看分級",
-      "部分關卡需要反覆確認假設"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4080,10 +3963,10 @@
     "story_summary": "《惡靈詛咒》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-096",
@@ -4107,12 +3990,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "操作感比純紙筆更強",
-      "喜歡拆線索的玩家會上癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "對首次挑戰者較有壓力",
-      "不熟悉解謎分工可能較吃力"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4120,10 +4003,10 @@
     "story_summary": "《叢林探險》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-097",
@@ -4147,12 +4030,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "場景互動點分布自然",
-      "氣氛音效加深沉浸感"
+      "全機關老手大推",
+      "沉浸式場景神還原"
     ],
     "cons": [
-      "恐怖演出比例偏高",
-      "遇到卡關要及早整理已知資訊"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4160,10 +4043,10 @@
     "story_summary": "《喋血病院》的異象一步步逼近，團隊得在緊繃氣氛裡找線索、破謎題，趕在恐怖真相現形前逃出去。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-098",
@@ -4187,12 +4070,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "解鎖瞬間很有成就感",
-      "高難度團隊討論很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "解題節奏可能因討論變慢",
-      "推理路線可能需要多次修正"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4200,10 +4083,10 @@
     "story_summary": "《拆解核危機》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-099",
@@ -4227,12 +4110,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "手作機關細節有誠意",
-      "反轉燒腦很過癮"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "不喜歡長時間推理者先評估",
-      "細節觀察不足會影響後續進度"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4240,10 +4123,10 @@
     "story_summary": "《賽博龐克》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   },
   {
     "id": "popular-100",
@@ -4267,12 +4150,12 @@
     ],
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "pros": [
-      "喜歡動手探索會加分",
-      "線索串起來很有成就感"
+      "全機關老手大推",
+      "劇情反轉超燒腦"
     ],
     "cons": [
-      "部分謎題較跳躍，要多討論",
-      "高難度團隊要預留討論時間"
+      "部分謎題較困難",
+      "新手容易卡關"
     ],
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
@@ -4280,9 +4163,9 @@
     "story_summary": "《夢境駭客Ⅰ》把線索藏在看似平常的細節裡，只有把每個疑點串起來，才有機會破解反轉、找到真正的出口。",
     "story_summary_provenance": "editorial_fallback_inferred_from_theme_metadata",
     "story_summary_source_urls": [],
-    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；主題時間與場次資訊請以店家官網為主。",
+    "story_summary_note": "此為編輯部導覽短評，非官方逐字文案；人數、時間與場次資訊依官網公告。",
     "story_summary_source_excerpt": null,
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "優缺點為編輯部依公開主題資訊與導覽分級整理，非逐字玩家評論或官方評分。"
+    "tag_provenance_note": "優缺點依公開主題屬性、編輯部導覽分級與店家評價資料配對；未引用或捏造 Dcard、PTT 玩家發言。"
   }
 ]

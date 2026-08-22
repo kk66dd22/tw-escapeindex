@@ -18,7 +18,7 @@
         "brain": 4,
         "styles": [
           "機關解謎",
-          "沉浸劇情"
+          "沉浸式劇情"
         ]
       },
       {
@@ -159,7 +159,7 @@
         "brain": 4,
         "styles": [
           "恐怖驚悚",
-          "沉浸劇情"
+          "沉浸式劇情"
         ]
       },
       {
@@ -214,7 +214,7 @@
         "brain": 4,
         "styles": [
           "日系解謎",
-          "沉浸劇情"
+          "沉浸式劇情"
         ]
       },
       {
@@ -298,7 +298,7 @@
         "horror": 4,
         "brain": 4,
         "styles": [
-          "沉浸劇情",
+          "沉浸式劇情",
           "恐怖驚悚"
         ]
       }
@@ -338,7 +338,7 @@
     "google_rating": null,
     "rating_source": "尚未從穩定公開頁面核對",
     "rating_checked_at": "2026-08-19",
-    "rating_note": "官方頁面提供館別、主題與人數，星等保留待核對",
+    "rating_note": "官方頁面提供館別、主題與人數，星等保留依官網公告",
     "themes": [
       {
         "name": "武仁新村",
@@ -357,7 +357,7 @@
         "brain": 4,
         "styles": [
           "日式校舍",
-          "沉浸劇情"
+          "沉浸式劇情"
         ]
       },
       {
@@ -401,7 +401,7 @@
     "google_rating": null,
     "rating_source": "尚未從穩定公開頁面核對",
     "rating_checked_at": "2026-08-19",
-    "rating_note": "官方頁面提供主題、人數與難度標示，星等保留待核對",
+    "rating_note": "官方頁面提供主題、人數與難度標示，星等保留依官網公告",
     "themes": [
       {
         "name": "解鑰",
@@ -464,7 +464,7 @@
     "google_rating": null,
     "rating_source": "官方頁面未提供穩定 Google 星等數值",
     "rating_checked_at": "2026-08-19",
-    "rating_note": "官方頁面提供主題、時長、人數、分館與玩家心得；星等保留待核對",
+    "rating_note": "官方頁面提供主題、時長、人數、分館與玩家心得；星等保留依官網公告",
     "themes": [
       {
         "name": "魅妄廟",
@@ -527,7 +527,7 @@
     "google_rating": null,
     "rating_source": "尚未從穩定公開頁面核對",
     "rating_checked_at": "2026-08-19",
-    "rating_note": "官方頁面提供多館地址，星等保留待核對",
+    "rating_note": "官方頁面提供多館地址，星等保留依官網公告",
     "themes": [
       {
         "name": "許多門主題選集",
@@ -580,7 +580,7 @@
     "google_rating": null,
     "rating_source": "尚未從穩定公開頁面核對",
     "rating_checked_at": "2026-08-19",
-    "rating_note": "官方頁面提供創始館地址與品牌主題資訊，星等保留待核對",
+    "rating_note": "官方頁面提供創始館地址與品牌主題資訊，星等保留依官網公告",
     "themes": [
       {
         "name": "神不在場",
@@ -598,7 +598,7 @@
         "horror": 4,
         "brain": 4,
         "styles": [
-          "沉浸劇情",
+          "沉浸式劇情",
           "高壓任務"
         ]
       }
@@ -662,7 +662,7 @@
         "brain": 4,
         "styles": [
           "罪與罰",
-          "沉浸劇情"
+          "沉浸式劇情"
         ]
       }
     ],
