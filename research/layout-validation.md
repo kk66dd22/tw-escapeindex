@@ -72,3 +72,5 @@ Playwright 驗收結果：1280px 與 375px 的最小可見字級、搜尋字級�
 卡片評分顯示改為「⭐ X.X 工作室評分」。優缺點區依實際標籤數量顯示，單側資料會橫跨整張卡片，長標籤列使用 `overflow-x-auto` 與可見的 thin scrollbar。新增每張卡片愛心按鈕、篩選列「我的最愛」計數與只看收藏模式，收藏 ID 透過 `localStorage` 鍵 `taiwan-escape-favorites:v1` 持久保存。上一頁、下一頁與直接頁碼切換後會平滑捲到 `#catalog-grid`，實測第一張卡片頂端為 125px，位於黏性篩選列下方。
 
 最終驗收：TypeScript 通過；Vitest 共 4 個測試檔、8 個測試通過；production build 通過。Playwright 驗證收藏切換、重新整理後持久化、只看收藏、標籤 scrollbar 與分頁定位均通過，1891／1280／768／375px 的 `scrollWidth` 均等於 viewport 寬度，沒有整頁水平溢出。
+
+本輪自動發布 checkpoint：`06bbb9e5`。
