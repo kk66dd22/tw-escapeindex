@@ -3,6 +3,7 @@
  * Content model: 一張卡片 = 一個可被比較、收藏與預約的密室主題。
  */
 import { FAVORITES_STORAGE_KEY, parseFavoriteIds, serializeFavoriteIds, toggleFavoriteId } from "@/lib/favorites";
+import { HERO_COPY } from "@/lib/heroCopy";
 import {
   ArrowDownUp,
   ArrowUp,
@@ -148,7 +149,7 @@ export default function Home() {
             <a href="#catalog" className="hover:text-[#c89b5c]">主題目錄</a>
             <a href="#method" className="hover:text-[#c89b5c]">評比方法</a>
           </nav>
-          <div className="font-mono text-xs tracking-widest text-white/40 sm:text-sm">ROOM FILE / 03</div>
+          <div className="font-mono text-xs tracking-widest text-white/40 sm:text-sm">{HERO_COPY.archiveLabel}</div>
         </div>
       </header>
 
@@ -159,13 +160,13 @@ export default function Home() {
           <div className="mx-auto grid min-h-[600px] max-w-[1400px] items-end gap-12 px-5 pb-16 pt-20 lg:grid-cols-[1fr_360px] lg:px-10 lg:pb-24">
             <div className="relative max-w-3xl">
               <div className="mb-7 flex items-center gap-3 font-mono text-xs uppercase tracking-[.3em] text-[#c89b5c] sm:text-sm">
-                <span className="h-px w-10 bg-[#c89b5c]" /> 台灣密室逃脫／主題索引 03
+                <span className="h-px w-10 bg-[#c89b5c]" /> {HERO_COPY.radarLabel}
               </div>
               <h1 className="font-serif text-5xl font-black leading-[.98] tracking-tight text-[#f3efe7] sm:text-7xl lg:text-[92px]">
-                先選一場，<br /><em className="font-normal text-[#c89b5c]">再決定去哪裡。</em>
+                {HERO_COPY.headlineFirst}<br /><em className="font-normal text-[#c89b5c]">{HERO_COPY.headlineSecond}</em>
               </h1>
               <p className="mt-8 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
-                別急著先找店家，先挑出今晚真正想玩的主題。全台 {topics.length} 場高評價密室，讓你一次比清楚。
+                {HERO_COPY.subtitle}
               </p>
             </div>
             <aside className="hidden border-l border-[#c89b5c]/50 pl-7 lg:block">
