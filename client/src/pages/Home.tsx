@@ -4,6 +4,16 @@
  */
 import { FAVORITES_STORAGE_KEY, parseFavoriteIds, serializeFavoriteIds, toggleFavoriteId } from "@/lib/favorites";
 import { HERO_COPY } from "@/lib/heroCopy";
+import { pageForItem, pickRandom } from "@/lib/randomPick";
+import { isTopicJumpReady, needsTopicPageChange, prepareTopicJump, type TopicJumpTarget } from "@/lib/topicJump";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   ArrowDownUp,
   ArrowUp,
@@ -11,6 +21,7 @@ import {
   Check,
   Clock3,
   Compass,
+  Dices,
   ExternalLink,
   Flame,
   Heart,
@@ -19,14 +30,15 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import topics from "../../../data/topics.json";
 
 type Filter = "all" | "2-4" | "5-plus" | "beginner" | "brainy" | "horror" | "puzzle";
 type SortMode = "rating" | "horror" | "brain";
+type TopicJumpRequest = ReturnType<typeof prepareTopicJump>;
 
 const PAGE_SIZE = 10;
-const cityFilters = ["全台", "台北市", "台中市", "嘉義市", "台南市", "高雄市"] as const;
+const cityFilters = ["全台", "台北市", "新北市", "台中市", "台南市", "高雄市"] as const;
 const filters: { id: Filter; label: string }[] = [
   { id: "all", label: "全部主題" },
   { id: "2-4", label: "2–4 人" },
@@ -44,6 +56,10 @@ function playerBounds(value: string) {
 
 function playerLabel(value: string) {
   return /\d/.test(value) ? `${value}人` : "依官網公告";
+}
+
+function locationLabel(city: string, district: string) {
+  return district.includes("／") ? `${city.replace("市", "")}／據點依官網公告` : `${city.replace("市", "")}／${district}`;
 }
 
 function matchesFilter(topic: (typeof topics)[number], filter: Filter) {
@@ -68,8 +84,19 @@ export default function Home() {
     typeof window === "undefined" ? new Set() : parseFavoriteIds(window.localStorage.getItem(FAVORITES_STORAGE_KEY)),
   );
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [isRandomDialogOpen, setIsRandomDialogOpen] = useState(false);
+  const [isDrawingRandom, setIsDrawingRandom] = useState(false);
+  const [isJumpingToTopic, setIsJumpingToTopic] = useState(false);
+  const [randomTopic, setRandomTopic] = useState<(typeof topics)[number] | null>(null);
+  const [focusedTopicId, setFocusedTopicId] = useState<string | null>(null);
+  const [mountedJumpTopicId, setMountedJumpTopicId] = useState<string | null>(null);
+  const [topicJumpRequest, setTopicJumpRequest] = useState<TopicJumpRequest | null>(null);
+  const [pendingTopicJump, setPendingTopicJump] = useState<TopicJumpTarget | null>(null);
   const catalogGridRef = useRef<HTMLDivElement>(null);
+  const filterBarRef = useRef<HTMLElement>(null);
+  const targetCardRef = useRef<HTMLElement | null>(null);
   const shouldScrollToGrid = useRef(false);
+  const randomDrawTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const filtered = useMemo(() => {
     const matched = topics.filter((topic) => {
@@ -107,12 +134,109 @@ export default function Home() {
     shouldScrollToGrid.current = false;
     window.requestAnimationFrame(() => catalogGridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
   }, [page]);
+  useLayoutEffect(() => {
+    if (!topicJumpRequest || topicJumpRequest.targetPage !== page) return;
+
+    const target = targetCardRef.current;
+    if (!isTopicJumpReady({
+      dialogOpen: isRandomDialogOpen,
+      currentPage: page,
+      request: topicJumpRequest,
+      targetAttached: Boolean(target),
+    })) {
+      if (topicJumpRequest.attempts < 45) {
+        const retryFrame = window.requestAnimationFrame(() => {
+          setTopicJumpRequest((current) => current ? { ...current, attempts: current.attempts + 1 } : null);
+        });
+        return () => window.cancelAnimationFrame(retryFrame);
+      }
+      setIsJumpingToTopic(false);
+      setTopicJumpRequest(null);
+      return;
+    }
+    if (!target) {
+      return;
+    }
+
+    let previousHeight = 0;
+    let stableFrames = 0;
+    let waitFrames = 0;
+    let frameId = 0;
+    const desiredTop = () => (filterBarRef.current?.offsetHeight ?? 0) + 20;
+    const finish = () => {
+      setFocusedTopicId(topicJumpRequest.topicId);
+      setTopicJumpRequest(null);
+      setIsJumpingToTopic(false);
+    };
+    let alignedFrames = 0;
+    const confirmPosition = (attempt: number) => {
+      const offset = target.getBoundingClientRect().top - desiredTop();
+      if (Math.abs(offset) <= 1) {
+        alignedFrames += 1;
+      } else {
+        alignedFrames = 0;
+        window.scrollTo({ top: window.scrollY + offset, behavior: "auto" });
+      }
+      if (alignedFrames >= 3 || attempt >= 90) {
+        finish();
+        return;
+      }
+      frameId = window.requestAnimationFrame(() => confirmPosition(attempt + 1));
+    };
+    const waitForStableLayout = () => {
+      const currentHeight = document.documentElement.scrollHeight;
+      stableFrames = currentHeight === previousHeight ? stableFrames + 1 : 0;
+      previousHeight = currentHeight;
+      waitFrames += 1;
+
+      if (stableFrames < 2 && waitFrames < 12) {
+        frameId = window.requestAnimationFrame(waitForStableLayout);
+        return;
+      }
+
+      const destination = window.scrollY + target.getBoundingClientRect().top - desiredTop();
+      window.scrollTo({ top: destination, behavior: "auto" });
+      frameId = window.requestAnimationFrame(() => confirmPosition(0));
+    };
+    frameId = window.requestAnimationFrame(waitForStableLayout);
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [isRandomDialogOpen, page, topicJumpRequest]);
+  useEffect(() => {
+    if (!isJumpingToTopic) return;
+    const htmlOverflowAnchor = document.documentElement.style.overflowAnchor;
+    const bodyOverflowAnchor = document.body.style.overflowAnchor;
+    document.documentElement.style.overflowAnchor = "none";
+    document.body.style.overflowAnchor = "none";
+    return () => {
+      document.documentElement.style.overflowAnchor = htmlOverflowAnchor;
+      document.body.style.overflowAnchor = bodyOverflowAnchor;
+    };
+  }, [isJumpingToTopic]);
   useEffect(() => {
     const handleScroll = () => setShowBackToTop(window.scrollY > 520);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => () => {
+    if (randomDrawTimer.current) clearTimeout(randomDrawTimer.current);
+  }, []);
+  useEffect(() => {
+    if (!focusedTopicId) return;
+    const timer = window.setTimeout(() => setFocusedTopicId(null), 1900);
+    return () => window.clearTimeout(timer);
+  }, [focusedTopicId]);
+  useEffect(() => {
+    if (isRandomDialogOpen || !pendingTopicJump) return;
+    let frameId = window.requestAnimationFrame(() => {
+      frameId = window.requestAnimationFrame(() => {
+        setTopicJumpRequest(prepareTopicJump(pendingTopicJump));
+        setPendingTopicJump(null);
+      });
+    });
+    return () => window.cancelAnimationFrame(frameId);
+  }, [isRandomDialogOpen, pendingTopicJump]);
 
   const toggleFilter = (filter: Filter) => {
     setActiveFilters((current) =>
@@ -132,6 +256,38 @@ export default function Home() {
     setQuery("");
     setShowFavoritesOnly(false);
   };
+  const drawRandomTopic = () => {
+    if (isDrawingRandom || isJumpingToTopic) return;
+    const chosenTopic = pickRandom(filtered);
+    if (randomDrawTimer.current) clearTimeout(randomDrawTimer.current);
+
+    setIsRandomDialogOpen(true);
+    setRandomTopic(null);
+    setIsDrawingRandom(Boolean(chosenTopic));
+
+    if (!chosenTopic) return;
+    randomDrawTimer.current = setTimeout(() => {
+      setRandomTopic(chosenTopic);
+      setIsDrawingRandom(false);
+    }, 620);
+  };
+  const viewRandomTopic = () => {
+    if (!randomTopic) return;
+
+    const targetPage = pageForItem(filtered, randomTopic, PAGE_SIZE);
+    if (!targetPage) return;
+
+    setFocusedTopicId(null);
+    setMountedJumpTopicId(null);
+    targetCardRef.current = null;
+    setIsJumpingToTopic(true);
+    setPendingTopicJump({ topicId: randomTopic.id, targetPage });
+    setIsRandomDialogOpen(false);
+    if (needsTopicPageChange(page, targetPage)) setPage(targetPage);
+  };
+  const handleRandomDialogCloseAutoFocus = (event: Event) => {
+    event.preventDefault();
+  };
 
   return (
     <div className="min-h-screen bg-[#0c0e0d] text-[#e8e4db] selection:bg-[#c89b5c] selection:text-[#0c0e0d]">
@@ -139,15 +295,15 @@ export default function Home() {
       <header className="relative z-10 border-b border-white/10 bg-[#0c0e0d]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
           <a href="#top" className="flex items-center gap-3">
-            <img src="/manus-storage/brand-sigil_8091f515.png" className="h-10 w-10 object-contain" alt="全台密室逃脫案件庫裂門圖騰" />
+            <img src="/manus-storage/brand-sigil_8091f515.png" className="h-10 w-10 object-contain" alt="全台密室逃脫精選導覽圖騰" />
             <span className="font-mono text-xs uppercase tracking-[.3em] text-[#c89b5c] sm:text-sm">
               The Escape Index<br />
-              <b className="font-sans text-sm tracking-[.16em] text-[#e8e4db]">全台密室逃脫案件庫</b>
+              <b className="font-sans text-sm tracking-[.16em] text-[#e8e4db]">全台密室逃脫精選導覽</b>
             </span>
           </a>
           <nav className="hidden items-center gap-8 font-mono text-xs uppercase tracking-[.2em] text-white/50 sm:text-sm md:flex">
-            <a href="#catalog" className="hover:text-[#c89b5c]">主題目錄</a>
-            <a href="#method" className="hover:text-[#c89b5c]">評比方法</a>
+            <a href="#catalog" className="hover:text-[#c89b5c]">主題篩選</a>
+            <a href="#method" className="hover:text-[#c89b5c]">挑選指南</a>
           </nav>
           <div className="font-mono text-xs tracking-widest text-white/40 sm:text-sm">{HERO_COPY.archiveLabel}</div>
         </div>
@@ -155,9 +311,9 @@ export default function Home() {
 
       <main id="top" className="relative z-10">
         <section className="relative overflow-hidden border-b border-white/10">
-          <img src="/manus-storage/hero-night-alley_363700f4.png" alt="夜晚台灣城市巷弄中的神秘入口" className="absolute inset-0 h-full w-full object-cover opacity-55" />
+          <img src="/manus-storage/hero-night-alley-clean_45b950d0.png" alt="夜晚台灣城市巷弄中的神秘入口" className="absolute inset-0 h-full w-full object-cover opacity-55" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0c0e0d] via-[#0c0e0d]/80 to-transparent" />
-          <div className="mx-auto grid min-h-[600px] max-w-[1400px] items-end gap-12 px-5 pb-16 pt-20 lg:grid-cols-[1fr_360px] lg:px-10 lg:pb-24">
+          <div className="mx-auto flex min-h-[600px] max-w-[1400px] items-end px-5 pb-16 pt-20 lg:px-10 lg:pb-24">
             <div className="relative max-w-3xl">
               <div className="mb-7 flex items-center gap-3 font-mono text-xs uppercase tracking-[.3em] text-[#c89b5c] sm:text-sm">
                 <span className="h-px w-10 bg-[#c89b5c]" /> {HERO_COPY.radarLabel}
@@ -168,19 +324,21 @@ export default function Home() {
               <p className="mt-8 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
                 {HERO_COPY.subtitle}
               </p>
+              <button
+                id="random-draw"
+                type="button"
+                onClick={drawRandomTopic}
+                disabled={filtered.length === 0 || isDrawingRandom || isJumpingToTopic}
+                className="group mt-8 inline-flex items-center gap-3 border border-[#c89b5c]/80 bg-[#151917]/85 px-5 py-3 font-mono text-xs tracking-[.16em] text-[#f3efe7] shadow-[0_10px_28px_rgba(0,0,0,.35)] backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:bg-[#c89b5c] hover:text-[#0c0e0d] disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none sm:text-sm"
+              >
+                <Dices size={20} className="text-[#c89b5c] transition group-hover:rotate-12 group-hover:text-[#0c0e0d]" />
+                <span className="text-left"><b className="block font-sans text-sm tracking-normal">{isJumpingToTopic ? "正在帶你前往主題…" : "今天玩什麼？"}</b><span className="text-white/50 group-hover:text-[#0c0e0d]/70">{isJumpingToTopic ? "請稍候" : "依目前篩選隨機盲抽"}</span></span>
+              </button>
             </div>
-            <aside className="hidden border-l border-[#c89b5c]/50 pl-7 lg:block">
-              <div className="mb-10 font-mono text-xs uppercase tracking-[.25em] text-white/40 sm:text-sm">資料快照</div>
-              <div className="space-y-7 font-mono">
-                <Stat value={topics.length} label="收錄主題" />
-                <Stat value="05" label="收錄城市" />
-                <Stat value="07" label="篩選條件" />
-              </div>
-            </aside>
           </div>
         </section>
 
-        <section className="sticky top-0 z-20 border-b border-white/10 bg-[#111412]/95 backdrop-blur-xl">
+        <section ref={filterBarRef} className="sticky top-0 z-20 border-b border-white/10 bg-[#111412]/95 backdrop-blur-xl">
           <div className="mx-auto flex w-full min-w-0 max-w-none items-center gap-3 overflow-x-auto px-4 py-4 lg:px-8">
             <span className="mr-2 shrink-0 font-mono text-xs uppercase tracking-[.25em] text-[#c89b5c] sm:text-sm">地區／</span>
             <div className="flex shrink-0 items-center gap-1 border-r border-white/10 pr-4">
@@ -215,10 +373,10 @@ export default function Home() {
         <section id="catalog" className="mx-auto w-full max-w-none px-4 py-20 lg:px-8 lg:py-28">
           <div className="mb-14 flex items-end justify-between gap-5">
             <div>
-              <div className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[.3em] text-[#5e8b92] sm:text-sm"><span className="h-px w-8 bg-[#5e8b92]" /> 主題檔案</div>
-              <h2 className="font-serif text-4xl font-bold text-[#f3efe7] sm:text-5xl">每一場，單獨比較。<br /><span className="text-white/45">找到你的今晚。</span></h2>
+              <div className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[.3em] text-[#5e8b92] sm:text-sm"><span className="h-px w-8 bg-[#5e8b92]" /> 主題資料庫</div>
+              <h2 className="font-serif text-4xl font-bold text-[#f3efe7] sm:text-5xl">一場一場比較。<br /><span className="text-white/45">找到今晚想玩的主題。</span></h2>
             </div>
-            <div className="hidden text-right font-mono text-xs leading-6 tracking-wider text-white/35 sm:block sm:text-sm">最近整理<br />2026.08 / 主題優先</div>
+            <div className="hidden text-right font-mono text-xs leading-6 tracking-wider text-white/35 sm:block sm:text-sm">資料整理<br />2026 年 8 月</div>
           </div>
 
           <div className="mb-10 max-w-2xl">
@@ -228,7 +386,7 @@ export default function Home() {
               <input id="catalog-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜尋主題、店家、城市或風格..." className="w-full border border-white/15 bg-[#151917] py-3.5 pl-11 pr-12 font-sans text-sm text-white outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c]/40" />
               {query && <button type="button" aria-label="清除關鍵字" title="清除關鍵字" onClick={() => setQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-white/45 transition hover:text-[#c89b5c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]"><X size={15} /></button>}
             </div>
-            <div className="mt-2 font-mono text-xs tracking-wider text-white/35 sm:text-sm">即時搜尋主題、店家、城市或風格 · 找到 {filtered.length} 筆</div>
+            <div className="mt-2 font-mono text-xs tracking-wider text-white/35 sm:text-sm">可搜尋主題、店家、城市或風格 · 找到 {filtered.length} 個主題</div>
           </div>
 
           {filtered.length === 0 ? (
@@ -246,6 +404,13 @@ export default function Home() {
                     topic={topic}
                     index={(page - 1) * PAGE_SIZE + index}
                     isFavorite={favoriteIds.has(topic.id)}
+                    isFocused={focusedTopicId === topic.id}
+                    isJumpRefMounted={topic.id === mountedJumpTopicId}
+                    onCardRef={topic.id === topicJumpRequest?.topicId ? (element) => {
+                      if (!element) return;
+                      targetCardRef.current = element;
+                      setMountedJumpTopicId(topic.id);
+                    } : undefined}
                     onToggleFavorite={() => toggleFavorite(topic.id)}
                   />
                 ))}
@@ -273,21 +438,70 @@ export default function Home() {
         <section id="method" className="border-y border-white/10 bg-[#111412] py-20">
           <div className="mx-auto grid max-w-[1400px] gap-12 px-5 lg:grid-cols-[.8fr_1.2fr] lg:px-10">
             <div>
-              <div className="mb-4 font-mono text-xs uppercase tracking-[.3em] text-[#c89b5c] sm:text-sm">01 / Method</div>
-              <h2 className="font-serif text-4xl font-bold">主題先行。<br /><span className="text-white/45">店家只是座標。</span></h2>
+              <div className="mb-4 font-mono text-xs uppercase tracking-[.3em] text-[#c89b5c] sm:text-sm">CHOOSING GUIDE</div>
+              <h2 className="font-serif text-4xl font-bold">先選主題。<br /><span className="text-white/45">再找適合的店家。</span></h2>
             </div>
             <div className="grid gap-8 sm:grid-cols-3">
               <Method icon={<Users size={20} />} title="先看人數">先確認適合幾個人一起玩，再挑最對味的主題。</Method>
-              <Method icon={<Flame size={20} />} title="看懂刺激度">恐怖與燒腦分開標記，跨店家資訊比對完整度高，挑起來更直覺。</Method>
-              <Method icon={<Check size={20} />} title="直接預約">每張卡都連到店家官方預約入口，活動檔期與票價請見官方公告。</Method>
+              <Method icon={<Flame size={20} />} title="比較刺激度">恐怖度與燒腦度分開標示，跨店家比較更直覺。</Method>
+              <Method icon={<Check size={20} />} title="前往官方預約">每張卡都連到店家官方預約頁，活動檔期與票價依官網公告。</Method>
             </div>
           </div>
         </section>
       </main>
 
+      <Dialog open={isRandomDialogOpen} onOpenChange={setIsRandomDialogOpen}>
+        <DialogContent
+          showCloseButton={!isDrawingRandom}
+          className="border-[#c89b5c]/55 bg-[#101311] p-0 text-[#f3efe7] shadow-[0_28px_90px_rgba(0,0,0,.7)]"
+          onCloseAutoFocus={handleRandomDialogCloseAutoFocus}
+        >
+          <div className="border-b border-[#c89b5c]/25 bg-[radial-gradient(circle_at_top_right,rgba(200,155,92,.18),transparent_50%)] p-7 sm:p-8">
+            <DialogHeader className="text-left">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center border border-[#c89b5c]/60 bg-[#0c0e0d] text-[#c89b5c]">
+                <Dices size={24} className={isDrawingRandom ? "animate-spin" : ""} />
+              </div>
+              <DialogTitle className="font-serif text-3xl text-[#f3efe7]">{isDrawingRandom ? "正在為你挑選今晚的主題…" : "今晚，就玩這一場。"}</DialogTitle>
+              <DialogDescription className="mt-2 text-sm leading-6 text-white/55">
+                {isDrawingRandom ? `從目前 ${filtered.length} 個符合條件的主題中盲抽中。` : "結果只根據你現在的地區、主題與收藏篩選，不加入任何置入推薦。"}
+              </DialogDescription>
+            </DialogHeader>
+          </div>
+
+          <div className="p-7 sm:p-8">
+            {isDrawingRandom ? (
+              <div className="flex min-h-48 flex-col items-center justify-center text-center">
+                <div className="mb-6 h-14 w-14 animate-spin rounded-full border-2 border-[#c89b5c]/20 border-t-[#c89b5c]" />
+                <p className="font-mono text-xs tracking-[.2em] text-[#c89b5c]">正在盲抽符合條件的主題</p>
+              </div>
+            ) : randomTopic ? (
+              <div id="random-draw-result" className="border border-white/10 bg-[#151917] p-5">
+                <div className="mb-4 flex items-center justify-between gap-4 font-mono text-xs tracking-wider text-[#5e8b92]">
+                  <span>{randomTopic.venue_name}</span><span>{locationLabel(randomTopic.city, randomTopic.district)}</span>
+                </div>
+                <h3 className="font-serif text-4xl font-bold text-[#f3efe7]">《{randomTopic.name}》</h3>
+                <p className="mt-4 border-l-2 border-[#c89b5c]/50 pl-3 text-sm leading-7 text-white/60">{randomTopic.story_summary}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {randomTopic.styles.slice(0, 3).map((style) => <span key={style} className="border border-[#5e8b92]/35 bg-[#202925] px-2 py-1 font-mono text-xs text-[#b7cdc7]">{style}</span>)}
+                </div>
+              </div>
+            ) : (
+              <div id="random-draw-empty" className="min-h-44 border border-dashed border-white/20 p-7 text-center text-sm leading-7 text-white/60">目前篩選條件沒有符合的主題。先調整地區、主題或我的最愛篩選，再試一次。</div>
+            )}
+          </div>
+
+          {!isDrawingRandom && (
+            <DialogFooter className="border-t border-white/10 px-7 py-5 sm:px-8">
+              <button type="button" onClick={drawRandomTopic} className="border border-[#c89b5c]/70 px-4 py-2.5 font-mono text-xs tracking-wider text-[#c89b5c] transition hover:bg-[#c89b5c] hover:text-[#0c0e0d]">再抽一次</button>
+              {randomTopic && <button type="button" onClick={viewRandomTopic} className="inline-flex items-center justify-center bg-[#c89b5c] px-4 py-2.5 font-mono text-xs font-bold tracking-wider text-[#0c0e0d] transition hover:bg-[#e0bd83]">查看主題</button>}
+            </DialogFooter>
+          )}
+        </DialogContent>
+      </Dialog>
+
       <footer className="border-t border-white/10 px-5 py-8 lg:px-10">
         <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-4 font-mono text-xs uppercase tracking-[.2em] text-white/35 sm:flex-row sm:text-sm">
-          <span>© 2026 The Escape Index / Taiwan</span><span>給喜歡探索的團隊</span>
+          <span>© 2026 The Escape Index · Taiwan</span><span>為喜歡解謎的團隊而設</span>
         </div>
       </footer>
       {showBackToTop && <button type="button" aria-label="回到頂部" title="回到頂部" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-5 right-5 z-30 flex h-12 w-12 items-center justify-center border border-[#c89b5c]/70 bg-[#151917]/95 text-[#c89b5c] shadow-[0_8px_30px_rgba(0,0,0,.45)] backdrop-blur-md transition duration-200 hover:-translate-y-1 hover:bg-[#c89b5c] hover:text-[#0c0e0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0e0d] motion-reduce:transition-none"><ArrowUp size={18} strokeWidth={1.8} /></button>}
@@ -295,15 +509,11 @@ export default function Home() {
   );
 }
 
-function Stat({ value, label }: { value: React.ReactNode; label: string }) {
-  return <div><div className="text-4xl text-[#c89b5c]">{value}</div><div className="mt-1 text-xs uppercase tracking-widest text-white/45 sm:text-sm">{label}</div></div>;
-}
-
 function Method({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) {
   return <div><div className="mb-5 text-[#c89b5c]">{icon}</div><h3 className="mb-2 font-bold">{title}</h3><p className="text-sm leading-7 text-white/45">{children}</p></div>;
 }
 
-function TopicCard({ topic, index, isFavorite, onToggleFavorite }: { topic: (typeof topics)[number]; index: number; isFavorite: boolean; onToggleFavorite: () => void }) {
+function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = false, isJumpRefMounted = false, onCardRef }: { topic: (typeof topics)[number]; index: number; isFavorite: boolean; onToggleFavorite: () => void; isFocused?: boolean; isJumpRefMounted?: boolean; onCardRef?: (element: HTMLElement | null) => void }) {
   const image = index % 3 === 0
     ? "/manus-storage/card-archival-room_28840e3c.png"
     : index % 3 === 1
@@ -313,12 +523,12 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite }: { topic: (typ
   const hasCons = topic.cons.length > 0;
 
   return (
-    <article data-topic-id={topic.id} style={{ contentVisibility: "auto", containIntrinsicSize: "420px" }} className="group flex min-h-[470px] flex-col overflow-hidden border border-white/10 bg-[#151917] transition duration-300 hover:-translate-y-1 hover:border-[#c89b5c]/70">
+    <article ref={onCardRef} id={`topic-${topic.id}`} data-topic-id={topic.id} data-jump-ref={isJumpRefMounted ? "mounted" : undefined} className={`group flex min-h-[470px] flex-col overflow-hidden border bg-[#151917] transition duration-300 hover:-translate-y-1 hover:border-[#c89b5c]/70 ${isFocused ? "border-[#c89b5c] ring-2 ring-[#c89b5c]/70 ring-offset-4 ring-offset-[#0c0e0d]" : "border-white/10"}`}>
       <div className="relative h-52 overflow-hidden">
         <img src={image} alt={`${topic.name} 主題氛圍`} className="h-full w-full object-cover opacity-65 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-85" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#151917] via-transparent to-transparent" />
         <span className="absolute left-4 top-4 border border-[#c89b5c]/60 bg-[#0c0e0d]/85 px-2 py-1 font-mono text-xs tracking-[.2em] text-[#c89b5c] sm:text-sm">ROOM {String(index + 1).padStart(2, "0")}</span>
-        <span className="absolute right-4 top-4 bg-[#0c0e0d]/80 px-2 py-1 font-mono text-xs tracking-wider text-white/60 sm:text-sm">{topic.city.replace("市", "")} / {topic.district}</span>
+        <span className="absolute right-4 top-4 bg-[#0c0e0d]/80 px-2 py-1 font-mono text-xs tracking-wider text-white/60 sm:text-sm">{locationLabel(topic.city, topic.district)}</span>
         <button type="button" aria-label={isFavorite ? `取消收藏 ${topic.name}` : `收藏 ${topic.name}`} aria-pressed={isFavorite} title={isFavorite ? "取消收藏" : "加入我的最愛"} onClick={onToggleFavorite} className={`absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full border backdrop-blur-md transition active:scale-95 ${isFavorite ? "border-rose-300 bg-rose-400 text-[#151917] shadow-[0_0_18px_rgba(251,113,133,.45)]" : "border-white/25 bg-[#0c0e0d]/75 text-white/70 hover:border-rose-300 hover:text-rose-300"}`}>
           <Heart size={19} fill={isFavorite ? "currentColor" : "none"} />
         </button>
@@ -346,12 +556,12 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite }: { topic: (typ
         </div>
         {(hasPros || hasCons) && (
           <div className="mt-4 grid min-w-0 grid-cols-1 gap-3 text-xs sm:grid-cols-2 sm:text-sm">
-            {hasPros && <TagPanel title="👍 優點標籤" tags={topic.pros} tone="pro" fullWidth={!hasCons} />}
-            {hasCons && <TagPanel title="👎 缺點標籤" tags={topic.cons} tone="con" fullWidth={!hasPros} />}
+            {hasPros && <TagPanel title="導覽重點" tags={topic.pros} tone="pro" fullWidth={!hasCons} />}
+            {hasCons && <TagPanel title="遊玩提醒" tags={topic.cons} tone="con" fullWidth={!hasPros} />}
           </div>
         )}
         <a href={topic.booking_url} target="_blank" rel="noreferrer" className="mt-6 flex w-full items-center justify-between rounded-lg bg-[#c89b5c] px-5 py-4 font-mono text-xs font-bold tracking-wider text-[#0c0e0d] transition hover:bg-[#e0bd83] active:scale-[.98] sm:text-sm">
-          立即預約此主題（享獨家優惠）<ExternalLink size={15} />
+          前往官方預約頁<ExternalLink size={15} />
         </a>
       </div>
     </article>
