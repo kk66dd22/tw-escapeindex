@@ -6,6 +6,7 @@ import { FAVORITES_STORAGE_KEY, parseFavoriteIds, serializeFavoriteIds, toggleFa
 import { HERO_COPY } from "@/lib/heroCopy";
 import { pageForItem, pickRandom } from "@/lib/randomPick";
 import { isTopicJumpReady, needsTopicPageChange, prepareTopicJump, type TopicJumpTarget } from "@/lib/topicJump";
+import SiteFooter from "@/components/SiteFooter";
 import {
   Dialog,
   DialogContent,
@@ -499,11 +500,7 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      <footer className="border-t border-white/10 px-5 py-8 lg:px-10">
-        <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-4 font-mono text-xs uppercase tracking-[.2em] text-white/35 sm:flex-row sm:text-sm">
-          <span>© 2026 The Escape Index · Taiwan</span><span>為喜歡解謎的團隊而設</span>
-        </div>
-      </footer>
+      <SiteFooter />
       {showBackToTop && <button type="button" aria-label="回到頂部" title="回到頂部" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-5 right-5 z-30 flex h-12 w-12 items-center justify-center border border-[#c89b5c]/70 bg-[#151917]/95 text-[#c89b5c] shadow-[0_8px_30px_rgba(0,0,0,.45)] backdrop-blur-md transition duration-200 hover:-translate-y-1 hover:bg-[#c89b5c] hover:text-[#0c0e0d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0e0d] motion-reduce:transition-none"><ArrowUp size={18} strokeWidth={1.8} /></button>}
     </div>
   );

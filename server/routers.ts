@@ -2,6 +2,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
+import { createContactMessage } from "./db";
 import { searchEscapeVenues } from "./places";
 import { z } from "zod";
 
@@ -23,6 +24,25 @@ export const appRouter = router({
     searchEscapeVenues: adminProcedure
       .input(z.object({ query: z.string().trim().min(2).max(80) }))
       .query(({ input }) => searchEscapeVenues(input.query)),
+  }),
+
+  contact: router({
+    submit: publicProcedure
+      .input(z.object({
+        name: z.string().trim().max(120).optional(),
+        email: z.string().trim().email().max(320).optional().or(z.literal("")),
+        subject: z.string().trim().min(1).max(80),
+        message: z.string().trim().min(10).max(5000),
+      }))
+      .mutation(async ({ input }) => {
+        await createContactMessage({
+          name: input.name || null,
+          email: input.email || null,
+          subject: input.subject,
+          message: input.message,
+        });
+        return { success: true } as const;
+      }),
   }),
 });
 
