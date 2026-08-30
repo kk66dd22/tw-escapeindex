@@ -2,7 +2,7 @@ import fs from "node:fs";
 
 const topics = JSON.parse(fs.readFileSync(new URL("../data/topics.json", import.meta.url), "utf8"));
 const home = fs.readFileSync(new URL("../client/src/pages/Home.tsx", import.meta.url), "utf8");
-if (topics.length !== 112) throw new Error(`Expected 112 topics, got ${topics.length}`);
+if (topics.length !== 114) throw new Error(`Expected 114 topics, got ${topics.length}`);
 const serialized = JSON.stringify(topics);
 for (const forbidden of ["符核對", "符核", "待核對", "依官網為主", "活動活動", "沉浸劇情"]) {
   if (serialized.includes(forbidden) || home.includes(forbidden)) throw new Error(`Forbidden copy remains: ${forbidden}`);

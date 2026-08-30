@@ -30,5 +30,5 @@ for (const change of [
   if (page !== 1) throw new Error("條件變更後未回到第 1 頁");
 }
 
-if (topics.length !== 112 || pageCount !== 12) throw new Error("112 筆資料未形成 12 頁");
+if (topics.length !== 114 || pageCount !== 12) throw new Error("114 筆資料未形成 12 頁");
 console.log(JSON.stringify({ topics: topics.length, pageCount, resetCases: 4, mobileOverflowGuard: "overflow-x-auto" }, null, 2));

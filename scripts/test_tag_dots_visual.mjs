@@ -2,7 +2,7 @@ import { chromium } from "playwright";
 import fs from "node:fs";
 
 const topics = JSON.parse(fs.readFileSync(new URL("../data/topics.json", import.meta.url), "utf8"));
-if (topics.length !== 112) throw new Error(`Expected 112 topics, got ${topics.length}`);
+if (topics.length !== 114) throw new Error(`Expected 114 topics, got ${topics.length}`);
 const allTags = topics.flatMap((topic) => [...topic.pros, ...topic.cons]);
 const uniqueTags = new Set(allTags).size;
 if (uniqueTags < 100) throw new Error(`Expected at least 100 unique tags, got ${uniqueTags}`);

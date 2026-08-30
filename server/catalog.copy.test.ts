@@ -26,7 +26,7 @@ const allowedCons = new Set([
 
 describe("catalog copy localization", () => {
   it("uses only the approved optional tag vocabulary", () => {
-    expect(topics).toHaveLength(112);
+    expect(topics).toHaveLength(114);
     const requestedTopics = [
       ["冥婚", "頭癮創意遊戲（西門店）"],
       ["黃道追弒", "頭癮創意遊戲（西門店）"],
@@ -40,6 +40,9 @@ describe("catalog copy localization", () => {
       ["深夜拉麵鋪", "QhAt 帽子烤密室工廠"],
       ["巴貝時空工作室", "LOST Taiwan（台北站前店）"],
       ["復活節島", "LOST Taiwan（台北站前店）"],
+      ["失落的隕石神殿", "神不在場實境遊戲｜台中旗艦館"],
+      ["重返糖果屋", "神不在場實境遊戲｜台中旗艦館"],
+      ["神不在場", "神不在場實境遊戲｜台南館"],
     ] as const;
     for (const [name, venue] of requestedTopics) {
       expect(topics.some((topic) => topic.name === name && topic.venue_name === venue)).toBe(true);

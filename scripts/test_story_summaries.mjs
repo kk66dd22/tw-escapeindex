@@ -7,5 +7,5 @@ const invalid = topics.filter((topic) => {
 });
 const official = topics.filter((topic) => topic.story_summary_provenance === "official_page_topic_name_match_editorial_rewrite").length;
 const editorial = topics.filter((topic) => topic.story_summary_provenance === "editorial_navigation_copy_based_on_existing_metadata").length;
-if (topics.length !== 112 || invalid.length || official + editorial !== topics.length || fallback.length === 0) throw new Error(JSON.stringify({ topics: topics.length, invalid: invalid.map((topic) => topic.id), official, editorial }));
+if (topics.length !== 114 || invalid.length || official + editorial !== topics.length || fallback.length === 0) throw new Error(JSON.stringify({ topics: topics.length, invalid: invalid.map((topic) => topic.id), official, editorial }));
 console.log(JSON.stringify({ topics: topics.length, official, editorial, minLength: Math.min(...topics.map((topic) => Array.from(topic.story_summary).length)), maxLength: Math.max(...topics.map((topic) => Array.from(topic.story_summary).length)), fallbackAvailable: true, passed: true }, null, 2));
