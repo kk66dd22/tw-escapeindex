@@ -12,4 +12,9 @@
 - [x] Add 神不在場台中館 topics 失落的隕石神殿 and 重返糖果屋.
 - [x] Update every runtime count and regression expectation from 112 topics to 114.
 - [x] Add Vitest coverage for the correction and the two new topics; run typecheck, tests, build, and data regressions.
-- [ ] Save a new checkpoint and deliver the corrected version.
+- [x] Save a new checkpoint and deliver the corrected version.
+
+- [x] Verify the existing Tainan 《神不在場》 record and official Taichung 《莎士比亞的邀請》 source before replacement.
+- [x] Replace the incorrect Tainan 《神不在場》 catalog card with Taichung 《莎士比亞的邀請》 while keeping the total at 114 topics.
+- [x] Update regression coverage and run typecheck, tests, build, and data validation for the replacement.
+- [ ] Save and deliver a new checkpoint for the corrected catalog.

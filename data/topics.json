@@ -2079,42 +2079,45 @@
   },
   {
     "id": "popular-050",
-    "name": "神不在場",
-    "venue_name": "神不在場實境遊戲｜台南館",
-    "city": "台南市",
-    "district": "永康",
-    "google_rating": 4.7,
+    "name": "莎士比亞的邀請",
+    "venue_name": "神不在場實境遊戲｜台中旗艦館",
+    "city": "台中市",
+    "district": "中區",
+    "google_rating": 4.9,
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
-    "players": "4–8",
-    "duration": "依官網公告",
-    "horror": 4,
-    "brain": 3,
+    "players": "2–4",
+    "duration": "90分鐘（體驗＋解說）",
+    "horror": null,
+    "brain": null,
     "styles": [
       "主題解謎"
     ],
-    "pros": [],
+    "pros": [
+      "適合新手入門"
+    ],
     "cons": [
       "熱門時段建議提早確認"
     ],
-    "booking_url": "https://taog-game.com/booking/",
+    "booking_url": "https://taog-game.com/taichungbooking/",
     "source_urls": [
-      "https://taog-game.com/booking/"
+      "https://taog-game.com/taichungbooking/",
+      "https://taog-game.com/%e5%8f%b0%e4%b8%ad%e8%8e%8e%e5%a3%ab%e6%af%94%e4%ba%9e%e7%9a%84%e9%82%80%e8%ab%8b/"
     ],
-    "google_place_id": "ChIJYxlgy8Z2bjQRHmAGCyWbW4Q",
-    "google_review_count": 1122,
-    "google_rating_checked_at": "2026-08-19T06:53:50.012Z",
+    "google_place_id": "ChIJ-5kT4ok9aTQRIT7YjCMFyJ8",
+    "google_review_count": 1265,
+    "google_rating_checked_at": "2026-08-19T06:53:42.921Z",
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
-    "google_address_verified": "710台灣台南市永康區勝利里中華路1-2號3樓",
-    "data_quality": "verified_catalog",
-    "duration_source": "請見官方公告",
+    "google_address_verified": "400台灣臺中市中區平等街34號",
+    "data_quality": "official_catalog_with_venue_proxy",
+    "duration_source": "官方主題頁",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
-    "story_summary": "《神不在場》以主題探索與團隊解謎為主，建議依人數與偏好的難度篩選。",
-    "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
+    "story_summary": "《莎士比亞的邀請》帶隊伍進入有生命的魔書，接受文字與故事交織的機關挑戰；活動時間依官方公告。",
+    "story_summary_provenance": "official_page_topic_name_match_editorial_rewrite",
     "story_summary_source_urls": [
-      "https://taog-game.com/"
+      "https://taog-game.com/%e5%8f%b0%e4%b8%ad%e8%8e%8e%e5%a3%ab%e6%af%94%e4%ba%9e%e7%9a%84%e9%82%80%e8%ab%8b/"
     ],
-    "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
-    "story_summary_source_excerpt": "神不在場｜全台最大密室逃脫、實境遊戲首選 | 官方首頁 探索超刺激《神不在場》實境密室逃脫！獨特主題讓你體驗孤立無援的極限求生。當被困密室，無人可幫、祈禱無效，唯有靠自己解謎突圍。本頁全面提供神不在場主題密室逃脫詳細內容與便捷首頁導覽。遊戲地點覆蓋台中、台南兩大熱點，是全台實境遊戲愛好者必玩首選！ 神不在場｜全台最大密室逃脫、實境遊戲首選 | 官方首頁 跳至主要內容 &#78;&#84;&#36; 0 購物車 會員中心 &#78;&#84;&#",
+    "story_summary_note": "此為導覽摘要，依官方主題頁公開資訊整理；場次、價格與活動內容依官網公告。",
+    "story_summary_source_excerpt": "神不在場發現，一本突如其來、年代久遠的書，似乎有了自己的生命。你願意冒險進到魔書，接受它的邀請嗎？",
     "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
     "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。"
   },

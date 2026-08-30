@@ -42,11 +42,12 @@ describe("catalog copy localization", () => {
       ["復活節島", "LOST Taiwan（台北站前店）"],
       ["失落的隕石神殿", "神不在場實境遊戲｜台中旗艦館"],
       ["重返糖果屋", "神不在場實境遊戲｜台中旗艦館"],
-      ["神不在場", "神不在場實境遊戲｜台南館"],
+      ["莎士比亞的邀請", "神不在場實境遊戲｜台中旗艦館"],
     ] as const;
     for (const [name, venue] of requestedTopics) {
       expect(topics.some((topic) => topic.name === name && topic.venue_name === venue)).toBe(true);
     }
+    expect(topics.some((topic) => topic.name === "神不在場" && topic.venue_name === "神不在場實境遊戲｜台南館")).toBe(false);
     for (const topic of topics) {
       expect(topic.pros.length).toBeLessThanOrEqual(2);
       expect(topic.cons.length).toBeLessThanOrEqual(2);
