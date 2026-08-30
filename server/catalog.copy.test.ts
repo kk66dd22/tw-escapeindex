@@ -11,6 +11,14 @@ const allowedPros = new Set([
   "適合 2 人小隊",
   "設有真人互動元素",
   "場景細節值得留意",
+  "謎題與星座元素結合",
+  "機關操作比重較高",
+  "懸疑故事具分支感",
+  "短時間即可完成體驗",
+  "適合輕鬆走訪西門町",
+  "無順序、無計時",
+  "機關互動比重較高",
+  "動手操作比重較高",
 ]);
 
 const allowedCons = new Set([
@@ -22,6 +30,13 @@ const allowedCons = new Set([
   "熟悉密室玩法的玩家可能較快上手",
   "提示資訊建議於開場時確認",
   "需要較多推理與討論",
+  "場地內有貓毛，過敏體質者請審慎評估",
+  "遊戲體驗時間較短",
+  "戶外進行需留意天候與交通",
+  "需留意互動機關與場景變化",
+  "前段邏輯題可能需要提示",
+  "部分操作需留意場景動線",
+  "部分邏輯題需較多時間",
 ]);
 
 describe("catalog copy localization", () => {
@@ -53,6 +68,47 @@ describe("catalog copy localization", () => {
       expect(topic.cons.length).toBeLessThanOrEqual(2);
       expect(topic.pros.every((tag) => allowedPros.has(tag))).toBe(true);
       expect(topic.cons.every((tag) => allowedCons.has(tag))).toBe(true);
+    }
+  });
+
+  it("adds guide indices and navigation tags for the requested topics", () => {
+    const enrichedNames = new Set([
+      "冥婚",
+      "黃道追弒",
+      "星靈",
+      "所羅門之鑰",
+      "喵境夢遊",
+      "逃出吸血古堡",
+      "即刻越獄",
+      "捉咪藏",
+      "獄罷不能",
+      "深夜拉麵鋪",
+      "巴貝時空工作室",
+      "復活節島",
+      "莎士比亞的邀請",
+      "重返糖果屋",
+      "失落的隕石神殿",
+    ]);
+    const enrichedTopics = topics.filter((topic) => enrichedNames.has(topic.name));
+    expect(enrichedTopics).toHaveLength(15);
+    for (const topic of enrichedTopics) {
+      expect(topic.editorial_scale_scope).toContain("編輯部導覽分級");
+      expect(topic.editorial_scale_note).toContain("不代表官方標示或玩家評分");
+      expect(topic.editorial_scale_source_urls.length).toBeGreaterThan(0);
+      expect(topic.tag_provenance).toBe("editorial_tags_based_on_public_topic_descriptions");
+      expect(topic.tag_provenance_note).toContain("不代表玩家實測心得或官方承諾");
+      expect(topic.horror).toBeGreaterThanOrEqual(1);
+      expect(topic.horror).toBeLessThanOrEqual(5);
+      expect(topic.brain).toBeGreaterThanOrEqual(1);
+      expect(topic.brain).toBeLessThanOrEqual(5);
+    }
+
+    const topicsWithNewTags = enrichedTopics.filter((topic) =>
+      ["冥婚", "黃道追弒", "星靈", "所羅門之鑰", "喵境夢遊", "逃出吸血古堡", "即刻越獄", "捉咪藏", "獄罷不能", "深夜拉麵鋪", "巴貝時空工作室", "復活節島"].includes(topic.name),
+    );
+    for (const topic of topicsWithNewTags) {
+      expect(topic.pros.length).toBeGreaterThan(0);
+      expect(topic.cons.length).toBeGreaterThan(0);
     }
   });
 

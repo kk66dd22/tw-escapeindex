@@ -23,4 +23,10 @@
 - [x] Add a responsive two-button booking layout for 莎士比亞的邀請、重返糖果屋、失落的隕石神殿.
 - [x] Keep 前往官方預約頁 as the primary CTA and add 預約冒險者公會聚餐 linking to https://linkgo.one/s/3xwIG as the secondary CTA.
 - [x] Add regression coverage and verify desktop/mobile layout, links, typecheck, tests, and build.
+- [x] Save and deliver a new checkpoint.
+
+- [x] Audit the 12 previously added topics and the 3 Taichung 神不在場 topics for missing horror, brain, pros, and cons fields.
+- [x] Fill missing horror and brain indices using verified official information where available; retain official-announcement placeholders when not verifiable.
+- [x] Add verified 導覽重點 and 遊玩提醒 content to the 12 previously added topics, without fabricating customer reviews or testimonials.
+- [x] Add regression coverage for all 15 requested topics and run tests, typecheck, build, and page validation.
 - [ ] Save and deliver a new checkpoint.

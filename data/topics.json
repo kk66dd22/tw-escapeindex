@@ -2087,8 +2087,8 @@
     "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "2–4",
     "duration": "90分鐘（體驗＋解說）",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 3,
     "styles": [
       "主題解謎"
     ],
@@ -2118,8 +2118,13 @@
     ],
     "story_summary_note": "此為導覽摘要，依官方主題頁公開資訊整理；場次、價格與活動內容依官網公告。",
     "story_summary_source_excerpt": "神不在場發現，一本突如其來、年代久遠的書，似乎有了自己的生命。你願意冒險進到魔書，接受它的邀請嗎？",
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。"
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://taog-game.com/taichungbooking/",
+      "https://taog-game.com/%e5%8f%b0%e4%b8%ad%e8%8e%8e%e5%a3%ab%e6%AF%94%e4%BA%9e%e7%9A%84%e9%82%80%e8%AB%8b/"
+    ]
   },
   {
     "id": "popular-051",
@@ -4146,19 +4151,27 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "場景營造具沉浸感"
+    ],
+    "cons": [
+      "熱門時段建議提早確認"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 4,
+    "brain": 3,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《冥婚》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
+      "https://hddcncreatives.wixsite.com/hddcngames"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
       "https://hddcncreatives.wixsite.com/hddcngames"
     ]
   },
@@ -4183,19 +4196,27 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "謎題與劇情具挑戰性"
+    ],
+    "cons": [
+      "部分謎題較具挑戰性"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 2,
+    "brain": 4,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《黃道追弒》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
+      "https://hddcncreatives.wixsite.com/hddcngames"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
       "https://hddcncreatives.wixsite.com/hddcngames"
     ]
   },
@@ -4220,20 +4241,30 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "適合喜愛機關解謎的玩家",
+      "謎題與星座元素結合"
+    ],
+    "cons": [
+      "部分謎題較具挑戰性"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 4,
     "google_rating_scope": "未逐店核對；請見官方公告",
     "data_quality": "user_requested_catalog_addition_official_branch_reference",
     "story_summary": "《星靈》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://losttw.com/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://losttw.com/rooms/%E6%98%9F%E9%9D%88-tetrabiblos/",
+      "https://roger5050.pixnet.net/blog/posts/15282244096"
     ]
   },
   {
@@ -4257,20 +4288,30 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "謎題與劇情具挑戰性",
+      "機關操作比重較高"
+    ],
+    "cons": [
+      "部分謎題較具挑戰性"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 2,
+    "brain": 4,
     "google_rating_scope": "未逐店核對；請見官方公告",
     "data_quality": "user_requested_catalog_addition_official_branch_reference",
     "story_summary": "《所羅門之鑰》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://losttw.com/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://losttw.com/rooms/%E6%89%80%E7%BE%85%E9%96%80%E4%B9%8B%E9%91%B0-key-of-solomon/",
+      "https://roger5050.pixnet.net/blog/posts/15282415624"
     ]
   },
   {
@@ -4294,20 +4335,29 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "適合新手入門",
+      "場景營造具沉浸感"
+    ],
+    "cons": [
+      "場地內有貓毛，過敏體質者請審慎評估"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 2,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《喵境夢遊》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://missgame.com.tw/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://www.missgame.com.tw/meowdream"
     ]
   },
   {
@@ -4331,20 +4381,30 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "場景營造具沉浸感",
+      "懸疑故事具分支感"
+    ],
+    "cons": [
+      "熱門時段建議提早確認"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 4,
+    "brain": 3,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《逃出吸血古堡》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://missgame.com.tw/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://www.missgame.com.tw/vampireofoldcastle",
+      "https://marine0722.blog126.fc2.com/blog-entry-53.html"
     ]
   },
   {
@@ -4368,20 +4428,29 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "適合新手入門",
+      "短時間即可完成體驗"
+    ],
+    "cons": [
+      "遊戲體驗時間較短"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 2,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《即刻越獄》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://missgame.com.tw/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://www.missgame.com.tw/prisonbreak-1"
     ]
   },
   {
@@ -4405,20 +4474,30 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "適合輕鬆走訪西門町",
+      "無順序、無計時"
+    ],
+    "cons": [
+      "戶外進行需留意天候與交通"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 2,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《捉咪藏》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://missgame.com.tw/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://missgamedemo.myboostime.app/products/nppjmzhe",
+      "https://www.missgame.com.tw/stores"
     ]
   },
   {
@@ -4442,20 +4521,30 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "適合新手入門",
+      "機關互動比重較高"
+    ],
+    "cons": [
+      "部分操作需留意場景動線"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 2,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《獄罷不能》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://linktr.ee/qhatex"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://linktr.ee/qhatex",
+      "https://bewithnene.tw/post-232317604/"
     ]
   },
   {
@@ -4479,20 +4568,31 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "適合新手入門",
+      "動手操作比重較高"
+    ],
+    "cons": [
+      "需留意互動機關與場景變化"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 2,
     "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "data_quality": "user_requested_catalog_addition_with_venue_proxy",
     "story_summary": "《深夜拉麵鋪》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://linktr.ee/qhatex"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://linktr.ee/qhatex",
+      "https://bewithnene.tw/post-232317604/",
+      "https://yaescape.com/nightramen/"
     ]
   },
   {
@@ -4516,20 +4616,30 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "機關操作比重較高",
+      "適合新手入門"
+    ],
+    "cons": [
+      "部分邏輯題需較多時間"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 2,
     "google_rating_scope": "未逐店核對；請見官方公告",
     "data_quality": "user_requested_catalog_addition_official_branch_reference",
     "story_summary": "《巴貝時空工作室》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://losttw.com/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://losttw.com/rooms/",
+      "https://marine0722.blog.fc2.com/blog-entry-264.html"
     ]
   },
   {
@@ -4553,20 +4663,30 @@
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
     "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。",
-    "pros": [],
-    "cons": [],
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "pros": [
+      "機關操作比重較高",
+      "場景細節值得留意"
+    ],
+    "cons": [
+      "前段邏輯題可能需要提示"
+    ],
     "styles": [],
     "players": "依官網公告",
     "duration": "依官網公告",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 2,
     "google_rating_scope": "未逐店核對；請見官方公告",
     "data_quality": "user_requested_catalog_addition_official_branch_reference",
     "story_summary": "《復活節島》目前收錄於主題目錄，完整玩法、人數與場次請以店家官方公告為準。",
     "story_summary_source_urls": [
       "https://losttw.com/"
+    ],
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://losttw.com/rooms/",
+      "https://marine0722.blog.fc2.com/blog-entry-284.html"
     ]
   },
   {
@@ -4588,8 +4708,8 @@
     ],
     "players": "7–10",
     "duration": "120分鐘（體驗＋解說）",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 3,
     "styles": [
       "主題解謎"
     ],
@@ -4609,8 +4729,13 @@
     ],
     "story_summary_note": "此為導覽摘要，依官方主題頁公開資訊整理；場次、價格與活動內容依官網公告。",
     "story_summary_source_excerpt": "最近在撒哈拉沙漠發生一起隕石撞擊事件！隕石坑洞中竟出現一個古埃及神殿入口…神不在場的探險隊，尋找未知踏上旅程吧！",
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。"
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://taog-game.com/taichungbooking/",
+      "https://taog-game.com/%E5%8F%B0%E4%B8%AD%E5%A4%B1%E8%90%BD%E7%9A%84%E9%9A%95%E7%9F%B3%E7%A5%9E%E6%AE%BF/"
+    ]
   },
   {
     "id": "popular-114",
@@ -4631,8 +4756,8 @@
     ],
     "players": "2–4",
     "duration": "90分鐘（體驗＋解說）",
-    "horror": null,
-    "brain": null,
+    "horror": 1,
+    "brain": 3,
     "styles": [
       "主題解謎"
     ],
@@ -4652,7 +4777,12 @@
     ],
     "story_summary_note": "此為導覽摘要，依官方主題頁公開資訊整理；場次、價格與活動內容依官網公告。",
     "story_summary_source_excerpt": "漢賽爾與葛麗特逃出糖果屋後，本應過上平凡的生活。然而，葛麗特找上童話維護局，表示漢賽爾陷入了著魔般的執念。",
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。"
+    "tag_provenance": "editorial_tags_based_on_public_topic_descriptions",
+    "tag_provenance_note": "導覽重點與遊玩提醒依官方主題頁及公開主題介紹中的遊戲形式、場景與活動方式整理；不代表玩家實測心得或官方承諾。",
+    "editorial_scale_note": "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    "editorial_scale_source_urls": [
+      "https://taog-game.com/taichungbooking/",
+      "https://taog-game.com/%E5%8F%B0%E4%B8%AD-%E9%87%8D%E8%BF%94%E7%B3%96%E6%9E%9C%E5%B1%8B/"
+    ]
   }
 ]

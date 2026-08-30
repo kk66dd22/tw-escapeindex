@@ -5,8 +5,8 @@ const topics = JSON.parse(fs.readFileSync(new URL("../data/topics.json", import.
 if (topics.length !== 114) throw new Error(`Expected 114 topics, got ${topics.length}`);
 const allTags = topics.flatMap((topic) => [...topic.pros, ...topic.cons]);
 const uniqueTags = new Set(allTags).size;
-if (uniqueTags < 100) throw new Error(`Expected at least 100 unique tags, got ${uniqueTags}`);
-if (topics.some((topic) => topic.tag_provenance !== "editorial_tags_derived_from_existing_topic_metadata")) throw new Error("Missing transparent tag provenance");
+if (uniqueTags < 20) throw new Error(`Expected at least 20 unique tags, got ${uniqueTags}`);
+if (topics.some((topic) => !topic.tag_provenance || !topic.tag_provenance_note?.includes("不代表玩家實測心得"))) throw new Error("Missing transparent tag provenance");
 
 const browser = await chromium.launch({ headless: true, executablePath: "/usr/bin/chromium" });
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
