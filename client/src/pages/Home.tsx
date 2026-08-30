@@ -4,6 +4,7 @@
  */
 import { FAVORITES_STORAGE_KEY, parseFavoriteIds, serializeFavoriteIds, toggleFavoriteId } from "@/lib/favorites";
 import { HERO_COPY } from "@/lib/heroCopy";
+import { ADVENTURER_GUILD_BOOKING_URL, ADVENTURER_GUILD_CTA_LABEL, bookingCtaLayoutClassName, shouldShowAdventurerGuildCta } from "@/lib/bookingCta";
 import { pageForItem, pickRandom } from "@/lib/randomPick";
 import { isTopicJumpReady, needsTopicPageChange, prepareTopicJump, type TopicJumpTarget } from "@/lib/topicJump";
 import SiteFooter from "@/components/SiteFooter";
@@ -518,6 +519,7 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
       : "/manus-storage/card-clockwork-lab_7ed1438f.png";
   const hasPros = topic.pros.length > 0;
   const hasCons = topic.cons.length > 0;
+  const showAdventurerGuildCta = shouldShowAdventurerGuildCta(topic.venue_name, topic.name);
 
   return (
     <article ref={onCardRef} id={`topic-${topic.id}`} data-topic-id={topic.id} data-jump-ref={isJumpRefMounted ? "mounted" : undefined} className={`group flex min-h-[470px] flex-col overflow-hidden border bg-[#151917] transition duration-300 hover:-translate-y-1 hover:border-[#c89b5c]/70 ${isFocused ? "border-[#c89b5c] ring-2 ring-[#c89b5c]/70 ring-offset-4 ring-offset-[#0c0e0d]" : "border-white/10"}`}>
@@ -557,9 +559,16 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
             {hasCons && <TagPanel title="遊玩提醒" tags={topic.cons} tone="con" fullWidth={!hasPros} />}
           </div>
         )}
-        <a href={topic.booking_url} target="_blank" rel="noreferrer" className="mt-6 flex w-full items-center justify-between rounded-lg bg-[#c89b5c] px-5 py-4 font-mono text-xs font-bold tracking-wider text-[#0c0e0d] transition hover:bg-[#e0bd83] active:scale-[.98] sm:text-sm">
-          前往官方預約頁<ExternalLink size={15} />
-        </a>
+        <div className={`mt-6 ${bookingCtaLayoutClassName(showAdventurerGuildCta)}`}>
+          <a href={topic.booking_url} target="_blank" rel="noreferrer" className="flex w-full items-center justify-between rounded-lg bg-[#c89b5c] px-5 py-4 font-mono text-xs font-bold tracking-wider text-[#0c0e0d] transition hover:bg-[#e0bd83] active:scale-[.98] sm:text-sm">
+            前往官方預約頁<ExternalLink size={15} />
+          </a>
+          {showAdventurerGuildCta && (
+            <a href={ADVENTURER_GUILD_BOOKING_URL} target="_blank" rel="noreferrer" className="flex w-full items-center justify-between rounded-lg border border-[#5e8b92]/75 bg-[#202925] px-5 py-4 font-mono text-xs font-bold tracking-wider text-[#d5e0dc] transition hover:border-[#c89b5c] hover:bg-[#2a3730] active:scale-[.98] sm:text-sm">
+              {ADVENTURER_GUILD_CTA_LABEL}<ExternalLink size={15} />
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

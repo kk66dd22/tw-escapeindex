@@ -17,4 +17,10 @@
 - [x] Verify the existing Tainan 《神不在場》 record and official Taichung 《莎士比亞的邀請》 source before replacement.
 - [x] Replace the incorrect Tainan 《神不在場》 catalog card with Taichung 《莎士比亞的邀請》 while keeping the total at 114 topics.
 - [x] Update regression coverage and run typecheck, tests, build, and data validation for the replacement.
-- [ ] Save and deliver a new checkpoint for the corrected catalog.
+- [x] Save and deliver a new checkpoint for the corrected catalog.
+
+- [x] Inspect the shared topic-card booking area and identify the three Taichung venue topics.
+- [x] Add a responsive two-button booking layout for 莎士比亞的邀請、重返糖果屋、失落的隕石神殿.
+- [x] Keep 前往官方預約頁 as the primary CTA and add 預約冒險者公會聚餐 linking to https://linkgo.one/s/3xwIG as the secondary CTA.
+- [x] Add regression coverage and verify desktop/mobile layout, links, typecheck, tests, and build.
+- [ ] Save and deliver a new checkpoint.

@@ -85,3 +85,27 @@ describe("Home blind-draw topic jump", () => {
     });
   });
 });
+
+
+describe("Home booking CTA layout", () => {
+  beforeEach(() => {
+    setupLayoutPrimitives();
+  });
+
+  afterEach(() => {
+    cleanup();
+    vi.restoreAllMocks();
+  });
+
+  it("renders the Adventurer Guild CTA on exactly the three Taichung topic cards", async () => {
+    render(<Home />);
+    fireEvent.change(screen.getByLabelText("搜尋主題"), { target: { value: "神不在場實境遊戲｜台中旗艦館" } });
+    const links = await waitFor(() => screen.getAllByRole("link", { name: /預約冒險者公會聚餐/ }));
+    expect(links).toHaveLength(3);
+    for (const link of links) {
+      expect(link.getAttribute("href")).toBe("https://linkgo.one/s/3xwIG");
+      expect(link.parentElement?.className).toContain("grid-cols-1");
+      expect(link.parentElement?.className).toContain("sm:grid-cols-2");
+    }
+  });
+});
