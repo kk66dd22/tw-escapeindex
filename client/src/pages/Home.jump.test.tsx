@@ -2,6 +2,22 @@
 import React from "react";
 import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
+vi.mock("@/_core/hooks/useAuth", () => ({
+  useAuth: () => ({ user: null, isAuthenticated: false, loading: false, error: null, logout: vi.fn(), refresh: vi.fn() }),
+}));
+
+vi.mock("@/lib/trpc", () => ({
+  trpc: {
+    useUtils: () => ({ comments: { list: { invalidate: vi.fn() } } }),
+    comments: {
+      list: { useQuery: () => ({ data: [], isLoading: false, isError: false }) },
+      create: { useMutation: () => ({ mutate: vi.fn(), isPending: false, isError: false, error: null }) },
+      delete: { useMutation: () => ({ mutate: vi.fn(), isPending: false }) },
+    },
+  },
+}));
+
 import Home from "./Home";
 
 const originalRandom = Math.random;
@@ -107,5 +123,11 @@ describe("Home booking CTA layout", () => {
       expect(link.parentElement?.className).toContain("grid-cols-1");
       expect(link.parentElement?.className).toContain("sm:grid-cols-2");
     }
+  });
+
+  it("shows a login CTA instead of pre-seeded comments for visitors", () => {
+    render(<Home />);
+    expect(screen.getAllByRole("button", { name: "登入後分享你的體驗" }).length).toBeGreaterThan(0);
+    expect(screen.queryByText("使用者輸入內容")).toBeNull();
   });
 });

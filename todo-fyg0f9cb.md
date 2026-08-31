@@ -29,11 +29,22 @@
 - [x] Fill missing horror and brain indices using verified official information where available; retain official-announcement placeholders when not verifiable.
 - [x] Add verified 導覽重點 and 遊玩提醒 content to the 12 previously added topics, without fabricating customer reviews or testimonials.
 - [x] Add regression coverage for all 15 requested topics and run tests, typecheck, build, and page validation.
-- [ ] Save and deliver a new checkpoint.
+- [x] Save and deliver a new checkpoint.
 
 - [x] Verify the current records and field names for the 14 requested topics.
 - [x] Update booking URLs, player counts, and play durations for all 14 requested topics.
 - [x] Remove 部分謎題較具挑戰性 whenever the same topic has 謎題與劇情具挑戰性 in 導覽重點.
 - [x] Add regression coverage for the exact 14 updates and the tag conflict rule.
 - [x] Run tests, typecheck, production build, and responsive/page validation.
+- [x] Save and deliver a new checkpoint.
+
+- [x] Inspect existing topic-card data, authentication hooks, database schema, and available UI components for comments.
+- [x] Design and migrate a persisted comments table with topic identity, author identity, body, timestamps, and moderation-safe constraints.
+- [x] Add public read and authenticated create/delete comment procedures with ownership and validation checks.
+- [x] Add a topic-card comments section with empty/loading/error states, login CTA, form validation, and accessible controls.
+- [x] Add Vitest coverage for schema-facing helpers/procedures and comment UI behavior without seeding fake reviews or testimonials.
+- [x] Run migrations, tests, typecheck, production build, and responsive browser validation.
 - [ ] Save and deliver a new checkpoint.
+
+- [x] Make comment deletion return an explicit not-found or forbidden error when the target is missing or not owned by the current user, and surface deletion errors in the UI.
+- [x] Add UI tests for comments covering empty, loading, error, authenticated submit, and owner-only delete states.

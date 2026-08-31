@@ -2,7 +2,10 @@
  * Style: 夜蝕都市 Neo-noir editorial；煤黑、氧化金、冷霧藍。
  * Content model: 一張卡片 = 一個可被比較、收藏與預約的密室主題。
  */
+import { useAuth } from "@/_core/hooks/useAuth";
+import { startLogin } from "@/const";
 import { FAVORITES_STORAGE_KEY, parseFavoriteIds, serializeFavoriteIds, toggleFavoriteId } from "@/lib/favorites";
+import { trpc } from "@/lib/trpc";
 import { HERO_COPY } from "@/lib/heroCopy";
 import { ADVENTURER_GUILD_BOOKING_URL, ADVENTURER_GUILD_CTA_LABEL, bookingCtaLayoutClassName, shouldShowAdventurerGuildCta } from "@/lib/bookingCta";
 import { pageForItem, pickRandom } from "@/lib/randomPick";
@@ -19,6 +22,9 @@ import {
 import {
   ArrowDownUp,
   ArrowUp,
+  MessageCircle,
+  Send,
+  Trash2,
   Brain,
   Check,
   Clock3,
@@ -569,8 +575,95 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
             </a>
           )}
         </div>
+        <TopicComments topicId={topic.id} topicName={topic.name} />
       </div>
     </article>
+  );
+}
+
+export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
+  const { user, isAuthenticated, loading: authLoading } = useAuth();
+  const utils = trpc.useUtils();
+  const [body, setBody] = useState("");
+  const commentsQuery = trpc.comments.list.useQuery({ topicId });
+  const createComment = trpc.comments.create.useMutation({
+    onSuccess: async () => {
+      setBody("");
+      await utils.comments.list.invalidate({ topicId });
+    },
+  });
+  const deleteComment = trpc.comments.delete.useMutation({
+    onSuccess: async () => {
+      await utils.comments.list.invalidate({ topicId });
+    },
+  });
+
+  const submitComment = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmedBody = body.trim();
+    if (!trimmedBody) return;
+    createComment.mutate({ topicId, body: trimmedBody });
+  };
+
+  return (
+    <section aria-label={`《${topicName}》評論`} className="mt-6 border-t border-white/10 pt-5">
+      <div className="flex items-center justify-between gap-3">
+        <h4 className="flex items-center gap-2 font-mono text-xs tracking-widest text-[#c89b5c] sm:text-sm">
+          <MessageCircle size={16} /> 玩家評論
+          {commentsQuery.data && <span className="text-white/40">({commentsQuery.data.length})</span>}
+        </h4>
+        <span className="font-mono text-[10px] text-white/35">真實使用者分享</span>
+      </div>
+
+      {commentsQuery.isLoading && <p className="mt-3 text-xs text-white/45">正在載入評論⋯</p>}
+      {commentsQuery.isError && <p className="mt-3 text-xs text-rose-200/80">評論暫時無法載入，請稍後再試。</p>}
+      {!commentsQuery.isLoading && !commentsQuery.isError && commentsQuery.data?.length === 0 && (
+        <p className="mt-3 text-xs leading-6 text-white/45">目前還沒有評論，歡迎成為第一位分享體驗的探索者。</p>
+      )}
+      {!!commentsQuery.data?.length && (
+        <div className="mt-3 space-y-3">
+          {commentsQuery.data.map((comment) => (
+            <article key={comment.id} className="border border-white/10 bg-[#111412]/70 p-3">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="font-mono text-xs text-[#b7cdc7]">{comment.authorName}</div>
+                  <time className="mt-1 block font-mono text-[10px] text-white/35" dateTime={new Date(comment.createdAt).toISOString()}>
+                    {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
+                  </time>
+                </div>
+                {user?.id === comment.userId && (
+                  <button type="button" onClick={() => deleteComment.mutate({ commentId: comment.id })} disabled={deleteComment.isPending} className="shrink-0 p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
+                    <Trash2 size={14} />
+                  </button>
+                )}
+              </div>
+              <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
+            </article>
+          ))}
+        </div>
+      )}
+
+      {deleteComment.isError && <p className="mt-3 text-xs text-rose-200/80">{deleteComment.error.message}</p>}
+      {authLoading ? (
+        <p className="mt-4 text-xs text-white/40">正在確認登入狀態⋯</p>
+      ) : isAuthenticated ? (
+        <form onSubmit={submitComment} className="mt-4 space-y-2">
+          <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
+          <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
+          <div className="flex items-center justify-between gap-3">
+            <span className="font-mono text-[10px] text-white/35">{body.length}/2000</span>
+            <button type="submit" disabled={createComment.isPending || !body.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
+              <Send size={14} /> {createComment.isPending ? "送出中⋯" : "發表評論"}
+            </button>
+          </div>
+          {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
+        </form>
+      ) : (
+        <button type="button" onClick={() => startLogin()} className="mt-4 inline-flex items-center border border-[#5e8b92]/60 bg-[#202925] px-3 py-2 font-mono text-xs text-[#d5e0dc] transition hover:border-[#c89b5c] hover:text-[#f3efe7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]">
+          登入後分享你的體驗
+        </button>
+      )}
+    </section>
   );
 }
 

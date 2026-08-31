@@ -36,3 +36,15 @@ export const contactMessages = mysqlTable("contact_messages", {
 
 export type ContactMessage = typeof contactMessages.$inferSelect;
 export type InsertContactMessage = typeof contactMessages.$inferInsert;
+
+export const topicComments = mysqlTable("topic_comments", {
+  id: int("id").autoincrement().primaryKey(),
+  topicId: varchar("topicId", { length: 64 }).notNull(),
+  userId: int("userId").notNull(),
+  body: text("body").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type TopicComment = typeof topicComments.$inferSelect;
+export type InsertTopicComment = typeof topicComments.$inferInsert;

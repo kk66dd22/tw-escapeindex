@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertContactMessage, InsertUser, contactMessages, users } from "../drizzle/schema";
+import { InsertContactMessage, InsertTopicComment, InsertUser, contactMessages, topicComments, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -93,4 +93,53 @@ export async function createContactMessage(message: InsertContactMessage): Promi
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
   await db.insert(contactMessages).values(message);
+}
+
+export async function getTopicComments(topicId: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+
+  const rows = await db
+    .select({
+      id: topicComments.id,
+      topicId: topicComments.topicId,
+      userId: topicComments.userId,
+      body: topicComments.body,
+      createdAt: topicComments.createdAt,
+      updatedAt: topicComments.updatedAt,
+      authorName: users.name,
+      authorEmail: users.email,
+    })
+    .from(topicComments)
+    .leftJoin(users, eq(topicComments.userId, users.id))
+    .where(eq(topicComments.topicId, topicId))
+    .orderBy(desc(topicComments.createdAt), desc(topicComments.id))
+    .limit(100);
+
+  return rows.map((row) => ({
+    ...row,
+    authorName: row.authorName?.trim() || (row.authorEmail ? row.authorEmail.split("@")[0] : "探索者"),
+  }));
+}
+
+export async function createTopicComment(comment: InsertTopicComment): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  await db.insert(topicComments).values(comment);
+}
+
+export async function deleteTopicComment(commentId: number, userId: number): Promise<"deleted" | "not_found" | "forbidden"> {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+
+  const existing = await db
+    .select({ userId: topicComments.userId })
+    .from(topicComments)
+    .where(eq(topicComments.id, commentId))
+    .limit(1);
+  if (existing.length === 0) return "not_found";
+  if (existing[0].userId !== userId) return "forbidden";
+
+  await db.delete(topicComments).where(and(eq(topicComments.id, commentId), eq(topicComments.userId, userId)));
+  return "deleted";
 }
