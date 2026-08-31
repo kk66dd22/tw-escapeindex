@@ -30,3 +30,10 @@
 - [x] Add verified 導覽重點 and 遊玩提醒 content to the 12 previously added topics, without fabricating customer reviews or testimonials.
 - [x] Add regression coverage for all 15 requested topics and run tests, typecheck, build, and page validation.
 - [ ] Save and deliver a new checkpoint.
+
+- [x] Verify the current records and field names for the 14 requested topics.
+- [x] Update booking URLs, player counts, and play durations for all 14 requested topics.
+- [x] Remove 部分謎題較具挑戰性 whenever the same topic has 謎題與劇情具挑戰性 in 導覽重點.
+- [x] Add regression coverage for the exact 14 updates and the tag conflict rule.
+- [x] Run tests, typecheck, production build, and responsive/page validation.
+- [ ] Save and deliver a new checkpoint.

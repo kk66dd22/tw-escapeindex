@@ -108,7 +108,41 @@ describe("catalog copy localization", () => {
     );
     for (const topic of topicsWithNewTags) {
       expect(topic.pros.length).toBeGreaterThan(0);
-      expect(topic.cons.length).toBeGreaterThan(0);
+      if (!topic.pros.includes("謎題與劇情具挑戰性")) {
+        expect(topic.cons.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("uses the requested booking details for the 14 updated topics", () => {
+    const expected = {
+      冥婚: ["https://onelink.one/s/ypaD6", "1–4", "60 分鐘（含講解）"],
+      黃道追弒: ["https://linkgo.one/s/QPdMA", "4–10", "120 分鐘（含講解）"],
+      觀落陰: ["https://afflink.one/s/VIlBq", "2–6", "80 分鐘"],
+      法老: ["https://onelink.one/s/QJnL0", "2–6", "70 分鐘"],
+      喵境夢遊: ["https://afflink.one/s/OI9CU", "2–6", "90 分鐘"],
+      逃出吸血古堡: ["https://onelink.one/s/7leLl", "2–6", "60 分鐘"],
+      即刻越獄: ["https://onelink.one/s/Y4dq6", "2–6", "30 分鐘"],
+      捉咪藏: ["https://afflink.one/s/0ocGY", "1–4", "120 分鐘"],
+      深夜拉麵鋪: ["https://onelink.one/s/MIqHH", "2–6", "80 分鐘（含講解）"],
+      獄罷不能: ["https://afflink.one/s/fWeAN", "2–6", "80 分鐘（含講解）"],
+      巴貝時空工作室: ["https://onelink.one/s/nuYjE", "2–6", "70 分鐘（含講解）"],
+      復活節島: ["https://onelink.one/s/cn6aQ", "3–6", "70 分鐘（含講解）"],
+      星靈: ["https://linkgo.one/s/5G1eg", "2–6", "60 分鐘"],
+      所羅門之鑰: ["https://onelink.one/s/kmjvr", "2–6", "60 分鐘"],
+    };
+    for (const [name, [bookingUrl, players, duration]] of Object.entries(expected)) {
+      const matches = topics.filter((topic) => topic.name === name);
+      expect(matches).toHaveLength(1);
+      expect(matches[0]).toMatchObject({ booking_url: bookingUrl, players, duration });
+    }
+  });
+
+  it("does not pair the challenge pros tag with its duplicate cons tag", () => {
+    for (const topic of topics) {
+      if (topic.pros.includes("謎題與劇情具挑戰性")) {
+        expect(topic.cons).not.toContain("部分謎題較具挑戰性");
+      }
     }
   });
 
