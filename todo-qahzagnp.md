@@ -27,3 +27,14 @@
 - [x] 補上 Google 登入 auth.me／logout 狀態切換測試
 - [x] 補上匿名留言擁有者可操作刪除的前端入口與測試
 - [x] 以本次完整修復內容儲存新的 checkpoint 並部署上線
+- [x] 檢視目前 Manus OAuth callback、session 與正式網域設定
+- [x] 將使用者提供的 Google Client ID 設定到專案環境
+- [x] 安全取得並設定 Google Client Secret，不寫入程式碼或 git
+- [x] 實作 Google OAuth authorization、callback、state/nonce 與 session 流程
+- [x] 將前端登入按鈕與 auth.me／登出狀態改為 Google OAuth
+- [x] 驗證 Google 登入後留言身份與匿名留言流程不回歸
+- [x] 補充 Google OAuth 單元測試與 callback 錯誤處理測試
+- [x] 執行型別檢查、完整測試、建置與正式網域驗證
+- [x] 儲存 checkpoint 並部署 Google OAuth 版本
+- [ ] 新 checkpoint 部署後重新驗證兩個正式網域的 `/api/google/login` 導向 Google
+- [ ] 確認 Google Cloud 已登記兩個正式 callback URI，並完成至少一次實際登入回站驗收
