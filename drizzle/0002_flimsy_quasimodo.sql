@@ -1,0 +1,1 @@
+ALTER TABLE `topic_comments` ADD `authorName` varchar(120);

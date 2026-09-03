@@ -15,6 +15,13 @@
       "when": 1788193985503,
       "tag": "0001_eager_wraith",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1788444866910,
+      "tag": "0002_flimsy_quasimodo",
+      "breakpoints": true
     }
   ]
 }

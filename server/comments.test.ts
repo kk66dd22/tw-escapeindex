@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { normalizeTopicCommentAuthor } from "./db";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
@@ -6,6 +7,7 @@ const dbMocks = vi.hoisted(() => ({
   getTopicComments: vi.fn(),
   createTopicComment: vi.fn(),
   deleteTopicComment: vi.fn(),
+  normalizeTopicCommentAuthor: (authorName: string | null | undefined) => authorName?.trim() || "探索者",
 }));
 
 vi.mock("./db", () => dbMocks);
@@ -19,6 +21,12 @@ function createContext(user: TrpcContext["user"] = null): TrpcContext {
 }
 
 describe("comments router", () => {
+  it("normalizes missing public comment author names", () => {
+    expect(normalizeTopicCommentAuthor("  玩家  ")).toBe("玩家");
+    expect(normalizeTopicCommentAuthor(null)).toBe("探索者");
+    expect(normalizeTopicCommentAuthor("   ")).toBe("探索者");
+  });
+
   it("returns the public comment list for a valid topic", async () => {
     dbMocks.getTopicComments.mockResolvedValueOnce([]);
 
@@ -51,6 +59,7 @@ describe("comments router", () => {
     expect(dbMocks.createTopicComment).toHaveBeenCalledWith({
       topicId: "popular-101",
       userId: 42,
+      authorName: "Commenter",
       body: "使用者輸入內容",
     });
   });

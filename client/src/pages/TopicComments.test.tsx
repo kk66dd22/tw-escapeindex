@@ -9,6 +9,7 @@ const state = vi.hoisted(() => ({
   query: { data: [] as Array<{ id: number; userId: number; body: string; authorName: string; createdAt: Date }>, isLoading: false, isError: false },
   createMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   deleteMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
+  queryInput: null as { topicId: string } | null,
 }));
 
 vi.mock("@/_core/hooks/useAuth", () => ({
@@ -19,7 +20,7 @@ vi.mock("@/lib/trpc", () => ({
   trpc: {
     useUtils: () => ({ comments: { list: { invalidate: vi.fn() } } }),
     comments: {
-      list: { useQuery: () => state.query },
+      list: { useQuery: (input: { topicId: string }) => { state.queryInput = input; return state.query; } },
       create: { useMutation: () => state.createMutation },
       delete: { useMutation: () => state.deleteMutation },
     },
@@ -31,6 +32,7 @@ function resetState() {
   state.query = { data: [], isLoading: false, isError: false };
   state.createMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
   state.deleteMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
+  state.queryInput = null;
 }
 
 describe("TopicComments", () => {
@@ -40,6 +42,7 @@ describe("TopicComments", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(screen.getByText("目前還沒有評論，歡迎成為第一位分享體驗的探索者。")).toBeTruthy();
     expect(screen.getByRole("button", { name: "登入後分享你的體驗" })).toBeTruthy();
+    expect(state.queryInput).toEqual({ topicId: "popular-101" });
   });
 
   it("renders loading and error states", () => {

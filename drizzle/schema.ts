@@ -41,6 +41,7 @@ export const topicComments = mysqlTable("topic_comments", {
   id: int("id").autoincrement().primaryKey(),
   topicId: varchar("topicId", { length: 64 }).notNull(),
   userId: int("userId").notNull(),
+  authorName: varchar("authorName", { length: 120 }),
   body: text("body").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

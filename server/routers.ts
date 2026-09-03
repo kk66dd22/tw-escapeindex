@@ -41,6 +41,7 @@ export const appRouter = router({
         await createTopicComment({
           topicId: input.topicId,
           userId: ctx.user.id,
+          authorName: ctx.user.name?.trim() || ctx.user.email?.split("@")[0] || "探索者",
           body: input.body,
         });
         return { success: true } as const;

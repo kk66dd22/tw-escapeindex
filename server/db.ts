@@ -95,6 +95,10 @@ export async function createContactMessage(message: InsertContactMessage): Promi
   await db.insert(contactMessages).values(message);
 }
 
+export function normalizeTopicCommentAuthor(authorName: string | null | undefined): string {
+  return authorName?.trim() || "探索者";
+}
+
 export async function getTopicComments(topicId: string) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
@@ -104,21 +108,19 @@ export async function getTopicComments(topicId: string) {
       id: topicComments.id,
       topicId: topicComments.topicId,
       userId: topicComments.userId,
+      authorName: topicComments.authorName,
       body: topicComments.body,
       createdAt: topicComments.createdAt,
       updatedAt: topicComments.updatedAt,
-      authorName: users.name,
-      authorEmail: users.email,
     })
     .from(topicComments)
-    .leftJoin(users, eq(topicComments.userId, users.id))
     .where(eq(topicComments.topicId, topicId))
     .orderBy(desc(topicComments.createdAt), desc(topicComments.id))
     .limit(100);
 
   return rows.map((row) => ({
     ...row,
-    authorName: row.authorName?.trim() || (row.authorEmail ? row.authorEmail.split("@")[0] : "探索者"),
+    authorName: normalizeTopicCommentAuthor(row.authorName),
   }));
 }
 
