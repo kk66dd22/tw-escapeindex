@@ -24,6 +24,8 @@ import {
   ArrowUp,
   MessageCircle,
   Send,
+  LogIn,
+  LogOut,
   Trash2,
   Brain,
   Check,
@@ -313,7 +315,10 @@ export default function Home() {
             <a href="#catalog" className="hover:text-[#c89b5c]">主題篩選</a>
             <a href="#method" className="hover:text-[#c89b5c]">挑選指南</a>
           </nav>
-          <div className="font-mono text-xs tracking-widest text-white/40 sm:text-sm">{HERO_COPY.archiveLabel}</div>
+          <div className="flex items-center gap-4">
+            <HomeAuthControls />
+            <div className="hidden font-mono text-xs tracking-widest text-white/40 sm:block sm:text-sm">{HERO_COPY.archiveLabel}</div>
+          </div>
         </div>
       </header>
 
@@ -581,6 +586,24 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
   );
 }
 
+export function HomeAuthControls() {
+  const { user, isAuthenticated, loading, logout } = useAuth();
+
+  if (loading) return <span className="font-mono text-[10px] tracking-widest text-white/35">登入狀態確認中</span>;
+  if (isAuthenticated) {
+    return (
+      <button type="button" onClick={() => void logout()} className="inline-flex items-center gap-2 border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#c89b5c]">
+        <span className="max-w-24 truncate">{user?.name || user?.email || "已登入"}</span><LogOut size={13} />
+      </button>
+    );
+  }
+  return (
+    <button type="button" onClick={() => startLogin()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 px-3 py-2 font-mono text-[10px] tracking-wider text-[#c89b5c] transition hover:bg-[#c89b5c] hover:text-[#0c0e0d]">
+      <LogIn size={13} /> Google 帳號登入
+    </button>
+  );
+}
+
 export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
   const { user, isAuthenticated, loading: authLoading } = useAuth();
   const utils = trpc.useUtils();
@@ -631,7 +654,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                     {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
                   </time>
                 </div>
-                {user?.id === comment.userId && (
+                {(comment.canDelete || user?.id === comment.userId) && (
                   <button type="button" onClick={() => deleteComment.mutate({ commentId: comment.id })} disabled={deleteComment.isPending} className="shrink-0 p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
                     <Trash2 size={14} />
                   </button>
@@ -644,25 +667,18 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       )}
 
       {deleteComment.isError && <p className="mt-3 text-xs text-rose-200/80">{deleteComment.error.message}</p>}
-      {authLoading ? (
-        <p className="mt-4 text-xs text-white/40">正在確認登入狀態⋯</p>
-      ) : isAuthenticated ? (
-        <form onSubmit={submitComment} className="mt-4 space-y-2">
-          <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
-          <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
-          <div className="flex items-center justify-between gap-3">
-            <span className="font-mono text-[10px] text-white/35">{body.length}/2000</span>
-            <button type="submit" disabled={createComment.isPending || !body.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
-              <Send size={14} /> {createComment.isPending ? "送出中⋯" : "發表評論"}
-            </button>
-          </div>
-          {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
-        </form>
-      ) : (
-        <button type="button" onClick={() => startLogin()} className="mt-4 inline-flex items-center border border-[#5e8b92]/60 bg-[#202925] px-3 py-2 font-mono text-xs text-[#d5e0dc] transition hover:border-[#c89b5c] hover:text-[#f3efe7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]">
-          登入後分享你的體驗
-        </button>
-      )}
+      <form onSubmit={submitComment} className="mt-4 space-y-2">
+        <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
+        <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（可匿名，不需登入）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
+        <div className="flex items-center justify-between gap-3">
+          <span className="font-mono text-[10px] text-white/35">{isAuthenticated ? "已登入身份" : "匿名留言"} · {body.length}/2000</span>
+          <button type="submit" disabled={authLoading || createComment.isPending || !body.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
+            <Send size={14} /> {createComment.isPending ? "送出中⋯" : "發表評論"}
+          </button>
+        </div>
+        <p className="text-[10px] leading-5 text-white/35">匿名留言會以本次瀏覽器的安全識別碼區分；請勿填寫個人敏感資料。</p>
+        {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
+      </form>
     </section>
   );
 }

@@ -1,12 +1,12 @@
 // @vitest-environment jsdom
 import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { TopicComments } from "./Home";
 
 const state = vi.hoisted(() => ({
   auth: { user: null as { id: number } | null, isAuthenticated: false, loading: false },
-  query: { data: [] as Array<{ id: number; userId: number; body: string; authorName: string; createdAt: Date }>, isLoading: false, isError: false },
+  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
   createMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   deleteMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   queryInput: null as { topicId: string } | null,
@@ -37,12 +37,21 @@ function resetState() {
 
 describe("TopicComments", () => {
   beforeEach(() => resetState());
+  afterEach(() => cleanup());
 
-  it("renders an empty state and login CTA for visitors", () => {
+  it("renders an empty state and anonymous form for visitors", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(screen.getByText("目前還沒有評論，歡迎成為第一位分享體驗的探索者。")).toBeTruthy();
-    expect(screen.getByRole("button", { name: "登入後分享你的體驗" })).toBeTruthy();
+    expect(screen.getByPlaceholderText("分享你的實際遊玩體驗⋯（可匿名，不需登入）")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "發表評論" })).toBeTruthy();
     expect(state.queryInput).toEqual({ topicId: "popular-101" });
+  });
+
+  it("submits an anonymous comment without requiring authentication", () => {
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "訪客的實際遊玩體驗" } });
+    fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
+    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "訪客的實際遊玩體驗" });
   });
 
   it("renders loading and error states", () => {
@@ -61,6 +70,16 @@ describe("TopicComments", () => {
     fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "這是我的實際遊玩體驗" } });
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
     expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "這是我的實際遊玩體驗" });
+  });
+
+  it("shows the delete control for the anonymous comment owner", () => {
+    state.query = {
+      data: [{ id: 10, userId: null, body: "匿名評論", authorName: "匿名探索者", canDelete: true, createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    expect(screen.getByRole("button", { name: "刪除我的評論" })).toBeTruthy();
   });
 
   it("shows the delete control only for the comment owner and surfaces delete errors", () => {

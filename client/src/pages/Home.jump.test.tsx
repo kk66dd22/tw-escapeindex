@@ -125,9 +125,10 @@ describe("Home booking CTA layout", () => {
     }
   });
 
-  it("shows a login CTA instead of pre-seeded comments for visitors", () => {
+  it("shows anonymous comment forms instead of pre-seeded comments for visitors", () => {
     render(<Home />);
-    expect(screen.getAllByRole("button", { name: "登入後分享你的體驗" }).length).toBeGreaterThan(0);
+    expect(screen.getAllByPlaceholderText("分享你的實際遊玩體驗⋯（可匿名，不需登入）").length).toBeGreaterThan(0);
+    expect(screen.getByRole("button", { name: "Google 帳號登入" })).toBeTruthy();
     expect(screen.queryByText("使用者輸入內容")).toBeNull();
   });
 });

@@ -40,7 +40,8 @@ export type InsertContactMessage = typeof contactMessages.$inferInsert;
 export const topicComments = mysqlTable("topic_comments", {
   id: int("id").autoincrement().primaryKey(),
   topicId: varchar("topicId", { length: 64 }).notNull(),
-  userId: int("userId").notNull(),
+  userId: int("userId"),
+  anonymousToken: varchar("anonymousToken", { length: 64 }),
   authorName: varchar("authorName", { length: 120 }),
   body: text("body").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),

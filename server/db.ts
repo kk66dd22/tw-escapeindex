@@ -99,7 +99,7 @@ export function normalizeTopicCommentAuthor(authorName: string | null | undefine
   return authorName?.trim() || "探索者";
 }
 
-export async function getTopicComments(topicId: string) {
+export async function getTopicComments(topicId: string, userId: number | null = null, anonymousToken: string | null = null) {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
 
@@ -109,6 +109,7 @@ export async function getTopicComments(topicId: string) {
       topicId: topicComments.topicId,
       userId: topicComments.userId,
       authorName: topicComments.authorName,
+      anonymousToken: topicComments.anonymousToken,
       body: topicComments.body,
       createdAt: topicComments.createdAt,
       updatedAt: topicComments.updatedAt,
@@ -118,9 +119,10 @@ export async function getTopicComments(topicId: string) {
     .orderBy(desc(topicComments.createdAt), desc(topicComments.id))
     .limit(100);
 
-  return rows.map((row) => ({
+  return rows.map(({ anonymousToken: storedToken, ...row }) => ({
     ...row,
     authorName: normalizeTopicCommentAuthor(row.authorName),
+    canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken,
   }));
 }
 
@@ -130,18 +132,29 @@ export async function createTopicComment(comment: InsertTopicComment): Promise<v
   await db.insert(topicComments).values(comment);
 }
 
-export async function deleteTopicComment(commentId: number, userId: number): Promise<"deleted" | "not_found" | "forbidden"> {
+export async function deleteTopicComment(
+  commentId: number,
+  userId: number | null,
+  anonymousToken: string | null = null,
+): Promise<"deleted" | "not_found" | "forbidden"> {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");
 
   const existing = await db
-    .select({ userId: topicComments.userId })
+    .select({ userId: topicComments.userId, anonymousToken: topicComments.anonymousToken })
     .from(topicComments)
     .where(eq(topicComments.id, commentId))
     .limit(1);
   if (existing.length === 0) return "not_found";
-  if (existing[0].userId !== userId) return "forbidden";
 
-  await db.delete(topicComments).where(and(eq(topicComments.id, commentId), eq(topicComments.userId, userId)));
+  const ownsComment = userId !== null
+    ? existing[0].userId === userId
+    : existing[0].userId === null && Boolean(anonymousToken) && existing[0].anonymousToken === anonymousToken;
+  if (!ownsComment) return "forbidden";
+
+  const ownerCondition = userId !== null
+    ? eq(topicComments.userId, userId)
+    : eq(topicComments.anonymousToken, anonymousToken as string);
+  await db.delete(topicComments).where(and(eq(topicComments.id, commentId), ownerCondition));
   return "deleted";
 }
