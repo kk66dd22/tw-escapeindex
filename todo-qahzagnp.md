@@ -38,3 +38,8 @@
 - [x] 儲存 checkpoint 並部署 Google OAuth 版本
 - [ ] 新 checkpoint 部署後重新驗證兩個正式網域的 `/api/google/login` 導向 Google
 - [ ] 確認 Google Cloud 已登記兩個正式 callback URI，並完成至少一次實際登入回站驗收
+- [ ] 將正式環境 GOOGLE_CLIENT_ID 校正為使用者提供的 686048880754-gnqqe538sjrh2uuogld40ibi9ha6m8g.apps.googleusercontent.com
+- [ ] 重新部署後確認兩個正式網域 redirect location 使用校正後的 Client ID
+- [x] 更新 GOOGLE_CLIENT_ID 與 GOOGLE_CLIENT_SECRET 為使用者最新提供的同一組憑證
+- [x] 用 Google token endpoint 驗證最新憑證匹配
+- [ ] 重新部署後確認兩個正式網域使用最新 Client ID 並保留正式 callback URI
