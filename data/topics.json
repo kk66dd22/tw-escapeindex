@@ -1546,48 +1546,6 @@
     "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。"
   },
   {
-    "id": "popular-037",
-    "name": "彼岸花：夢返",
-    "venue_name": "FUNLOCK 放樂工作室",
-    "city": "台北市",
-    "district": "中山",
-    "google_rating": 4.6,
-    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
-    "players": "2–6",
-    "duration": "依官網公告",
-    "horror": 2,
-    "brain": 3,
-    "styles": [
-      "主題解謎"
-    ],
-    "pros": [
-      "適合新手入門",
-      "適合 2 人小隊"
-    ],
-    "cons": [
-      "熱門時段建議提早確認"
-    ],
-    "booking_url": "https://funlockstudio.com/",
-    "source_urls": [
-      "https://funlockstudio.com/"
-    ],
-    "google_place_id": "ChIJ2fG75UY9aTQRAZI9qeMj9yg",
-    "google_review_count": 7837,
-    "google_rating_checked_at": "2026-08-19T06:53:41.792Z",
-    "google_rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
-    "google_address_verified": "403台灣臺中市西區中興里公益路130號3樓",
-    "data_quality": "verified_catalog",
-    "duration_source": "請見官方公告",
-    "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
-    "story_summary": "《彼岸花：夢返》以主題探索與團隊解謎為主，建議依人數與偏好的難度篩選。",
-    "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
-    "story_summary_source_urls": [],
-    "story_summary_note": "此為導覽摘要，僅依既有主題分類與編輯資料整理；人數、時間與場次依官網公告。",
-    "story_summary_source_excerpt": null,
-    "tag_provenance": "editorial_tags_derived_from_existing_topic_metadata",
-    "tag_provenance_note": "標籤僅作為導覽提示，依既有主題分類與編輯資料整理；不代表玩家實測心得或官方承諾。"
-  },
-  {
     "id": "popular-038",
     "name": "瞞天越獄",
     "venue_name": "極限密室逃脫 Limitless",
@@ -2315,7 +2273,7 @@
   },
   {
     "id": "popular-056",
-    "name": "彼岸花",
+    "name": "彼岸花－神渡",
     "venue_name": "FUNLOCK 放樂工作室",
     "city": "台北市",
     "district": "中山／西區",
@@ -2323,7 +2281,7 @@
     "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
     "players": "4–5",
     "duration": "約90分鐘",
-    "horror": 5,
+    "horror": 4,
     "brain": 4,
     "styles": [
       "恐怖驚悚",
@@ -2344,7 +2302,7 @@
     "data_quality": "official_theme_page_plus_venue_proxy",
     "duration_source": "官方主題頁",
     "editorial_scale_scope": "編輯部導覽分級；非官方難度或玩家評分",
-    "story_summary": "《彼岸花》以緊張氛圍與解謎探索為主，建議先確認可接受的驚悚程度與遊戲資訊。",
+    "story_summary": "《彼岸花－神渡》以緊張氛圍與解謎探索為主，建議先確認可接受的驚悚程度與遊戲資訊。",
     "story_summary_provenance": "editorial_navigation_copy_based_on_existing_metadata",
     "story_summary_source_urls": [
       "https://www.funlockstudio.com/"
@@ -2518,10 +2476,10 @@
     "city": "台北市",
     "district": "大同／萬華",
     "google_rating": 5,
-    "rating_scope": "店家／分店級 Google 評價（Places API 代理資料）",
+    "rating_scope": "店家／分店級 Google 評價（代理門檻）",
     "players": "6–10",
     "duration": "依官網公告",
-    "horror": 4,
+    "horror": 5,
     "brain": 3,
     "styles": [
       "恐怖驚悚",
