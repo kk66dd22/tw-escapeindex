@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const indexHtml = readFileSync(resolve(process.cwd(), "client/index.html"), "utf8");
-const faviconUrl = "/manus-storage/escape-index-user-keyhole_b38d77fa.png";
+const faviconUrl = "/media/escape-index-user-keyhole_b38d77fa.png";
 
 describe("網站圖示設定", () => {
   it("提供瀏覽器分頁與 Apple 裝置捷徑圖示", () => {

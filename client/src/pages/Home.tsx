@@ -305,7 +305,7 @@ export default function Home() {
       <header className="relative z-10 border-b border-white/10 bg-[#0c0e0d]/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
           <a href="#top" className="flex items-center gap-3">
-            <img src="/manus-storage/brand-sigil_8091f515.png" className="h-10 w-10 object-contain" alt="全台密室逃脫精選導覽圖騰" />
+            <img src="/media/brand-sigil_8091f515.png" className="h-10 w-10 object-contain" alt="全台密室逃脫精選導覽圖騰" />
             <span className="font-mono text-xs uppercase tracking-[.3em] text-[#c89b5c] sm:text-sm">
               The Escape Index<br />
               <b className="font-sans text-sm tracking-[.16em] text-[#e8e4db]">全台密室逃脫精選導覽</b>
@@ -324,7 +324,7 @@ export default function Home() {
 
       <main id="top" className="relative z-10">
         <section className="relative overflow-hidden border-b border-white/10">
-          <img src="/manus-storage/hero-night-alley-clean_45b950d0.png" alt="夜晚台灣城市巷弄中的神秘入口" className="absolute inset-0 h-full w-full object-cover opacity-55" />
+          <img src="/media/hero-night-alley-clean_45b950d0.png" alt="夜晚台灣城市巷弄中的神秘入口" className="absolute inset-0 h-full w-full object-cover opacity-55" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0c0e0d] via-[#0c0e0d]/80 to-transparent" />
           <div className="mx-auto flex min-h-[600px] max-w-[1400px] items-end px-5 pb-16 pt-20 lg:px-10 lg:pb-24">
             <div className="relative max-w-3xl">
@@ -524,10 +524,10 @@ function Method({ icon, title, children }: { icon: React.ReactNode; title: strin
 
 function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = false, isJumpRefMounted = false, onCardRef }: { topic: (typeof topics)[number]; index: number; isFavorite: boolean; onToggleFavorite: () => void; isFocused?: boolean; isJumpRefMounted?: boolean; onCardRef?: (element: HTMLElement | null) => void }) {
   const image = index % 3 === 0
-    ? "/manus-storage/card-archival-room_28840e3c.png"
+    ? "/media/card-archival-room_28840e3c.png"
     : index % 3 === 1
-      ? "/manus-storage/card-ritual-basement_7b06bae4.png"
-      : "/manus-storage/card-clockwork-lab_7ed1438f.png";
+      ? "/media/card-ritual-basement_7b06bae4.png"
+      : "/media/card-clockwork-lab_7ed1438f.png";
   const hasPros = topic.pros.length > 0;
   const hasCons = topic.cons.length > 0;
   const showAdventurerGuildCta = shouldShowAdventurerGuildCta(topic.venue_name, topic.name);

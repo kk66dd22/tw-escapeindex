@@ -33,6 +33,7 @@ describe("registerStorageProxy", () => {
       .mockResolvedValueOnce(signedAsset);
 
     registerStorageProxy(app as any);
+    expect(app.get).toHaveBeenCalledWith("/media/*", expect.any(Function));
     expect(app.get).toHaveBeenCalledWith("/manus-storage/*", expect.any(Function));
     expect(handler).toBeDefined();
 

@@ -16,7 +16,7 @@ export default function PublicPageLayout({ eyebrow, title, intro, children }: Pu
       <header className="relative z-10 border-b border-white/10 bg-[#0c0e0d]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-5 py-4 lg:px-10">
           <Link href="/" className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]">
-            <img src="/manus-storage/brand-sigil_8091f515.png" className="h-10 w-10 object-contain" alt="全台密室逃脫精選導覽圖騰" />
+            <img src="/media/brand-sigil_8091f515.png" className="h-10 w-10 object-contain" alt="全台密室逃脫精選導覽圖騰" />
             <span className="font-mono text-xs uppercase tracking-[.25em] text-[#c89b5c] sm:text-sm">
               The Escape Index<br /><b className="font-sans text-sm tracking-[.12em] text-[#e8e4db]">全台密室逃脫精選導覽</b>
             </span>

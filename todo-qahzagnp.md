@@ -63,3 +63,7 @@
 - [x] 修正圖片資產引用並補充資產載入測試
 - [ ] 執行完整測試、建置與正式網域圖片／評論驗證
 - [ ] 儲存 checkpoint 並部署修正版
+- [x] 將應用程式圖片與 favicon 引用從 `/manus-storage` 改為 `/media`
+- [x] 讓 storage helper 與 `/media` proxy 同源串流圖片並保留安全快取標頭
+- [x] 補更新 storage proxy、favicon 與圖片載入測試
+- [ ] 部署後確認兩個正式網域圖片 naturalWidth 大於 0
