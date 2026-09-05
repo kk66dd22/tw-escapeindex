@@ -7,6 +7,7 @@ const topics = JSON.parse(await fs.readFile(file, "utf8"));
 
 const source = {
   funlock: "https://www.funlockstudio.com/",
+  higanbana: "https://www.funlockstudio.com/higanhana/",
   missgame: "https://missgame.com.tw/",
   dream: "https://dream94zz.com/",
   mystoto: "https://www.mystotoescape.com/",
@@ -17,7 +18,7 @@ const source = {
 
 const rows = [
   ...[
-    ["噬夢", "2–5", "約60分鐘", 2, 3, "台北市", "funlock"], ["感染", "2–6", "約60分鐘", 3, 3, "台北市", "funlock"], ["稻荷之歌", "2–6", "約60分鐘", 1, 3, "台北市", "funlock"], ["病變", "3–6", "約60分鐘", 3, 3, "台北市", "funlock"], ["永生劫", "2–6", "約60分鐘", 4, 4, "台北市", "funlock"], ["蜀山", "3–6", "約60分鐘", 2, 4, "台北市", "funlock"], ["天方夜譚", "2–6", "約60分鐘", 1, 3, "台北市", "funlock"], ["鄉間小盜", "2–6", "約60分鐘", 1, 3, "台北市", "funlock"], ["幻境奇航II：最終的航道", "4–8", "約90分鐘", 2, 4, "台北市", "funlock"], ["失落魔境：序章", "3–6", "約90分鐘", 1, 3, "台北市", "funlock"], ["鎮魂曲：迴憶宅邸", "4–6", "約100分鐘", 5, 4, "台北市", "funlock"], ["彼岸花－神渡", "4–5", "約90分鐘", 4, 4, "台北市", "funlock"],
+    ["噬夢", "2–5", "約60分鐘", 2, 3, "台北市", "funlock"], ["感染", "2–6", "約60分鐘", 3, 3, "台北市", "funlock"], ["稻荷之歌", "2–6", "約60分鐘", 1, 3, "台北市", "funlock"], ["病變", "3–6", "約60分鐘", 3, 3, "台北市", "funlock"], ["永生劫", "2–6", "約60分鐘", 4, 4, "台北市", "funlock"], ["蜀山", "3–6", "約60分鐘", 2, 4, "台北市", "funlock"], ["天方夜譚", "2–6", "約60分鐘", 1, 3, "台北市", "funlock"], ["鄉間小盜", "2–6", "約60分鐘", 1, 3, "台北市", "funlock"], ["幻境奇航II：最終的航道", "4–8", "約90分鐘", 2, 4, "台北市", "funlock"], ["失落魔境：序章", "3–6", "約90分鐘", 1, 3, "台北市", "funlock"], ["鎮魂曲：迴憶宅邸", "4–6", "約100分鐘", 5, 4, "台北市", "funlock"], ["彼岸花－夢返", "4–5", "約90分鐘", 2, 3, "台北市", "higanbana"], ["彼岸花－神渡", "4–5", "約90分鐘", 4, 4, "台北市", "higanbana"],
   ].map(([name, players, duration, horror, brain, city, key]) => ({ name, venue_name: "FUNLOCK 放樂工作室", city, district: "中山／西區", google_rating: 4.9, rating_scope: "店家／分店級 Google 評價（Places API 代理資料）", players, duration, horror, brain, styles: horror >= 4 ? ["恐怖驚悚", "沉浸劇情"] : ["機關解謎", "沉浸劇情"], booking_url: source[key], source_urls: [source[key]], google_rating_scope: "店家／分店級 Google 評價（Places API 代理資料）" })),
   ...[
     ["屍變", "2–6", "待核對", 5, 3], ["法老", "待核對", "待核對", 2, 3], ["觀落陰", "待核對", "待核對", 5, 4],

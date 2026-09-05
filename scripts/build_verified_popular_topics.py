@@ -26,7 +26,7 @@ for venue in venues:
 additions = [
   ("stupid-taipei", "笨蛋工作室｜台北館", "台北市", "大安／松山", 4.6, "https://stupidparticle.com/taipei/", ["我們的秘密", "竹本家", "深處", "奪命鎖鏈", "奪命鎖鏈2", "顛倒之室", "奪命記憶"]),
   ("stupid-taichung", "笨蛋工作室｜台中館", "台中市", "西區", 4.6, "https://stupidparticle.com/taichung/", ["武仁新村", "入學式", "平安戲院", "咖波與飢餓迷宮", "羅伯班克", "奪命鎖鏈", "顛倒之室", "鬼新娘", "竹本家"]),
-  ("funlock-taipei", "FUNLOCK 放樂工作室", "台北市", "中山", 4.6, "https://funlockstudio.com/", ["噬夢", "感染", "稻荷之歌", "病變", "永生劫", "蜀山", "天方夜譚", "鄉間小盜", "幻境奇航II：最終的航道", "失落魔境：序章", "鎮魂曲：迴憶宅邸", "彼岸花－神渡"]),
+  ("funlock-taipei", "FUNLOCK 放樂工作室", "台北市", "中山", 4.6, "https://funlockstudio.com/", ["噬夢", "感染", "稻荷之歌", "病變", "永生劫", "蜀山", "天方夜譚", "鄉間小盜", "幻境奇航II：最終的航道", "失落魔境：序章", "鎮魂曲：迴憶宅邸", "彼岸花－夢返", "彼岸花－神渡"]),
   ("limitless", "極限密室逃脫 Limitless", "台北市", "公館／中正", 4.6, "https://limitlessescaperoom.com/", ["瞞天越獄", "搜索令"]),
   ("enterspace", "EnterSpace 密室逃脫", "台北市", "大直", 4.9, "https://www.enterspace.tw/", ["百鬼夜行", "魔幻菜市場", "新年接招了", "戰鬥陀螺", "憶釀：亡命輪迴"]),
   ("mystoto", "Mystoto Escape Games", "高雄市", "苓雅", 5.0, "https://www.mystotoescape.com/", ["絕命旅舍", "嬰魂嚇水道", "異形覆沒", "法老謎城", "奪魂獄"]),
@@ -38,11 +38,11 @@ additions = [
 def make_topic(key, venue, city, district, rating, source, name, index):
     horror = 4 if any(word in name for word in ["鬼", "猛", "噩夢", "嬰魂", "亡命", "戰慄", "神不在場", "往生", "鎮魂", "搜索", "神渡"]) else 2
     brain = 4 if any(word in name for word in ["記憶", "謎", "越獄", "深處", "法老", "奪命", "戰鬥", "瘋狂"]) else 3
-    players = "4–8" if city in {"台中市", "高雄市", "台南市"} else "2–6"
+    players = "4–5" if name in {"彼岸花－夢返", "彼岸花－神渡"} else ("4–8" if city in {"台中市", "高雄市", "台南市"} else "2–6")
     return {
       "id": f"{key}--{index}", "name": name, "venue_name": venue, "city": city, "district": district,
       "google_rating": rating, "rating_scope": "店家／分店級 Google 評價（代理門檻）", "players": players,
-      "duration": "待核對", "horror": horror, "brain": brain, "styles": ["主題解謎", "官方現行主題"],
+      "duration": "約90分鐘" if name in {"彼岸花－夢返", "彼岸花－神渡"} else "待核對", "horror": horror, "brain": brain, "styles": ["主題解謎", "官方現行主題"],
       "pros": ["官方頁面列為現行主題", "可與其他主題橫向比較"],
       "cons": ["評價屬店家／分店級代理值", "預約前請核對最新檔期"],
       "booking_url": source, "source_urls": [source]

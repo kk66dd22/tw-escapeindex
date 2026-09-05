@@ -41,7 +41,7 @@ const allowedCons = new Set([
 
 describe("catalog copy localization", () => {
   it("uses only the approved optional tag vocabulary", () => {
-    expect(topics).toHaveLength(113);
+    expect(topics).toHaveLength(114);
     const requestedTopics = [
       ["冥婚", "頭癮創意遊戲（西門店）"],
       ["黃道追弒", "頭癮創意遊戲（西門店）"],
@@ -72,9 +72,16 @@ describe("catalog copy localization", () => {
   });
 
   it("keeps corrected theme names, horror indices, and summaries synchronized", () => {
+    const dreamReturnTheme = topics.find((topic) => topic.id === "popular-037");
     const funlockTheme = topics.find((topic) => topic.id === "popular-056");
     const anyaTheme = topics.find((topic) => topic.id === "popular-061");
 
+    expect(dreamReturnTheme).toMatchObject({
+      name: "彼岸花－夢返",
+      horror: 2,
+      venue_name: "FUNLOCK 放樂工作室",
+    });
+    expect(dreamReturnTheme?.story_summary).toContain("《彼岸花－夢返》");
     expect(funlockTheme).toMatchObject({
       name: "彼岸花－神渡",
       horror: 4,
@@ -87,7 +94,8 @@ describe("catalog copy localization", () => {
       venue_name: "夢遊王國",
     });
     expect(topics.some((topic) => topic.id === "popular-056" && topic.name === "彼岸花")).toBe(false);
-    expect(topics.filter((topic) => topic.venue_name === "FUNLOCK 放樂工作室" && topic.name.includes("彼岸花")).map((topic) => topic.name)).toEqual(["彼岸花－神渡"]);
+    expect(topics.filter((topic) => topic.venue_name === "FUNLOCK 放樂工作室" && topic.name.includes("彼岸花")).map((topic) => topic.name)).toEqual(["彼岸花－夢返", "彼岸花－神渡"]);
+    expect(topics.some((topic) => topic.name === "彼岸花")).toBe(false);
     expect(topics.some((topic) => topic.name === "彼岸花：夢返")).toBe(false);
   });
 
