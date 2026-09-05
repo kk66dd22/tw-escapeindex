@@ -78,6 +78,14 @@
 - [x] 補上 auth.me 回傳 avatarUrl 的 server/router 測試
 - [x] 儲存新的 Google 頭貼 checkpoint 並部署
 - [x] 部署後重新登入正式網域，確認登入控制與評論作者列顯示 Google 頭貼
-- [ ] 儲存包含 Google 頭貼功能的新 checkpoint 並完成正式部署
-- [ ] 在正式網域重新完成一次 Google 登入，驗證登入控制區顯示 Google 頭貼
-- [ ] 在正式網域確認「異形覆沒」登入評論作者列顯示 Google 頭貼並保留 fallback
+- [x] 儲存包含 Google 頭貼功能的新 checkpoint 並完成正式部署
+- [x] 在正式網域重新完成一次 Google 登入，驗證登入控制區顯示 Google 頭貼（正式 DOM naturalWidth 96）
+- [x] 在正式網域確認「異形覆沒」登入評論作者列顯示 Google 頭貼並保留 fallback（正式 DOM naturalWidth 96；fallback 有測試覆蓋）
+- [x] 將已登入頭像改為可點擊的登出觸發入口
+- [x] 建立確認登出彈窗，支援確認與取消兩條流程
+- [x] 補充頭像登出彈窗互動測試與可及性標籤
+- [x] 執行完整測試、建置與視覺驗證
+- [x] 儲存 checkpoint 並部署登出確認版本
+- [ ] 在瀏覽器實際點擊已登入頭像，開啟登出確認彈窗並完成視覺／DOM 驗證
+- [ ] 儲存包含登出確認彈窗的新 checkpoint 並確認取得新版本 ID
+- [ ] 部署後驗證取消不登出、確認才登出的正式流程

@@ -19,6 +19,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   ArrowDownUp,
@@ -593,17 +594,34 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
 
 export function HomeAuthControls() {
   const { user, isAuthenticated, loading, logout } = useAuth();
+  const [logoutOpen, setLogoutOpen] = useState(false);
 
   if (loading) return <span className="font-mono text-[10px] tracking-widest text-white/35">登入狀態確認中</span>;
   if (isAuthenticated) {
     return (
-      <button type="button" onClick={() => void logout()} className="inline-flex items-center gap-2 border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#c89b5c]">
-        <Avatar className="size-6 border border-[#c89b5c]/50">
-          <AvatarImage src={user?.avatarUrl ?? undefined} alt="" referrerPolicy="no-referrer" />
-          <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#c89b5c]">{avatarInitial(user?.name, user?.email)}</AvatarFallback>
-        </Avatar>
-        <span className="max-w-24 truncate">{user?.name || user?.email || "已登入"}</span><LogOut size={13} />
-      </button>
+      <Dialog open={logoutOpen} onOpenChange={setLogoutOpen}>
+        <div className="inline-flex items-center gap-2 border border-[#5e8b92]/60 px-2 py-1.5 font-mono text-[10px] tracking-wider text-[#b7cdc7]">
+          <DialogTrigger asChild>
+            <button type="button" className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="開啟登出確認" title="登出">
+              <Avatar className="size-7 border border-[#c89b5c]/70 transition hover:border-[#e0bd83]">
+                <AvatarImage src={user?.avatarUrl ?? undefined} alt="" referrerPolicy="no-referrer" />
+                <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#c89b5c]">{avatarInitial(user?.name, user?.email)}</AvatarFallback>
+              </Avatar>
+            </button>
+          </DialogTrigger>
+          <span className="max-w-24 truncate">{user?.name || user?.email || "已登入"}</span>
+        </div>
+        <DialogContent className="border-[#5e8b92]/50 bg-[#101513] text-[#e8e4db] sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-xl text-[#e8e4db]">確定要登出嗎？</DialogTitle>
+            <DialogDescription className="font-mono text-xs leading-6 text-[#b7cdc7]/75">登出後仍可繼續瀏覽網站；下次發表登入評論時，需要重新使用 Google 帳號登入。</DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:justify-end">
+            <button type="button" onClick={() => setLogoutOpen(false)} className="border border-white/20 px-4 py-2 font-mono text-xs text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#e0bd83]">取消</button>
+            <button type="button" onClick={() => { void logout(); setLogoutOpen(false); }} className="border border-rose-300/50 bg-rose-950/40 px-4 py-2 font-mono text-xs text-rose-100 transition hover:bg-rose-900/60">確認登出</button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     );
   }
   return (

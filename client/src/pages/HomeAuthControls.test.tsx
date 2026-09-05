@@ -35,12 +35,19 @@ describe("HomeAuthControls", () => {
     expect(screen.getByRole("button", { name: "Google 帳號登入" })).toBeTruthy();
   });
 
-  it("shows the signed-in Google avatar and invokes logout", () => {
+  it("opens logout confirmation from the Google avatar and only logs out after confirmation", () => {
     state.auth = { user: { name: "Google 玩家", email: "player@example.com", avatarUrl: "https://lh3.googleusercontent.com/avatar" }, isAuthenticated: true, loading: false, logout: vi.fn() };
     const { container } = render(<HomeAuthControls />);
     expect(screen.getByText("Google 玩家")).toBeTruthy();
     expect(container.querySelector("img")?.getAttribute("src")).toBe("https://lh3.googleusercontent.com/avatar");
-    fireEvent.click(screen.getByRole("button", { name: /Google 玩家/ }));
+
+    fireEvent.click(screen.getByRole("button", { name: "開啟登出確認" }));
+    expect(screen.getByText("確定要登出嗎？")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "取消" }));
+    expect(state.auth.logout).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole("button", { name: "開啟登出確認" }));
+    fireEvent.click(screen.getByRole("button", { name: "確認登出" }));
     expect(state.auth.logout).toHaveBeenCalledTimes(1);
   });
 });
