@@ -41,12 +41,15 @@ describe("HomeAuthControls", () => {
     expect(screen.getByText("Google 玩家")).toBeTruthy();
     expect(container.querySelector("img")?.getAttribute("src")).toBe("https://lh3.googleusercontent.com/avatar");
 
-    fireEvent.click(screen.getByRole("button", { name: "開啟登出確認" }));
+    fireEvent.click(screen.getByText("Google 玩家"));
     expect(screen.getByText("確定要登出嗎？")).toBeTruthy();
+    const dialog = screen.getByRole("dialog");
+    expect(dialog.className).toContain("max-w-[34rem]");
+    expect(dialog.className).toContain("sm:max-w-[40rem]");
     fireEvent.click(screen.getByRole("button", { name: "取消" }));
     expect(state.auth.logout).not.toHaveBeenCalled();
 
-    fireEvent.click(screen.getByRole("button", { name: "開啟登出確認" }));
+    fireEvent.click(screen.getByText("Google 玩家"));
     fireEvent.click(screen.getByRole("button", { name: "確認登出" }));
     expect(state.auth.logout).toHaveBeenCalledTimes(1);
   });
