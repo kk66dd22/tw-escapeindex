@@ -1,3 +1,4 @@
+import { Readable } from "node:stream";
 import type { Express } from "express";
 import { ENV } from "./env";
 
@@ -38,8 +39,27 @@ export function registerStorageProxy(app: Express) {
         return;
       }
 
-      res.set("Cache-Control", "no-store");
-      res.redirect(307, url);
+      // Keep the browser on our origin instead of redirecting to the signed
+      // CloudFront URL. Some browsers treat the redirected webp response as a
+      // failed image load when the public path ends in .png.
+      const assetResp = await fetch(url);
+      if (!assetResp.ok || !assetResp.body) {
+        const body = await assetResp.text().catch(() => "");
+        console.error(`[StorageProxy] asset error: ${assetResp.status} ${body}`);
+        res.status(502).send("Storage asset unavailable");
+        return;
+      }
+
+      const contentType = assetResp.headers.get("content-type") ?? "application/octet-stream";
+      const contentLength = assetResp.headers.get("content-length");
+      res.set({
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Type": contentType,
+        "Content-Disposition": "inline",
+        ...(contentLength ? { "Content-Length": contentLength } : {}),
+      });
+
+      Readable.fromWeb(assetResp.body as Parameters<typeof Readable.fromWeb>[0]).pipe(res);
     } catch (err) {
       console.error("[StorageProxy] failed:", err);
       res.status(502).send("Storage proxy error");

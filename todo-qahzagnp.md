@@ -36,10 +36,30 @@
 - [x] 補充 Google OAuth 單元測試與 callback 錯誤處理測試
 - [x] 執行型別檢查、完整測試、建置與正式網域驗證
 - [x] 儲存 checkpoint 並部署 Google OAuth 版本
-- [ ] 新 checkpoint 部署後重新驗證兩個正式網域的 `/api/google/login` 導向 Google
-- [ ] 確認 Google Cloud 已登記兩個正式 callback URI，並完成至少一次實際登入回站驗收
-- [ ] 將正式環境 GOOGLE_CLIENT_ID 校正為使用者提供的 686048880754-gnqqe538sjrh2uuogld40ibi9ha6m8g.apps.googleusercontent.com
-- [ ] 重新部署後確認兩個正式網域 redirect location 使用校正後的 Client ID
+- [x] 新 checkpoint 部署後重新驗證兩個正式網域的 `/api/google/login` 導向 Google
+- [x] 確認 Google Cloud 已登記兩個正式 callback URI，並完成至少一次實際登入回站驗收
+- [x] 將正式環境 GOOGLE_CLIENT_ID 校正為使用者最新提供的 686048880754-th0c464vco57frqma7gk48tjuiqapp76.apps.googleusercontent.com
+- [x] 重新部署後確認兩個正式網域 redirect location 使用最新 Client ID
 - [x] 更新 GOOGLE_CLIENT_ID 與 GOOGLE_CLIENT_SECRET 為使用者最新提供的同一組憑證
 - [x] 用 Google token endpoint 驗證最新憑證匹配
-- [ ] 重新部署後確認兩個正式網域使用最新 Client ID 並保留正式 callback URI
+- [x] 重新部署後確認兩個正式網域使用最新 Client ID 並保留正式 callback URI
+- [ ] 取得 Google OAuth 403 的實際錯誤參數與目前 callback／session 日誌
+- [ ] 檢查 Google Cloud OAuth consent screen、Publishing status、Test users 與應用程式限制
+- [ ] 確認網站登入導向與 callback 未造成 403，必要時修正錯誤處理
+- [ ] 補充 403／access_denied／redirect mismatch 的 OAuth 測試
+- [ ] 執行型別檢查、完整測試與正式登入流程驗證
+- [ ] 儲存 checkpoint 並部署修正版
+- [x] 驗證正式運作中的 Google OAuth login endpoint 與 callback URI
+- [x] 驗證 Google 授權回站後網站顯示登入 session
+- [ ] 驗證登入使用者可發表評論且 API 回應成功
+- [ ] 驗證訪客匿名評論仍可發表且不影響登入流程
+- [x] 檢查測試期間瀏覽器與網路錯誤，整理驗收結果
+- [x] 從 taiwanesc-97ma7evx.manus.space 重新產生 Google OAuth state
+- [x] 確認 taiwanesc callback 使用同一個 origin 並建立登入 session
+- [x] 在 taiwanesc 網域驗證登入評論與匿名評論
+- [x] 驗證 taiwanesc「異形覆沒」評論的 comments.create 回應與列表顯示
+- [x] 盤點 taiwanesc 首頁所有圖片 URL 與 HTTP 回應狀態
+- [x] 找出圖片載入失敗是資產 URL、部署快取或來源權限問題
+- [x] 修正圖片資產引用並補充資產載入測試
+- [ ] 執行完整測試、建置與正式網域圖片／評論驗證
+- [ ] 儲存 checkpoint 並部署修正版
