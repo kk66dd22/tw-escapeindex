@@ -6,7 +6,7 @@ import { TopicComments } from "./Home";
 
 const state = vi.hoisted(() => ({
   auth: { user: null as { id: number } | null, isAuthenticated: false, loading: false },
-  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
+  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; avatarUrl?: string | null; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
   createMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   deleteMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   queryInput: null as { topicId: string } | null,
@@ -14,6 +14,12 @@ const state = vi.hoisted(() => ({
 
 vi.mock("@/_core/hooks/useAuth", () => ({
   useAuth: () => state.auth,
+}));
+
+vi.mock("@/components/ui/avatar", () => ({
+  Avatar: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+  AvatarImage: (props: any) => <img {...props} />,
+  AvatarFallback: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
 vi.mock("@/lib/trpc", () => ({
@@ -70,6 +76,20 @@ describe("TopicComments", () => {
     fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "這是我的實際遊玩體驗" } });
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
     expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "這是我的實際遊玩體驗" });
+  });
+
+  it("renders a Google avatar for signed-in authors and a fallback for anonymous authors", () => {
+    state.query = {
+      data: [
+        { id: 11, userId: 7, body: "Google 評論", authorName: "Google 玩家", avatarUrl: "https://lh3.googleusercontent.com/avatar", createdAt: new Date("2026-01-01T00:00:00Z") },
+        { id: 12, userId: null, body: "匿名評論", authorName: "匿名探索者", avatarUrl: null, createdAt: new Date("2026-01-01T00:00:00Z") },
+      ],
+      isLoading: false,
+      isError: false,
+    };
+    const { container } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    expect(container.querySelector('img[src="https://lh3.googleusercontent.com/avatar"]')).toBeTruthy();
+    expect(screen.getByText("匿")).toBeTruthy();
   });
 
   it("shows the delete control for the anonymous comment owner", () => {

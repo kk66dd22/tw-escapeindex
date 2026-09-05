@@ -67,7 +67,7 @@ describe("Google OAuth routes", () => {
     const nonce = loginResponse.cookie.mock.calls[0][1];
     const fetchMock = vi.fn()
       .mockResolvedValueOnce({ ok: true, json: async () => ({ access_token: "access-token" }) })
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ sub: "google-sub", email: "player@gmail.com", name: "Google 玩家" }) });
+      .mockResolvedValueOnce({ ok: true, json: async () => ({ sub: "google-sub", email: "player@gmail.com", name: "Google 玩家", picture: "https://lh3.googleusercontent.com/avatar" }) });
     vi.stubGlobal("fetch", fetchMock);
 
     const res = makeResponse();
@@ -77,7 +77,7 @@ describe("Google OAuth routes", () => {
       protocol: "https",
     }, res);
 
-    expect(upsertUser).toHaveBeenCalledWith(expect.objectContaining({ openId: "google:google-sub", email: "player@gmail.com", loginMethod: "google" }));
+    expect(upsertUser).toHaveBeenCalledWith(expect.objectContaining({ openId: "google:google-sub", email: "player@gmail.com", avatarUrl: "https://lh3.googleusercontent.com/avatar", loginMethod: "google" }));
     expect(createSessionToken).toHaveBeenCalledWith("google:google-sub", expect.objectContaining({ name: "Google 玩家" }));
     expect(res.cookie).toHaveBeenCalledWith(COOKIE_NAME, "google-session-token", expect.any(Object));
     expect(res.redirect).toHaveBeenCalledWith(302, "https://taipeiesc-97ma7evx.manus.space/");

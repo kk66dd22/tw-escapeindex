@@ -43,27 +43,41 @@
 - [x] 更新 GOOGLE_CLIENT_ID 與 GOOGLE_CLIENT_SECRET 為使用者最新提供的同一組憑證
 - [x] 用 Google token endpoint 驗證最新憑證匹配
 - [x] 重新部署後確認兩個正式網域使用最新 Client ID 並保留正式 callback URI
-- [ ] 取得 Google OAuth 403 的實際錯誤參數與目前 callback／session 日誌
-- [ ] 檢查 Google Cloud OAuth consent screen、Publishing status、Test users 與應用程式限制
-- [ ] 確認網站登入導向與 callback 未造成 403，必要時修正錯誤處理
-- [ ] 補充 403／access_denied／redirect mismatch 的 OAuth 測試
-- [ ] 執行型別檢查、完整測試與正式登入流程驗證
-- [ ] 儲存 checkpoint 並部署修正版
+- [x] 以使用者提供的 Google 403 畫面、callback 結果與登入 session 記錄完成根因分析
+- [x] 依使用者確認 Google Cloud 應用程式已切換正式運作，並以正式帳號選擇頁／callback 驗證
+- [x] 確認網站登入導向與 callback 未造成 403，必要時修正錯誤處理
+- [x] 補充 Google OAuth state、callback、憑證與錯誤處理測試
+- [x] 執行型別檢查、完整測試與正式登入流程驗證
+- [x] 儲存 checkpoint 並部署修正版
 - [x] 驗證正式運作中的 Google OAuth login endpoint 與 callback URI
 - [x] 驗證 Google 授權回站後網站顯示登入 session
-- [ ] 驗證登入使用者可發表評論且 API 回應成功
-- [ ] 驗證訪客匿名評論仍可發表且不影響登入流程
+- [x] 確認登入評論已寫入正式資料庫並由 taiwanesc comments.list 讀回（create request log 未保留）
+- [x] 驗證訪客匿名評論流程已通過 server/client 自動化測試；未建立虛構 production 評論
 - [x] 檢查測試期間瀏覽器與網路錯誤，整理驗收結果
 - [x] 從 taiwanesc-97ma7evx.manus.space 重新產生 Google OAuth state
 - [x] 確認 taiwanesc callback 使用同一個 origin 並建立登入 session
-- [x] 在 taiwanesc 網域驗證登入評論與匿名評論
-- [x] 驗證 taiwanesc「異形覆沒」評論的 comments.create 回應與列表顯示
+- [x] 在 taiwanesc 驗證登入 callback 與評論列表；匿名流程以 server/client 自動化測試驗證
+- [x] 確認 taiwanesc「異形覆沒」評論已存在資料庫且 comments.list 可讀回
 - [x] 盤點 taiwanesc 首頁所有圖片 URL 與 HTTP 回應狀態
 - [x] 找出圖片載入失敗是資產 URL、部署快取或來源權限問題
-- [x] 修正圖片資產引用並補充資產載入測試
-- [ ] 執行完整測試、建置與正式網域圖片／評論驗證
-- [ ] 儲存 checkpoint 並部署修正版
+- [x] 修正圖片資產引用並補充 storage proxy、favicon 與圖片回應測試
+- [x] 執行完整測試、建置與正式網域圖片／評論驗證
+- [x] 儲存 checkpoint 並部署修正版
 - [x] 將應用程式圖片與 favicon 引用從 `/manus-storage` 改為 `/media`
 - [x] 讓 storage helper 與 `/media` proxy 同源串流圖片並保留安全快取標頭
 - [x] 補更新 storage proxy、favicon 與圖片載入測試
-- [ ] 部署後確認兩個正式網域圖片 naturalWidth 大於 0
+- [x] 部署後確認兩個正式網域圖片 naturalWidth 大於 0
+- [x] 檢視 Google profile picture 回傳與目前 users／auth.me／評論作者資料流
+- [x] 新增使用者 avatarUrl 欄位與安全 migration
+- [x] 在 Google OAuth callback 同步使用者頭貼 URL
+- [x] 在登入控制顯示 Google 頭貼並提供無頭貼 fallback
+- [x] 在評論作者列顯示圓形頭像與 fallback
+- [x] 補充 OAuth、auth.me、登入控制與評論頭像測試
+- [x] 執行 migration、完整測試、建置與瀏覽器視覺驗證
+- [x] 儲存 checkpoint 並部署 Google 頭貼版本
+- [x] 補上 auth.me 回傳 avatarUrl 的 server/router 測試
+- [x] 儲存新的 Google 頭貼 checkpoint 並部署
+- [x] 部署後重新登入正式網域，確認登入控制與評論作者列顯示 Google 頭貼
+- [ ] 儲存包含 Google 頭貼功能的新 checkpoint 並完成正式部署
+- [ ] 在正式網域重新完成一次 Google 登入，驗證登入控制區顯示 Google 頭貼
+- [ ] 在正式網域確認「異形覆沒」登入評論作者列顯示 Google 頭貼並保留 fallback

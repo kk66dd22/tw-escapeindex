@@ -35,7 +35,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
     };
     const updateSet: Record<string, unknown> = {};
 
-    const textFields = ["name", "email", "loginMethod"] as const;
+    const textFields = ["name", "email", "avatarUrl", "loginMethod"] as const;
     type TextField = (typeof textFields)[number];
 
     const assignNullable = (field: TextField) => {
@@ -109,12 +109,14 @@ export async function getTopicComments(topicId: string, userId: number | null = 
       topicId: topicComments.topicId,
       userId: topicComments.userId,
       authorName: topicComments.authorName,
+      avatarUrl: users.avatarUrl,
       anonymousToken: topicComments.anonymousToken,
       body: topicComments.body,
       createdAt: topicComments.createdAt,
       updatedAt: topicComments.updatedAt,
     })
     .from(topicComments)
+    .leftJoin(users, eq(topicComments.userId, users.id))
     .where(eq(topicComments.topicId, topicId))
     .orderBy(desc(topicComments.createdAt), desc(topicComments.id))
     .limit(100);

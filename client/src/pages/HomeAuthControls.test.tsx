@@ -4,7 +4,7 @@ import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const state = vi.hoisted(() => ({
-  auth: { user: null as { name?: string; email?: string } | null, isAuthenticated: false, loading: false, logout: vi.fn() },
+  auth: { user: null as { name?: string; email?: string; avatarUrl?: string | null } | null, isAuthenticated: false, loading: false, logout: vi.fn() },
 }));
 
 vi.mock("@/_core/hooks/useAuth", () => ({
@@ -13,6 +13,12 @@ vi.mock("@/_core/hooks/useAuth", () => ({
 
 vi.mock("@/const", () => ({
   startLogin: vi.fn(),
+}));
+
+vi.mock("@/components/ui/avatar", () => ({
+  Avatar: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+  AvatarImage: (props: any) => <img {...props} />,
+  AvatarFallback: ({ children, ...props }: any) => <span {...props}>{children}</span>,
 }));
 
 import { HomeAuthControls } from "./Home";
@@ -29,10 +35,11 @@ describe("HomeAuthControls", () => {
     expect(screen.getByRole("button", { name: "Google 帳號登入" })).toBeTruthy();
   });
 
-  it("shows the signed-in account and invokes logout", () => {
-    state.auth = { user: { name: "Google 玩家", email: "player@example.com" }, isAuthenticated: true, loading: false, logout: vi.fn() };
-    render(<HomeAuthControls />);
+  it("shows the signed-in Google avatar and invokes logout", () => {
+    state.auth = { user: { name: "Google 玩家", email: "player@example.com", avatarUrl: "https://lh3.googleusercontent.com/avatar" }, isAuthenticated: true, loading: false, logout: vi.fn() };
+    const { container } = render(<HomeAuthControls />);
     expect(screen.getByText("Google 玩家")).toBeTruthy();
+    expect(container.querySelector("img")?.getAttribute("src")).toBe("https://lh3.googleusercontent.com/avatar");
     fireEvent.click(screen.getByRole("button", { name: /Google 玩家/ }));
     expect(state.auth.logout).toHaveBeenCalledTimes(1);
   });

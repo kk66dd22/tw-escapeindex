@@ -11,6 +11,7 @@ import { ADVENTURER_GUILD_BOOKING_URL, ADVENTURER_GUILD_CTA_LABEL, bookingCtaLay
 import { pageForItem, pickRandom } from "@/lib/randomPick";
 import { isTopicJumpReady, needsTopicPageChange, prepareTopicJump, type TopicJumpTarget } from "@/lib/topicJump";
 import SiteFooter from "@/components/SiteFooter";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogContent,
@@ -58,6 +59,10 @@ const filters: { id: Filter; label: string }[] = [
   { id: "horror", label: "恐怖驚悚" },
   { id: "puzzle", label: "機關解謎" },
 ];
+
+function avatarInitial(name: string | null | undefined, email?: string | null) {
+  return (name?.trim() || email?.trim() || "探").slice(0, 1).toUpperCase();
+}
 
 function playerBounds(value: string) {
   const values = value.match(/\d+/g)?.map(Number) ?? [];
@@ -593,6 +598,10 @@ export function HomeAuthControls() {
   if (isAuthenticated) {
     return (
       <button type="button" onClick={() => void logout()} className="inline-flex items-center gap-2 border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#c89b5c]">
+        <Avatar className="size-6 border border-[#c89b5c]/50">
+          <AvatarImage src={user?.avatarUrl ?? undefined} alt="" referrerPolicy="no-referrer" />
+          <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#c89b5c]">{avatarInitial(user?.name, user?.email)}</AvatarFallback>
+        </Avatar>
         <span className="max-w-24 truncate">{user?.name || user?.email || "已登入"}</span><LogOut size={13} />
       </button>
     );
@@ -648,11 +657,17 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
           {commentsQuery.data.map((comment) => (
             <article key={comment.id} className="border border-white/10 bg-[#111412]/70 p-3">
               <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <div className="font-mono text-xs text-[#b7cdc7]">{comment.authorName}</div>
+                <div className="flex min-w-0 items-center gap-2">
+                  <Avatar className="size-7 shrink-0 border border-white/15">
+                    <AvatarImage src={comment.avatarUrl ?? undefined} alt="" referrerPolicy="no-referrer" />
+                    <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#b7cdc7]">{avatarInitial(comment.authorName)}</AvatarFallback>
+                  </Avatar>
+                  <div className="min-w-0">
+                    <div className="font-mono text-xs text-[#b7cdc7]">{comment.authorName}</div>
                   <time className="mt-1 block font-mono text-[10px] text-white/35" dateTime={new Date(comment.createdAt).toISOString()}>
                     {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
-                  </time>
+                    </time>
+                  </div>
                 </div>
                 {(comment.canDelete || user?.id === comment.userId) && (
                   <button type="button" onClick={() => deleteComment.mutate({ commentId: comment.id })} disabled={deleteComment.isPending} className="shrink-0 p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">

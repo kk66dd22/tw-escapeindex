@@ -46,6 +46,16 @@ function googleRedirectUri(origin: string) {
   return `${origin}/api/google/callback`;
 }
 
+function normalizeGoogleAvatarUrl(value: unknown): string | null {
+  if (typeof value !== "string" || value.length > 2048) return null;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" ? url.toString() : null;
+  } catch {
+    return null;
+  }
+}
+
 export function registerOAuthRoutes(app: Express) {
   app.get("/api/google/login", (req: Request, res: Response) => {
     if (!ENV.googleClientId || !ENV.googleClientSecret) {
@@ -111,7 +121,7 @@ export function registerOAuthRoutes(app: Express) {
         headers: { authorization: `Bearer ${tokenPayload.access_token}` },
       });
       if (!profileResponse.ok) throw new Error(`Google userinfo failed: ${profileResponse.status}`);
-      const profile = await profileResponse.json() as { sub?: string; email?: string; name?: string };
+      const profile = await profileResponse.json() as { sub?: string; email?: string; name?: string; picture?: string };
       if (!profile.sub || !profile.email) throw new Error("Google profile is missing required fields");
 
       const openId = `google:${profile.sub}`;
@@ -119,6 +129,7 @@ export function registerOAuthRoutes(app: Express) {
         openId,
         name: profile.name || profile.email.split("@")[0],
         email: profile.email,
+        avatarUrl: normalizeGoogleAvatarUrl(profile.picture),
         loginMethod: "google",
         lastSignedIn: new Date(),
       });
