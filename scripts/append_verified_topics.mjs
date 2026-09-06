@@ -3,7 +3,9 @@ import path from "node:path";
 
 const root = path.resolve(new URL("..", import.meta.url).pathname);
 const file = path.join(root, "data/topics.json");
+const venueFile = path.join(root, "data/venues.json");
 const topics = JSON.parse(await fs.readFile(file, "utf8"));
+const venues = JSON.parse(await fs.readFile(venueFile, "utf8"));
 
 const source = {
   funlock: "https://www.funlockstudio.com/",
@@ -59,8 +61,59 @@ const escer = [
 ].map(([name, players, horror]) => ({ name, venue_name: "Escer 異世客", city: "台中市", district: "南區／北區／西屯", google_rating: 5, rating_scope: "店家／分店級 Google 評價（Places API 代理資料）", players, duration: name === "暗影潛行" || name === "獄門神社" ? "120分鐘" : "60分鐘", horror, brain: name.includes("VR") ? 2 : 4, styles: horror >= 4 ? ["恐怖驚悚", "機關解謎"] : ["機關解謎", "VR密室"], booking_url: source.escer, source_urls: [source.escer], google_rating_scope: "店家／分店級 Google 評價（Places API 代理資料）" }));
 rows.push(...escer);
 
+const canonicalVenueName = (venue) => ({
+  "a5-taoyuan-station": "A5 Studio 實境密室逃脫｜桃園站前店",
+  "a5-taoyuan-zhongli": "A5 Studio 實境密室逃脫｜中壢中原店",
+  "missstudio-shanzi": "謎失工作室｜桃園山子頂店",
+  "missstudio-zhongli": "謎失工作室｜桃園中壢店",
+  "darkfile-zhongli": "闇間工作室｜中壢店",
+}[venue.id] ?? venue.name);
+
+const followupVenueIds = new Set([
+  "kuaitaoa-taoyuan",
+  "kuaitaoa-taipei-qingguang",
+  "a5-taoyuan-station",
+  "a5-taoyuan-zhongli",
+  "missstudio-shanzi",
+  "missstudio-zhongli",
+  "darkfile-zhongli",
+  "joinplay-luodong",
+]);
+const venueRows = venues.filter((venue) => followupVenueIds.has(venue.id)).flatMap((venue) => (venue.themes ?? []).map((theme) => {
+  const venueName = canonicalVenueName(venue);
+  const sourceUrls = venue.source_urls ?? [venue.website];
+  return {
+    name: theme.name,
+    venue_name: venueName,
+    city: venue.city,
+    district: venue.district,
+    google_rating: venue.google_rating ?? null,
+    rating_scope: venue.rating_source ?? "官方主題資料與公開來源精選；未採用未核實的數字評價",
+    players: theme.players ?? "依官網公告",
+    duration: theme.duration ?? "依官網公告",
+    horror: theme.horror ?? 3,
+    brain: theme.brain ?? 3,
+    styles: theme.styles ?? [],
+    booking_url: venue.booking_url ?? venue.website,
+    source_urls: sourceUrls,
+    google_rating_scope: venue.google_rating_scope ?? "未採用數字評價",
+    data_quality: "official_topic_page_plus_public_cross_check",
+    duration_source: "官方主題頁或官方預約資訊",
+    editorial_scale_scope: "編輯部導覽分級；非官方難度或玩家評分",
+    editorial_scale_note: "恐怖／燒腦為編輯部 1–5 導覽分級，依官方主題描述與公開主題資料整理；不代表官方標示或玩家評分。",
+    story_summary: `《${theme.name}》是${venueName}的現行主題，玩法與場次依官網公告整理。`,
+    story_summary_provenance: "official_topic_page_plus_public_cross_check",
+    story_summary_source_urls: sourceUrls,
+    story_summary_note: "此為導覽摘要，僅依官方主題資料與公開來源整理；人數、時間與場次依官網公告。",
+    story_summary_source_excerpt: `${venueName}官方主題資料列出《${theme.name}》；詳細場次依官網公告。`,
+    tag_provenance: "editorial_tags_based_on_public_topic_descriptions",
+    tag_provenance_note: "導覽標籤依官方主題描述與公開資料整理；不代表玩家實測心得或官方承諾。",
+  };
+}));
+rows.push(...venueRows);
+
 const seen = new Set(topics.map((topic) => `${topic.venue_name}::${topic.name}`));
-const additions = rows.filter((topic) => !seen.has(`${topic.venue_name}::${topic.name}`)).map((topic, index) => ({
+const additions = rows.filter((topic) => topic.venue_name !== "Escer 異世客" && !seen.has(`${topic.venue_name}::${topic.name}`)).map((topic, index) => ({
   id: `popular-${String(topics.length + index + 1).padStart(3, "0")}`,
   ...topic,
   pros: ["官方主題頁可核對現行資訊", "可與全台其他主題直接比較"],

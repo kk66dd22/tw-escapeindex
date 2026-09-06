@@ -41,7 +41,7 @@ const allowedCons = new Set([
 
 describe("catalog copy localization", () => {
   it("uses only the approved optional tag vocabulary", () => {
-    expect(topics).toHaveLength(124);
+    expect(topics).toHaveLength(148);
     const requestedTopics = [
       ["冥婚", "頭癮創意遊戲（西門店）"],
       ["黃道追弒", "頭癮創意遊戲（西門店）"],
@@ -68,16 +68,42 @@ describe("catalog copy localization", () => {
       ["聖劍騎士", "梅林的鬍子遊戲工作室"],
       ["荒村小學", "塊陶阿工作室"],
       ["見鬼十法", "塊陶阿工作室"],
+      ["醫怨", "塊陶阿工作室"],
+      ["詐屍", "塊陶阿工作室"],
+      ["塊陶格子360", "塊陶阿工作室"],
+      ["塊陶雷射", "塊陶阿工作室"],
+      ["草鳴村怪談", "A5 Studio 實境密室逃脫｜桃園站前店"],
+      ["冥婚", "A5 Studio 實境密室逃脫｜桃園站前店"],
+      ["44廳逝世廳", "A5 Studio 實境密室逃脫｜桃園站前店"],
+      ["殛時", "A5 Studio 實境密室逃脫｜桃園站前店"],
+      ["殛時+冥婚", "A5 Studio 實境密室逃脫｜桃園站前店"],
+      ["第九夜", "A5 Studio 實境密室逃脫｜桃園站前店"],
+      ["山中小屋藏身處", "A5 Studio 實境密室逃脫｜桃園站前店"],
+      ["鬱金香", "A5 Studio 實境密室逃脫｜中壢中原店"],
+      ["賊-十載春秋", "A5 Studio 實境密室逃脫｜中壢中原店"],
+      ["奎蕾精神病院", "A5 Studio 實境密室逃脫｜中壢中原店"],
+      ["殭局", "A5 Studio 實境密室逃脫｜中壢中原店"],
+      ["理髮師陶德卡特", "A5 Studio 實境密室逃脫｜中壢中原店"],
+      ["失物招領", "謎失工作室｜桃園山子頂店"],
+      ["301號房", "謎失工作室｜桃園山子頂店"],
+      ["藝樣的代價", "謎失工作室｜桃園中壢店"],
+      ["朱砂", "謎失工作室｜桃園中壢店"],
+      ["伴", "闇間工作室｜中壢店"],
+      ["怨憶", "闇間工作室｜中壢店"],
+      ["康樂保衛戰", "闇間工作室｜中壢店"],
+      ["寶寶睡", "揪揪玩密室逃脫"],
     ] as const;
     for (const [name, venue] of requestedTopics) {
       expect(topics.some((topic) => topic.name === name && topic.venue_name === venue)).toBe(true);
     }
     expect(topics.some((topic) => topic.name === "神不在場" && topic.venue_name === "神不在場實境遊戲｜台南館")).toBe(false);
-    expect(topics.filter((topic) => topic.city === "宜蘭市")).toHaveLength(5);
-    expect(topics.filter((topic) => topic.city === "桃園市")).toEqual([
-      expect.objectContaining({ name: "荒村小學", venue_name: "塊陶阿工作室", district: "中壢店" }),
-    ]);
+    expect(topics.filter((topic) => topic.city === "宜蘭市")).toHaveLength(6);
+    expect(topics.filter((topic) => topic.city === "桃園市")).toHaveLength(20);
+    expect(topics.some((topic) => topic.name === "荒村小學" && topic.venue_name === "塊陶阿工作室" && topic.district === "中壢店")).toBe(true);
+    expect(topics.some((topic) => topic.name === "草鳴村怪談" && topic.venue_name.includes("A5 Studio") && topic.city === "桃園市")).toBe(true);
+    expect(topics.some((topic) => topic.name === "寶寶睡" && topic.venue_name === "揪揪玩密室逃脫" && topic.city === "宜蘭市")).toBe(true);
     expect(topics.find((topic) => topic.name === "見鬼十法" && topic.venue_name === "塊陶阿工作室")).toMatchObject({ city: "台北市", district: "晴光店｜中山" });
+    expect(topics.filter((topic) => topic.venue_name === "塊陶阿工作室" && topic.city === "台北市")).toHaveLength(5);
     for (const topic of topics) {
       expect(topic.pros.length).toBeLessThanOrEqual(2);
       expect(topic.cons.length).toBeLessThanOrEqual(2);
@@ -132,7 +158,7 @@ describe("catalog copy localization", () => {
       "重返糖果屋",
       "失落的隕石神殿",
     ]);
-    const enrichedTopics = topics.filter((topic) => enrichedNames.has(topic.name));
+    const enrichedTopics = topics.filter((topic) => enrichedNames.has(topic.name) && topic.venue_name !== "A5 Studio 實境密室逃脫｜桃園站前店");
     expect(enrichedTopics).toHaveLength(15);
     for (const topic of enrichedTopics) {
       expect(topic.editorial_scale_scope).toContain("編輯部導覽分級");
@@ -175,7 +201,7 @@ describe("catalog copy localization", () => {
       所羅門之鑰: ["https://onelink.one/s/kmjvr", "2–6", "60 分鐘"],
     };
     for (const [name, [bookingUrl, players, duration]] of Object.entries(expected)) {
-      const matches = topics.filter((topic) => topic.name === name);
+      const matches = topics.filter((topic) => topic.name === name && (name !== "冥婚" || topic.venue_name === "頭癮創意遊戲（西門店）"));
       expect(matches).toHaveLength(1);
       expect(matches[0]).toMatchObject({ booking_url: bookingUrl, players, duration });
     }

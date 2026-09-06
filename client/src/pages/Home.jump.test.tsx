@@ -97,7 +97,7 @@ describe("Home blind-draw topic jump", () => {
       expect(target).not.toBeNull();
       expect(target?.className).toContain("ring-2");
       expect(target?.getAttribute("data-jump-ref")).toBe("mounted");
-      expect(screen.getByRole("button", { name: "13" }).getAttribute("aria-current")).toBe("page");
+      expect(screen.getByRole("button", { name: "15" }).getAttribute("aria-current")).toBe("page");
     });
   });
 });

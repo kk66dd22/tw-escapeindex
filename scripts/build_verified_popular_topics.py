@@ -10,6 +10,12 @@ CURATED_NULL_RATING_VENUE_IDS = {
     "merlins-beard-yilan",
     "kuaitaoa-taoyuan",
     "kuaitaoa-taipei-qingguang",
+    "a5-taoyuan-station",
+    "a5-taoyuan-zhongli",
+    "missstudio-shanzi",
+    "missstudio-zhongli",
+    "darkfile-zhongli",
+    "joinplay-luodong",
 }
 base = []
 for venue in venues:
