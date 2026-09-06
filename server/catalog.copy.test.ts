@@ -41,7 +41,7 @@ const allowedCons = new Set([
 
 describe("catalog copy localization", () => {
   it("uses only the approved optional tag vocabulary", () => {
-    expect(topics).toHaveLength(114);
+    expect(topics).toHaveLength(124);
     const requestedTopics = [
       ["冥婚", "頭癮創意遊戲（西門店）"],
       ["黃道追弒", "頭癮創意遊戲（西門店）"],
@@ -58,11 +58,26 @@ describe("catalog copy localization", () => {
       ["失落的隕石神殿", "神不在場實境遊戲｜台中旗艦館"],
       ["重返糖果屋", "神不在場實境遊戲｜台中旗艦館"],
       ["莎士比亞的邀請", "神不在場實境遊戲｜台中旗艦館"],
+      ["三更", "鎮冥工作室"],
+      ["誕生", "百室達密室脫逃"],
+      ["鬼不語", "山裏工作室"],
+      ["LINA", "梅林的鬍子遊戲工作室"],
+      ["巷仔口", "梅林的鬍子遊戲工作室"],
+      ["陰緣", "梅林的鬍子遊戲工作室"],
+      ["花見小路", "梅林的鬍子遊戲工作室"],
+      ["聖劍騎士", "梅林的鬍子遊戲工作室"],
+      ["荒村小學", "塊陶阿工作室"],
+      ["見鬼十法", "塊陶阿工作室"],
     ] as const;
     for (const [name, venue] of requestedTopics) {
       expect(topics.some((topic) => topic.name === name && topic.venue_name === venue)).toBe(true);
     }
     expect(topics.some((topic) => topic.name === "神不在場" && topic.venue_name === "神不在場實境遊戲｜台南館")).toBe(false);
+    expect(topics.filter((topic) => topic.city === "宜蘭市")).toHaveLength(5);
+    expect(topics.filter((topic) => topic.city === "桃園市")).toEqual([
+      expect.objectContaining({ name: "荒村小學", venue_name: "塊陶阿工作室", district: "中壢店" }),
+    ]);
+    expect(topics.find((topic) => topic.name === "見鬼十法" && topic.venue_name === "塊陶阿工作室")).toMatchObject({ city: "台北市", district: "晴光店｜中山" });
     for (const topic of topics) {
       expect(topic.pros.length).toBeLessThanOrEqual(2);
       expect(topic.cons.length).toBeLessThanOrEqual(2);

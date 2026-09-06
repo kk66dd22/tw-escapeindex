@@ -14,6 +14,11 @@ const source = {
   througher: "https://througher.com.tw/",
   login: "https://loginescape.com/landingpagegooglemap",
   escer: "https://escer.com.tw/",
+  zhenming: "https://escape.bar/game/26477",
+  baishida: "https://escape.bar/game/26907",
+  shanli: "https://escape.bar/game/26864",
+  merlins: "https://www.yilanmerlinsbeard.com/",
+  kuaitaoa: "https://www.kuaitaoa.cc/",
 };
 
 const rows = [
@@ -35,6 +40,18 @@ const rows = [
   ...[
     ["等一個人‧盜墓", "2–8", "80分鐘", 3], ["這個Case有點Big", "2–6", "80分鐘", 1], ["利維德酒吧", "4–8", "160分鐘", 1],
   ].map(([name, players, duration, horror]) => ({ name, venue_name: "LoGin 登入密室逃脫", city: "新北市", district: "中和", google_rating: 5, rating_scope: "店家／分店級 Google 評價（Places API 代理資料）", players, duration, horror, brain: 4, styles: ["沉浸劇情", "機關解謎"], booking_url: source.login, source_urls: [source.login], google_rating_scope: "店家／分店級 Google 評價（Places API 代理資料）" })),
+  ...[
+    ["三更", "鎮冥工作室", "台中市", "大里區", "6–8", "約150分鐘", 5, 3, "zhenming"],
+    ["誕生", "百室達密室脫逃", "台中市", "大里區", "4–8", "約120分鐘", 4, 3, "baishida"],
+    ["鬼不語", "山裏工作室", "台中市", "太平區", "3–6", "約120–150分鐘", 5, 4, "shanli"],
+    ["LINA", "梅林的鬍子遊戲工作室", "宜蘭市", "二館｜昇平街", "4–6", "約120分鐘", 3, 4, "merlins"],
+    ["巷仔口", "梅林的鬍子遊戲工作室", "宜蘭市", "二館｜昇平街", "4–6", "約120分鐘", 2, 3, "merlins"],
+    ["陰緣", "梅林的鬍子遊戲工作室", "宜蘭市", "本館｜康樂路", "4–8", "約120分鐘", 4, 3, "merlins"],
+    ["花見小路", "梅林的鬍子遊戲工作室", "宜蘭市", "本館｜康樂路", "3–5", "約60–90分鐘", 1, 3, "merlins"],
+    ["聖劍騎士", "梅林的鬍子遊戲工作室", "宜蘭市", "本館｜康樂路", "6–10", "約90分鐘", 1, 3, "merlins"],
+    ["荒村小學", "塊陶阿工作室", "桃園市", "中壢店", "4–9", "90分鐘", 4, 3, "kuaitaoa"],
+    ["見鬼十法", "塊陶阿工作室", "台北市", "晴光店｜中山", "4–8", "90分鐘", 4, 3, "kuaitaoa"],
+  ].map(([name, venue_name, city, district, players, duration, horror, brain, key]) => ({ name, venue_name, city, district, google_rating: null, rating_scope: "官方主題資料與公開來源精選；未採用未核實的數字評價", players, duration, horror, brain, styles: horror >= 4 ? ["恐怖驚悚", "沉浸式演繹"] : ["機關解謎", "沉浸式演繹"], booking_url: source[key], source_urls: [source[key]], google_rating_scope: "未採用數字評價" })),
 ];
 
 const escer = [
@@ -42,13 +59,13 @@ const escer = [
 ].map(([name, players, horror]) => ({ name, venue_name: "Escer 異世客", city: "台中市", district: "南區／北區／西屯", google_rating: 5, rating_scope: "店家／分店級 Google 評價（Places API 代理資料）", players, duration: name === "暗影潛行" || name === "獄門神社" ? "120分鐘" : "60分鐘", horror, brain: name.includes("VR") ? 2 : 4, styles: horror >= 4 ? ["恐怖驚悚", "機關解謎"] : ["機關解謎", "VR密室"], booking_url: source.escer, source_urls: [source.escer], google_rating_scope: "店家／分店級 Google 評價（Places API 代理資料）" }));
 rows.push(...escer);
 
-const seen = new Set(topics.map((topic) => topic.name));
-const additions = rows.filter((topic) => !seen.has(topic.name)).map((topic, index) => ({
+const seen = new Set(topics.map((topic) => `${topic.venue_name}::${topic.name}`));
+const additions = rows.filter((topic) => !seen.has(`${topic.venue_name}::${topic.name}`)).map((topic, index) => ({
   id: `popular-${String(topics.length + index + 1).padStart(3, "0")}`,
   ...topic,
   pros: ["官方主題頁可核對現行資訊", "可與全台其他主題直接比較"],
   cons: ["評分為店家／分店級代理", "預約前請核對最新檔期"],
 }));
-const next = [...topics, ...additions].slice(0, 100);
+const next = [...topics, ...additions];
 await fs.writeFile(file, JSON.stringify(next, null, 2) + "\n");
-console.log(JSON.stringify({ before: topics.length, candidates: rows.length, added: additions.length, after: next.length, remainingTo100: Math.max(0, 100 - next.length) }, null, 2));
+console.log(JSON.stringify({ before: topics.length, candidates: rows.length, added: additions.length, after: next.length }, null, 2));

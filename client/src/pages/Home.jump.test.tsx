@@ -97,7 +97,7 @@ describe("Home blind-draw topic jump", () => {
       expect(target).not.toBeNull();
       expect(target?.className).toContain("ring-2");
       expect(target?.getAttribute("data-jump-ref")).toBe("mounted");
-      expect(screen.getByRole("button", { name: "12" }).getAttribute("aria-current")).toBe("page");
+      expect(screen.getByRole("button", { name: "13" }).getAttribute("aria-current")).toBe("page");
     });
   });
 });
@@ -123,6 +123,34 @@ describe("Home booking CTA layout", () => {
       expect(link.parentElement?.className).toContain("grid-cols-1");
       expect(link.parentElement?.className).toContain("sm:grid-cols-2");
     }
+  });
+
+  it("filters newly added Taoyuan and Yilan topics by city", async () => {
+    render(<Home />);
+
+    fireEvent.click(screen.getByRole("button", { name: "桃園" }));
+    await waitFor(() => expect(screen.getByRole("heading", { name: "《荒村小學》" })).toBeTruthy());
+    expect(screen.queryByRole("heading", { name: "《LINA》" })).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: "宜蘭" }));
+    await waitFor(() => {
+      expect(screen.getByRole("heading", { name: "《LINA》" })).toBeTruthy();
+      expect(screen.getByRole("heading", { name: "《聖劍騎士》" })).toBeTruthy();
+    });
+    expect(screen.queryByRole("heading", { name: "《荒村小學》" })).toBeNull();
+  });
+
+  it("keeps Taoyuan and Yilan controls usable in the mobile filter rail", async () => {
+    Object.defineProperty(window, "innerWidth", { configurable: true, value: 390 });
+    render(<Home />);
+
+    const taoyuanButton = screen.getByRole("button", { name: "桃園" });
+    const yilanButton = screen.getByRole("button", { name: "宜蘭" });
+    expect(taoyuanButton.parentElement?.parentElement?.className).toContain("overflow-x-auto");
+    expect(yilanButton).toBeTruthy();
+
+    fireEvent.click(yilanButton);
+    await waitFor(() => expect(screen.getByRole("heading", { name: "《LINA》" })).toBeTruthy());
   });
 
   it("shows anonymous comment forms instead of pre-seeded comments for visitors", () => {

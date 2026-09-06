@@ -50,7 +50,7 @@ type SortMode = "rating" | "horror" | "brain";
 type TopicJumpRequest = ReturnType<typeof prepareTopicJump>;
 
 const PAGE_SIZE = 10;
-const cityFilters = ["全台", "台北市", "新北市", "台中市", "台南市", "高雄市"] as const;
+const cityFilters = ["全台", "台北市", "新北市", "桃園市", "台中市", "台南市", "宜蘭市", "高雄市"] as const;
 const filters: { id: Filter; label: string }[] = [
   { id: "all", label: "全部主題" },
   { id: "2-4", label: "2–4 人" },

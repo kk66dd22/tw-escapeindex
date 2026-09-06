@@ -3,16 +3,26 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 venues = json.loads((ROOT / "data" / "venues.json").read_text(encoding="utf-8"))
+CURATED_NULL_RATING_VENUE_IDS = {
+    "zhenming-taichung",
+    "baishida-taichung",
+    "shanli-taichung",
+    "merlins-beard-yilan",
+    "kuaitaoa-taoyuan",
+    "kuaitaoa-taipei-qingguang",
+}
 base = []
 for venue in venues:
     for index, theme in enumerate(venue.get("themes", []), start=1):
         rating = venue.get("google_rating")
-        if rating is None or rating < 4.5:
+        if rating is None and venue.get("id") not in CURATED_NULL_RATING_VENUE_IDS:
+            continue
+        if rating is not None and rating < 4.5:
             continue
         base.append({
             "id": f"{venue['id']}--{index}", "name": theme["name"], "venue_name": venue["name"],
             "city": venue.get("city", "待核對"), "district": venue.get("district", "待核對"),
-            "google_rating": rating, "rating_scope": "店家／分店級 Google 評價（代理門檻）",
+            "google_rating": rating, "rating_scope": "店家／分店級 Google 評價（代理門檻）" if rating is not None else "官方主題資料與公開來源精選；未採用未核實的數字評價",
             "players": theme.get("players", "待核對"), "duration": theme.get("duration", "待核對"),
             "horror": theme.get("horror"), "brain": theme.get("brain"), "styles": theme.get("styles", []),
             "pros": [venue.get("pros", ["官方主題資訊明確"])[0], "主題資訊可供跨店家比較"],
@@ -21,8 +31,8 @@ for venue in venues:
             "source_urls": venue.get("source_urls", []),
         })
 
-# 只加入官方頁明確列出的現行主題；Google 門檻仍是所屬店家／分店級代理門檻。
-# 若官方頁沒有穩定公開星等，這批不會進入熱門榜，避免把未知評價當成 4.5+。
+# 只加入官方頁明確列出的現行主題；一般店家仍需通過分店級代理評價門檻。
+# 已核實的指定新增店家列入白名單，但保留 null 評價，避免把未知評價誤當成 4.5+。
 additions = [
   ("stupid-taipei", "笨蛋工作室｜台北館", "台北市", "大安／松山", 4.6, "https://stupidparticle.com/taipei/", ["我們的秘密", "竹本家", "深處", "奪命鎖鏈", "奪命鎖鏈2", "顛倒之室", "奪命記憶"]),
   ("stupid-taichung", "笨蛋工作室｜台中館", "台中市", "西區", 4.6, "https://stupidparticle.com/taichung/", ["武仁新村", "入學式", "平安戲院", "咖波與飢餓迷宮", "羅伯班克", "奪命鎖鏈", "顛倒之室", "鬼新娘", "竹本家"]),
@@ -56,8 +66,8 @@ for key, venue, city, district, rating, source, names in additions:
             base.append(make_topic(key, venue, city, district, rating, source, name, index))
             seen.add(identity)
 
-# 僅保留代理 Google 評價 >= 4.5，並以現行官方來源去重。
-base = [item for item in base if item["google_rating"] >= 4.5]
+# 保留代理 Google 評價 >= 4.5 的店家，以及明確核實、但尚未採用數字評價的精選新增店家。
+base = [item for item in base if item["google_rating"] is None or item["google_rating"] >= 4.5]
 for index, item in enumerate(base, start=1):
     item["id"] = f"popular-{index:03d}"
 
