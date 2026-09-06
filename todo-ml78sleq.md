@@ -18,7 +18,7 @@
 - [x] 正式新增桃園與宜蘭城市篩選按鈕，並確認主題分類與篩選結果一致
 - [x] 同步更新資料生成腳本、來源索引與回歸測試
 - [x] 執行完整測試、型別檢查、畫面與響應式驗證
-- [ ] 儲存新的正式版本並完成自動發佈
+- [x] 儲存新的正式版本並完成自動發佈
 - [x] 同步更新既有主要資料生成腳本 append_verified_topics.mjs 與 build_verified_popular_topics.py，避免重建時遺失新增主題
 - [x] 更新 research/places-topic-audit.json，補齊新增店家 matchedTopicIds、expandedTopicCount 與 checkedAt
 - [x] 以手機 viewport 驗證桃園／宜蘭篩選按鈕與橫向篩選列，確認小螢幕呈現正常
