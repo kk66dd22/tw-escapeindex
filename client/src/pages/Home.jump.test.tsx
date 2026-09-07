@@ -161,13 +161,13 @@ describe("Home booking CTA layout", () => {
     expect(screen.queryByText("使用者輸入內容")).toBeNull();
   });
 
-  it("shows the honest fallback when a topic has no verified release time", async () => {
+  it("renders the recorded release time on the topic card", async () => {
     render(<Home />);
     fireEvent.change(screen.getByLabelText("搜尋主題"), { target: { value: "九龍寨城" } });
 
     await waitFor(() => expect(screen.getByRole("heading", { name: "《九龍寨城》" })).toBeTruthy());
     expect(screen.getByText("推出時間")).toBeTruthy();
-    expect(screen.getByText("尚未收錄")).toBeTruthy();
+    expect(screen.getByText("2019 年")).toBeTruthy();
   });
 
   it("renders a verified release-time string on the topic card", async () => {
