@@ -19,6 +19,7 @@ const shared = {
   styles: [],
   players: "依官網公告",
   duration: "依官網公告",
+  release_time: null,
   horror: null,
   brain: null,
 };

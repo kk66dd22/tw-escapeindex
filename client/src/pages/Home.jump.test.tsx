@@ -19,6 +19,7 @@ vi.mock("@/lib/trpc", () => ({
 }));
 
 import Home from "./Home";
+import topics from "../../../data/topics.json";
 
 const originalRandom = Math.random;
 
@@ -158,5 +159,31 @@ describe("Home booking CTA layout", () => {
     expect(screen.getAllByPlaceholderText("分享你的實際遊玩體驗⋯（可匿名，不需登入）").length).toBeGreaterThan(0);
     expect(screen.getByRole("button", { name: "Google 帳號登入" })).toBeTruthy();
     expect(screen.queryByText("使用者輸入內容")).toBeNull();
+  });
+
+  it("shows the honest fallback when a topic has no verified release time", async () => {
+    render(<Home />);
+    fireEvent.change(screen.getByLabelText("搜尋主題"), { target: { value: "九龍寨城" } });
+
+    await waitFor(() => expect(screen.getByRole("heading", { name: "《九龍寨城》" })).toBeTruthy());
+    expect(screen.getByText("推出時間")).toBeTruthy();
+    expect(screen.getByText("尚未收錄")).toBeTruthy();
+  });
+
+  it("renders a verified release-time string on the topic card", async () => {
+    const topic = topics.find((item) => item.name === "九龍寨城") as Omit<(typeof topics)[number], "release_time"> & { release_time: string | null };
+    if (!topic) throw new Error("Expected 九龍寨城 topic fixture");
+    const previousReleaseTime = topic.release_time;
+    topic.release_time = "2024 年 10 月";
+
+    try {
+      render(<Home />);
+      fireEvent.change(screen.getByLabelText("搜尋主題"), { target: { value: "九龍寨城" } });
+
+      await waitFor(() => expect(screen.getByRole("heading", { name: "《九龍寨城》" })).toBeTruthy());
+      expect(screen.getByText("2024 年 10 月")).toBeTruthy();
+    } finally {
+      topic.release_time = previousReleaseTime;
+    }
   });
 });

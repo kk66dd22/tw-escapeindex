@@ -116,6 +116,7 @@ const seen = new Set(topics.map((topic) => `${topic.venue_name}::${topic.name}`)
 const additions = rows.filter((topic) => topic.venue_name !== "Escer 異世客" && !seen.has(`${topic.venue_name}::${topic.name}`)).map((topic, index) => ({
   id: `popular-${String(topics.length + index + 1).padStart(3, "0")}`,
   ...topic,
+  release_time: topic.release_time ?? null,
   pros: ["官方主題頁可核對現行資訊", "可與全台其他主題直接比較"],
   cons: ["評分為店家／分店級代理", "預約前請核對最新檔期"],
 }));

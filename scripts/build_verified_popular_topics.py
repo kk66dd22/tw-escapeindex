@@ -30,6 +30,7 @@ for venue in venues:
             "city": venue.get("city", "待核對"), "district": venue.get("district", "待核對"),
             "google_rating": rating, "rating_scope": "店家／分店級 Google 評價（代理門檻）" if rating is not None else "官方主題資料與公開來源精選；未採用未核實的數字評價",
             "players": theme.get("players", "待核對"), "duration": theme.get("duration", "待核對"),
+            "release_time": theme.get("release_time"),
             "horror": theme.get("horror"), "brain": theme.get("brain"), "styles": theme.get("styles", []),
             "pros": [venue.get("pros", ["官方主題資訊明確"])[0], "主題資訊可供跨店家比較"],
             "cons": [venue.get("cons", ["檔期會變動"])[0], "預約前請核對最新公告"],
@@ -58,7 +59,7 @@ def make_topic(key, venue, city, district, rating, source, name, index):
     return {
       "id": f"{key}--{index}", "name": name, "venue_name": venue, "city": city, "district": district,
       "google_rating": rating, "rating_scope": "店家／分店級 Google 評價（代理門檻）", "players": players,
-      "duration": "約90分鐘" if name in {"彼岸花－夢返", "彼岸花－神渡"} else "待核對", "horror": horror, "brain": brain, "styles": ["主題解謎", "官方現行主題"],
+      "duration": "約90分鐘" if name in {"彼岸花－夢返", "彼岸花－神渡"} else "待核對", "release_time": None, "horror": horror, "brain": brain, "styles": ["主題解謎", "官方現行主題"],
       "pros": ["官方頁面列為現行主題", "可與其他主題橫向比較"],
       "cons": ["評價屬店家／分店級代理值", "預約前請核對最新檔期"],
       "booking_url": source, "source_urls": [source]

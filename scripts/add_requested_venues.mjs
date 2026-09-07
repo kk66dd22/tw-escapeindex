@@ -18,7 +18,10 @@ const venue = ({ id, name, city, region, district, address, website, themes, sou
   rating_source: "尚未採用未核實的數字評價",
   rating_checked_at: "2026-09-06",
   rating_note: note,
-  themes,
+  themes: themes.map((theme) => ({
+    ...theme,
+    release_time: Object.hasOwn(theme, "release_time") ? theme.release_time : null,
+  })),
   pros: ["官方主題資料可查", "主題玩法與城市分類已整理"],
   cons: ["熱門時段建議提早確認", "正式預約前請以店家最新公告為準"],
   source_urls,

@@ -19,6 +19,7 @@ const topic = ({
   source_urls,
   story_summary,
   story_summary_source_excerpt,
+  release_time = null,
   rating_scope = "未採用未核實的數字評價；依官方主題資料與公開來源精選",
 }) => ({
   id,
@@ -30,6 +31,7 @@ const topic = ({
   rating_scope,
   players,
   duration,
+  release_time,
   horror,
   brain,
   styles,

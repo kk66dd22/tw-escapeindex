@@ -105,6 +105,7 @@ describe("catalog copy localization", () => {
     expect(topics.find((topic) => topic.name === "見鬼十法" && topic.venue_name === "塊陶阿工作室")).toMatchObject({ city: "台北市", district: "晴光店｜中山" });
     expect(topics.filter((topic) => topic.venue_name === "塊陶阿工作室" && topic.city === "台北市")).toHaveLength(5);
     for (const topic of topics) {
+      expect(topic.release_time === null || typeof topic.release_time === "string").toBe(true);
       expect(topic.pros.length).toBeLessThanOrEqual(2);
       expect(topic.cons.length).toBeLessThanOrEqual(2);
       expect(topic.pros.every((tag) => allowedPros.has(tag))).toBe(true);
@@ -224,7 +225,7 @@ describe("catalog copy localization", () => {
 
   it("keeps fixed field names and booking CTA in the homepage", () => {
     const home = fs.readFileSync(path.resolve(import.meta.dirname, "../client/src/pages/Home.tsx"), "utf8");
-    for (const label of ["建議人數", "遊戲時間", "恐怖指數", "燒腦程度", "前往官方預約頁", "導覽重點", "遊玩提醒"]) {
+    for (const label of ["建議人數", "遊戲時間", "推出時間", "恐怖指數", "燒腦程度", "前往官方預約頁", "導覽重點", "遊玩提醒"]) {
       expect(home).toContain(label);
     }
     expect(home).toContain("恐怖度與燒腦度分開標示，跨店家比較更直覺。");

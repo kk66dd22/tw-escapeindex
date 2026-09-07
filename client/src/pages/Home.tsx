@@ -24,6 +24,7 @@ import {
 import {
   ArrowDownUp,
   ArrowUp,
+  CalendarDays,
   MessageCircle,
   Send,
   LogIn,
@@ -76,6 +77,10 @@ function playerLabel(value: string) {
 
 function locationLabel(city: string, district: string) {
   return district.includes("／") ? `${city.replace("市", "")}／據點依官網公告` : `${city.replace("市", "")}／${district}`;
+}
+
+function releaseTimeLabel(value: string | null | undefined) {
+  return value?.trim() || "尚未收錄";
 }
 
 function matchesFilter(topic: (typeof topics)[number], filter: Filter) {
@@ -553,6 +558,11 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
       <div className="flex min-w-0 flex-1 flex-col p-6">
         <div className="font-mono text-xs tracking-wider text-[#5e8b92] sm:text-sm">{topic.venue_name} · {topic.city}</div>
         <h3 className="mt-2 font-serif text-2xl font-bold leading-tight text-[#f3efe7] sm:text-3xl">《{topic.name}》</h3>
+        <div className="mt-3 flex items-center gap-2 border border-[#c89b5c]/25 bg-[#111412]/70 px-3 py-2 font-mono text-xs tracking-wider text-[#c89b5c] sm:text-sm">
+          <CalendarDays size={15} aria-hidden="true" />
+          <span>推出時間</span>
+          <span className="text-white/65">{releaseTimeLabel(topic.release_time)}</span>
+        </div>
         <div className="mt-4 border-l-2 border-[#c89b5c]/50 bg-[#111412]/60 px-3 py-2 text-xs italic leading-6 text-slate-400 sm:text-sm">
           <span aria-hidden="true" className="mr-1 text-[#c89b5c]">✦</span>
           {topic.story_summary ?? "公開劇情資訊較少，想了解完整設定，請直接查看店家官網介紹。"}

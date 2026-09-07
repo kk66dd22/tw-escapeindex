@@ -19,7 +19,8 @@
         "styles": [
           "機關解謎",
           "沉浸式劇情"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "猛鬼大廈",
@@ -29,7 +30,8 @@
         "styles": [
           "恐怖驚悚",
           "真人互動"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "潛入任務",
@@ -39,7 +41,8 @@
         "styles": [
           "任務推理",
           "機關解謎"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -84,7 +87,8 @@
         "styles": [
           "大型機關",
           "微恐"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "奪命記憶",
@@ -94,7 +98,8 @@
         "styles": [
           "機關解謎",
           "劇情推理"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "荒宅探險",
@@ -104,7 +109,8 @@
         "styles": [
           "恐怖驚悚",
           "沉浸體驗"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -150,7 +156,8 @@
         "styles": [
           "新手友善",
           "劇情解謎"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "鎮魂曲：迴憶宅邸",
@@ -160,7 +167,8 @@
         "styles": [
           "恐怖驚悚",
           "沉浸式劇情"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "幻境奇航II：最終的航道",
@@ -170,7 +178,8 @@
         "styles": [
           "奇幻冒險",
           "機關解謎"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -215,7 +224,8 @@
         "styles": [
           "日系解謎",
           "沉浸式劇情"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "魔幻菜市場",
@@ -225,7 +235,8 @@
         "styles": [
           "奇幻冒險",
           "機關解謎"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "新年接招了",
@@ -235,7 +246,8 @@
         "styles": [
           "節慶互動",
           "多人同樂"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -280,7 +292,8 @@
         "styles": [
           "生存壓迫",
           "恐怖驚悚"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "戰鬥陀螺",
@@ -290,7 +303,8 @@
         "styles": [
           "機關解謎",
           "任務挑戰"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "憶釀：亡命輪迴",
@@ -300,7 +314,8 @@
         "styles": [
           "沉浸式劇情",
           "恐怖驚悚"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -348,7 +363,8 @@
         "styles": [
           "眷村沉浸",
           "懸疑微恐"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "入學式",
@@ -358,7 +374,8 @@
         "styles": [
           "日式校舍",
           "沉浸式劇情"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "鬼新娘",
@@ -368,7 +385,8 @@
         "styles": [
           "恐怖驚悚",
           "場景探索"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -411,7 +429,8 @@
         "styles": [
           "新手入門",
           "短時體驗"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "封鎖",
@@ -421,7 +440,8 @@
         "styles": [
           "推理懸疑",
           "故事解謎"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "交替",
@@ -431,7 +451,8 @@
         "styles": [
           "恐怖驚悚",
           "聲光沉浸"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -474,7 +495,8 @@
         "styles": [
           "恐怖驚悚",
           "大型機關"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "獄謀",
@@ -484,7 +506,8 @@
         "styles": [
           "越獄任務",
           "開放流程"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "惠貞女子高校",
@@ -494,7 +517,8 @@
         "styles": [
           "校園恐怖",
           "分組合作"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -537,7 +561,8 @@
         "styles": [
           "團體冒險",
           "故事解謎"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "倒數 60 分鐘",
@@ -547,7 +572,8 @@
         "styles": [
           "限時解謎",
           "機關操作"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -590,7 +616,8 @@
         "styles": [
           "生存壓迫",
           "恐怖驚悚"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "憶釀：亡命輪迴",
@@ -600,7 +627,8 @@
         "styles": [
           "沉浸式劇情",
           "高壓任務"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -643,7 +671,8 @@
         "styles": [
           "科幻冒險",
           "機關操作"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "嬰魂嚇水道",
@@ -653,7 +682,8 @@
         "styles": [
           "恐怖驚悚",
           "場景探索"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "奪魂獄",
@@ -663,7 +693,8 @@
         "styles": [
           "罪與罰",
           "沉浸式劇情"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -706,7 +737,8 @@
         "styles": [
           "恐怖劇情",
           "記憶謎團"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "玩具總動員",
@@ -716,7 +748,8 @@
         "styles": [
           "奇幻冒險",
           "團隊任務"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "持碑天兵",
@@ -726,7 +759,8 @@
         "styles": [
           "博物館任務",
           "機關解謎"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -770,7 +804,8 @@
           "恐怖驚悚",
           "沉浸式演繹",
           "追逐體驗"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -813,7 +848,8 @@
           "泰式恐怖",
           "沉浸式演繹",
           "追逐體驗"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -857,7 +893,8 @@
           "沉浸式演繹",
           "高難度解謎",
           "單線任務"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -898,7 +935,8 @@
           "歐美風格",
           "微恐懸疑",
           "沉浸式演繹"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "巷仔口",
@@ -909,7 +947,8 @@
           "民國懷舊",
           "懸疑推理",
           "機關解謎"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "陰緣",
@@ -920,7 +959,8 @@
           "恐怖驚悚",
           "台灣民俗",
           "角色扮演"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "花見小路",
@@ -931,7 +971,8 @@
           "日式風格",
           "新手小品",
           "解謎探索"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "聖劍騎士",
@@ -942,7 +983,8 @@
           "奇幻冒險",
           "角色扮演",
           "多人協作"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -986,7 +1028,8 @@
           "校園怪談",
           "驚悚恐怖",
           "NPC互動"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -1027,7 +1070,8 @@
           "試膽體驗",
           "驚悚恐怖",
           "NPC互動"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "醫怨",
@@ -1038,7 +1082,8 @@
           "恐怖驚悚",
           "NPC互動",
           "試膽體驗"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "詐屍",
@@ -1049,7 +1094,8 @@
           "驚悚恐怖",
           "NPC互動",
           "機關解謎"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "塊陶格子360",
@@ -1059,7 +1105,8 @@
         "styles": [
           "機關解謎",
           "趣味互動"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "塊陶雷射",
@@ -1069,7 +1116,8 @@
         "styles": [
           "機關解謎",
           "雷射挑戰"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -1114,7 +1162,8 @@
         "styles": [
           "日式恐怖",
           "新手入門"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "冥婚",
@@ -1125,7 +1174,8 @@
         "styles": [
           "民俗恐怖",
           "沉浸演繹"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "44廳逝世廳",
@@ -1136,7 +1186,8 @@
         "styles": [
           "陣營對戰",
           "沉浸演繹"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "殛時",
@@ -1147,7 +1198,8 @@
         "styles": [
           "劇情解謎",
           "民俗傳說"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "殛時+冥婚",
@@ -1158,7 +1210,8 @@
         "styles": [
           "連刷體驗",
           "恐怖劇情"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "第九夜",
@@ -1169,7 +1222,8 @@
         "styles": [
           "虐心劇情",
           "驚悚懸疑"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "山中小屋藏身處",
@@ -1180,7 +1234,8 @@
         "styles": [
           "驚悚懸疑",
           "新手推薦"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -1221,7 +1276,8 @@
         "styles": [
           "電影場景",
           "NPC互動"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "賊-十載春秋",
@@ -1232,7 +1288,8 @@
         "styles": [
           "中國古風",
           "盜賊體驗"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "奎蕾精神病院",
@@ -1243,7 +1300,8 @@
         "styles": [
           "驚悚懸疑",
           "新手推薦"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "殭局",
@@ -1254,7 +1312,8 @@
         "styles": [
           "香港血案",
           "恐怖寫實"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "理髮師陶德卡特",
@@ -1265,7 +1324,8 @@
         "styles": [
           "感人劇情",
           "英國工業風"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -1305,7 +1365,8 @@
         "styles": [
           "校園懸疑",
           "恐怖氛圍"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "301號房",
@@ -1315,7 +1376,8 @@
         "styles": [
           "旅社懸疑",
           "異樣氛圍"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -1356,7 +1418,8 @@
         "styles": [
           "怪盜任務",
           "攀爬體驗"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "朱砂",
@@ -1366,7 +1429,8 @@
         "styles": [
           "懸疑推理",
           "微驚悚"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -1406,7 +1470,8 @@
         "styles": [
           "溫馨浪漫",
           "求婚客製"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "怨憶",
@@ -1417,7 +1482,8 @@
           "恐怖驚悚",
           "多人合作",
           "身歷其境"
-        ]
+        ],
+        "release_time": null
       },
       {
         "name": "康樂保衛戰",
@@ -1428,7 +1494,8 @@
           "陣營遊戲",
           "機關操作",
           "多人派對"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
@@ -1472,7 +1539,8 @@
           "沉浸演繹",
           "恐怖懸疑",
           "團隊合作"
-        ]
+        ],
+        "release_time": null
       }
     ],
     "pros": [
