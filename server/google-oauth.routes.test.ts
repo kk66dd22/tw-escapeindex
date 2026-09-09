@@ -49,6 +49,15 @@ describe("Google OAuth routes", () => {
     expect(location).toContain("scope=openid+email+profile");
   });
 
+  it("accepts the production website as a Google OAuth return URL", () => {
+    const app = makeApp();
+    registerOAuthRoutes(app as any);
+    const res = makeResponse();
+    app.routes.get("/api/google/login")?.({ query: { returnTo: "https://www.tw-escapeindex.com" }, headers: {}, protocol: "https" }, res);
+    expect(res.statusCode).toBe(200);
+    expect(res.redirect).toHaveBeenCalledWith(302, expect.stringContaining("redirect_uri=https%3A%2F%2Fwww.tw-escapeindex.com%2Fapi%2Fgoogle%2Fcallback"));
+  });
+
   it("fails closed when the callback nonce does not match", async () => {
     const app = makeApp();
     registerOAuthRoutes(app as any);

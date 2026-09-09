@@ -16,13 +16,17 @@ const GOOGLE_STATE_COOKIE = "google_oauth_state";
 const GOOGLE_ALLOWED_ORIGINS = new Set([
   "https://taipeiesc-97ma7evx.manus.space",
   "https://taiwanesc-97ma7evx.manus.space",
+  "https://www.tw-escapeindex.com",
+  "https://tw-escapeindex.com",
   "http://localhost:3000",
 ]);
 
 function isAllowedGoogleOrigin(value: string) {
   try {
     const url = new URL(value);
-    return url.pathname === "/" && (url.protocol === "http:" && url.hostname === "localhost" || url.protocol === "https:" && (url.hostname.endsWith(".manus.space") || url.hostname.endsWith(".manus.computer")));
+    if (url.pathname !== "/" || url.search || url.hash) return false;
+    if (GOOGLE_ALLOWED_ORIGINS.has(value)) return true;
+    return url.protocol === "https:" && (url.hostname.endsWith(".manus.space") || url.hostname.endsWith(".manus.computer"));
   } catch {
     return false;
   }
