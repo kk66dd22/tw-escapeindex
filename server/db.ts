@@ -71,9 +71,19 @@ export async function upsertUser(user: InsertUser): Promise<void> {
       updateSet.lastSignedIn = new Date();
     }
 
-    await db.insert(users).values(values).onDuplicateKeyUpdate({
-      set: updateSet,
-    });
+    // Keep the OAuth write path explicitly MySQL-compatible. This avoids any
+    // runtime adapter/bundle ambiguity and makes the TiDB quoting unambiguous.
+    if (!_pool) throw new Error("Database pool is not available");
+    const insertColumns = Object.keys(values) as Array<keyof InsertUser>;
+    const updateColumns = Object.keys(updateSet) as Array<keyof InsertUser>;
+    const quote = (column: string) => `\`${column}\``;
+    const insertSql = `INSERT INTO ${quote("users")} (${insertColumns.map(quote).join(", ")}) VALUES (${insertColumns.map(() => "?").join(", ")})`;
+    const updateSql = updateColumns.length > 0
+      ? ` ON DUPLICATE KEY UPDATE ${updateColumns.map(column => `${quote(column)} = ?`).join(", ")}`
+      : "";
+    const insertParams = insertColumns.map(column => values[column]);
+    const updateParams = updateColumns.map(column => updateSet[column]);
+    await _pool.promise().query(insertSql + updateSql, [...insertParams, ...updateParams]);
   } catch (error) {
     console.error("[Database] Failed to upsert user:", error);
     throw error;
