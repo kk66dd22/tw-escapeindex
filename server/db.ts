@@ -7,11 +7,27 @@ import { ENV } from './_core/env';
 let _db: ReturnType<typeof drizzle> | null = null;
 let _pool: Pool | null = null;
 
+function createDatabasePool(databaseUrl: string): Pool {
+  const url = new URL(databaseUrl);
+  const rejectUnauthorized = process.env.DATABASE_SSL_REJECT_UNAUTHORIZED !== "false";
+
+  return mysql.createPool({
+    host: url.hostname,
+    port: url.port ? Number(url.port) : 4000,
+    user: decodeURIComponent(url.username),
+    password: decodeURIComponent(url.password),
+    database: url.pathname.replace(/^\//, ""),
+    // TiDB Cloud prohibits insecure transport. Keep certificate verification
+    // enabled by default; only explicitly opt out for a controlled test setup.
+    ssl: { rejectUnauthorized },
+  });
+}
+
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _pool = mysql.createPool(process.env.DATABASE_URL);
+      _pool = createDatabasePool(process.env.DATABASE_URL);
       _db = drizzle(_pool);
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
