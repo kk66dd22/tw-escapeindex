@@ -260,11 +260,11 @@ var topicComments = mysqlTable("topic_comments", {
 // server/db.ts
 var _db = null;
 var _pool = null;
-var DEFAULT_TIDB_DATABASE = "97ma7EVXxGCJETj7gXwgY6";
+var DEFAULT_DATABASE = "test";
 function createDatabasePool(databaseUrl) {
   const url = new URL(databaseUrl);
   const rejectUnauthorized = process.env.DATABASE_SSL_REJECT_UNAUTHORIZED !== "false";
-  const database = decodeURIComponent(url.pathname.replace(/^\/+/, "")) || process.env.DATABASE_NAME || DEFAULT_TIDB_DATABASE;
+  const database = decodeURIComponent(url.pathname.replace(/^\/+/, "")) || process.env.DATABASE_NAME || DEFAULT_DATABASE;
   console.log("[Database] Initializing MySQL pool", {
     host: url.hostname,
     port: url.port || "4000",

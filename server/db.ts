@@ -6,14 +6,14 @@ import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 let _pool: Pool | null = null;
-const DEFAULT_TIDB_DATABASE = "97ma7EVXxGCJETj7gXwgY6";
+const DEFAULT_DATABASE = "test";
 
 function createDatabasePool(databaseUrl: string): Pool {
   const url = new URL(databaseUrl);
   const rejectUnauthorized = process.env.DATABASE_SSL_REJECT_UNAUTHORIZED !== "false";
   const database = decodeURIComponent(url.pathname.replace(/^\/+/, ""))
     || process.env.DATABASE_NAME
-    || DEFAULT_TIDB_DATABASE;
+    || DEFAULT_DATABASE;
 
   console.log("[Database] Initializing MySQL pool", {
     host: url.hostname,
