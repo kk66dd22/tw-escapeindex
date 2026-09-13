@@ -6,17 +6,28 @@ import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 let _pool: Pool | null = null;
+const DEFAULT_TIDB_DATABASE = "97ma7EVXxGCJETj7gXwgY6";
 
 function createDatabasePool(databaseUrl: string): Pool {
   const url = new URL(databaseUrl);
   const rejectUnauthorized = process.env.DATABASE_SSL_REJECT_UNAUTHORIZED !== "false";
+  const database = decodeURIComponent(url.pathname.replace(/^\/+/, ""))
+    || process.env.DATABASE_NAME
+    || DEFAULT_TIDB_DATABASE;
+
+  console.log("[Database] Initializing MySQL pool", {
+    host: url.hostname,
+    port: url.port || "4000",
+    database,
+    tls: true,
+  });
 
   return mysql.createPool({
     host: url.hostname,
     port: url.port ? Number(url.port) : 4000,
     user: decodeURIComponent(url.username),
     password: decodeURIComponent(url.password),
-    database: url.pathname.replace(/^\//, ""),
+    database,
     // TiDB Cloud prohibits insecure transport. Keep certificate verification
     // enabled by default; only explicitly opt out for a controlled test setup.
     ssl: { rejectUnauthorized },
