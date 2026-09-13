@@ -61,11 +61,19 @@ function resolveOAuthServerUrl(env = process.env) {
     env.OAUTH_SERVER_URL || env.MANUS_OAUTH_SERVER_URL || env.BUILT_IN_FORGE_API_URL
   ) || DEFAULT_OAUTH_SERVER_URL;
 }
+function resolveAppUrl(env = process.env) {
+  const configured = normalizeBaseUrl(env.APP_URL || env.PUBLIC_APP_URL || env.VITE_APP_URL);
+  if (configured) return configured;
+  const vercelUrl = normalizeBaseUrl(env.VERCEL_URL);
+  if (vercelUrl) return vercelUrl.startsWith("http") ? vercelUrl : `https://${vercelUrl}`;
+  return "https://www.tw-escapeindex.com";
+}
 var ENV = {
   appId: process.env.VITE_APP_ID ?? "",
   cookieSecret: process.env.JWT_SECRET ?? "",
   databaseUrl: process.env.DATABASE_URL ?? "",
   oAuthServerUrl: resolveOAuthServerUrl(),
+  appUrl: resolveAppUrl(),
   ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
@@ -7345,7 +7353,7 @@ function registerOAuthRoutes(app2) {
       res.status(503).json({ error: "Google OAuth is not configured" });
       return;
     }
-    const returnTo = getQueryParam(req, "returnTo");
+    const returnTo = getQueryParam(req, "returnTo") || ENV.appUrl;
     if (!returnTo || !isAllowedGoogleOrigin(returnTo)) {
       res.status(400).json({ error: "Invalid Google OAuth return URL" });
       return;

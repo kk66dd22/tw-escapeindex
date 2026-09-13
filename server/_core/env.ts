@@ -15,11 +15,20 @@ export function resolveOAuthServerUrl(env: NodeJS.ProcessEnv = process.env): str
   ) || DEFAULT_OAUTH_SERVER_URL;
 }
 
+export function resolveAppUrl(env: NodeJS.ProcessEnv = process.env): string {
+  const configured = normalizeBaseUrl(env.APP_URL || env.PUBLIC_APP_URL || env.VITE_APP_URL);
+  if (configured) return configured;
+  const vercelUrl = normalizeBaseUrl(env.VERCEL_URL);
+  if (vercelUrl) return vercelUrl.startsWith("http") ? vercelUrl : `https://${vercelUrl}`;
+  return "https://www.tw-escapeindex.com";
+}
+
 export const ENV = {
   appId: process.env.VITE_APP_ID ?? "",
   cookieSecret: process.env.JWT_SECRET ?? "",
   databaseUrl: process.env.DATABASE_URL ?? "",
   oAuthServerUrl: resolveOAuthServerUrl(),
+  appUrl: resolveAppUrl(),
   ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",

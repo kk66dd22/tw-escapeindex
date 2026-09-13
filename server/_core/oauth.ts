@@ -67,7 +67,7 @@ export function registerOAuthRoutes(app: Express) {
       return;
     }
 
-    const returnTo = getQueryParam(req, "returnTo");
+    const returnTo = getQueryParam(req, "returnTo") || ENV.appUrl;
     if (!returnTo || !isAllowedGoogleOrigin(returnTo)) {
       res.status(400).json({ error: "Invalid Google OAuth return URL" });
       return;
