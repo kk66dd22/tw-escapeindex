@@ -26,7 +26,11 @@ function isAllowedGoogleOrigin(value: string) {
     const url = new URL(value);
     if (url.pathname !== "/" || url.search || url.hash) return false;
     if (GOOGLE_ALLOWED_ORIGINS.has(value)) return true;
-    return url.protocol === "https:" && (url.hostname.endsWith(".manus.space") || url.hostname.endsWith(".manus.computer"));
+    return url.protocol === "https:" && (
+      url.hostname.endsWith(".manus.space") ||
+      url.hostname.endsWith(".manus.computer") ||
+      url.hostname.endsWith(".vercel.app")
+    );
   } catch {
     return false;
   }

@@ -58,6 +58,14 @@ describe("Google OAuth routes", () => {
     expect(res.redirect).toHaveBeenCalledWith(302, expect.stringContaining("redirect_uri=https%3A%2F%2Fwww.tw-escapeindex.com%2Fapi%2Fgoogle%2Fcallback"));
   });
 
+  it("accepts a Vercel preview as a Google OAuth return URL", () => {
+    const app = makeApp();
+    registerOAuthRoutes(app as any);
+    const res = makeResponse();
+    app.routes.get("/api/google/login")?.({ query: { returnTo: "https://tw-escapeindex.vercel.app" }, headers: {}, protocol: "https" }, res);
+    expect(res.statusCode).toBe(200);
+  });
+
   it("fails closed when the callback nonce does not match", async () => {
     const app = makeApp();
     registerOAuthRoutes(app as any);
