@@ -78,7 +78,7 @@ describe("TopicComments", () => {
     expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "這是我的實際遊玩體驗" });
   });
 
-  it("renders a Google avatar for signed-in authors and a fallback for anonymous authors", () => {
+  it("renders author initials without requiring a users-table avatar join", () => {
     state.query = {
       data: [
         { id: 11, userId: 7, body: "Google 評論", authorName: "Google 玩家", avatarUrl: "https://lh3.googleusercontent.com/avatar", createdAt: new Date("2026-01-01T00:00:00Z") },
@@ -88,7 +88,7 @@ describe("TopicComments", () => {
       isError: false,
     };
     const { container } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
-    expect(container.querySelector('img[src="https://lh3.googleusercontent.com/avatar"]')).toBeTruthy();
+    expect(container.querySelectorAll("img")).toHaveLength(0);
     expect(screen.getByText("匿")).toBeTruthy();
   });
 

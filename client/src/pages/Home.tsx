@@ -691,7 +691,6 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2">
                   <Avatar className="size-7 shrink-0 border border-white/15">
-                    <AvatarImage src={comment.avatarUrl ?? undefined} alt="" referrerPolicy="no-referrer" />
                     <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#b7cdc7]">{avatarInitial(comment.authorName)}</AvatarFallback>
                   </Avatar>
                   <div className="min-w-0">

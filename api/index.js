@@ -221,7 +221,7 @@ var systemRouter = router({
 });
 
 // server/db.ts
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2";
 
@@ -380,7 +380,6 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
     topicId: topicComments.topicId,
     userId: topicComments.userId,
     authorName: topicComments.authorName,
-    avatarUrl: sql`NULL`,
     anonymousToken: topicComments.anonymousToken,
     body: topicComments.body,
     createdAt: topicComments.createdAt,
