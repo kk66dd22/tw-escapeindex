@@ -24,10 +24,6 @@ var decodeOAuthState = (state) => {
   return { redirectUri: decoded };
 };
 
-// server/routers.ts
-import { parse as parseCookie } from "cookie";
-import { randomUUID } from "node:crypto";
-
 // server/_core/cookies.ts
 function isSecureRequest(req) {
   if (req.protocol === "https") return true;
@@ -6947,13 +6943,6 @@ async function searchEscapeVenues(query) {
 // server/routers.ts
 import { TRPCError as TRPCError3 } from "@trpc/server";
 import { z as z2 } from "zod";
-var ANONYMOUS_COMMENT_COOKIE = "escape-anonymous-id";
-var ANONYMOUS_COMMENT_COOLDOWN_MS = 3e4;
-var anonymousCommentSubmissions = /* @__PURE__ */ new Map();
-function getAnonymousCommentToken(req) {
-  const token = parseCookie(req.headers.cookie ?? "")[ANONYMOUS_COMMENT_COOKIE];
-  return token && /^[a-f0-9-]{36}$/i.test(token) ? token : null;
-}
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -6971,39 +6960,22 @@ var appRouter = router({
     searchEscapeVenues: adminProcedure.input(z2.object({ query: z2.string().trim().min(2).max(80) })).query(({ input }) => searchEscapeVenues(input.query))
   }),
   comments: router({
-    list: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(({ ctx, input }) => getTopicComments(input.topicId, ctx.user?.id ?? null, ctx.user ? null : getAnonymousCommentToken(ctx.req))),
-    create: publicProcedure.input(z2.object({
+    list: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(({ ctx, input }) => getTopicComments(input.topicId, ctx.user?.id ?? null, null)),
+    create: protectedProcedure.input(z2.object({
       topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728"),
       body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57")
     })).mutation(async ({ ctx, input }) => {
-      const existingAnonymousToken = getAnonymousCommentToken(ctx.req);
-      let anonymousToken = null;
-      if (!ctx.user) {
-        const token = existingAnonymousToken ?? randomUUID();
-        anonymousToken = token;
-        const lastSubmission = anonymousCommentSubmissions.get(token);
-        if (lastSubmission && Date.now() - lastSubmission < ANONYMOUS_COMMENT_COOLDOWN_MS) {
-          throw new TRPCError3({ code: "TOO_MANY_REQUESTS", message: "\u533F\u540D\u7559\u8A00\u8ACB\u7A0D\u5019 30 \u79D2\u518D\u8A66" });
-        }
-        anonymousCommentSubmissions.set(token, Date.now());
-        if (!existingAnonymousToken) {
-          ctx.res.cookie(ANONYMOUS_COMMENT_COOKIE, token, {
-            ...getSessionCookieOptions(ctx.req),
-            maxAge: ONE_YEAR_MS
-          });
-        }
-      }
       await createTopicComment({
         topicId: input.topicId,
-        userId: ctx.user?.id ?? null,
-        anonymousToken,
-        authorName: ctx.user?.name?.trim() || ctx.user?.email?.split("@")[0] || "\u533F\u540D\u63A2\u7D22\u8005",
+        userId: ctx.user.id,
+        anonymousToken: null,
+        authorName: ctx.user.name?.trim() || ctx.user.email?.split("@")[0] || "\u63A2\u7D22\u8005",
         body: input.body
       });
       return { success: true };
     }),
-    delete: publicProcedure.input(z2.object({ commentId: z2.number().int().positive() })).mutation(async ({ ctx, input }) => {
-      const result = await deleteTopicComment(input.commentId, ctx.user?.id ?? null, getAnonymousCommentToken(ctx.req));
+    delete: protectedProcedure.input(z2.object({ commentId: z2.number().int().positive() })).mutation(async ({ ctx, input }) => {
+      const result = await deleteTopicComment(input.commentId, ctx.user.id, null);
       if (result === "not_found") {
         throw new TRPCError3({ code: "NOT_FOUND", message: "\u627E\u4E0D\u5230\u9019\u5247\u8A55\u8AD6" });
       }
@@ -7286,10 +7258,17 @@ var sdk = new SDKServer();
 // server/_core/context.ts
 async function createContext(opts) {
   let user = null;
-  try {
-    user = await sdk.authenticateRequest(opts.req);
-  } catch (error) {
-    user = null;
+  const cookieHeader = opts.req.headers.cookie;
+  const authorizationHeader = opts.req.headers.authorization;
+  const hasCredentials = Boolean(
+    cookieHeader || typeof authorizationHeader === "string" && authorizationHeader.startsWith("Bearer ")
+  );
+  if (hasCredentials) {
+    try {
+      user = await sdk.authenticateRequest(opts.req);
+    } catch {
+      user = null;
+    }
   }
   return {
     req: opts.req,
@@ -7300,7 +7279,7 @@ async function createContext(opts) {
 
 // server/_core/oauth.ts
 import { parse as parseCookieHeader2 } from "cookie";
-import { randomUUID as randomUUID2 } from "node:crypto";
+import { randomUUID } from "node:crypto";
 function getQueryParam(req, key) {
   const value = req.query[key];
   return typeof value === "string" ? value : void 0;
@@ -7358,7 +7337,7 @@ function registerOAuthRoutes(app2) {
       res.status(400).json({ error: "Invalid Google OAuth return URL" });
       return;
     }
-    const nonce = randomUUID2();
+    const nonce = randomUUID();
     const redirectUri = googleRedirectUri(returnTo);
     const state = encodeGoogleState({ nonce, returnTo });
     res.cookie(GOOGLE_STATE_COOKIE, nonce, {

@@ -65,20 +65,8 @@ describe("comments router", () => {
     });
   });
 
-  it("allows anonymous creation and validates topic and body", async () => {
-    dbMocks.createTopicComment.mockResolvedValueOnce(undefined);
-    const anonymousResult = await appRouter.createCaller(createContext()).comments.create({ topicId: "popular-101", body: "匿名使用者輸入內容" });
-    expect(anonymousResult).toEqual({ success: true });
-    expect(dbMocks.createTopicComment).toHaveBeenCalledWith(expect.objectContaining({
-      topicId: "popular-101",
-      userId: null,
-      anonymousToken: expect.stringMatching(/^[a-f0-9-]{36}$/i),
-      authorName: "匿名探索者",
-    }));
-
-    const cookie = "escape-anonymous-id=11111111-1111-4111-8111-111111111111";
-    await expect(appRouter.createCaller(createContext(null, cookie)).comments.create({ topicId: "popular-101", body: "第二則匿名留言" })).resolves.toEqual({ success: true });
-    await expect(appRouter.createCaller(createContext(null, cookie)).comments.create({ topicId: "popular-101", body: "冷卻期間留言" })).rejects.toMatchObject({ code: "TOO_MANY_REQUESTS" });
+  it("requires authentication to create and validates topic and body", async () => {
+    await expect(appRouter.createCaller(createContext()).comments.create({ topicId: "popular-101", body: "匿名使用者輸入內容" })).rejects.toMatchObject({ code: "UNAUTHORIZED" });
 
     const user = {
       id: 42,
@@ -92,6 +80,15 @@ describe("comments router", () => {
       lastSignedIn: new Date(),
     };
     const caller = appRouter.createCaller(createContext(user));
+
+    dbMocks.createTopicComment.mockResolvedValueOnce(undefined);
+    await expect(caller.comments.create({ topicId: "popular-101", body: "使用者輸入內容" })).resolves.toEqual({ success: true });
+    expect(dbMocks.createTopicComment).toHaveBeenCalledWith(expect.objectContaining({
+      topicId: "popular-101",
+      userId: 42,
+      anonymousToken: null,
+      authorName: "Commenter",
+    }));
 
     await expect(caller.comments.create({ topicId: "missing-topic", body: "使用者輸入內容" })).rejects.toThrow("主題不存在");
     await expect(caller.comments.create({ topicId: "popular-101", body: "   " })).rejects.toThrow("評論內容不可為空");
@@ -124,6 +121,6 @@ describe("comments router", () => {
     await expect(appRouter.createCaller(createContext(user)).comments.delete({ commentId: 999 })).rejects.toMatchObject({ code: "NOT_FOUND", message: "找不到這則評論" });
 
     dbMocks.deleteTopicComment.mockResolvedValueOnce("forbidden");
-    await expect(appRouter.createCaller(createContext()).comments.delete({ commentId: 7 })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(appRouter.createCaller(createContext()).comments.delete({ commentId: 7 })).rejects.toMatchObject({ code: "UNAUTHORIZED" });
   });
 });
