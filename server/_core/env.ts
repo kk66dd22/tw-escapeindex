@@ -16,6 +16,9 @@ export function resolveOAuthServerUrl(env: NodeJS.ProcessEnv = process.env): str
 }
 
 export function resolveAppUrl(env: NodeJS.ProcessEnv = process.env): string {
+  if (env.NODE_ENV === "production" || env.VERCEL === "1") {
+    return "https://www.tw-escapeindex.com";
+  }
   const configured = normalizeBaseUrl(env.APP_URL || env.PUBLIC_APP_URL || env.VITE_APP_URL);
   if (configured) return configured;
   const vercelUrl = normalizeBaseUrl(env.VERCEL_URL);

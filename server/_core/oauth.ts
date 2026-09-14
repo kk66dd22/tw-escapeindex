@@ -13,24 +13,14 @@ function getQueryParam(req: Request, key: string): string | undefined {
 }
 
 const GOOGLE_STATE_COOKIE = "google_oauth_state";
-const GOOGLE_ALLOWED_ORIGINS = new Set([
-  "https://taipeiesc-97ma7evx.manus.space",
-  "https://taiwanesc-97ma7evx.manus.space",
-  "https://www.tw-escapeindex.com",
-  "https://tw-escapeindex.com",
-  "http://localhost:3000",
-]);
+const GOOGLE_ALLOWED_ORIGINS = new Set(["https://www.tw-escapeindex.com", "http://localhost:3000"]);
 
 function isAllowedGoogleOrigin(value: string) {
   try {
     const url = new URL(value);
     if (url.pathname !== "/" || url.search || url.hash) return false;
     if (GOOGLE_ALLOWED_ORIGINS.has(value)) return true;
-    return url.protocol === "https:" && (
-      url.hostname.endsWith(".manus.space") ||
-      url.hostname.endsWith(".manus.computer") ||
-      url.hostname.endsWith(".vercel.app")
-    );
+    return url.protocol === "https:" && url.origin === "https://www.tw-escapeindex.com";
   } catch {
     return false;
   }
@@ -71,7 +61,8 @@ export function registerOAuthRoutes(app: Express) {
       return;
     }
 
-    const returnTo = getQueryParam(req, "returnTo") || ENV.appUrl;
+    const requestedReturnTo = getQueryParam(req, "returnTo");
+    const returnTo = requestedReturnTo || ENV.appUrl;
     if (!returnTo || !isAllowedGoogleOrigin(returnTo)) {
       res.status(400).json({ error: "Invalid Google OAuth return URL" });
       return;
@@ -198,7 +189,7 @@ export function registerOAuthRoutes(app: Express) {
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
-      res.redirect(302, "/");
+      res.redirect(302, `${ENV.appUrl}/`);
     } catch (error) {
       console.error("[OAuth] Callback failed", error);
       res.status(500).json({ error: "OAuth callback failed" });

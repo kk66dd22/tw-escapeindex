@@ -41,7 +41,7 @@ describe("Google OAuth routes", () => {
     const app = makeApp();
     registerOAuthRoutes(app as any);
     const res = makeResponse();
-    app.routes.get("/api/google/login")?.({ query: { returnTo: "https://taipeiesc-97ma7evx.manus.space" }, headers: {}, protocol: "https" }, res);
+    app.routes.get("/api/google/login")?.({ query: { returnTo: "https://www.tw-escapeindex.com" }, headers: {}, protocol: "https" }, res);
     expect(res.cookie).toHaveBeenCalledWith("google_oauth_state", expect.any(String), expect.objectContaining({ httpOnly: true, sameSite: "lax" }));
     const location = res.redirect.mock.calls[0][1] as string;
     expect(location).toContain("https://accounts.google.com/o/oauth2/v2/auth");
@@ -58,12 +58,12 @@ describe("Google OAuth routes", () => {
     expect(res.redirect).toHaveBeenCalledWith(302, expect.stringContaining("redirect_uri=https%3A%2F%2Fwww.tw-escapeindex.com%2Fapi%2Fgoogle%2Fcallback"));
   });
 
-  it("accepts a Vercel preview as a Google OAuth return URL", () => {
+  it("rejects a Vercel preview as a Google OAuth return URL", () => {
     const app = makeApp();
     registerOAuthRoutes(app as any);
     const res = makeResponse();
     app.routes.get("/api/google/login")?.({ query: { returnTo: "https://tw-escapeindex.vercel.app" }, headers: {}, protocol: "https" }, res);
-    expect(res.statusCode).toBe(200);
+    expect(res.statusCode).toBe(400);
   });
 
   it("fails closed when the callback nonce does not match", async () => {
@@ -79,7 +79,7 @@ describe("Google OAuth routes", () => {
     const app = makeApp();
     registerOAuthRoutes(app as any);
     const loginResponse = makeResponse();
-    app.routes.get("/api/google/login")?.({ query: { returnTo: "https://taipeiesc-97ma7evx.manus.space" }, headers: {}, protocol: "https" }, loginResponse);
+    app.routes.get("/api/google/login")?.({ query: { returnTo: "https://www.tw-escapeindex.com" }, headers: {}, protocol: "https" }, loginResponse);
     const authorizationUrl = new URL(loginResponse.redirect.mock.calls[0][1]);
     const nonce = loginResponse.cookie.mock.calls[0][1];
     const fetchMock = vi.fn()
@@ -97,7 +97,7 @@ describe("Google OAuth routes", () => {
     expect(upsertUser).toHaveBeenCalledWith(expect.objectContaining({ openId: "google:google-sub", email: "player@gmail.com", avatarUrl: "https://lh3.googleusercontent.com/avatar", loginMethod: "google" }));
     expect(createSessionToken).toHaveBeenCalledWith("google:google-sub", expect.objectContaining({ name: "Google 玩家" }));
     expect(res.cookie).toHaveBeenCalledWith(COOKIE_NAME, "google-session-token", expect.any(Object));
-    expect(res.redirect).toHaveBeenCalledWith(302, "https://taipeiesc-97ma7evx.manus.space/");
+    expect(res.redirect).toHaveBeenCalledWith(302, "https://www.tw-escapeindex.com/");
     vi.unstubAllGlobals();
   });
 });

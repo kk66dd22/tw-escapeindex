@@ -58,6 +58,9 @@ function resolveOAuthServerUrl(env = process.env) {
   ) || DEFAULT_OAUTH_SERVER_URL;
 }
 function resolveAppUrl(env = process.env) {
+  if (env.NODE_ENV === "production" || env.VERCEL === "1") {
+    return "https://www.tw-escapeindex.com";
+  }
   const configured = normalizeBaseUrl(env.APP_URL || env.PUBLIC_APP_URL || env.VITE_APP_URL);
   if (configured) return configured;
   const vercelUrl = normalizeBaseUrl(env.VERCEL_URL);
@@ -218,7 +221,7 @@ var systemRouter = router({
 });
 
 // server/db.ts
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2";
 
@@ -377,12 +380,12 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
     topicId: topicComments.topicId,
     userId: topicComments.userId,
     authorName: topicComments.authorName,
-    avatarUrl: users.avatarUrl,
+    avatarUrl: sql`NULL`,
     anonymousToken: topicComments.anonymousToken,
     body: topicComments.body,
     createdAt: topicComments.createdAt,
     updatedAt: topicComments.updatedAt
-  }).from(topicComments).leftJoin(users, eq(topicComments.userId, users.id)).where(eq(topicComments.topicId, topicId)).orderBy(desc(topicComments.createdAt), desc(topicComments.id)).limit(100);
+  }).from(topicComments).where(eq(topicComments.topicId, topicId)).orderBy(desc(topicComments.createdAt), desc(topicComments.id)).limit(100);
   return rows.map(({ anonymousToken: storedToken, ...row }) => ({
     ...row,
     authorName: normalizeTopicCommentAuthor(row.authorName),
@@ -7285,19 +7288,13 @@ function getQueryParam(req, key) {
   return typeof value === "string" ? value : void 0;
 }
 var GOOGLE_STATE_COOKIE = "google_oauth_state";
-var GOOGLE_ALLOWED_ORIGINS = /* @__PURE__ */ new Set([
-  "https://taipeiesc-97ma7evx.manus.space",
-  "https://taiwanesc-97ma7evx.manus.space",
-  "https://www.tw-escapeindex.com",
-  "https://tw-escapeindex.com",
-  "http://localhost:3000"
-]);
+var GOOGLE_ALLOWED_ORIGINS = /* @__PURE__ */ new Set(["https://www.tw-escapeindex.com", "http://localhost:3000"]);
 function isAllowedGoogleOrigin(value) {
   try {
     const url = new URL(value);
     if (url.pathname !== "/" || url.search || url.hash) return false;
     if (GOOGLE_ALLOWED_ORIGINS.has(value)) return true;
-    return url.protocol === "https:" && (url.hostname.endsWith(".manus.space") || url.hostname.endsWith(".manus.computer") || url.hostname.endsWith(".vercel.app"));
+    return url.protocol === "https:" && url.origin === "https://www.tw-escapeindex.com";
   } catch {
     return false;
   }
@@ -7332,7 +7329,8 @@ function registerOAuthRoutes(app2) {
       res.status(503).json({ error: "Google OAuth is not configured" });
       return;
     }
-    const returnTo = getQueryParam(req, "returnTo") || ENV.appUrl;
+    const requestedReturnTo = getQueryParam(req, "returnTo");
+    const returnTo = requestedReturnTo || ENV.appUrl;
     if (!returnTo || !isAllowedGoogleOrigin(returnTo)) {
       res.status(400).json({ error: "Invalid Google OAuth return URL" });
       return;
@@ -7440,7 +7438,7 @@ function registerOAuthRoutes(app2) {
       });
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-      res.redirect(302, "/");
+      res.redirect(302, `${ENV.appUrl}/`);
     } catch (error) {
       console.error("[OAuth] Callback failed", error);
       res.status(500).json({ error: "OAuth callback failed" });

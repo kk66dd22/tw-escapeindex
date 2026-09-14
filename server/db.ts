@@ -1,4 +1,4 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql, { type Pool } from "mysql2";
 import { InsertContactMessage, InsertTopicComment, InsertUser, contactMessages, topicComments, users } from "../drizzle/schema";
@@ -149,14 +149,13 @@ export async function getTopicComments(topicId: string, userId: number | null = 
       topicId: topicComments.topicId,
       userId: topicComments.userId,
       authorName: topicComments.authorName,
-      avatarUrl: users.avatarUrl,
+      avatarUrl: sql<string | null>`NULL`,
       anonymousToken: topicComments.anonymousToken,
       body: topicComments.body,
       createdAt: topicComments.createdAt,
       updatedAt: topicComments.updatedAt,
     })
     .from(topicComments)
-    .leftJoin(users, eq(topicComments.userId, users.id))
     .where(eq(topicComments.topicId, topicId))
     .orderBy(desc(topicComments.createdAt), desc(topicComments.id))
     .limit(100);
