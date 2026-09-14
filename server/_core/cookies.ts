@@ -21,6 +21,14 @@ function isSecureRequest(req: Request) {
   return protoList.some(proto => proto.trim().toLowerCase() === "https");
 }
 
+function sessionCookieDomain(req: Request): string | undefined {
+  const hostname = (req.hostname || req.headers.host?.split(":")[0] || "").toLowerCase();
+  if (hostname === "tw-escapeindex.com" || hostname === "www.tw-escapeindex.com") {
+    return ".tw-escapeindex.com";
+  }
+  return undefined;
+}
+
 export function getSessionCookieOptions(
   req: Request
 ): Pick<CookieOptions, "domain" | "httpOnly" | "path" | "sameSite" | "secure"> {
@@ -40,6 +48,7 @@ export function getSessionCookieOptions(
   //       : undefined;
 
   return {
+    domain: sessionCookieDomain(req),
     httpOnly: true,
     path: "/",
     sameSite: "lax",

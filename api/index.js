@@ -32,8 +32,16 @@ function isSecureRequest(req) {
   const protoList = Array.isArray(forwardedProto) ? forwardedProto : forwardedProto.split(",");
   return protoList.some((proto) => proto.trim().toLowerCase() === "https");
 }
+function sessionCookieDomain(req) {
+  const hostname = (req.hostname || req.headers.host?.split(":")[0] || "").toLowerCase();
+  if (hostname === "tw-escapeindex.com" || hostname === "www.tw-escapeindex.com") {
+    return ".tw-escapeindex.com";
+  }
+  return void 0;
+}
 function getSessionCookieOptions(req) {
   return {
+    domain: sessionCookieDomain(req),
     httpOnly: true,
     path: "/",
     sameSite: "lax",
