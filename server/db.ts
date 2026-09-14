@@ -140,24 +140,26 @@ export function normalizeTopicCommentAuthor(authorName: string | null | undefine
 }
 
 export async function getTopicComments(topicId: string, userId: number | null = null, anonymousToken: string | null = null) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
 
-  const rows = await db
-    .select({
-      id: topicComments.id,
-      topicId: topicComments.topicId,
-      userId: topicComments.userId,
-      authorName: topicComments.authorName,
-      anonymousToken: topicComments.anonymousToken,
-      body: topicComments.body,
-      createdAt: topicComments.createdAt,
-      updatedAt: topicComments.updatedAt,
-    })
-    .from(topicComments)
-    .where(eq(topicComments.topicId, topicId))
-    .orderBy(desc(topicComments.createdAt), desc(topicComments.id))
-    .limit(100);
+  // TiDB's deployed table uses camelCase physical column names. Keep this
+  // read path explicit so a stale ORM dialect cannot turn identifiers into
+  // string literals or silently translate them to snake_case.
+  const [rawRows] = await _pool.promise().query(
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    [topicId],
+  );
+  const rows = rawRows as Array<{
+    id: number;
+    topicId: string;
+    userId: number | null;
+    authorName: string | null;
+    anonymousToken: string | null;
+    body: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }>;
 
   return rows.map(({ anonymousToken: storedToken, ...row }) => ({
     ...row,

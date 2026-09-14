@@ -221,7 +221,7 @@ var systemRouter = router({
 });
 
 // server/db.ts
-import { and, desc, eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2";
 
@@ -373,18 +373,13 @@ function normalizeTopicCommentAuthor(authorName) {
   return authorName?.trim() || "\u63A2\u7D22\u8005";
 }
 async function getTopicComments(topicId, userId = null, anonymousToken = null) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
-  const rows = await db.select({
-    id: topicComments.id,
-    topicId: topicComments.topicId,
-    userId: topicComments.userId,
-    authorName: topicComments.authorName,
-    anonymousToken: topicComments.anonymousToken,
-    body: topicComments.body,
-    createdAt: topicComments.createdAt,
-    updatedAt: topicComments.updatedAt
-  }).from(topicComments).where(eq(topicComments.topicId, topicId)).orderBy(desc(topicComments.createdAt), desc(topicComments.id)).limit(100);
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
+  const [rawRows] = await _pool.promise().query(
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    [topicId]
+  );
+  const rows = rawRows;
   return rows.map(({ anonymousToken: storedToken, ...row }) => ({
     ...row,
     authorName: normalizeTopicCommentAuthor(row.authorName),
