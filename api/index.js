@@ -40,8 +40,8 @@ function getSessionCookieOptions(req) {
   return {
     httpOnly: true,
     path: "/",
-    sameSite: "none",
-    secure: isSecureRequest(req)
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production" || isSecureRequest(req)
   };
 }
 
@@ -7440,7 +7440,7 @@ function registerOAuthRoutes(app2) {
       res.status(403).json({ error: "invalid oauth state" });
       return;
     }
-    res.clearCookie(OAUTH_STATE_COOKIE, { path: "/", secure: true, sameSite: "none" });
+    res.clearCookie(OAUTH_STATE_COOKIE, { ...getSessionCookieOptions(req) });
     try {
       const tokenResponse = await sdk.exchangeCodeForToken(code, state);
       const userInfo = await sdk.getUserInfo(tokenResponse.accessToken);
