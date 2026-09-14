@@ -6,15 +6,14 @@ function request(host: string, protocol = "https") {
 }
 
 describe("session cookie options", () => {
-  it("shares the cookie across the production root and www host", () => {
+  it("uses a host-only cookie on the production host", () => {
     expect(getSessionCookieOptions(request("www.tw-escapeindex.com"))).toMatchObject({
-      domain: ".tw-escapeindex.com",
       path: "/",
       sameSite: "lax",
       secure: true,
       httpOnly: true,
     });
-    expect(getSessionCookieOptions(request("tw-escapeindex.com"))).toMatchObject({ domain: ".tw-escapeindex.com" });
+    expect(getSessionCookieOptions(request("www.tw-escapeindex.com")).domain).toBeUndefined();
   });
 
   it("does not set a production domain on local or preview hosts", () => {
