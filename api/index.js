@@ -6962,7 +6962,14 @@ var appRouter = router({
     searchEscapeVenues: adminProcedure.input(z2.object({ query: z2.string().trim().min(2).max(80) })).query(({ input }) => searchEscapeVenues(input.query))
   }),
   comments: router({
-    list: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(({ ctx, input }) => getTopicComments(input.topicId, ctx.user?.id ?? null, null)),
+    list: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(async ({ ctx, input }) => {
+      try {
+        return await getTopicComments(input.topicId, ctx.user?.id ?? null, null);
+      } catch (error) {
+        console.error("[Comments] Public list unavailable", error);
+        return [];
+      }
+    }),
     create: protectedProcedure.input(z2.object({
       topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728"),
       body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57")

@@ -32,7 +32,14 @@ export const appRouter = router({
   comments: router({
     list: publicProcedure
       .input(z.object({ topicId: z.string().refine((topicId) => topics.some((topic) => topic.id === topicId), "主題不存在") }))
-      .query(({ ctx, input }) => getTopicComments(input.topicId, ctx.user?.id ?? null, null)),
+      .query(async ({ ctx, input }) => {
+        try {
+          return await getTopicComments(input.topicId, ctx.user?.id ?? null, null);
+        } catch (error) {
+          console.error("[Comments] Public list unavailable", error);
+          return [];
+        }
+      }),
     create: protectedProcedure
       .input(z.object({
         topicId: z.string().refine((topicId) => topics.some((topic) => topic.id === topicId), "主題不存在"),
