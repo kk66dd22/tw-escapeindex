@@ -18,8 +18,27 @@ export function useAuth(options?: UseAuthOptions) {
 
   const meQuery = trpc.auth.me.useQuery(undefined, {
     retry: false,
-    refetchOnWindowFocus: false,
+    refetchOnMount: "always",
+    refetchOnReconnect: true,
+    refetchOnWindowFocus: true,
   });
+
+  // OAuth returns to the same document in some browsers/WebViews. Refresh on
+  // mount and pageshow so a cached unauthenticated result cannot hide a newly
+  // issued session cookie.
+  useEffect(() => {
+    void meQuery.refetch();
+    const refreshAfterReturn = () => {
+      if (document.visibilityState === "hidden") return;
+      void meQuery.refetch();
+    };
+    window.addEventListener("pageshow", refreshAfterReturn);
+    document.addEventListener("visibilitychange", refreshAfterReturn);
+    return () => {
+      window.removeEventListener("pageshow", refreshAfterReturn);
+      document.removeEventListener("visibilitychange", refreshAfterReturn);
+    };
+  }, [meQuery.refetch]);
 
   const logoutMutation = trpc.auth.logout.useMutation({
     onSuccess: () => {
