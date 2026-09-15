@@ -6,7 +6,6 @@ import { createRoot } from "react-dom/client";
 import superjson from "superjson";
 import App from "./App";
 import { startLogin } from "./const";
-import { getSameOriginTrpcUrl } from "./lib/runtimeUrl";
 import "./index.css";
 
 const queryClient = new QueryClient();
@@ -41,9 +40,9 @@ queryClient.getMutationCache().subscribe(event => {
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      // Resolve at runtime so a custom-domain page never calls a stale
-      // deployment URL and therefore keeps its same-origin session cookie.
-      url: getSameOriginTrpcUrl(),
+      // Keep this relative: the browser resolves it against the current page
+      // host, so www.tw-escapeindex.com never calls a Vercel deployment host.
+      url: "/api/trpc",
       transformer: superjson,
       headers() {
         // Preview auto-login fallback: when the browser blocks iframe cookies
