@@ -54,6 +54,29 @@ function normalizeGoogleAvatarUrl(value: unknown): string | null {
   }
 }
 
+function describeOAuthError(error: unknown) {
+  if (error instanceof Error) return { name: error.name, message: error.message, stack: error.stack };
+  return { value: String(error) };
+}
+
+function maskEmail(email: string | undefined) {
+  if (!email) return undefined;
+  const [name, domain] = email.split("@");
+  return `${name?.slice(0, 2) ?? ""}***@${domain ?? ""}`;
+}
+
+function logCookieOptions(req: Request) {
+  const options = getSessionCookieOptions(req);
+  return {
+    secure: options.secure,
+    sameSite: options.sameSite,
+    httpOnly: options.httpOnly,
+    path: options.path,
+    domain: options.domain ?? "<host-only>",
+    host: typeof req.get === "function" ? req.get("host") ?? "<unknown>" : req.headers.host ?? "<unknown>",
+  };
+}
+
 export function registerOAuthRoutes(app: Express) {
   app.get("/api/google/login", (req: Request, res: Response) => {
     if (!ENV.googleClientId || !ENV.googleClientSecret) {
@@ -88,19 +111,39 @@ export function registerOAuthRoutes(app: Express) {
   });
 
   app.get("/api/google/callback", async (req: Request, res: Response) => {
+    let stage = "callback:received";
     const code = getQueryParam(req, "code");
     const stateValue = getQueryParam(req, "state");
     const state = stateValue ? decodeGoogleState(stateValue) : null;
     const expectedNonce = parseCookieHeader(req.headers.cookie ?? "")[GOOGLE_STATE_COOKIE];
 
+    console.log("[Google OAuth] Callback received", {
+      host: typeof req.get === "function" ? req.get("host") : req.headers.host,
+      protocol: req.protocol,
+      hasCode: Boolean(code),
+      hasState: Boolean(stateValue),
+      hasStateCookie: Boolean(expectedNonce),
+      cookie: logCookieOptions(req),
+    });
+
     if (!code || !state || !expectedNonce || state.nonce !== expectedNonce) {
+      console.error("[Google OAuth] State validation failed", {
+        hasCode: Boolean(code),
+        hasState: Boolean(state),
+        hasStateCookie: Boolean(expectedNonce),
+        nonceMatches: Boolean(state && expectedNonce && state.nonce === expectedNonce),
+      });
       res.status(403).json({ error: "invalid Google OAuth state" });
       return;
     }
+    stage = "state:validated";
     res.clearCookie(GOOGLE_STATE_COOKIE, { ...getSessionCookieOptions(req), sameSite: "lax" });
+    console.log("[Google OAuth] State validated and state cookie cleared");
 
     try {
+      stage = "token:exchange";
       const redirectUri = googleRedirectUri(state.returnTo);
+      console.log("[Google OAuth] Exchanging authorization code", { redirectUri });
       const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
@@ -112,18 +155,30 @@ export function registerOAuthRoutes(app: Express) {
           grant_type: "authorization_code",
         }),
       });
+      console.log("[Google OAuth] Token exchange response", { status: tokenResponse.status, ok: tokenResponse.ok });
       if (!tokenResponse.ok) throw new Error(`Google token exchange failed: ${tokenResponse.status}`);
       const tokenPayload = await tokenResponse.json() as { access_token?: string };
+      console.log("[Google OAuth] Token payload received", { hasAccessToken: Boolean(tokenPayload.access_token) });
       if (!tokenPayload.access_token) throw new Error("Google access token missing");
 
+      stage = "profile:lookup";
+      console.log("[Google OAuth] Fetching Google user profile");
       const profileResponse = await fetch("https://openidconnect.googleapis.com/v1/userinfo", {
         headers: { authorization: `Bearer ${tokenPayload.access_token}` },
       });
+      console.log("[Google OAuth] Userinfo response", { status: profileResponse.status, ok: profileResponse.ok });
       if (!profileResponse.ok) throw new Error(`Google userinfo failed: ${profileResponse.status}`);
       const profile = await profileResponse.json() as { sub?: string; email?: string; name?: string; picture?: string };
+      console.log("[Google OAuth] Profile received", {
+        hasSubject: Boolean(profile.sub),
+        email: maskEmail(profile.email),
+        hasName: Boolean(profile.name),
+      });
       if (!profile.sub || !profile.email) throw new Error("Google profile is missing required fields");
 
       const openId = `google:${profile.sub}`;
+      stage = "user:upsert";
+      console.log("[Google OAuth] Upserting user", { openIdPrefix: `${openId.slice(0, 15)}...` });
       await db.upsertUser({
         openId,
         name: profile.name || profile.email.split("@")[0],
@@ -132,14 +187,21 @@ export function registerOAuthRoutes(app: Express) {
         loginMethod: "google",
         lastSignedIn: new Date(),
       });
+      console.log("[Google OAuth] User upsert complete");
+      stage = "session:create";
+      console.log("[Google OAuth] Creating session token");
       const sessionToken = await sdk.createSessionToken(openId, {
         name: profile.name || profile.email,
         expiresInMs: ONE_YEAR_MS,
       });
+      console.log("[Google OAuth] Session token created", { length: sessionToken.length });
+      stage = "cookie:set";
+      console.log("[Google OAuth] Setting session cookie", { cookie: logCookieOptions(req) });
       res.cookie(COOKIE_NAME, sessionToken, { ...getSessionCookieOptions(req), maxAge: ONE_YEAR_MS });
+      console.log("[Google OAuth] Session cookie set; redirecting", { returnTo: state.returnTo });
       res.redirect(302, `${state.returnTo}/`);
     } catch (error) {
-      console.error("[Google OAuth] Callback failed", error);
+      console.error("[Google OAuth] Callback failed", { stage, ...describeOAuthError(error) });
       res.status(502).json({ error: "Google OAuth callback failed" });
     }
   });
