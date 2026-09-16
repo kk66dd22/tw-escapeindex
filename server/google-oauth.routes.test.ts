@@ -96,7 +96,8 @@ describe("Google OAuth routes", () => {
 
     expect(upsertUser).toHaveBeenCalledWith(expect.objectContaining({ openId: "google:google-sub", email: "player@gmail.com", avatarUrl: "https://lh3.googleusercontent.com/avatar", loginMethod: "google" }));
     expect(createSessionToken).toHaveBeenCalledWith("google:google-sub", expect.objectContaining({ name: "Google 玩家" }));
-    expect(res.cookie).toHaveBeenCalledWith(COOKIE_NAME, "google-session-token", expect.any(Object));
+    expect(res.cookie).toHaveBeenCalledWith("google_oauth_state", "", expect.objectContaining({ maxAge: 0, sameSite: "lax" }));
+    expect(res.cookie).toHaveBeenCalledWith(COOKIE_NAME, "google-session-token", expect.objectContaining({ maxAge: expect.any(Number), secure: true, httpOnly: true, path: "/", sameSite: "lax" }));
     expect(res.redirect).toHaveBeenCalledWith(302, "https://www.tw-escapeindex.com/");
     vi.unstubAllGlobals();
   });

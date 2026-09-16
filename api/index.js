@@ -7401,8 +7401,7 @@ function registerOAuthRoutes(app2) {
       return;
     }
     stage = "state:validated";
-    res.clearCookie(GOOGLE_STATE_COOKIE, { ...getSessionCookieOptions(req), sameSite: "lax" });
-    console.log("[Google OAuth] State validated and state cookie cleared");
+    console.log("[Google OAuth] State validated; deferring cookie headers until final redirect");
     try {
       stage = "token:exchange";
       const redirectUri = googleRedirectUri(state.returnTo);
@@ -7457,8 +7456,20 @@ function registerOAuthRoutes(app2) {
       });
       console.log("[Google OAuth] Session token created", { length: sessionToken.length });
       stage = "cookie:set";
-      console.log("[Google OAuth] Setting session cookie", { cookie: logCookieOptions(req) });
-      res.cookie(COOKIE_NAME, sessionToken, { ...getSessionCookieOptions(req), maxAge: ONE_YEAR_MS });
+      const cookieOptions = getSessionCookieOptions(req);
+      console.log("[Google OAuth] Setting cookies on final redirect response", {
+        cookie: logCookieOptions(req),
+        cookieCount: 2,
+        cookieNames: [GOOGLE_STATE_COOKIE, COOKIE_NAME],
+        sessionCookieLength: sessionToken.length
+      });
+      res.cookie(GOOGLE_STATE_COOKIE, "", {
+        ...cookieOptions,
+        sameSite: "lax",
+        expires: /* @__PURE__ */ new Date(0),
+        maxAge: 0
+      });
+      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
       console.log("[Google OAuth] Session cookie set; redirecting", { returnTo: state.returnTo });
       res.redirect(302, `${state.returnTo}/`);
     } catch (error) {
