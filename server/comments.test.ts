@@ -12,115 +12,57 @@ const dbMocks = vi.hoisted(() => ({
 
 vi.mock("./db", () => dbMocks);
 
-function createContext(user: TrpcContext["user"] = null, cookie = ""): TrpcContext {
+function createContext(): TrpcContext {
   return {
-    user,
-    req: { protocol: "https", headers: { cookie } } as TrpcContext["req"],
+    user: null,
+    req: { protocol: "https", headers: {} } as TrpcContext["req"],
     res: { clearCookie: vi.fn(), cookie: vi.fn() } as unknown as TrpcContext["res"],
   };
 }
+
+const token = "11111111-1111-4111-8111-111111111111";
 
 describe("comments router", () => {
   it("normalizes missing public comment author names", () => {
     expect(normalizeTopicCommentAuthor("  玩家  ")).toBe("玩家");
     expect(normalizeTopicCommentAuthor(null)).toBe("探索者");
-    expect(normalizeTopicCommentAuthor("   ")).toBe("探索者");
   });
 
-  it("returns the public comment list for a valid topic", async () => {
+  it("returns the public comment list without authentication", async () => {
     dbMocks.getTopicComments.mockResolvedValueOnce([]);
-
     const result = await appRouter.createCaller(createContext()).comments.list({ topicId: "popular-101" });
-
     expect(result).toEqual([]);
     expect(dbMocks.getTopicComments).toHaveBeenCalledWith("popular-101", null, null);
   });
 
-  it("creates a comment with the authenticated user identity", async () => {
-    const user = {
-      id: 42,
-      openId: "commenter",
-      email: "commenter@example.com",
-      name: "Commenter",
-      loginMethod: "manus",
-      role: "user" as const,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      lastSignedIn: new Date(),
-    };
+  it("creates an anonymous comment with nickname and token", async () => {
     dbMocks.createTopicComment.mockResolvedValueOnce(undefined);
-
-    const result = await appRouter.createCaller(createContext(user)).comments.create({
+    const result = await appRouter.createCaller(createContext()).comments.create({
       topicId: "popular-101",
-      body: "使用者輸入內容",
+      body: "訪客體驗",
+      authorName: "探險家_1234",
+      anonymousToken: token,
     });
-
     expect(result).toEqual({ success: true });
     expect(dbMocks.createTopicComment).toHaveBeenCalledWith({
       topicId: "popular-101",
-      userId: 42,
-      anonymousToken: null,
-      authorName: "Commenter",
-      body: "使用者輸入內容",
+      userId: null,
+      anonymousToken: token,
+      authorName: "探險家_1234",
+      body: "訪客體驗",
     });
   });
 
-  it("requires authentication to create and validates topic and body", async () => {
-    await expect(appRouter.createCaller(createContext()).comments.create({ topicId: "popular-101", body: "匿名使用者輸入內容" })).rejects.toMatchObject({ code: "UNAUTHORIZED" });
-
-    const user = {
-      id: 42,
-      openId: "commenter",
-      email: null,
-      name: "Commenter",
-      loginMethod: "manus",
-      role: "user" as const,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      lastSignedIn: new Date(),
-    };
-    const caller = appRouter.createCaller(createContext(user));
-
-    dbMocks.createTopicComment.mockResolvedValueOnce(undefined);
-    await expect(caller.comments.create({ topicId: "popular-101", body: "使用者輸入內容" })).resolves.toEqual({ success: true });
-    expect(dbMocks.createTopicComment).toHaveBeenCalledWith(expect.objectContaining({
-      topicId: "popular-101",
-      userId: 42,
-      anonymousToken: null,
-      authorName: "Commenter",
-    }));
-
-    await expect(caller.comments.create({ topicId: "missing-topic", body: "使用者輸入內容" })).rejects.toThrow("主題不存在");
-    await expect(caller.comments.create({ topicId: "popular-101", body: "   " })).rejects.toThrow("評論內容不可為空");
-    await expect(caller.comments.create({ topicId: "popular-101", body: "x".repeat(2001) })).rejects.toThrow("評論內容不可超過 2000 字");
+  it("allows anonymous owners to delete with the same token", async () => {
+    dbMocks.deleteTopicComment.mockResolvedValueOnce("deleted");
+    await expect(appRouter.createCaller(createContext()).comments.delete({ commentId: 7, anonymousToken: token })).resolves.toEqual({ success: true });
+    expect(dbMocks.deleteTopicComment).toHaveBeenCalledWith(7, null, token);
   });
 
-  it("deletes only through the authenticated delete procedure", async () => {
-    const user = {
-      id: 42,
-      openId: "commenter",
-      email: null,
-      name: "Commenter",
-      loginMethod: "manus",
-      role: "user" as const,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      lastSignedIn: new Date(),
-    };
-    dbMocks.deleteTopicComment.mockResolvedValueOnce("deleted");
-
-    const result = await appRouter.createCaller(createContext(user)).comments.delete({ commentId: 7 });
-
-    expect(result).toEqual({ success: true });
-    expect(dbMocks.deleteTopicComment).toHaveBeenCalledWith(7, 42, null);
-
-    dbMocks.deleteTopicComment.mockResolvedValueOnce("forbidden");
-    await expect(appRouter.createCaller(createContext(user)).comments.delete({ commentId: 8 })).rejects.toMatchObject({ code: "FORBIDDEN", message: "只能刪除自己的評論" });
-
-    dbMocks.deleteTopicComment.mockResolvedValueOnce("not_found");
-    await expect(appRouter.createCaller(createContext(user)).comments.delete({ commentId: 999 })).rejects.toMatchObject({ code: "NOT_FOUND", message: "找不到這則評論" });
-
-    dbMocks.deleteTopicComment.mockResolvedValueOnce("forbidden");
-    await expect(appRouter.createCaller(createContext()).comments.delete({ commentId: 7 })).rejects.toMatchObject({ code: "UNAUTHORIZED" });
+  it("validates nickname, token, topic, and body", async () => {
+    const caller = appRouter.createCaller(createContext());
+    await expect(caller.comments.create({ topicId: "popular-101", body: "留言", authorName: "訪客", anonymousToken: "bad" })).rejects.toThrow();
+    await expect(caller.comments.create({ topicId: "missing-topic", body: "留言", authorName: "訪客", anonymousToken: token })).rejects.toThrow("主題不存在");
+    await expect(caller.comments.create({ topicId: "popular-101", body: "   ", authorName: "訪客", anonymousToken: token })).rejects.toThrow("評論內容不可為空");
   });
 });

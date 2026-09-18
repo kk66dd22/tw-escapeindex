@@ -2,8 +2,6 @@
  * Style: 夜蝕都市 Neo-noir editorial；煤黑、氧化金、冷霧藍。
  * Content model: 一張卡片 = 一個可被比較、收藏與預約的密室主題。
  */
-import { useAuth } from "@/_core/hooks/useAuth";
-import { startLogin } from "@/const";
 import { FAVORITES_STORAGE_KEY, parseFavoriteIds, serializeFavoriteIds, toggleFavoriteId } from "@/lib/favorites";
 import { trpc } from "@/lib/trpc";
 import { HERO_COPY } from "@/lib/heroCopy";
@@ -11,7 +9,7 @@ import { ADVENTURER_GUILD_BOOKING_URL, ADVENTURER_GUILD_CTA_LABEL, bookingCtaLay
 import { pageForItem, pickRandom } from "@/lib/randomPick";
 import { isTopicJumpReady, needsTopicPageChange, prepareTopicJump, type TopicJumpTarget } from "@/lib/topicJump";
 import SiteFooter from "@/components/SiteFooter";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Dialog,
   DialogContent,
@@ -27,8 +25,6 @@ import {
   CalendarDays,
   MessageCircle,
   Send,
-  LogIn,
-  LogOut,
   Trash2,
   Brain,
   Check,
@@ -64,6 +60,24 @@ const filters: { id: Filter; label: string }[] = [
 
 function avatarInitial(name: string | null | undefined, email?: string | null) {
   return (name?.trim() || email?.trim() || "探").slice(0, 1).toUpperCase();
+}
+
+const ANONYMOUS_TOKEN_KEY = "escape-index-anonymous-token";
+const ANONYMOUS_NAME_KEY = "escape-index-anonymous-name";
+
+function getAnonymousIdentity() {
+  if (typeof window === "undefined") return { token: "", name: "" };
+  let token = window.localStorage.getItem(ANONYMOUS_TOKEN_KEY);
+  if (!token) {
+    token = crypto.randomUUID();
+    window.localStorage.setItem(ANONYMOUS_TOKEN_KEY, token);
+  }
+  let name = window.localStorage.getItem(ANONYMOUS_NAME_KEY);
+  if (!name) {
+    name = `探險家_${token.slice(0, 4)}`;
+    window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
+  }
+  return { token, name };
 }
 
 function playerBounds(value: string) {
@@ -603,52 +617,14 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
 }
 
 export function HomeAuthControls() {
-  const { user, isAuthenticated, loading, logout } = useAuth();
-  const [logoutOpen, setLogoutOpen] = useState(false);
-
-  if (loading) return <span className="font-mono text-[10px] tracking-widest text-white/35">登入狀態確認中</span>;
-  if (isAuthenticated) {
-    return (
-      <Dialog open={logoutOpen} onOpenChange={setLogoutOpen}>
-        <DialogTrigger asChild>
-          <button
-            type="button"
-            className="inline-flex min-h-11 items-center gap-3 border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:bg-[#141b18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]"
-            aria-label="開啟登出確認"
-            title="登出"
-            data-testid="logout-trigger"
-          >
-            <Avatar className="size-8 border border-[#c89b5c]/70">
-              <AvatarImage src={user?.avatarUrl ?? undefined} alt="" referrerPolicy="no-referrer" />
-              <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#c89b5c]">{avatarInitial(user?.name, user?.email)}</AvatarFallback>
-            </Avatar>
-            <span className="max-w-28 truncate text-left">{user?.name || user?.email || "已登入"}</span>
-          </button>
-        </DialogTrigger>
-        <DialogContent className="w-[calc(100%-2rem)] max-w-[34rem] rounded-xl border-[#5e8b92]/50 bg-[#101513] p-7 text-[#e8e4db] shadow-[0_24px_80px_rgba(0,0,0,.45)] sm:max-w-[40rem] sm:p-8">
-          <DialogHeader className="gap-3 pr-6">
-            <DialogTitle className="font-serif text-2xl leading-tight text-[#e8e4db]">確定要登出嗎？</DialogTitle>
-            <DialogDescription className="max-w-2xl font-mono text-sm leading-7 text-[#b7cdc7]/75">登出後仍可繼續瀏覽網站；下次發表登入評論時，需要重新使用 Google 帳號登入。</DialogDescription>
-          </DialogHeader>
-          <DialogFooter className="mt-2 gap-3 sm:justify-end">
-            <button type="button" onClick={() => setLogoutOpen(false)} className="min-h-11 rounded-md border border-white/20 px-5 py-3 font-mono text-sm text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#e0bd83]">取消</button>
-            <button type="button" onClick={() => { void logout(); setLogoutOpen(false); }} className="min-h-11 rounded-md border border-rose-300/50 bg-rose-950/40 px-5 py-3 font-mono text-sm text-rose-100 transition hover:bg-rose-900/60">確認登出</button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    );
-  }
-  return (
-    <button type="button" onClick={() => startLogin()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 px-3 py-2 font-mono text-[10px] tracking-wider text-[#c89b5c] transition hover:bg-[#c89b5c] hover:text-[#0c0e0d]">
-      <LogIn size={13} /> Google 帳號登入
-    </button>
-  );
+  const identity = getAnonymousIdentity();
+  return <span className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7]">訪客：{identity.name || "匿名"}</span>;
 }
 
 export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
-  const { user, isAuthenticated, loading: authLoading } = useAuth();
   const utils = trpc.useUtils();
   const [body, setBody] = useState("");
+  const [identity, setIdentity] = useState(() => getAnonymousIdentity());
   const commentsQuery = trpc.comments.list.useQuery({ topicId });
   const createComment = trpc.comments.create.useMutation({
     onSuccess: async () => {
@@ -665,8 +641,8 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const submitComment = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedBody = body.trim();
-    if (!trimmedBody) return;
-    createComment.mutate({ topicId, body: trimmedBody });
+    if (!trimmedBody || !identity.token || !identity.name.trim()) return;
+    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token });
   };
 
   return (
@@ -700,8 +676,8 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                     </time>
                   </div>
                 </div>
-                {(comment.canDelete || user?.id === comment.userId) && (
-                  <button type="button" onClick={() => deleteComment.mutate({ commentId: comment.id })} disabled={deleteComment.isPending} className="shrink-0 p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
+                {comment.canDelete && (
+                  <button type="button" onClick={() => deleteComment.mutate({ commentId: comment.id, anonymousToken: identity.token })} disabled={deleteComment.isPending} className="shrink-0 p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
                     <Trash2 size={14} />
                   </button>
                 )}
@@ -715,14 +691,15 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       {deleteComment.isError && <p className="mt-3 text-xs text-rose-200/80">{deleteComment.error.message}</p>}
       <form onSubmit={submitComment} className="mt-4 space-y-2">
         <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
-        <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（可匿名，不需登入）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
+        <input aria-label="留言暱稱" value={identity.name} onChange={(event) => { const name = event.target.value; setIdentity((current) => ({ ...current, name })); window.localStorage.setItem(ANONYMOUS_NAME_KEY, name); }} maxLength={120} placeholder="你的暱稱" className="w-full border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
+        <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
         <div className="flex items-center justify-between gap-3">
-          <span className="font-mono text-[10px] text-white/35">{isAuthenticated ? "已登入身份" : "匿名留言"} · {body.length}/2000</span>
-          <button type="submit" disabled={authLoading || createComment.isPending || !body.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
+          <span className="font-mono text-[10px] text-white/35">訪客留言 · {body.length}/2000</span>
+          <button type="submit" disabled={createComment.isPending || !body.trim() || !identity.name.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
             <Send size={14} /> {createComment.isPending ? "送出中⋯" : "發表評論"}
           </button>
         </div>
-        <p className="text-[10px] leading-5 text-white/35">匿名留言會以本次瀏覽器的安全識別碼區分；請勿填寫個人敏感資料。</p>
+        <p className="text-[10px] leading-5 text-white/35">暱稱與匿名識別碼只儲存在本瀏覽器；請勿填寫個人敏感資料。</p>
         {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
       </form>
     </section>

@@ -2,48 +2,6 @@
 import express from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 
-// shared/const.ts
-var COOKIE_NAME = "app_session_id";
-var ONE_YEAR_MS = 1e3 * 60 * 60 * 24 * 365;
-var AXIOS_TIMEOUT_MS = 3e4;
-var UNAUTHED_ERR_MSG = "Please login (10001)";
-var NOT_ADMIN_ERR_MSG = "You do not have required permission (10002)";
-var OAUTH_STATE_COOKIE = "__Host-oauth_state";
-var decodeOAuthState = (state) => {
-  let decoded;
-  try {
-    decoded = atob(state);
-  } catch {
-    return { redirectUri: "" };
-  }
-  try {
-    const parsed = JSON.parse(decoded);
-    if (parsed && typeof parsed.redirectUri === "string") return parsed;
-  } catch {
-  }
-  return { redirectUri: decoded };
-};
-
-// server/_core/cookies.ts
-function isSecureRequest(req) {
-  if (req.protocol === "https") return true;
-  const forwardedProto = req.headers["x-forwarded-proto"];
-  if (!forwardedProto) return false;
-  const protoList = Array.isArray(forwardedProto) ? forwardedProto : forwardedProto.split(",");
-  return protoList.some((proto) => proto.trim().toLowerCase() === "https");
-}
-function getSessionCookieOptions(req) {
-  return {
-    // Deliberately omit Domain. This creates a host-only cookie bound to the
-    // actual OAuth callback host, which is more reliable behind Vercel's
-    // proxy than guessing a parent domain from forwarded Host headers.
-    httpOnly: true,
-    path: "/",
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production" || isSecureRequest(req)
-  };
-}
-
 // server/_core/systemRouter.ts
 import { z } from "zod";
 
@@ -51,37 +9,12 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 
 // server/_core/env.ts
-var DEFAULT_OAUTH_SERVER_URL = "https://api.manus.im";
-function normalizeBaseUrl(value) {
-  return value?.trim().replace(/\/+$/, "") || "";
-}
-function resolveOAuthServerUrl(env = process.env) {
-  return normalizeBaseUrl(
-    env.OAUTH_SERVER_URL || env.MANUS_OAUTH_SERVER_URL || env.BUILT_IN_FORGE_API_URL
-  ) || DEFAULT_OAUTH_SERVER_URL;
-}
-function resolveAppUrl(env = process.env) {
-  if (env.NODE_ENV === "production" || env.VERCEL === "1") {
-    return "https://www.tw-escapeindex.com";
-  }
-  const configured = normalizeBaseUrl(env.APP_URL || env.PUBLIC_APP_URL || env.VITE_APP_URL);
-  if (configured) return configured;
-  const vercelUrl = normalizeBaseUrl(env.VERCEL_URL);
-  if (vercelUrl) return vercelUrl.startsWith("http") ? vercelUrl : `https://${vercelUrl}`;
-  return "https://www.tw-escapeindex.com";
-}
 var ENV = {
-  appId: process.env.VITE_APP_ID ?? "",
-  cookieSecret: process.env.JWT_SECRET ?? "",
   databaseUrl: process.env.DATABASE_URL ?? "",
-  oAuthServerUrl: resolveOAuthServerUrl(),
-  appUrl: resolveAppUrl(),
   ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
-  forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
-  googleClientId: process.env.GOOGLE_CLIENT_ID ?? "",
-  googleClientSecret: process.env.GOOGLE_CLIENT_SECRET ?? ""
+  forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? ""
 };
 
 // server/_core/notification.ts
@@ -166,40 +99,14 @@ async function notifyOwner(payload) {
 }
 
 // server/_core/trpc.ts
-import { initTRPC, TRPCError as TRPCError2 } from "@trpc/server";
+import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 var t = initTRPC.context().create({
   transformer: superjson
 });
 var router = t.router;
 var publicProcedure = t.procedure;
-var requireUser = t.middleware(async (opts) => {
-  const { ctx, next } = opts;
-  if (!ctx.user) {
-    throw new TRPCError2({ code: "UNAUTHORIZED", message: UNAUTHED_ERR_MSG });
-  }
-  return next({
-    ctx: {
-      ...ctx,
-      user: ctx.user
-    }
-  });
-});
-var protectedProcedure = t.procedure.use(requireUser);
-var adminProcedure = t.procedure.use(
-  t.middleware(async (opts) => {
-    const { ctx, next } = opts;
-    if (!ctx.user || ctx.user.role !== "admin") {
-      throw new TRPCError2({ code: "FORBIDDEN", message: NOT_ADMIN_ERR_MSG });
-    }
-    return next({
-      ctx: {
-        ...ctx,
-        user: ctx.user
-      }
-    });
-  })
-);
+var adminProcedure = publicProcedure;
 
 // server/_core/systemRouter.ts
 var systemRouter = router({
@@ -303,69 +210,6 @@ async function getDb() {
     }
   }
   return _db;
-}
-async function upsertUser(user) {
-  if (!user.openId) {
-    throw new Error("User openId is required for upsert");
-  }
-  const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot upsert user: database not available");
-    return;
-  }
-  try {
-    const values = {
-      openId: user.openId
-    };
-    const updateSet = {};
-    const textFields = ["name", "email", "avatarUrl", "loginMethod"];
-    const assignNullable = (field) => {
-      const value = user[field];
-      if (value === void 0) return;
-      const normalized = value ?? null;
-      values[field] = normalized;
-      updateSet[field] = normalized;
-    };
-    textFields.forEach(assignNullable);
-    if (user.lastSignedIn !== void 0) {
-      values.lastSignedIn = user.lastSignedIn;
-      updateSet.lastSignedIn = user.lastSignedIn;
-    }
-    if (user.role !== void 0) {
-      values.role = user.role;
-      updateSet.role = user.role;
-    } else if (user.openId === ENV.ownerOpenId) {
-      values.role = "admin";
-      updateSet.role = "admin";
-    }
-    if (!values.lastSignedIn) {
-      values.lastSignedIn = /* @__PURE__ */ new Date();
-    }
-    if (Object.keys(updateSet).length === 0) {
-      updateSet.lastSignedIn = /* @__PURE__ */ new Date();
-    }
-    if (!_pool) throw new Error("Database pool is not available");
-    const insertColumns = Object.keys(values);
-    const updateColumns = Object.keys(updateSet);
-    const quote = (column) => `\`${column}\``;
-    const insertSql = `INSERT INTO ${quote("users")} (${insertColumns.map(quote).join(", ")}) VALUES (${insertColumns.map(() => "?").join(", ")})`;
-    const updateSql = updateColumns.length > 0 ? ` ON DUPLICATE KEY UPDATE ${updateColumns.map((column) => `${quote(column)} = ?`).join(", ")}` : "";
-    const insertParams = insertColumns.map((column) => values[column]);
-    const updateParams = updateColumns.map((column) => updateSet[column]);
-    await _pool.promise().query(insertSql + updateSql, [...insertParams, ...updateParams]);
-  } catch (error) {
-    console.error("[Database] Failed to upsert user:", error);
-    throw error;
-  }
-}
-async function getUserByOpenId(openId) {
-  const db = await getDb();
-  if (!db) {
-    console.warn("[Database] Cannot get user: database not available");
-    return void 0;
-  }
-  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
-  return result.length > 0 ? result[0] : void 0;
 }
 async function createContactMessage(message) {
   const db = await getDb();
@@ -6941,53 +6785,48 @@ async function searchEscapeVenues(query) {
 }
 
 // server/routers.ts
-import { TRPCError as TRPCError3 } from "@trpc/server";
+import { TRPCError as TRPCError2 } from "@trpc/server";
 import { z as z2 } from "zod";
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   auth: router({
-    me: publicProcedure.query((opts) => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
-      return {
-        success: true
-      };
-    })
+    me: publicProcedure.query(() => null)
   }),
   places: router({
     searchEscapeVenues: adminProcedure.input(z2.object({ query: z2.string().trim().min(2).max(80) })).query(({ input }) => searchEscapeVenues(input.query))
   }),
   comments: router({
-    list: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(async ({ ctx, input }) => {
+    list: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(async ({ input }) => {
       try {
-        return await getTopicComments(input.topicId, ctx.user?.id ?? null, null);
+        return await getTopicComments(input.topicId, null, null);
       } catch (error) {
         console.error("[Comments] Public list unavailable", error);
         return [];
       }
     }),
-    create: protectedProcedure.input(z2.object({
+    create: publicProcedure.input(z2.object({
       topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728"),
-      body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57")
-    })).mutation(async ({ ctx, input }) => {
+      body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57"),
+      authorName: z2.string().trim().min(1, "\u8ACB\u8F38\u5165\u66B1\u7A31").max(120, "\u66B1\u7A31\u4E0D\u53EF\u8D85\u904E 120 \u5B57"),
+      anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA")
+    })).mutation(async ({ input }) => {
       await createTopicComment({
         topicId: input.topicId,
-        userId: ctx.user.id,
-        anonymousToken: null,
-        authorName: ctx.user.name?.trim() || ctx.user.email?.split("@")[0] || "\u63A2\u7D22\u8005",
+        userId: null,
+        anonymousToken: input.anonymousToken,
+        authorName: input.authorName,
         body: input.body
       });
       return { success: true };
     }),
-    delete: protectedProcedure.input(z2.object({ commentId: z2.number().int().positive() })).mutation(async ({ ctx, input }) => {
-      const result = await deleteTopicComment(input.commentId, ctx.user.id, null);
+    delete: publicProcedure.input(z2.object({ commentId: z2.number().int().positive(), anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA") })).mutation(async ({ input }) => {
+      const result = await deleteTopicComment(input.commentId, null, input.anonymousToken);
       if (result === "not_found") {
-        throw new TRPCError3({ code: "NOT_FOUND", message: "\u627E\u4E0D\u5230\u9019\u5247\u8A55\u8AD6" });
+        throw new TRPCError2({ code: "NOT_FOUND", message: "\u627E\u4E0D\u5230\u9019\u5247\u8A55\u8AD6" });
       }
       if (result === "forbidden") {
-        throw new TRPCError3({ code: "FORBIDDEN", message: "\u53EA\u80FD\u522A\u9664\u81EA\u5DF1\u7684\u8A55\u8AD6" });
+        throw new TRPCError2({ code: "FORBIDDEN", message: "\u53EA\u80FD\u522A\u9664\u81EA\u5DF1\u7684\u8A55\u8AD6" });
       }
       return { success: true };
     })
@@ -7010,513 +6849,13 @@ var appRouter = router({
   })
 });
 
-// shared/_core/errors.ts
-var HttpError = class extends Error {
-  constructor(statusCode, message) {
-    super(message);
-    this.statusCode = statusCode;
-    this.name = "HttpError";
-  }
-};
-var ForbiddenError = (msg) => new HttpError(403, msg);
-
-// server/_core/sdk.ts
-import axios from "axios";
-import { parse as parseCookieHeader } from "cookie";
-import { SignJWT, jwtVerify } from "jose";
-var isNonEmptyString2 = (value) => typeof value === "string" && value.length > 0;
-var EXCHANGE_TOKEN_PATH = `/webdev.v1.WebDevAuthPublicService/ExchangeToken`;
-var GET_USER_INFO_PATH = `/webdev.v1.WebDevAuthPublicService/GetUserInfo`;
-var GET_USER_INFO_WITH_JWT_PATH = `/webdev.v1.WebDevAuthPublicService/GetUserInfoWithJwt`;
-var OAuthService = class {
-  constructor(client) {
-    this.client = client;
-    console.log("[OAuth] Initialized with baseURL:", ENV.oAuthServerUrl);
-  }
-  decodeState(state) {
-    return decodeOAuthState(state).redirectUri;
-  }
-  async getTokenByCode(code, state) {
-    const payload = {
-      clientId: ENV.appId,
-      grantType: "authorization_code",
-      code,
-      redirectUri: this.decodeState(state)
-    };
-    const { data } = await this.client.post(
-      EXCHANGE_TOKEN_PATH,
-      payload
-    );
-    return data;
-  }
-  async getUserInfoByToken(token) {
-    const { data } = await this.client.post(
-      GET_USER_INFO_PATH,
-      {
-        accessToken: token.accessToken
-      }
-    );
-    return data;
-  }
-};
-var createOAuthHttpClient = () => axios.create({
-  baseURL: ENV.oAuthServerUrl,
-  timeout: AXIOS_TIMEOUT_MS
-});
-var SDKServer = class {
-  client;
-  oauthService;
-  constructor(client = createOAuthHttpClient()) {
-    this.client = client;
-    this.oauthService = new OAuthService(this.client);
-  }
-  deriveLoginMethod(platforms, fallback) {
-    if (fallback && fallback.length > 0) return fallback;
-    if (!Array.isArray(platforms) || platforms.length === 0) return null;
-    const set = new Set(
-      platforms.filter((p) => typeof p === "string")
-    );
-    if (set.has("REGISTERED_PLATFORM_EMAIL")) return "email";
-    if (set.has("REGISTERED_PLATFORM_GOOGLE")) return "google";
-    if (set.has("REGISTERED_PLATFORM_APPLE")) return "apple";
-    if (set.has("REGISTERED_PLATFORM_MICROSOFT") || set.has("REGISTERED_PLATFORM_AZURE"))
-      return "microsoft";
-    if (set.has("REGISTERED_PLATFORM_GITHUB")) return "github";
-    const first = Array.from(set)[0];
-    return first ? first.toLowerCase() : null;
-  }
-  /**
-   * Exchange OAuth authorization code for access token
-   * @example
-   * const tokenResponse = await sdk.exchangeCodeForToken(code, state);
-   */
-  async exchangeCodeForToken(code, state) {
-    return this.oauthService.getTokenByCode(code, state);
-  }
-  /**
-   * Get user information using access token
-   * @example
-   * const userInfo = await sdk.getUserInfo(tokenResponse.accessToken);
-   */
-  async getUserInfo(accessToken) {
-    const data = await this.oauthService.getUserInfoByToken({
-      accessToken
-    });
-    const loginMethod = this.deriveLoginMethod(
-      data?.platforms,
-      data?.platform ?? data.platform ?? null
-    );
-    return {
-      ...data,
-      platform: loginMethod,
-      loginMethod
-    };
-  }
-  parseCookies(cookieHeader) {
-    if (!cookieHeader) {
-      return /* @__PURE__ */ new Map();
-    }
-    const parsed = parseCookieHeader(cookieHeader);
-    return new Map(Object.entries(parsed));
-  }
-  getSessionSecret() {
-    const secret = ENV.cookieSecret;
-    return new TextEncoder().encode(secret);
-  }
-  /**
-   * Create a session token for a Manus user openId
-   * @example
-   * const sessionToken = await sdk.createSessionToken(userInfo.openId);
-   */
-  async createSessionToken(openId, options = {}) {
-    return this.signSession(
-      {
-        openId,
-        appId: ENV.appId,
-        name: options.name || ""
-      },
-      options
-    );
-  }
-  async signSession(payload, options = {}) {
-    const issuedAt = Date.now();
-    const expiresInMs = options.expiresInMs ?? ONE_YEAR_MS;
-    const expirationSeconds = Math.floor((issuedAt + expiresInMs) / 1e3);
-    const secretKey = this.getSessionSecret();
-    return new SignJWT({
-      openId: payload.openId,
-      appId: payload.appId,
-      name: payload.name
-    }).setProtectedHeader({ alg: "HS256", typ: "JWT" }).setExpirationTime(expirationSeconds).sign(secretKey);
-  }
-  async verifySession(cookieValue) {
-    if (!cookieValue) {
-      console.warn("[Auth] Missing session cookie");
-      return null;
-    }
-    try {
-      const secretKey = this.getSessionSecret();
-      const { payload } = await jwtVerify(cookieValue, secretKey, {
-        algorithms: ["HS256"]
-      });
-      const { openId, appId, name } = payload;
-      if (!isNonEmptyString2(openId) || !isNonEmptyString2(appId) || !isNonEmptyString2(name)) {
-        console.warn("[Auth] Session payload missing required fields");
-        return null;
-      }
-      return {
-        openId,
-        appId,
-        name
-      };
-    } catch (error) {
-      console.warn("[Auth] Session verification failed", String(error));
-      return null;
-    }
-  }
-  async getUserInfoWithJwt(jwtToken) {
-    const payload = {
-      jwtToken,
-      projectId: ENV.appId
-    };
-    const { data } = await this.client.post(
-      GET_USER_INFO_WITH_JWT_PATH,
-      payload
-    );
-    const loginMethod = this.deriveLoginMethod(
-      data?.platforms,
-      data?.platform ?? data.platform ?? null
-    );
-    return {
-      ...data,
-      platform: loginMethod,
-      loginMethod
-    };
-  }
-  async authenticateRequest(req) {
-    const cookies = this.parseCookies(req.headers.cookie);
-    let sessionToken = cookies.get(COOKIE_NAME);
-    if (!sessionToken) {
-      const authHeader = req.headers.authorization;
-      if (typeof authHeader === "string" && authHeader.startsWith("Bearer ")) {
-        sessionToken = authHeader.slice(7);
-      }
-    }
-    const session = await this.verifySession(sessionToken);
-    if (!session) {
-      throw ForbiddenError("Invalid session cookie");
-    }
-    if (session.openId.startsWith(CRON_OPEN_ID_PREFIX)) {
-      const userInfo = await this.getUserInfoWithJwt(sessionToken ?? "");
-      const taskUid = userInfo.taskUid ?? null;
-      if (!taskUid) {
-        throw ForbiddenError("Cron session missing task_uid");
-      }
-      return buildCronUser(userInfo);
-    }
-    const sessionUserId = session.openId;
-    const signedInAt = /* @__PURE__ */ new Date();
-    let user = await getUserByOpenId(sessionUserId);
-    if (!user) {
-      try {
-        const userInfo = await this.getUserInfoWithJwt(sessionToken ?? "");
-        await upsertUser({
-          openId: userInfo.openId,
-          name: userInfo.name || null,
-          email: userInfo.email ?? null,
-          loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
-          lastSignedIn: signedInAt
-        });
-        user = await getUserByOpenId(userInfo.openId);
-      } catch (error) {
-        console.error("[Auth] Failed to sync user from OAuth:", error);
-        throw ForbiddenError("Failed to sync user info");
-      }
-    }
-    if (!user) {
-      throw ForbiddenError("User not found");
-    }
-    await upsertUser({
-      openId: user.openId,
-      lastSignedIn: signedInAt
-    });
-    return user;
-  }
-};
-var CRON_OPEN_ID_PREFIX = "cron_";
-function buildCronUser(userInfo) {
-  const now = /* @__PURE__ */ new Date();
-  return {
-    id: -1,
-    openId: userInfo.openId,
-    name: userInfo.name || "Manus Scheduled Task",
-    email: null,
-    loginMethod: null,
-    role: "user",
-    createdAt: now,
-    updatedAt: now,
-    lastSignedIn: now,
-    taskUid: userInfo.taskUid ?? void 0,
-    isCron: true
-  };
-}
-var sdk = new SDKServer();
-
 // server/_core/context.ts
 async function createContext(opts) {
-  let user = null;
-  const cookieHeader = opts.req.headers.cookie;
-  const authorizationHeader = opts.req.headers.authorization;
-  const hasCredentials = Boolean(
-    cookieHeader || typeof authorizationHeader === "string" && authorizationHeader.startsWith("Bearer ")
-  );
-  if (hasCredentials) {
-    try {
-      user = await sdk.authenticateRequest(opts.req);
-    } catch {
-      user = null;
-    }
-  }
   return {
     req: opts.req,
     res: opts.res,
-    user
+    user: null
   };
-}
-
-// server/_core/oauth.ts
-import { parse as parseCookieHeader2 } from "cookie";
-import { randomUUID } from "node:crypto";
-function getQueryParam(req, key) {
-  const value = req.query[key];
-  return typeof value === "string" ? value : void 0;
-}
-var GOOGLE_STATE_COOKIE = "google_oauth_state";
-var GOOGLE_ALLOWED_ORIGINS = /* @__PURE__ */ new Set(["https://www.tw-escapeindex.com", "http://localhost:3000"]);
-function isAllowedGoogleOrigin(value) {
-  try {
-    const url = new URL(value);
-    if (url.pathname !== "/" || url.search || url.hash) return false;
-    if (GOOGLE_ALLOWED_ORIGINS.has(value)) return true;
-    return url.protocol === "https:" && url.origin === "https://www.tw-escapeindex.com";
-  } catch {
-    return false;
-  }
-}
-function encodeGoogleState(payload) {
-  return Buffer.from(JSON.stringify(payload), "utf8").toString("base64url");
-}
-function decodeGoogleState(value) {
-  try {
-    const parsed = JSON.parse(Buffer.from(value, "base64url").toString("utf8"));
-    if (!parsed.nonce || !parsed.returnTo || !isAllowedGoogleOrigin(parsed.returnTo)) return null;
-    return { nonce: parsed.nonce, returnTo: parsed.returnTo };
-  } catch {
-    return null;
-  }
-}
-function googleRedirectUri(origin) {
-  return `${origin}/api/google/callback`;
-}
-function normalizeGoogleAvatarUrl(value) {
-  if (typeof value !== "string" || value.length > 2048) return null;
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" ? url.toString() : null;
-  } catch {
-    return null;
-  }
-}
-function describeOAuthError(error) {
-  if (error instanceof Error) return { name: error.name, message: error.message, stack: error.stack };
-  return { value: String(error) };
-}
-function maskEmail(email) {
-  if (!email) return void 0;
-  const [name, domain] = email.split("@");
-  return `${name?.slice(0, 2) ?? ""}***@${domain ?? ""}`;
-}
-function logCookieOptions(req) {
-  const options = getSessionCookieOptions(req);
-  return {
-    secure: options.secure,
-    sameSite: options.sameSite,
-    httpOnly: options.httpOnly,
-    path: options.path,
-    domain: options.domain ?? "<host-only>",
-    host: typeof req.get === "function" ? req.get("host") ?? "<unknown>" : req.headers.host ?? "<unknown>"
-  };
-}
-function registerOAuthRoutes(app2) {
-  app2.get("/api/google/login", (req, res) => {
-    if (!ENV.googleClientId || !ENV.googleClientSecret) {
-      res.status(503).json({ error: "Google OAuth is not configured" });
-      return;
-    }
-    const requestedReturnTo = getQueryParam(req, "returnTo");
-    const returnTo = requestedReturnTo || ENV.appUrl;
-    if (!returnTo || !isAllowedGoogleOrigin(returnTo)) {
-      res.status(400).json({ error: "Invalid Google OAuth return URL" });
-      return;
-    }
-    const nonce = randomUUID();
-    const redirectUri = googleRedirectUri(returnTo);
-    const state = encodeGoogleState({ nonce, returnTo });
-    res.cookie(GOOGLE_STATE_COOKIE, nonce, {
-      ...getSessionCookieOptions(req),
-      sameSite: "lax",
-      maxAge: 10 * 60 * 1e3
-    });
-    const authorizationUrl = new URL("https://accounts.google.com/o/oauth2/v2/auth");
-    authorizationUrl.searchParams.set("client_id", ENV.googleClientId);
-    authorizationUrl.searchParams.set("redirect_uri", redirectUri);
-    authorizationUrl.searchParams.set("response_type", "code");
-    authorizationUrl.searchParams.set("scope", "openid email profile");
-    authorizationUrl.searchParams.set("state", state);
-    authorizationUrl.searchParams.set("prompt", "select_account");
-    res.redirect(302, authorizationUrl.toString());
-  });
-  app2.get("/api/google/callback", async (req, res) => {
-    let stage = "callback:received";
-    const code = getQueryParam(req, "code");
-    const stateValue = getQueryParam(req, "state");
-    const state = stateValue ? decodeGoogleState(stateValue) : null;
-    const expectedNonce = parseCookieHeader2(req.headers.cookie ?? "")[GOOGLE_STATE_COOKIE];
-    console.log("[Google OAuth] Callback received", {
-      host: typeof req.get === "function" ? req.get("host") : req.headers.host,
-      protocol: req.protocol,
-      hasCode: Boolean(code),
-      hasState: Boolean(stateValue),
-      hasStateCookie: Boolean(expectedNonce),
-      cookie: logCookieOptions(req)
-    });
-    if (!code || !state || !expectedNonce || state.nonce !== expectedNonce) {
-      console.error("[Google OAuth] State validation failed", {
-        hasCode: Boolean(code),
-        hasState: Boolean(state),
-        hasStateCookie: Boolean(expectedNonce),
-        nonceMatches: Boolean(state && expectedNonce && state.nonce === expectedNonce)
-      });
-      res.status(403).json({ error: "invalid Google OAuth state" });
-      return;
-    }
-    stage = "state:validated";
-    console.log("[Google OAuth] State validated; deferring cookie headers until final redirect");
-    try {
-      stage = "token:exchange";
-      const redirectUri = googleRedirectUri(state.returnTo);
-      console.log("[Google OAuth] Exchanging authorization code", { redirectUri });
-      const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
-        method: "POST",
-        headers: { "content-type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          code,
-          client_id: ENV.googleClientId,
-          client_secret: ENV.googleClientSecret,
-          redirect_uri: redirectUri,
-          grant_type: "authorization_code"
-        })
-      });
-      console.log("[Google OAuth] Token exchange response", { status: tokenResponse.status, ok: tokenResponse.ok });
-      if (!tokenResponse.ok) throw new Error(`Google token exchange failed: ${tokenResponse.status}`);
-      const tokenPayload = await tokenResponse.json();
-      console.log("[Google OAuth] Token payload received", { hasAccessToken: Boolean(tokenPayload.access_token) });
-      if (!tokenPayload.access_token) throw new Error("Google access token missing");
-      stage = "profile:lookup";
-      console.log("[Google OAuth] Fetching Google user profile");
-      const profileResponse = await fetch("https://openidconnect.googleapis.com/v1/userinfo", {
-        headers: { authorization: `Bearer ${tokenPayload.access_token}` }
-      });
-      console.log("[Google OAuth] Userinfo response", { status: profileResponse.status, ok: profileResponse.ok });
-      if (!profileResponse.ok) throw new Error(`Google userinfo failed: ${profileResponse.status}`);
-      const profile = await profileResponse.json();
-      console.log("[Google OAuth] Profile received", {
-        hasSubject: Boolean(profile.sub),
-        email: maskEmail(profile.email),
-        hasName: Boolean(profile.name)
-      });
-      if (!profile.sub || !profile.email) throw new Error("Google profile is missing required fields");
-      const openId = `google:${profile.sub}`;
-      stage = "user:upsert";
-      console.log("[Google OAuth] Upserting user", { openIdPrefix: `${openId.slice(0, 15)}...` });
-      await upsertUser({
-        openId,
-        name: profile.name || profile.email.split("@")[0],
-        email: profile.email,
-        avatarUrl: normalizeGoogleAvatarUrl(profile.picture),
-        loginMethod: "google",
-        lastSignedIn: /* @__PURE__ */ new Date()
-      });
-      console.log("[Google OAuth] User upsert complete");
-      stage = "session:create";
-      console.log("[Google OAuth] Creating session token");
-      const sessionToken = await sdk.createSessionToken(openId, {
-        name: profile.name || profile.email,
-        expiresInMs: ONE_YEAR_MS
-      });
-      console.log("[Google OAuth] Session token created", { length: sessionToken.length });
-      stage = "cookie:set";
-      const cookieOptions = getSessionCookieOptions(req);
-      console.log("[Google OAuth] Setting cookies on final redirect response", {
-        cookie: logCookieOptions(req),
-        cookieCount: 2,
-        cookieNames: [GOOGLE_STATE_COOKIE, COOKIE_NAME],
-        sessionCookieLength: sessionToken.length
-      });
-      res.cookie(GOOGLE_STATE_COOKIE, "", {
-        ...cookieOptions,
-        sameSite: "lax",
-        expires: /* @__PURE__ */ new Date(0),
-        maxAge: 0
-      });
-      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-      console.log("[Google OAuth] Session cookie set; redirecting", { returnTo: state.returnTo });
-      res.redirect(302, `${state.returnTo}/`);
-    } catch (error) {
-      console.error("[Google OAuth] Callback failed", { stage, ...describeOAuthError(error) });
-      res.status(502).json({ error: "Google OAuth callback failed" });
-    }
-  });
-  app2.get("/api/oauth/callback", async (req, res) => {
-    const code = getQueryParam(req, "code");
-    const state = getQueryParam(req, "state");
-    if (!code || !state) {
-      res.status(400).json({ error: "code and state are required" });
-      return;
-    }
-    const { nonce } = decodeOAuthState(state);
-    const expectedNonce = parseCookieHeader2(req.headers.cookie ?? "")[OAUTH_STATE_COOKIE];
-    if (!nonce || nonce !== expectedNonce) {
-      res.status(403).json({ error: "invalid oauth state" });
-      return;
-    }
-    res.clearCookie(OAUTH_STATE_COOKIE, { ...getSessionCookieOptions(req) });
-    try {
-      const tokenResponse = await sdk.exchangeCodeForToken(code, state);
-      const userInfo = await sdk.getUserInfo(tokenResponse.accessToken);
-      if (!userInfo.openId) {
-        res.status(400).json({ error: "openId missing from user info" });
-        return;
-      }
-      await upsertUser({
-        openId: userInfo.openId,
-        name: userInfo.name || null,
-        email: userInfo.email ?? null,
-        loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
-        lastSignedIn: /* @__PURE__ */ new Date()
-      });
-      const sessionToken = await sdk.createSessionToken(userInfo.openId, {
-        name: userInfo.name || "",
-        expiresInMs: ONE_YEAR_MS
-      });
-      const cookieOptions = getSessionCookieOptions(req);
-      res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
-      res.redirect(302, `${ENV.appUrl}/`);
-    } catch (error) {
-      console.error("[OAuth] Callback failed", error);
-      res.status(500).json({ error: "OAuth callback failed" });
-    }
-  });
 }
 
 // server/_core/storageProxy.ts
@@ -7584,7 +6923,6 @@ function createApp() {
   app2.use(express.json({ limit: "50mb" }));
   app2.use(express.urlencoded({ limit: "50mb", extended: true }));
   registerStorageProxy(app2);
-  registerOAuthRoutes(app2);
   app2.use(
     "/api/trpc",
     createExpressMiddleware({

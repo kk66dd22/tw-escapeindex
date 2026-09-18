@@ -48,7 +48,7 @@ describe("TopicComments", () => {
   it("renders an empty state and anonymous form for visitors", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(screen.getByText("目前還沒有評論，歡迎成為第一位分享體驗的探索者。")).toBeTruthy();
-    expect(screen.getByPlaceholderText("分享你的實際遊玩體驗⋯（可匿名，不需登入）")).toBeTruthy();
+    expect(screen.getByPlaceholderText("分享你的實際遊玩體驗⋯（訪客即可留言）")).toBeTruthy();
     expect(screen.getByRole("button", { name: "發表評論" })).toBeTruthy();
     expect(state.queryInput).toEqual({ topicId: "popular-101" });
   });
@@ -57,7 +57,7 @@ describe("TopicComments", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "訪客的實際遊玩體驗" } });
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
-    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "訪客的實際遊玩體驗" });
+    expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ topicId: "popular-101", body: "訪客的實際遊玩體驗", authorName: expect.any(String), anonymousToken: expect.any(String) }));
   });
 
   it("renders loading and error states", () => {
@@ -70,12 +70,11 @@ describe("TopicComments", () => {
     expect(screen.getByText("評論暫時無法載入，請稍後再試。")).toBeTruthy();
   });
 
-  it("submits an authenticated comment with the topic id", () => {
-    state.auth = { user: { id: 7 }, isAuthenticated: true, loading: false };
+  it("submits a visitor comment regardless of auth state", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "這是我的實際遊玩體驗" } });
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
-    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "這是我的實際遊玩體驗" });
+    expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ topicId: "popular-101", body: "這是我的實際遊玩體驗", authorName: expect.any(String), anonymousToken: expect.any(String) }));
   });
 
   it("renders author initials without requiring a users-table avatar join", () => {
@@ -105,14 +104,18 @@ describe("TopicComments", () => {
   it("shows the delete control only for the comment owner and surfaces delete errors", () => {
     state.auth = { user: { id: 7 }, isAuthenticated: true, loading: false };
     state.query = {
-      data: [{ id: 9, userId: 7, body: "我的評論", authorName: "探索者", createdAt: new Date("2026-01-01T00:00:00Z") }],
+      data: [{ id: 9, userId: null, body: "我的評論", authorName: "探索者", canDelete: true, createdAt: new Date("2026-01-01T00:00:00Z") }],
       isLoading: false,
       isError: false,
     };
     const { rerender } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(screen.getByRole("button", { name: "刪除我的評論" })).toBeTruthy();
 
-    state.auth = { user: { id: 8 }, isAuthenticated: true, loading: false };
+    state.query = {
+      data: [{ id: 9, userId: null, body: "我的評論", authorName: "探索者", canDelete: false, createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
     rerender(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(screen.queryByRole("button", { name: "刪除我的評論" })).toBeNull();
 

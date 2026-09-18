@@ -1,7 +1,5 @@
-import { COOKIE_NAME } from "@shared/const";
-import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { createContactMessage, createTopicComment, deleteTopicComment, getTopicComments } from "./db";
 
 import topics from "../data/topics.json";
@@ -13,14 +11,7 @@ export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   auth: router({
-    me: publicProcedure.query(opts => opts.ctx.user),
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
-      return {
-        success: true,
-      } as const;
-    }),
+    me: publicProcedure.query(() => null),
   }),
 
   places: router({
@@ -32,33 +23,35 @@ export const appRouter = router({
   comments: router({
     list: publicProcedure
       .input(z.object({ topicId: z.string().refine((topicId) => topics.some((topic) => topic.id === topicId), "主題不存在") }))
-      .query(async ({ ctx, input }) => {
+      .query(async ({ input }) => {
         try {
-          return await getTopicComments(input.topicId, ctx.user?.id ?? null, null);
+          return await getTopicComments(input.topicId, null, null);
         } catch (error) {
           console.error("[Comments] Public list unavailable", error);
           return [];
         }
       }),
-    create: protectedProcedure
+    create: publicProcedure
       .input(z.object({
         topicId: z.string().refine((topicId) => topics.some((topic) => topic.id === topicId), "主題不存在"),
         body: z.string().trim().min(1, "評論內容不可為空").max(2000, "評論內容不可超過 2000 字"),
+        authorName: z.string().trim().min(1, "請輸入暱稱").max(120, "暱稱不可超過 120 字"),
+        anonymousToken: z.string().uuid("匿名識別碼格式不正確"),
       }))
-      .mutation(async ({ ctx, input }) => {
+      .mutation(async ({ input }) => {
         await createTopicComment({
           topicId: input.topicId,
-          userId: ctx.user.id,
-          anonymousToken: null,
-          authorName: ctx.user.name?.trim() || ctx.user.email?.split("@")[0] || "探索者",
+          userId: null,
+          anonymousToken: input.anonymousToken,
+          authorName: input.authorName,
           body: input.body,
         });
         return { success: true } as const;
       }),
-    delete: protectedProcedure
-      .input(z.object({ commentId: z.number().int().positive() }))
-      .mutation(async ({ ctx, input }) => {
-        const result = await deleteTopicComment(input.commentId, ctx.user.id, null);
+    delete: publicProcedure
+      .input(z.object({ commentId: z.number().int().positive(), anonymousToken: z.string().uuid("匿名識別碼格式不正確") }))
+      .mutation(async ({ input }) => {
+        const result = await deleteTopicComment(input.commentId, null, input.anonymousToken);
         if (result === "not_found") {
           throw new TRPCError({ code: "NOT_FOUND", message: "找不到這則評論" });
         }
