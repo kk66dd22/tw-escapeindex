@@ -158,7 +158,7 @@ describe("Home booking CTA layout", () => {
   it("shows anonymous comment forms instead of pre-seeded comments for visitors", () => {
     render(<Home />);
     expect(screen.getAllByPlaceholderText("分享你的實際遊玩體驗⋯（訪客即可留言）").length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/訪客：探險家_/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/暱稱：/).length).toBeGreaterThan(0);
     expect(screen.queryByText("使用者輸入內容")).toBeNull();
   });
 

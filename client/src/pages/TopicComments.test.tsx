@@ -87,6 +87,19 @@ describe("TopicComments", () => {
     expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ topicId: "popular-101", body: "這是我的實際遊玩體驗", authorName: expect.any(String), anonymousToken: expect.any(String) }));
   });
 
+  it("opens nickname setup before the first comment and sends after confirmation", () => {
+    window.localStorage.removeItem("escape-index-anonymous-name");
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "第一次留言" } });
+    fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
+    expect(screen.getByText("請設定您的暱稱")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "密幕探險家" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "解謎新手" }));
+    fireEvent.click(screen.getByRole("button", { name: "確認並發送留言" }));
+    expect(window.localStorage.getItem("escape-index-anonymous-name")).toBe("解謎新手");
+    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: "解謎新手", anonymousToken: "11111111-1111-4111-8111-111111111111" });
+  });
+
   it("renders author initials without requiring a users-table avatar join", () => {
     state.query = {
       data: [

@@ -74,12 +74,12 @@ function getAnonymousIdentity() {
     token = crypto.randomUUID();
     window.localStorage.setItem(ANONYMOUS_TOKEN_KEY, token);
   }
-  let name = window.localStorage.getItem(ANONYMOUS_NAME_KEY);
-  if (!name) {
-    name = `探險家_${token.slice(0, 4)}`;
-    window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
-  }
-  return { token, name };
+  return { token, name: window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim() || "" };
+}
+
+function makeSuggestedName(token = "") {
+  const suffix = (token || crypto.randomUUID()).replace(/-/g, "").slice(0, 4);
+  return `探險家_${suffix}`;
 }
 
 function playerBounds(value: string) {
@@ -618,15 +618,80 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
   );
 }
 
+const NICKNAME_PRESETS = ["密幕探險家", "解謎新手", "逃脫大師", "機關破解者"];
+
+function NicknameDialog({
+  open,
+  initialName,
+  onOpenChange,
+  onConfirm,
+  submitLabel = "確認",
+}: {
+  open: boolean;
+  initialName: string;
+  onOpenChange: (open: boolean) => void;
+  onConfirm: (name: string) => void;
+  submitLabel?: string;
+}) {
+  const [name, setName] = useState(initialName || makeSuggestedName());
+
+  useEffect(() => {
+    if (open) setName(initialName || makeSuggestedName());
+  }, [initialName, open]);
+
+  const confirm = () => {
+    const trimmedName = name.trim();
+    if (trimmedName) onConfirm(trimmedName);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="border-[#5e8b92]/50 bg-[#111412] text-[#e8e4db] sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="font-mono tracking-wider text-[#c89b5c]">請設定您的暱稱</DialogTitle>
+          <DialogDescription className="text-xs leading-6 text-white/55">暱稱會儲存在這個瀏覽器，之後可隨時修改。</DialogDescription>
+        </DialogHeader>
+        <div className="space-y-4 py-2">
+          <div className="flex flex-wrap gap-2">
+            {NICKNAME_PRESETS.map((preset) => (
+              <button key={preset} type="button" onClick={() => setName(preset)} className="border border-[#5e8b92]/60 px-3 py-1.5 font-mono text-xs text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#e0bd83]">{preset}</button>
+            ))}
+          </div>
+          <input autoFocus aria-label="暱稱" value={name} onChange={(event) => setName(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") confirm(); }} maxLength={120} placeholder="例如：探險家_8f2a" className="w-full border border-white/15 bg-[#0c0e0d] px-3 py-2.5 text-sm text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c]" />
+        </div>
+        <DialogFooter>
+          <button type="button" onClick={() => onOpenChange(false)} className="border border-white/20 px-4 py-2 font-mono text-xs text-white/60 transition hover:border-white/40">取消</button>
+          <button type="button" onClick={confirm} disabled={!name.trim()} className="border border-[#c89b5c]/70 bg-[#c89b5c] px-4 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">{submitLabel}</button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export function HomeAuthControls() {
-  const identity = getAnonymousIdentity();
-  return <span className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7]">訪客：{identity.name || "匿名"}</span>;
+  const [identity, setIdentity] = useState(() => getAnonymousIdentity());
+  const [nicknameOpen, setNicknameOpen] = useState(false);
+  const saveName = (name: string) => {
+    window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
+    setIdentity((current) => ({ ...current, name }));
+    setNicknameOpen(false);
+  };
+
+  return (
+    <div className="flex items-center gap-2">
+      <span className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7]">暱稱：{identity.name || "尚未設定"}</span>
+      <button type="button" onClick={() => setNicknameOpen(true)} className="border border-[#c89b5c]/60 px-2 py-2 font-mono text-[10px] tracking-wider text-[#c89b5c] transition hover:bg-[#c89b5c]/10">{identity.name ? "修改暱稱" : "設定暱稱"}</button>
+      <NicknameDialog open={nicknameOpen} initialName={identity.name} onOpenChange={setNicknameOpen} onConfirm={saveName} />
+    </div>
+  );
 }
 
 export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
   const utils = trpc.useUtils();
   const [body, setBody] = useState("");
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
+  const [nicknameOpen, setNicknameOpen] = useState(false);
+  const [pendingBody, setPendingBody] = useState("");
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingBody, setEditingBody] = useState("");
   const commentsQuery = trpc.comments.list.useQuery({ topicId });
@@ -652,8 +717,22 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const submitComment = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmedBody = body.trim();
-    if (!trimmedBody || !identity.token || !identity.name.trim()) return;
+    if (!trimmedBody || !identity.token) return;
+    if (!window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim()) {
+      setPendingBody(trimmedBody);
+      setNicknameOpen(true);
+      return;
+    }
     createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token });
+  };
+
+  const confirmNicknameAndSend = (name: string) => {
+    window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
+    const nextBody = pendingBody.trim();
+    setIdentity((current) => ({ ...current, name }));
+    setNicknameOpen(false);
+    setPendingBody("");
+    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token });
   };
 
   return (
@@ -724,13 +803,14 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
         <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
         <div className="flex items-center justify-between gap-3">
           <span className="font-mono text-[10px] text-white/35">訪客留言 · {body.length}/2000</span>
-          <button type="submit" disabled={createComment.isPending || !body.trim() || !identity.name.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
+          <button type="submit" disabled={createComment.isPending || !body.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
             <Send size={14} /> {createComment.isPending ? "送出中⋯" : "發表評論"}
           </button>
         </div>
         <p className="text-[10px] leading-5 text-white/35">暱稱與匿名識別碼只儲存在本瀏覽器；請勿填寫個人敏感資料。</p>
         {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
       </form>
+      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} onOpenChange={(open) => { setNicknameOpen(open); if (!open) setPendingBody(""); }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
     </section>
   );
 }
