@@ -7,6 +7,7 @@ const dbMocks = vi.hoisted(() => ({
   getTopicComments: vi.fn(),
   createTopicComment: vi.fn(),
   deleteTopicComment: vi.fn(),
+  updateTopicComment: vi.fn(),
   normalizeTopicCommentAuthor: (authorName: string | null | undefined) => authorName?.trim() || "探索者",
 }));
 
@@ -55,8 +56,14 @@ describe("comments router", () => {
 
   it("allows anonymous owners to delete with the same token", async () => {
     dbMocks.deleteTopicComment.mockResolvedValueOnce("deleted");
-    await expect(appRouter.createCaller(createContext()).comments.delete({ commentId: 7, anonymousToken: token })).resolves.toEqual({ success: true });
+    await expect(appRouter.createCaller(createContext()).comments.delete({ id: 7, anonymousToken: token })).resolves.toEqual({ success: true });
     expect(dbMocks.deleteTopicComment).toHaveBeenCalledWith(7, null, token);
+  });
+
+  it("updates an anonymous comment with the same token", async () => {
+    dbMocks.updateTopicComment.mockResolvedValueOnce("updated");
+    await expect(appRouter.createCaller(createContext()).comments.update({ id: 8, body: "更新後內容", anonymousToken: token })).resolves.toEqual({ success: true });
+    expect(dbMocks.updateTopicComment).toHaveBeenCalledWith(8, "更新後內容", token);
   });
 
   it("validates nickname, token, topic, and body", async () => {

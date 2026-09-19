@@ -1,6 +1,6 @@
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
-import { createContactMessage, createTopicComment, deleteTopicComment, getTopicComments } from "./db";
+import { createContactMessage, createTopicComment, deleteTopicComment, getTopicComments, updateTopicComment } from "./db";
 
 import topics from "../data/topics.json";
 import { searchEscapeVenues } from "./places";
@@ -48,10 +48,22 @@ export const appRouter = router({
         });
         return { success: true } as const;
       }),
-    delete: publicProcedure
-      .input(z.object({ commentId: z.number().int().positive(), anonymousToken: z.string().uuid("匿名識別碼格式不正確") }))
+    update: publicProcedure
+      .input(z.object({
+        id: z.number().int().positive(),
+        body: z.string().trim().min(1, "評論內容不可為空").max(2000, "評論內容不可超過 2000 字"),
+        anonymousToken: z.string().uuid("匿名識別碼格式不正確"),
+      }))
       .mutation(async ({ input }) => {
-        const result = await deleteTopicComment(input.commentId, null, input.anonymousToken);
+        const result = await updateTopicComment(input.id, input.body, input.anonymousToken);
+        if (result === "not_found") throw new TRPCError({ code: "NOT_FOUND", message: "找不到這則評論" });
+        if (result === "forbidden") throw new TRPCError({ code: "FORBIDDEN", message: "只能編輯自己的評論" });
+        return { success: true } as const;
+      }),
+    delete: publicProcedure
+      .input(z.object({ id: z.number().int().positive(), anonymousToken: z.string().uuid("匿名識別碼格式不正確") }))
+      .mutation(async ({ input }) => {
+        const result = await deleteTopicComment(input.id, null, input.anonymousToken);
         if (result === "not_found") {
           throw new TRPCError({ code: "NOT_FOUND", message: "找不到這則評論" });
         }

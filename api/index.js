@@ -229,6 +229,7 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
   const rows = rawRows;
   return rows.map(({ anonymousToken: storedToken, ...row }) => ({
     ...row,
+    anonymousToken: storedToken,
     authorName: normalizeTopicCommentAuthor(row.authorName),
     canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken
   }));
@@ -248,6 +249,15 @@ async function deleteTopicComment(commentId, userId, anonymousToken = null) {
   const ownerCondition = userId !== null ? eq(topicComments.userId, userId) : eq(topicComments.anonymousToken, anonymousToken);
   await db.delete(topicComments).where(and(eq(topicComments.id, commentId), ownerCondition));
   return "deleted";
+}
+async function updateTopicComment(commentId, body, anonymousToken) {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+  const existing = await db.select({ anonymousToken: topicComments.anonymousToken }).from(topicComments).where(eq(topicComments.id, commentId)).limit(1);
+  if (existing.length === 0) return "not_found";
+  if (!existing[0].anonymousToken || existing[0].anonymousToken !== anonymousToken) return "forbidden";
+  await db.update(topicComments).set({ body, updatedAt: /* @__PURE__ */ new Date() }).where(and(eq(topicComments.id, commentId), eq(topicComments.anonymousToken, anonymousToken)));
+  return "updated";
 }
 
 // data/topics.json
@@ -6820,8 +6830,18 @@ var appRouter = router({
       });
       return { success: true };
     }),
-    delete: publicProcedure.input(z2.object({ commentId: z2.number().int().positive(), anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA") })).mutation(async ({ input }) => {
-      const result = await deleteTopicComment(input.commentId, null, input.anonymousToken);
+    update: publicProcedure.input(z2.object({
+      id: z2.number().int().positive(),
+      body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57"),
+      anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA")
+    })).mutation(async ({ input }) => {
+      const result = await updateTopicComment(input.id, input.body, input.anonymousToken);
+      if (result === "not_found") throw new TRPCError2({ code: "NOT_FOUND", message: "\u627E\u4E0D\u5230\u9019\u5247\u8A55\u8AD6" });
+      if (result === "forbidden") throw new TRPCError2({ code: "FORBIDDEN", message: "\u53EA\u80FD\u7DE8\u8F2F\u81EA\u5DF1\u7684\u8A55\u8AD6" });
+      return { success: true };
+    }),
+    delete: publicProcedure.input(z2.object({ id: z2.number().int().positive(), anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA") })).mutation(async ({ input }) => {
+      const result = await deleteTopicComment(input.id, null, input.anonymousToken);
       if (result === "not_found") {
         throw new TRPCError2({ code: "NOT_FOUND", message: "\u627E\u4E0D\u5230\u9019\u5247\u8A55\u8AD6" });
       }

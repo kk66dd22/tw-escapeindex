@@ -163,6 +163,7 @@ export async function getTopicComments(topicId: string, userId: number | null = 
 
   return rows.map(({ anonymousToken: storedToken, ...row }) => ({
     ...row,
+    anonymousToken: storedToken,
     authorName: normalizeTopicCommentAuthor(row.authorName),
     canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken,
   }));
@@ -199,4 +200,27 @@ export async function deleteTopicComment(
     : eq(topicComments.anonymousToken, anonymousToken as string);
   await db.delete(topicComments).where(and(eq(topicComments.id, commentId), ownerCondition));
   return "deleted";
+}
+
+export async function updateTopicComment(
+  commentId: number,
+  body: string,
+  anonymousToken: string,
+): Promise<"updated" | "not_found" | "forbidden"> {
+  const db = await getDb();
+  if (!db) throw new Error("Database is not available");
+
+  const existing = await db
+    .select({ anonymousToken: topicComments.anonymousToken })
+    .from(topicComments)
+    .where(eq(topicComments.id, commentId))
+    .limit(1);
+  if (existing.length === 0) return "not_found";
+  if (!existing[0].anonymousToken || existing[0].anonymousToken !== anonymousToken) return "forbidden";
+
+  await db
+    .update(topicComments)
+    .set({ body, updatedAt: new Date() })
+    .where(and(eq(topicComments.id, commentId), eq(topicComments.anonymousToken, anonymousToken)));
+  return "updated";
 }

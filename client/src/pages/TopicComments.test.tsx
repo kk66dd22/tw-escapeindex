@@ -6,9 +6,10 @@ import { TopicComments } from "./Home";
 
 const state = vi.hoisted(() => ({
   auth: { user: null as { id: number } | null, isAuthenticated: false, loading: false },
-  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; avatarUrl?: string | null; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
+  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; anonymousToken?: string | null; avatarUrl?: string | null; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
   createMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   deleteMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
+  updateMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   queryInput: null as { topicId: string } | null,
 }));
 
@@ -29,6 +30,7 @@ vi.mock("@/lib/trpc", () => ({
       list: { useQuery: (input: { topicId: string }) => { state.queryInput = input; return state.query; } },
       create: { useMutation: () => state.createMutation },
       delete: { useMutation: () => state.deleteMutation },
+      update: { useMutation: () => state.updateMutation },
     },
   },
 }));
@@ -38,12 +40,20 @@ function resetState() {
   state.query = { data: [], isLoading: false, isError: false };
   state.createMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
   state.deleteMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
+  state.updateMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
   state.queryInput = null;
 }
 
 describe("TopicComments", () => {
-  beforeEach(() => resetState());
-  afterEach(() => cleanup());
+  beforeEach(() => {
+    resetState();
+    window.localStorage.setItem("escape-index-anonymous-token", "11111111-1111-4111-8111-111111111111");
+    window.localStorage.setItem("escape-index-anonymous-name", "測試探險家");
+  });
+  afterEach(() => {
+    cleanup();
+    vi.restoreAllMocks();
+  });
 
   it("renders an empty state and anonymous form for visitors", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
@@ -93,7 +103,7 @@ describe("TopicComments", () => {
 
   it("shows the delete control for the anonymous comment owner", () => {
     state.query = {
-      data: [{ id: 10, userId: null, body: "匿名評論", authorName: "匿名探索者", canDelete: true, createdAt: new Date("2026-01-01T00:00:00Z") }],
+      data: [{ id: 10, userId: null, body: "匿名評論", authorName: "匿名探索者", anonymousToken: "11111111-1111-4111-8111-111111111111", canDelete: true, createdAt: new Date("2026-01-01T00:00:00Z") }],
       isLoading: false,
       isError: false,
     };
@@ -104,7 +114,7 @@ describe("TopicComments", () => {
   it("shows the delete control only for the comment owner and surfaces delete errors", () => {
     state.auth = { user: { id: 7 }, isAuthenticated: true, loading: false };
     state.query = {
-      data: [{ id: 9, userId: null, body: "我的評論", authorName: "探索者", canDelete: true, createdAt: new Date("2026-01-01T00:00:00Z") }],
+      data: [{ id: 9, userId: null, body: "我的評論", authorName: "探索者", anonymousToken: "11111111-1111-4111-8111-111111111111", canDelete: true, createdAt: new Date("2026-01-01T00:00:00Z") }],
       isLoading: false,
       isError: false,
     };
@@ -112,7 +122,7 @@ describe("TopicComments", () => {
     expect(screen.getByRole("button", { name: "刪除我的評論" })).toBeTruthy();
 
     state.query = {
-      data: [{ id: 9, userId: null, body: "我的評論", authorName: "探索者", canDelete: false, createdAt: new Date("2026-01-01T00:00:00Z") }],
+      data: [{ id: 9, userId: null, body: "我的評論", authorName: "探索者", anonymousToken: "different-token", canDelete: false, createdAt: new Date("2026-01-01T00:00:00Z") }],
       isLoading: false,
       isError: false,
     };
@@ -123,5 +133,32 @@ describe("TopicComments", () => {
     state.deleteMutation = { mutate: vi.fn(), isPending: false, isError: true, error: new Error("只能刪除自己的評論") };
     rerender(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(screen.getByText("只能刪除自己的評論")).toBeTruthy();
+  });
+
+  it("edits an owned comment in place and sends the anonymous token", () => {
+    state.query = {
+      data: [{ id: 13, userId: null, body: "原始內容", authorName: "測試探險家", anonymousToken: "11111111-1111-4111-8111-111111111111", createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    fireEvent.click(screen.getByRole("button", { name: "編輯我的評論" }));
+    const editor = screen.getByRole("textbox", { name: "編輯評論 13" });
+    fireEvent.change(editor, { target: { value: "更新後內容" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存" }));
+    expect(state.updateMutation.mutate).toHaveBeenCalledWith({ id: 13, body: "更新後內容", anonymousToken: "11111111-1111-4111-8111-111111111111" });
+  });
+
+  it("asks for confirmation before deleting an owned comment", () => {
+    vi.spyOn(window, "confirm").mockReturnValueOnce(false);
+    state.query = {
+      data: [{ id: 14, userId: null, body: "待刪除", authorName: "測試探險家", anonymousToken: "11111111-1111-4111-8111-111111111111", createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    fireEvent.click(screen.getByRole("button", { name: "刪除我的評論" }));
+    expect(window.confirm).toHaveBeenCalledWith("確定要刪除這則留言嗎？");
+    expect(state.deleteMutation.mutate).not.toHaveBeenCalled();
   });
 });

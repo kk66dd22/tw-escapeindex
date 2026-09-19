@@ -24,6 +24,8 @@ import {
   ArrowUp,
   CalendarDays,
   MessageCircle,
+  Pencil,
+  Save,
   Send,
   Trash2,
   Brain,
@@ -625,6 +627,8 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const utils = trpc.useUtils();
   const [body, setBody] = useState("");
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingBody, setEditingBody] = useState("");
   const commentsQuery = trpc.comments.list.useQuery({ topicId });
   const createComment = trpc.comments.create.useMutation({
     onSuccess: async () => {
@@ -634,6 +638,13 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   });
   const deleteComment = trpc.comments.delete.useMutation({
     onSuccess: async () => {
+      await utils.comments.list.invalidate({ topicId });
+    },
+  });
+  const updateComment = trpc.comments.update.useMutation({
+    onSuccess: async () => {
+      setEditingId(null);
+      setEditingBody("");
       await utils.comments.list.invalidate({ topicId });
     },
   });
@@ -676,19 +687,37 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                     </time>
                   </div>
                 </div>
-                {comment.canDelete && (
-                  <button type="button" onClick={() => deleteComment.mutate({ commentId: comment.id, anonymousToken: identity.token })} disabled={deleteComment.isPending} className="shrink-0 p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
-                    <Trash2 size={14} />
-                  </button>
+                {comment.anonymousToken === identity.token && (
+                  <div className="flex shrink-0 items-center gap-1">
+                    {editingId !== comment.id && (
+                      <button type="button" onClick={() => { setEditingId(comment.id); setEditingBody(comment.body); }} className="p-1 text-white/35 transition hover:text-[#e0bd83] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="編輯我的評論" title="編輯我的評論">
+                        <Pencil size={14} />
+                      </button>
+                    )}
+                    <button type="button" onClick={() => { if (window.confirm("確定要刪除這則留言嗎？")) deleteComment.mutate({ id: comment.id, anonymousToken: identity.token }); }} disabled={deleteComment.isPending} className="p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
                 )}
               </div>
-              <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
+              {editingId === comment.id ? (
+                <div className="mt-2 space-y-2">
+                  <textarea aria-label={`編輯評論 ${comment.id}`} value={editingBody} onChange={(event) => setEditingBody(event.target.value)} maxLength={2000} rows={3} className="w-full resize-y border border-[#c89b5c]/60 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
+                  <div className="flex justify-end gap-2">
+                    <button type="button" onClick={() => { setEditingId(null); setEditingBody(""); }} className="border border-white/20 px-3 py-1.5 font-mono text-[10px] text-white/60 transition hover:border-white/40">取消</button>
+                    <button type="button" onClick={() => { const nextBody = editingBody.trim(); if (nextBody) updateComment.mutate({ id: comment.id, body: nextBody, anonymousToken: identity.token }); }} disabled={updateComment.isPending || !editingBody.trim()} className="inline-flex items-center gap-1 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-1.5 font-mono text-[10px] font-bold text-[#0c0e0d] disabled:opacity-45"><Save size={12} />儲存</button>
+                  </div>
+                </div>
+              ) : (
+                <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
+              )}
             </article>
           ))}
         </div>
       )}
 
       {deleteComment.isError && <p className="mt-3 text-xs text-rose-200/80">{deleteComment.error.message}</p>}
+      {updateComment.isError && <p className="mt-3 text-xs text-rose-200/80">{updateComment.error.message}</p>}
       <form onSubmit={submitComment} className="mt-4 space-y-2">
         <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
         <input aria-label="留言暱稱" value={identity.name} onChange={(event) => { const name = event.target.value; setIdentity((current) => ({ ...current, name })); window.localStorage.setItem(ANONYMOUS_NAME_KEY, name); }} maxLength={120} placeholder="你的暱稱" className="w-full border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
