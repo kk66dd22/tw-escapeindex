@@ -43,6 +43,18 @@ import {
   Hourglass,
   LockKeyhole,
   DoorOpen,
+  Sparkles,
+  Gem,
+  Ghost,
+  Bomb,
+  ScrollText,
+  Map,
+  Eye,
+  Skull,
+  ShieldAlert,
+  Crown,
+  CircleHelp,
+  Telescope,
   X,
 } from "lucide-react";
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
@@ -73,6 +85,18 @@ const AVATAR_OPTIONS = [
   { id: "lockbreaker", label: "破鎖者", icon: LockKeyhole },
   { id: "gatekeeper", label: "密門守衛", icon: DoorOpen },
   { id: "navigator", label: "線索嚮導", icon: Compass },
+  { id: "arcane-scholar", label: "秘法學者", icon: Sparkles },
+  { id: "treasure-hunter", label: "古墓獵人", icon: Gem },
+  { id: "shadow-stalker", label: "暗影潛行者", icon: Ghost },
+  { id: "trap-disarmer", label: "陷阱拆解師", icon: Bomb },
+  { id: "archive-keeper", label: "檔案守藏人", icon: ScrollText },
+  { id: "map-reader", label: "古圖解讀者", icon: Map },
+  { id: "watcher", label: "密室觀察者", icon: Eye },
+  { id: "crypt-warden", label: "墓穴守望者", icon: Skull },
+  { id: "hazard-scout", label: "危機斥候", icon: ShieldAlert },
+  { id: "riddle-master", label: "謎語大師", icon: Crown },
+  { id: "clue-seeker", label: "線索追尋者", icon: CircleHelp },
+  { id: "stargazer", label: "星象探勘者", icon: Telescope },
 ] as const;
 type AvatarId = (typeof AVATAR_OPTIONS)[number]["id"];
 
@@ -681,15 +705,15 @@ function NicknameDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="border-[#5e8b92]/50 bg-[#111412] text-[#e8e4db] sm:max-w-md">
+      <DialogContent className="border-[#5e8b92]/50 bg-[#111412] text-[#e8e4db] sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="font-mono tracking-wider text-[#c89b5c]">請設定您的暱稱</DialogTitle>
           <DialogDescription className="text-xs leading-6 text-white/55">暱稱會儲存在這個瀏覽器，之後可隨時修改。</DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-2">
           <div>
-            <div className="mb-2 font-mono text-[10px] tracking-widest text-[#b7cdc7]">選擇您的角色頭像</div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="mb-2 flex items-center justify-between gap-3 font-mono text-[10px] tracking-widest text-[#b7cdc7]"><span>選擇您的角色頭像</span><span className="text-white/35">20 款角色</span></div>
+            <div className="grid grid-cols-4 gap-2 sm:grid-cols-5">
               {AVATAR_OPTIONS.map((option) => {
                 const Icon = option.icon;
                 const selected = avatarId === option.id;

@@ -6806,7 +6806,19 @@ var ANONYMOUS_AVATAR_IDS = z2.enum([
   "timekeeper",
   "lockbreaker",
   "gatekeeper",
-  "navigator"
+  "navigator",
+  "arcane-scholar",
+  "treasure-hunter",
+  "shadow-stalker",
+  "trap-disarmer",
+  "archive-keeper",
+  "map-reader",
+  "watcher",
+  "crypt-warden",
+  "hazard-scout",
+  "riddle-master",
+  "clue-seeker",
+  "stargazer"
 ]);
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly

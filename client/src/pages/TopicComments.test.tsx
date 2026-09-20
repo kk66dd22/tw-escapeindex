@@ -95,6 +95,7 @@ describe("TopicComments", () => {
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
     expect(screen.getByText("請設定您的暱稱")).toBeTruthy();
     expect(screen.getByRole("button", { name: "選擇偵探頭像" })).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: /選擇.*頭像/ })).toHaveLength(20);
     fireEvent.click(screen.getByRole("button", { name: "選擇破鎖者頭像" }));
     fireEvent.click(screen.getByRole("button", { name: "解謎新手" }));
     fireEvent.click(screen.getByRole("button", { name: "確認並發送留言" }));

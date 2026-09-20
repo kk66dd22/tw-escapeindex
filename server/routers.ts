@@ -16,6 +16,18 @@ const ANONYMOUS_AVATAR_IDS = z.enum([
   "lockbreaker",
   "gatekeeper",
   "navigator",
+  "arcane-scholar",
+  "treasure-hunter",
+  "shadow-stalker",
+  "trap-disarmer",
+  "archive-keeper",
+  "map-reader",
+  "watcher",
+  "crypt-warden",
+  "hazard-scout",
+  "riddle-master",
+  "clue-seeker",
+  "stargazer",
 ]);
 
 export const appRouter = router({
