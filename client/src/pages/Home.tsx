@@ -77,9 +77,9 @@ function getAnonymousIdentity() {
   return { token, name: window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim() || "" };
 }
 
-function makeSuggestedName(token = "") {
+function makeSuggestedName(base = "探險家", token = "") {
   const suffix = (token || crypto.randomUUID()).replace(/-/g, "").slice(0, 4);
-  return `探險家_${suffix}`;
+  return `${base}_${suffix}`;
 }
 
 function playerBounds(value: string) {
@@ -654,7 +654,7 @@ function NicknameDialog({
         <div className="space-y-4 py-2">
           <div className="flex flex-wrap gap-2">
             {NICKNAME_PRESETS.map((preset) => (
-              <button key={preset} type="button" onClick={() => setName(preset)} className="border border-[#5e8b92]/60 px-3 py-1.5 font-mono text-xs text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#e0bd83]">{preset}</button>
+              <button key={preset} type="button" onClick={() => setName(makeSuggestedName(preset))} className="border border-[#5e8b92]/60 px-3 py-1.5 font-mono text-xs text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#e0bd83]">{preset}</button>
             ))}
           </div>
           <input autoFocus aria-label="暱稱" value={name} onChange={(event) => setName(event.target.value)} onKeyDown={(event) => { if (event.key === "Enter") confirm(); }} maxLength={120} placeholder="例如：探險家_8f2a" className="w-full border border-white/15 bg-[#0c0e0d] px-3 py-2.5 text-sm text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c]" />
@@ -678,9 +678,8 @@ export function HomeAuthControls() {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7]">暱稱：{identity.name || "尚未設定"}</span>
-      <button type="button" onClick={() => setNicknameOpen(true)} className="border border-[#c89b5c]/60 px-2 py-2 font-mono text-[10px] tracking-wider text-[#c89b5c] transition hover:bg-[#c89b5c]/10">{identity.name ? "修改暱稱" : "設定暱稱"}</button>
+    <div className="flex items-center">
+      <button type="button" onClick={() => setNicknameOpen(true)} className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 hover:text-[#e0bd83]">暱稱：{identity.name || "尚未設定"}</button>
       <NicknameDialog open={nicknameOpen} initialName={identity.name} onOpenChange={setNicknameOpen} onConfirm={saveName} />
     </div>
   );
@@ -799,7 +798,6 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       {updateComment.isError && <p className="mt-3 text-xs text-rose-200/80">{updateComment.error.message}</p>}
       <form onSubmit={submitComment} className="mt-4 space-y-2">
         <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
-        <input aria-label="留言暱稱" value={identity.name} onChange={(event) => { const name = event.target.value; setIdentity((current) => ({ ...current, name })); window.localStorage.setItem(ANONYMOUS_NAME_KEY, name); }} maxLength={120} placeholder="你的暱稱" className="w-full border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
         <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
         <div className="flex items-center justify-between gap-3">
           <span className="font-mono text-[10px] text-white/35">訪客留言 · {body.length}/2000</span>
