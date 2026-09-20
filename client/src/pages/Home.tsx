@@ -694,9 +694,8 @@ function NicknameDialog({
                 const Icon = option.icon;
                 const selected = avatarId === option.id;
                 return (
-                  <button key={option.id} type="button" onClick={() => setAvatarId(option.id)} aria-pressed={selected} className={`flex flex-col items-center gap-1.5 border px-2 py-2.5 font-mono text-[10px] transition ${selected ? "border-[#c89b5c] bg-[#c89b5c]/15 text-[#e0bd83]" : "border-white/10 text-white/55 hover:border-[#5e8b92] hover:text-[#b7cdc7]"}`}>
+                  <button key={option.id} type="button" onClick={() => setAvatarId(option.id)} aria-label={`選擇${option.label}頭像`} title={option.label} aria-pressed={selected} className={`flex items-center justify-center border px-2 py-2.5 transition ${selected ? "border-[#c89b5c] bg-[#c89b5c]/15 text-[#e0bd83]" : "border-white/10 text-white/55 hover:border-[#5e8b92] hover:text-[#b7cdc7]"}`}>
                     <span className={`flex size-9 items-center justify-center rounded-full ${selected ? "bg-[#c89b5c] text-[#0c0e0d]" : "bg-[#202925] text-[#b7cdc7]"}`}><Icon size={18} aria-hidden="true" /></span>
-                    {option.label}
                   </button>
                 );
               })}

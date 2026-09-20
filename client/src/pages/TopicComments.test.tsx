@@ -94,8 +94,8 @@ describe("TopicComments", () => {
     fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "第一次留言" } });
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
     expect(screen.getByText("請設定您的暱稱")).toBeTruthy();
-    expect(screen.getByRole("button", { name: "密幕探險家" })).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "破鎖者" }));
+    expect(screen.getByRole("button", { name: "選擇偵探頭像" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "選擇破鎖者頭像" }));
     fireEvent.click(screen.getByRole("button", { name: "解謎新手" }));
     fireEvent.click(screen.getByRole("button", { name: "確認並發送留言" }));
     const savedName = window.localStorage.getItem("escape-index-anonymous-name");
