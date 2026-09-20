@@ -43,6 +43,7 @@ describe("comments router", () => {
       body: "訪客體驗",
       authorName: "探險家_1234",
       anonymousToken: token,
+      avatarId: "detective",
     });
     expect(result).toEqual({ success: true });
     expect(dbMocks.createTopicComment).toHaveBeenCalledWith({
@@ -50,6 +51,7 @@ describe("comments router", () => {
       userId: null,
       anonymousToken: token,
       authorName: "探險家_1234",
+      avatarId: "detective",
       body: "訪客體驗",
     });
   });
@@ -69,7 +71,7 @@ describe("comments router", () => {
   it("validates nickname, token, topic, and body", async () => {
     const caller = appRouter.createCaller(createContext());
     await expect(caller.comments.create({ topicId: "popular-101", body: "留言", authorName: "訪客", anonymousToken: "bad" })).rejects.toThrow();
-    await expect(caller.comments.create({ topicId: "missing-topic", body: "留言", authorName: "訪客", anonymousToken: token })).rejects.toThrow("主題不存在");
-    await expect(caller.comments.create({ topicId: "popular-101", body: "   ", authorName: "訪客", anonymousToken: token })).rejects.toThrow("評論內容不可為空");
+    await expect(caller.comments.create({ topicId: "missing-topic", body: "留言", authorName: "訪客", anonymousToken: token, avatarId: "detective" })).rejects.toThrow("主題不存在");
+    await expect(caller.comments.create({ topicId: "popular-101", body: "   ", authorName: "訪客", anonymousToken: token, avatarId: "detective" })).rejects.toThrow("評論內容不可為空");
   });
 });

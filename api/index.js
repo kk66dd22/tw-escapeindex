@@ -169,6 +169,7 @@ var topicComments = mysqlTable("topic_comments", {
   userId: int("userId"),
   anonymousToken: varchar("anonymousToken", { length: 64 }),
   authorName: varchar("authorName", { length: 120 }),
+  avatarId: varchar("avatarId", { length: 32 }),
   body: text("body").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull()
@@ -223,7 +224,7 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
   if (!_pool) await getDb();
   if (!_pool) throw new Error("Database is not available");
   const [rawRows] = await _pool.promise().query(
-    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId]
   );
   const rows = rawRows;
@@ -6797,6 +6798,16 @@ async function searchEscapeVenues(query) {
 // server/routers.ts
 import { TRPCError as TRPCError2 } from "@trpc/server";
 import { z as z2 } from "zod";
+var ANONYMOUS_AVATAR_IDS = z2.enum([
+  "detective",
+  "mechanism",
+  "keymaster",
+  "lamplighter",
+  "timekeeper",
+  "lockbreaker",
+  "gatekeeper",
+  "navigator"
+]);
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -6819,13 +6830,15 @@ var appRouter = router({
       topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728"),
       body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57"),
       authorName: z2.string().trim().min(1, "\u8ACB\u8F38\u5165\u66B1\u7A31").max(120, "\u66B1\u7A31\u4E0D\u53EF\u8D85\u904E 120 \u5B57"),
-      anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA")
+      anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA"),
+      avatarId: ANONYMOUS_AVATAR_IDS
     })).mutation(async ({ input }) => {
       await createTopicComment({
         topicId: input.topicId,
         userId: null,
         anonymousToken: input.anonymousToken,
         authorName: input.authorName,
+        avatarId: input.avatarId,
         body: input.body
       });
       return { success: true };

@@ -6,7 +6,7 @@ import { TopicComments } from "./Home";
 
 const state = vi.hoisted(() => ({
   auth: { user: null as { id: number } | null, isAuthenticated: false, loading: false },
-  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; anonymousToken?: string | null; avatarUrl?: string | null; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
+  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; anonymousToken?: string | null; avatarId?: string | null; avatarUrl?: string | null; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
   createMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   deleteMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   updateMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
@@ -95,11 +95,13 @@ describe("TopicComments", () => {
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
     expect(screen.getByText("請設定您的暱稱")).toBeTruthy();
     expect(screen.getByRole("button", { name: "密幕探險家" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "破鎖者" }));
     fireEvent.click(screen.getByRole("button", { name: "解謎新手" }));
     fireEvent.click(screen.getByRole("button", { name: "確認並發送留言" }));
     const savedName = window.localStorage.getItem("escape-index-anonymous-name");
     expect(savedName).toMatch(/^解謎新手_[0-9a-f]{4}$/);
-    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111" });
+    expect(window.localStorage.getItem("escape-index-anonymous-avatar")).toBe("lockbreaker");
+    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111", avatarId: expect.any(String) });
   });
 
   it("renders author initials without requiring a users-table avatar join", () => {
@@ -113,7 +115,7 @@ describe("TopicComments", () => {
     };
     const { container } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(container.querySelectorAll("img")).toHaveLength(0);
-    expect(container.querySelectorAll('svg[aria-label*="的匿名頭像"]')).toHaveLength(2);
+    expect(container.querySelectorAll('[aria-label*="的角色頭像"]')).toHaveLength(2);
   });
 
   it("shows the delete control for the anonymous comment owner", () => {

@@ -7,6 +7,17 @@ import { searchEscapeVenues } from "./places";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
+const ANONYMOUS_AVATAR_IDS = z.enum([
+  "detective",
+  "mechanism",
+  "keymaster",
+  "lamplighter",
+  "timekeeper",
+  "lockbreaker",
+  "gatekeeper",
+  "navigator",
+]);
+
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -37,6 +48,7 @@ export const appRouter = router({
         body: z.string().trim().min(1, "評論內容不可為空").max(2000, "評論內容不可超過 2000 字"),
         authorName: z.string().trim().min(1, "請輸入暱稱").max(120, "暱稱不可超過 120 字"),
         anonymousToken: z.string().uuid("匿名識別碼格式不正確"),
+        avatarId: ANONYMOUS_AVATAR_IDS,
       }))
       .mutation(async ({ input }) => {
         await createTopicComment({
@@ -44,6 +56,7 @@ export const appRouter = router({
           userId: null,
           anonymousToken: input.anonymousToken,
           authorName: input.authorName,
+          avatarId: input.avatarId,
           body: input.body,
         });
         return { success: true } as const;

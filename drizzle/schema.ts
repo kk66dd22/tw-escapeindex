@@ -45,6 +45,7 @@ export const topicComments = mysqlTable("topic_comments", {
   userId: int("userId"),
   anonymousToken: varchar("anonymousToken", { length: 64 }),
   authorName: varchar("authorName", { length: 120 }),
+  avatarId: varchar("avatarId", { length: 32 }),
   body: text("body").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

@@ -147,7 +147,7 @@ export async function getTopicComments(topicId: string, userId: number | null = 
   // read path explicit so a stale ORM dialect cannot turn identifiers into
   // string literals or silently translate them to snake_case.
   const [rawRows] = await _pool.promise().query(
-    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId],
   );
   const rows = rawRows as Array<{
@@ -156,6 +156,7 @@ export async function getTopicComments(topicId: string, userId: number | null = 
     userId: number | null;
     authorName: string | null;
     anonymousToken: string | null;
+    avatarId: string | null;
     body: string;
     createdAt: Date;
     updatedAt: Date;

@@ -9,7 +9,6 @@ import { ADVENTURER_GUILD_BOOKING_URL, ADVENTURER_GUILD_CTA_LABEL, bookingCtaLay
 import { pageForItem, pickRandom } from "@/lib/randomPick";
 import { isTopicJumpReady, needsTopicPageChange, prepareTopicJump, type TopicJumpTarget } from "@/lib/topicJump";
 import SiteFooter from "@/components/SiteFooter";
-import BoringAvatar from "boring-avatars";
 import {
   Dialog,
   DialogContent,
@@ -39,6 +38,11 @@ import {
   Search,
   Star,
   Users,
+  Wrench,
+  KeyRound,
+  Hourglass,
+  LockKeyhole,
+  DoorOpen,
   X,
 } from "lucide-react";
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
@@ -60,19 +64,46 @@ const filters: { id: Filter; label: string }[] = [
   { id: "puzzle", label: "機關解謎" },
 ];
 
-const ANONYMOUS_AVATAR_COLORS = ["#c89b5c", "#5e8b92", "#b7cdc7", "#182321", "#e8e4db"];
+const AVATAR_OPTIONS = [
+  { id: "detective", label: "偵探", icon: Search },
+  { id: "mechanism", label: "機關師", icon: Wrench },
+  { id: "keymaster", label: "解密者", icon: KeyRound },
+  { id: "lamplighter", label: "提燈人", icon: Flame },
+  { id: "timekeeper", label: "時間守門人", icon: Hourglass },
+  { id: "lockbreaker", label: "破鎖者", icon: LockKeyhole },
+  { id: "gatekeeper", label: "密門守衛", icon: DoorOpen },
+  { id: "navigator", label: "線索嚮導", icon: Compass },
+] as const;
+type AvatarId = (typeof AVATAR_OPTIONS)[number]["id"];
 
 const ANONYMOUS_TOKEN_KEY = "escape-index-anonymous-token";
 const ANONYMOUS_NAME_KEY = "escape-index-anonymous-name";
+const ANONYMOUS_AVATAR_KEY = "escape-index-anonymous-avatar";
+
+function randomAvatarId() {
+  return AVATAR_OPTIONS[Math.floor(Math.random() * AVATAR_OPTIONS.length)].id;
+}
+
+function avatarForSeed(avatarId: string | null | undefined, seed: string) {
+  const direct = AVATAR_OPTIONS.find((option) => option.id === avatarId);
+  if (direct) return direct;
+  const hash = seed.split("").reduce((total, character) => total + character.charCodeAt(0), 0);
+  return AVATAR_OPTIONS[hash % AVATAR_OPTIONS.length];
+}
 
 function getAnonymousIdentity() {
-  if (typeof window === "undefined") return { token: "", name: "" };
+  if (typeof window === "undefined") return { token: "", name: "", avatarId: "" };
   let token = window.localStorage.getItem(ANONYMOUS_TOKEN_KEY);
   if (!token) {
     token = crypto.randomUUID();
     window.localStorage.setItem(ANONYMOUS_TOKEN_KEY, token);
   }
-  return { token, name: window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim() || "" };
+  let avatarId = window.localStorage.getItem(ANONYMOUS_AVATAR_KEY);
+  if (!avatarId || !AVATAR_OPTIONS.some((option) => option.id === avatarId)) {
+    avatarId = randomAvatarId();
+    window.localStorage.setItem(ANONYMOUS_AVATAR_KEY, avatarId);
+  }
+  return { token, name: window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim() || "", avatarId };
 }
 
 function makeSuggestedName(base = "探險家", token = "") {
@@ -621,25 +652,31 @@ const NICKNAME_PRESETS = ["密幕探險家", "解謎新手", "逃脫大師", "�
 function NicknameDialog({
   open,
   initialName,
+  initialAvatarId,
   onOpenChange,
   onConfirm,
   submitLabel = "確認",
 }: {
   open: boolean;
   initialName: string;
+  initialAvatarId: string;
   onOpenChange: (open: boolean) => void;
-  onConfirm: (name: string) => void;
+  onConfirm: (name: string, avatarId: string) => void;
   submitLabel?: string;
 }) {
   const [name, setName] = useState(initialName || makeSuggestedName());
+  const [avatarId, setAvatarId] = useState<AvatarId>(avatarForSeed(initialAvatarId, initialName || "modal").id);
 
   useEffect(() => {
-    if (open) setName(initialName || makeSuggestedName());
-  }, [initialName, open]);
+    if (open) {
+      setName(initialName || makeSuggestedName());
+      setAvatarId(avatarForSeed(initialAvatarId, initialName || "modal").id);
+    }
+  }, [initialAvatarId, initialName, open]);
 
   const confirm = () => {
     const trimmedName = name.trim();
-    if (trimmedName) onConfirm(trimmedName);
+    if (trimmedName) onConfirm(trimmedName, avatarId);
   };
 
   return (
@@ -650,6 +687,21 @@ function NicknameDialog({
           <DialogDescription className="text-xs leading-6 text-white/55">暱稱會儲存在這個瀏覽器，之後可隨時修改。</DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-2">
+          <div>
+            <div className="mb-2 font-mono text-[10px] tracking-widest text-[#b7cdc7]">選擇您的角色頭像</div>
+            <div className="grid grid-cols-4 gap-2">
+              {AVATAR_OPTIONS.map((option) => {
+                const Icon = option.icon;
+                const selected = avatarId === option.id;
+                return (
+                  <button key={option.id} type="button" onClick={() => setAvatarId(option.id)} aria-pressed={selected} className={`flex flex-col items-center gap-1.5 border px-2 py-2.5 font-mono text-[10px] transition ${selected ? "border-[#c89b5c] bg-[#c89b5c]/15 text-[#e0bd83]" : "border-white/10 text-white/55 hover:border-[#5e8b92] hover:text-[#b7cdc7]"}`}>
+                    <span className={`flex size-9 items-center justify-center rounded-full ${selected ? "bg-[#c89b5c] text-[#0c0e0d]" : "bg-[#202925] text-[#b7cdc7]"}`}><Icon size={18} aria-hidden="true" /></span>
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
           <div className="flex flex-wrap gap-2">
             {NICKNAME_PRESETS.map((preset) => (
               <button key={preset} type="button" onClick={() => setName(makeSuggestedName(preset))} className="border border-[#5e8b92]/60 px-3 py-1.5 font-mono text-xs text-[#b7cdc7] transition hover:border-[#c89b5c] hover:text-[#e0bd83]">{preset}</button>
@@ -669,20 +721,23 @@ function NicknameDialog({
 export function HomeAuthControls() {
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
   const [nicknameOpen, setNicknameOpen] = useState(false);
-  const saveName = (name: string) => {
+  const saveName = (name: string, avatarId: string) => {
     window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
-    setIdentity((current) => ({ ...current, name }));
+    window.localStorage.setItem(ANONYMOUS_AVATAR_KEY, avatarId);
+    setIdentity((current) => ({ ...current, name, avatarId }));
     window.dispatchEvent(new CustomEvent("escape-index-nickname-change"));
     setNicknameOpen(false);
   };
+  const avatar = avatarForSeed(identity.avatarId, identity.token);
+  const AvatarIcon = avatar.icon;
 
   return (
     <div className="flex items-center">
       <button type="button" onClick={() => setNicknameOpen(true)} className="flex items-center gap-2 border border-[#5e8b92]/60 px-3 py-1.5 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 hover:text-[#e0bd83]">
-        <BoringAvatar variant="beam" size={24} name={identity.token} aria-hidden="true" colors={ANONYMOUS_AVATAR_COLORS} />
+        <span className="flex size-6 items-center justify-center rounded-full bg-[#c89b5c] text-[#0c0e0d]"><AvatarIcon size={14} aria-hidden="true" /></span>
         <span>{identity.name || "尚未設定"}</span>
       </button>
-      <NicknameDialog open={nicknameOpen} initialName={identity.name} onOpenChange={setNicknameOpen} onConfirm={saveName} />
+      <NicknameDialog open={nicknameOpen} initialName={identity.name} initialAvatarId={identity.avatarId} onOpenChange={setNicknameOpen} onConfirm={saveName} />
     </div>
   );
 }
@@ -729,17 +784,18 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       setNicknameOpen(true);
       return;
     }
-    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token });
+    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token, avatarId: avatarForSeed(identity.avatarId, identity.token).id });
   };
 
-  const confirmNicknameAndSend = (name: string) => {
+  const confirmNicknameAndSend = (name: string, avatarId: string) => {
     window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
+    window.localStorage.setItem(ANONYMOUS_AVATAR_KEY, avatarId);
     window.dispatchEvent(new CustomEvent("escape-index-nickname-change"));
     const nextBody = pendingBody.trim();
-    setIdentity((current) => ({ ...current, name }));
+    setIdentity((current) => ({ ...current, name, avatarId }));
     setNicknameOpen(false);
     setPendingBody("");
-    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token });
+    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token, avatarId: avatarForSeed(avatarId, identity.token).id });
   };
 
   const currentToken = typeof window === "undefined"
@@ -769,7 +825,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
             <article key={comment.id} className={`border p-3 transition ${isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2">
-                  <BoringAvatar variant="beam" size={32} name={comment.anonymousToken || comment.authorName} aria-label={`${comment.authorName} 的匿名頭像`} colors={ANONYMOUS_AVATAR_COLORS} />
+                  {(() => { const avatar = avatarForSeed(comment.avatarId, comment.anonymousToken || comment.authorName); const AvatarIcon = avatar.icon; return <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#202925] text-[#c89b5c]" aria-label={`${comment.authorName} 的角色頭像`}><AvatarIcon size={18} aria-hidden="true" /></span>; })()}
                   <div className="min-w-0">
                     <div className={`font-mono text-xs ${isOwnComment ? "font-bold text-[#e0bd83]" : "text-[#b7cdc7]"}`}>{comment.authorName}{isOwnComment && <span className="ml-1 font-bold text-[#f1c27d]">(你)</span>}</div>
                   <time className="mt-1 block font-mono text-[10px] text-white/35" dateTime={new Date(comment.createdAt).toISOString()}>
@@ -821,7 +877,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
         <p className="text-[10px] leading-5 text-white/35">暱稱與匿名識別碼只儲存在本瀏覽器；請勿填寫個人敏感資料。</p>
         {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
       </form>
-      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} onOpenChange={(open) => { setNicknameOpen(open); if (!open) setPendingBody(""); }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
+      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} initialAvatarId={identity.avatarId} onOpenChange={(open) => { setNicknameOpen(open); if (!open) setPendingBody(""); }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
     </section>
   );
 }
