@@ -4,6 +4,7 @@ import { createContactMessage, createTopicComment, deleteTopicComment, getTopicC
 
 import topics from "../data/topics.json";
 import { searchEscapeVenues } from "./places";
+import { moderateComment } from "./moderation";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
@@ -63,6 +64,10 @@ export const appRouter = router({
         avatarId: ANONYMOUS_AVATAR_IDS,
       }))
       .mutation(async ({ input }) => {
+        const moderation = moderateComment(input.body);
+        if (!moderation.allowed) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: moderation.message });
+        }
         await createTopicComment({
           topicId: input.topicId,
           userId: null,
@@ -80,6 +85,10 @@ export const appRouter = router({
         anonymousToken: z.string().uuid("匿名識別碼格式不正確"),
       }))
       .mutation(async ({ input }) => {
+        const moderation = moderateComment(input.body);
+        if (!moderation.allowed) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: moderation.message });
+        }
         const result = await updateTopicComment(input.id, input.body, input.anonymousToken);
         if (result === "not_found") throw new TRPCError({ code: "NOT_FOUND", message: "找不到這則評論" });
         if (result === "forbidden") throw new TRPCError({ code: "FORBIDDEN", message: "只能編輯自己的評論" });

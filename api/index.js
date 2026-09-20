@@ -6795,6 +6795,44 @@ async function searchEscapeVenues(query) {
   return detailed.filter((place) => place.rating !== null && place.rating >= 4.5);
 }
 
+// server/moderation.ts
+var INAPPROPRIATE_PATTERNS = [
+  /賭博|博彩|賭場|老虎機|娛樂城|六合彩|地下賭場|下注|返水|輪盤|casino|betting|poker/i,
+  /色情|成人影片|裸聊|約砲|援交|賣淫|情色|色誘|porn|hentai/i,
+  /詐騙|洗錢|高利貸|貸款代辦|借錢|代購|刷卡套現/i,
+  /加賴|加LINE|加微信|加telegram|加tg|私訊領取|聯絡我|聯繫我|客服專員|官方客服/i
+];
+var PROMOTIONAL_PATTERNS = [
+  /https?:\/\//i,
+  /www\./i,
+  /bit\.ly|tinyurl\.com|t\.me\//i,
+  /discord\.gg|line\.me\//i,
+  /免費送|限時優惠|立即下單|點擊連結|點我領取|誠徵代理|招募會員|保證獲利/i
+];
+var MODERATION_MESSAGE = "\u7559\u8A00\u5305\u542B\u4E0D\u9069\u7576\u6216\u5EE3\u544A\u5167\u5BB9\uFF0C\u8ACB\u4FEE\u6539\u5F8C\u91CD\u8A66\u3002";
+function compactText(value) {
+  return value.normalize("NFKC").toLocaleLowerCase("zh-TW").replace(/[\s\u200b\u200c\u200d]+/g, "");
+}
+function hasRepeatedCharacters(value) {
+  return /(.)\1{5,}/.test(value);
+}
+function hasRepeatedPhrase(value) {
+  return /(.{2,8})\1{3,}/.test(value);
+}
+function moderateComment(body) {
+  const normalized = compactText(body);
+  if (INAPPROPRIATE_PATTERNS.some((pattern) => pattern.test(normalized))) {
+    return { allowed: false, message: MODERATION_MESSAGE, reason: "keyword" };
+  }
+  if (PROMOTIONAL_PATTERNS.some((pattern) => pattern.test(normalized))) {
+    return { allowed: false, message: MODERATION_MESSAGE, reason: "promotion" };
+  }
+  if (hasRepeatedCharacters(normalized) || hasRepeatedPhrase(normalized)) {
+    return { allowed: false, message: MODERATION_MESSAGE, reason: "repetition" };
+  }
+  return { allowed: true };
+}
+
 // server/routers.ts
 import { TRPCError as TRPCError2 } from "@trpc/server";
 import { z as z2 } from "zod";
@@ -6845,6 +6883,10 @@ var appRouter = router({
       anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA"),
       avatarId: ANONYMOUS_AVATAR_IDS
     })).mutation(async ({ input }) => {
+      const moderation = moderateComment(input.body);
+      if (!moderation.allowed) {
+        throw new TRPCError2({ code: "BAD_REQUEST", message: moderation.message });
+      }
       await createTopicComment({
         topicId: input.topicId,
         userId: null,
@@ -6860,6 +6902,10 @@ var appRouter = router({
       body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57"),
       anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA")
     })).mutation(async ({ input }) => {
+      const moderation = moderateComment(input.body);
+      if (!moderation.allowed) {
+        throw new TRPCError2({ code: "BAD_REQUEST", message: moderation.message });
+      }
       const result = await updateTopicComment(input.id, input.body, input.anonymousToken);
       if (result === "not_found") throw new TRPCError2({ code: "NOT_FOUND", message: "\u627E\u4E0D\u5230\u9019\u5247\u8A55\u8AD6" });
       if (result === "forbidden") throw new TRPCError2({ code: "FORBIDDEN", message: "\u53EA\u80FD\u7DE8\u8F2F\u81EA\u5DF1\u7684\u8A55\u8AD6" });

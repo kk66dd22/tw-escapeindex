@@ -56,6 +56,19 @@ describe("comments router", () => {
     });
   });
 
+  it("blocks moderated content before writing a new comment", async () => {
+    dbMocks.createTopicComment.mockClear();
+    const caller = appRouter.createCaller(createContext());
+    await expect(caller.comments.create({
+      topicId: "popular-101",
+      body: "娛樂城立即下注領取返水 https://example.com",
+      authorName: "廣告帳號",
+      anonymousToken: token,
+      avatarId: "detective",
+    })).rejects.toThrow("留言包含不適當或廣告內容，請修改後重試。");
+    expect(dbMocks.createTopicComment).not.toHaveBeenCalled();
+  });
+
   it("allows anonymous owners to delete with the same token", async () => {
     dbMocks.deleteTopicComment.mockResolvedValueOnce("deleted");
     await expect(appRouter.createCaller(createContext()).comments.delete({ id: 7, anonymousToken: token })).resolves.toEqual({ success: true });
@@ -66,6 +79,13 @@ describe("comments router", () => {
     dbMocks.updateTopicComment.mockResolvedValueOnce("updated");
     await expect(appRouter.createCaller(createContext()).comments.update({ id: 8, body: "更新後內容", anonymousToken: token })).resolves.toEqual({ success: true });
     expect(dbMocks.updateTopicComment).toHaveBeenCalledWith(8, "更新後內容", token);
+  });
+
+  it("blocks moderated content before updating a comment", async () => {
+    dbMocks.updateTopicComment.mockClear();
+    const caller = appRouter.createCaller(createContext());
+    await expect(caller.comments.update({ id: 8, body: "成人影片請加LINE", anonymousToken: token })).rejects.toThrow("留言包含不適當或廣告內容，請修改後重試。");
+    expect(dbMocks.updateTopicComment).not.toHaveBeenCalled();
   });
 
   it("validates nickname, token, topic, and body", async () => {
