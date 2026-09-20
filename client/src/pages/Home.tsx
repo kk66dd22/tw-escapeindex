@@ -674,6 +674,7 @@ export function HomeAuthControls() {
   const saveName = (name: string) => {
     window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
     setIdentity((current) => ({ ...current, name }));
+    window.dispatchEvent(new CustomEvent("escape-index-nickname-change"));
     setNicknameOpen(false);
   };
 
@@ -694,6 +695,11 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingBody, setEditingBody] = useState("");
   const commentsQuery = trpc.comments.list.useQuery({ topicId });
+  useEffect(() => {
+    const syncIdentity = () => setIdentity(getAnonymousIdentity());
+    window.addEventListener("escape-index-nickname-change", syncIdentity);
+    return () => window.removeEventListener("escape-index-nickname-change", syncIdentity);
+  }, []);
   const createComment = trpc.comments.create.useMutation({
     onSuccess: async () => {
       setBody("");
@@ -727,12 +733,17 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
 
   const confirmNicknameAndSend = (name: string) => {
     window.localStorage.setItem(ANONYMOUS_NAME_KEY, name);
+    window.dispatchEvent(new CustomEvent("escape-index-nickname-change"));
     const nextBody = pendingBody.trim();
     setIdentity((current) => ({ ...current, name }));
     setNicknameOpen(false);
     setPendingBody("");
     if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token });
   };
+
+  const currentToken = typeof window === "undefined"
+    ? identity.token
+    : window.localStorage.getItem(ANONYMOUS_TOKEN_KEY) || identity.token;
 
   return (
     <section aria-label={`《${topicName}》評論`} className="mt-6 border-t border-white/10 pt-5">
@@ -751,28 +762,30 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       )}
       {!!commentsQuery.data?.length && (
         <div className="mt-3 space-y-3">
-          {commentsQuery.data.map((comment) => (
-            <article key={comment.id} className="border border-white/10 bg-[#111412]/70 p-3">
+          {commentsQuery.data.map((comment) => {
+            const isOwnComment = comment.anonymousToken === currentToken;
+            return (
+            <article key={comment.id} className={`border p-3 transition ${isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2">
                   <Avatar className="size-7 shrink-0 border border-white/15">
                     <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#b7cdc7]">{avatarInitial(comment.authorName)}</AvatarFallback>
                   </Avatar>
                   <div className="min-w-0">
-                    <div className="font-mono text-xs text-[#b7cdc7]">{comment.authorName}</div>
+                    <div className={`font-mono text-xs ${isOwnComment ? "font-bold text-[#e0bd83]" : "text-[#b7cdc7]"}`}>{comment.authorName}{isOwnComment && <span className="ml-1 font-bold text-[#f1c27d]">(你)</span>}</div>
                   <time className="mt-1 block font-mono text-[10px] text-white/35" dateTime={new Date(comment.createdAt).toISOString()}>
                     {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
                     </time>
                   </div>
                 </div>
-                {comment.anonymousToken === identity.token && (
+                {isOwnComment && (
                   <div className="flex shrink-0 items-center gap-1">
                     {editingId !== comment.id && (
                       <button type="button" onClick={() => { setEditingId(comment.id); setEditingBody(comment.body); }} className="p-1 text-white/35 transition hover:text-[#e0bd83] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="編輯我的評論" title="編輯我的評論">
                         <Pencil size={14} />
                       </button>
                     )}
-                    <button type="button" onClick={() => { if (window.confirm("確定要刪除這則留言嗎？")) deleteComment.mutate({ id: comment.id, anonymousToken: identity.token }); }} disabled={deleteComment.isPending} className="p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
+                    <button type="button" onClick={() => { if (window.confirm("確定要刪除這則留言嗎？")) deleteComment.mutate({ id: comment.id, anonymousToken: currentToken }); }} disabled={deleteComment.isPending} className="p-1 text-white/35 transition hover:text-rose-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]" aria-label="刪除我的評論" title="刪除我的評論">
                       <Trash2 size={14} />
                     </button>
                   </div>
@@ -783,14 +796,15 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                   <textarea aria-label={`編輯評論 ${comment.id}`} value={editingBody} onChange={(event) => setEditingBody(event.target.value)} maxLength={2000} rows={3} className="w-full resize-y border border-[#c89b5c]/60 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
                   <div className="flex justify-end gap-2">
                     <button type="button" onClick={() => { setEditingId(null); setEditingBody(""); }} className="border border-white/20 px-3 py-1.5 font-mono text-[10px] text-white/60 transition hover:border-white/40">取消</button>
-                    <button type="button" onClick={() => { const nextBody = editingBody.trim(); if (nextBody) updateComment.mutate({ id: comment.id, body: nextBody, anonymousToken: identity.token }); }} disabled={updateComment.isPending || !editingBody.trim()} className="inline-flex items-center gap-1 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-1.5 font-mono text-[10px] font-bold text-[#0c0e0d] disabled:opacity-45"><Save size={12} />儲存</button>
+                    <button type="button" onClick={() => { const nextBody = editingBody.trim(); if (nextBody) updateComment.mutate({ id: comment.id, body: nextBody, anonymousToken: currentToken }); }} disabled={updateComment.isPending || !editingBody.trim()} className="inline-flex items-center gap-1 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-1.5 font-mono text-[10px] font-bold text-[#0c0e0d] disabled:opacity-45"><Save size={12} />儲存</button>
                   </div>
                 </div>
               ) : (
                 <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
               )}
             </article>
-          ))}
+            );
+          })}
         </div>
       )}
 

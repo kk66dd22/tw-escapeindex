@@ -122,7 +122,9 @@ describe("TopicComments", () => {
       isLoading: false,
       isError: false,
     };
-    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    const { container } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    expect(screen.getByText("(你)")).toBeTruthy();
+    expect(container.querySelector("article")?.className).toContain("border-[#c89b5c]");
     expect(screen.getByRole("button", { name: "刪除我的評論" })).toBeTruthy();
   });
 
