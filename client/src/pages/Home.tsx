@@ -671,7 +671,7 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
   );
 }
 
-const NICKNAME_PRESETS = ["密幕探險家", "解謎新手", "逃脫大師", "機關破解者"];
+const NICKNAME_PRESETS = ["密幕探險家", "解謎新手", "逃脫大師", "機關破解者", "探險家"];
 
 function NicknameDialog({
   open,
