@@ -113,7 +113,7 @@ describe("TopicComments", () => {
     };
     const { container } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(container.querySelectorAll("img")).toHaveLength(0);
-    expect(screen.getByText("匿")).toBeTruthy();
+    expect(container.querySelectorAll('svg[aria-label*="的匿名頭像"]')).toHaveLength(2);
   });
 
   it("shows the delete control for the anonymous comment owner", () => {

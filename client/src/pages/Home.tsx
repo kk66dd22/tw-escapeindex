@@ -9,7 +9,7 @@ import { ADVENTURER_GUILD_BOOKING_URL, ADVENTURER_GUILD_CTA_LABEL, bookingCtaLay
 import { pageForItem, pickRandom } from "@/lib/randomPick";
 import { isTopicJumpReady, needsTopicPageChange, prepareTopicJump, type TopicJumpTarget } from "@/lib/topicJump";
 import SiteFooter from "@/components/SiteFooter";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import BoringAvatar from "boring-avatars";
 import {
   Dialog,
   DialogContent,
@@ -60,9 +60,7 @@ const filters: { id: Filter; label: string }[] = [
   { id: "puzzle", label: "機關解謎" },
 ];
 
-function avatarInitial(name: string | null | undefined, email?: string | null) {
-  return (name?.trim() || email?.trim() || "探").slice(0, 1).toUpperCase();
-}
+const ANONYMOUS_AVATAR_COLORS = ["#c89b5c", "#5e8b92", "#b7cdc7", "#182321", "#e8e4db"];
 
 const ANONYMOUS_TOKEN_KEY = "escape-index-anonymous-token";
 const ANONYMOUS_NAME_KEY = "escape-index-anonymous-name";
@@ -680,7 +678,10 @@ export function HomeAuthControls() {
 
   return (
     <div className="flex items-center">
-      <button type="button" onClick={() => setNicknameOpen(true)} className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 hover:text-[#e0bd83]">{identity.name || "尚未設定"}</button>
+      <button type="button" onClick={() => setNicknameOpen(true)} className="flex items-center gap-2 border border-[#5e8b92]/60 px-3 py-1.5 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 hover:text-[#e0bd83]">
+        <BoringAvatar variant="beam" size={24} name={identity.token} aria-hidden="true" colors={ANONYMOUS_AVATAR_COLORS} />
+        <span>{identity.name || "尚未設定"}</span>
+      </button>
       <NicknameDialog open={nicknameOpen} initialName={identity.name} onOpenChange={setNicknameOpen} onConfirm={saveName} />
     </div>
   );
@@ -768,9 +769,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
             <article key={comment.id} className={`border p-3 transition ${isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2">
-                  <Avatar className="size-7 shrink-0 border border-white/15">
-                    <AvatarFallback className="bg-[#182321] font-mono text-[10px] text-[#b7cdc7]">{avatarInitial(comment.authorName)}</AvatarFallback>
-                  </Avatar>
+                  <BoringAvatar variant="beam" size={32} name={comment.anonymousToken || comment.authorName} aria-label={`${comment.authorName} 的匿名頭像`} colors={ANONYMOUS_AVATAR_COLORS} />
                   <div className="min-w-0">
                     <div className={`font-mono text-xs ${isOwnComment ? "font-bold text-[#e0bd83]" : "text-[#b7cdc7]"}`}>{comment.authorName}{isOwnComment && <span className="ml-1 font-bold text-[#f1c27d]">(你)</span>}</div>
                   <time className="mt-1 block font-mono text-[10px] text-white/35" dateTime={new Date(comment.createdAt).toISOString()}>
