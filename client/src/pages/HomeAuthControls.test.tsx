@@ -10,18 +10,18 @@ describe("HomeAuthControls", () => {
   it("shows the persistent anonymous visitor identity", () => {
     window.localStorage.setItem("escape-index-anonymous-name", "探險家_8f2a");
     render(<HomeAuthControls />);
-    expect(screen.getByText("暱稱：探險家_8f2a")).toBeTruthy();
-    expect(screen.getByRole("button", { name: "暱稱：探險家_8f2a" })).toBeTruthy();
+    expect(screen.getByText("探險家_8f2a")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "探險家_8f2a" })).toBeTruthy();
   });
 
   it("updates the stored nickname from the Header modal", () => {
     window.localStorage.setItem("escape-index-anonymous-name", "舊暱稱");
     render(<HomeAuthControls />);
-    fireEvent.click(screen.getByRole("button", { name: "暱稱：舊暱稱" }));
+    fireEvent.click(screen.getByRole("button", { name: "舊暱稱" }));
     const input = screen.getByRole("textbox", { name: "暱稱" });
     fireEvent.change(input, { target: { value: "逃脫大師" } });
     fireEvent.click(screen.getByRole("button", { name: "確認" }));
     expect(window.localStorage.getItem("escape-index-anonymous-name")).toBe("逃脫大師");
-    expect(screen.getByText("暱稱：逃脫大師")).toBeTruthy();
+    expect(screen.getByText("逃脫大師")).toBeTruthy();
   });
 });

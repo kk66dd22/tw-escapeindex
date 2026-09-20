@@ -680,7 +680,7 @@ export function HomeAuthControls() {
 
   return (
     <div className="flex items-center">
-      <button type="button" onClick={() => setNicknameOpen(true)} className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 hover:text-[#e0bd83]">暱稱：{identity.name || "尚未設定"}</button>
+      <button type="button" onClick={() => setNicknameOpen(true)} className="border border-[#5e8b92]/60 px-3 py-2 font-mono text-[10px] tracking-wider text-[#b7cdc7] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 hover:text-[#e0bd83]">{identity.name || "尚未設定"}</button>
       <NicknameDialog open={nicknameOpen} initialName={identity.name} onOpenChange={setNicknameOpen} onConfirm={saveName} />
     </div>
   );
