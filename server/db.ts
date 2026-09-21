@@ -147,15 +147,22 @@ async function ensureTopicCommentsSchema() {
     topicCommentsSchemaPromise = (async () => {
       const pool = _pool;
       if (!pool) throw new Error("Database is not available");
+      const [rawUserIdColumns] = await pool.promise().query("SHOW COLUMNS FROM `users` LIKE 'id'");
+      const userIdColumns = rawUserIdColumns as Array<{ Type: string }>;
+      const referencedType = userIdColumns[0]?.Type ?? "int";
+      if (!/^(tinyint|smallint|mediumint|int|bigint)(\\(\\d+\\))?(\\s+unsigned)?$/i.test(referencedType)) {
+        throw new Error("Unsupported users.id type for topic_comments.userId migration");
+      }
+      const compatibleUserIdType = referencedType.toUpperCase();
       const [rawColumns] = await pool.promise().query("SHOW COLUMNS FROM `topic_comments`");
       const columns = rawColumns as Array<{ Field: string; Type: string; Null: string }>;
       const userIdColumn = columns.find((column) => column.Field === "userId");
       const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
 
       if (!userIdColumn) {
-        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `userId` INT NULL AFTER `topicId`");
-      } else if (userIdColumn.Null !== "YES") {
-        await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `userId` INT NULL");
+        await pool.promise().query(`ALTER TABLE \`topic_comments\` ADD COLUMN \`userId\` ${compatibleUserIdType} NULL AFTER \`topicId\``);
+      } else if (userIdColumn.Null !== "YES" || userIdColumn.Type.toLowerCase() !== referencedType.toLowerCase()) {
+        await pool.promise().query(`ALTER TABLE \`topic_comments\` MODIFY COLUMN \`userId\` ${compatibleUserIdType} NULL`);
       }
       if (!avatarIdColumn) {
         await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `avatarId` VARCHAR(32) NULL AFTER `authorName`");
