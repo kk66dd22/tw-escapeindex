@@ -182,6 +182,7 @@ var topicComments = mysqlTable("topic_comments", {
 // server/db.ts
 var _db = null;
 var _pool = null;
+var topicCommentsSchemaPromise = null;
 var DEFAULT_DATABASE = "test";
 function createDatabasePool(databaseUrl) {
   const url = new URL(databaseUrl);
@@ -224,10 +225,39 @@ async function createContactMessage(message) {
 function normalizeTopicCommentAuthor(authorName) {
   return authorName?.trim() || "\u63A2\u7D22\u8005";
 }
-async function getTopicComments(topicId, userId = null, anonymousToken = null) {
+async function ensureTopicCommentsSchema() {
   if (!_pool) await getDb();
   if (!_pool) throw new Error("Database is not available");
-  const [rawRows] = await _pool.promise().query(
+  if (!topicCommentsSchemaPromise) {
+    topicCommentsSchemaPromise = (async () => {
+      const pool = _pool;
+      if (!pool) throw new Error("Database is not available");
+      const [rawColumns] = await pool.promise().query("SHOW COLUMNS FROM `topic_comments`");
+      const columns = rawColumns;
+      const userIdColumn = columns.find((column) => column.Field === "userId");
+      const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
+      if (!userIdColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `userId` INT NULL AFTER `topicId`");
+      } else if (userIdColumn.Null !== "YES") {
+        await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `userId` INT NULL");
+      }
+      if (!avatarIdColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `avatarId` VARCHAR(32) NULL AFTER `authorName`");
+      } else if (!/^varchar\(32\)/i.test(avatarIdColumn.Type)) {
+        await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `avatarId` VARCHAR(32) NULL");
+      }
+    })().catch((error) => {
+      topicCommentsSchemaPromise = null;
+      throw error;
+    });
+  }
+  await topicCommentsSchemaPromise;
+}
+async function getTopicComments(topicId, userId = null, anonymousToken = null) {
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
+  const [rawRows] = await pool.promise().query(
     "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId]
   );
@@ -240,12 +270,13 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
   }));
 }
 async function getAdminComments(search = "") {
-  if (!_pool) await getDb();
-  if (!_pool) throw new Error("Database is not available");
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
   const normalizedSearch = search.trim();
   const conditions = normalizedSearch ? "WHERE `topicId` LIKE ? OR `authorName` LIKE ? OR `body` LIKE ?" : "";
   const searchValue = `%${normalizedSearch}%`;
-  const [rawRows] = await _pool.promise().query(
+  const [rawRows] = await pool.promise().query(
     `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
     normalizedSearch ? [searchValue, searchValue, searchValue] : []
   );
@@ -259,9 +290,10 @@ async function deleteTopicCommentAsAdmin(commentId) {
   return affectedRows > 0 ? "deleted" : "not_found";
 }
 async function createTopicComment(comment) {
-  if (!_pool) await getDb();
-  if (!_pool) throw new Error("Database is not available");
-  await _pool.promise().query(
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
+  await pool.promise().query(
     "INSERT INTO `topic_comments` (`topicId`, `userId`, `anonymousToken`, `authorName`, `avatarId`, `body`) VALUES (?, ?, ?, ?, ?, ?)",
     [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body]
   );

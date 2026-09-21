@@ -6,6 +6,7 @@ import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 let _pool: Pool | null = null;
+let topicCommentsSchemaPromise: Promise<void> | null = null;
 const DEFAULT_DATABASE = "test";
 
 function createDatabasePool(databaseUrl: string): Pool {
@@ -139,14 +140,45 @@ export function normalizeTopicCommentAuthor(authorName: string | null | undefine
   return authorName?.trim() || "探索者";
 }
 
-export async function getTopicComments(topicId: string, userId: number | null = null, anonymousToken: string | null = null) {
+async function ensureTopicCommentsSchema() {
   if (!_pool) await getDb();
   if (!_pool) throw new Error("Database is not available");
+  if (!topicCommentsSchemaPromise) {
+    topicCommentsSchemaPromise = (async () => {
+      const pool = _pool;
+      if (!pool) throw new Error("Database is not available");
+      const [rawColumns] = await pool.promise().query("SHOW COLUMNS FROM `topic_comments`");
+      const columns = rawColumns as Array<{ Field: string; Type: string; Null: string }>;
+      const userIdColumn = columns.find((column) => column.Field === "userId");
+      const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
+
+      if (!userIdColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `userId` INT NULL AFTER `topicId`");
+      } else if (userIdColumn.Null !== "YES") {
+        await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `userId` INT NULL");
+      }
+      if (!avatarIdColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `avatarId` VARCHAR(32) NULL AFTER `authorName`");
+      } else if (!/^varchar\(32\)/i.test(avatarIdColumn.Type)) {
+        await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `avatarId` VARCHAR(32) NULL");
+      }
+    })().catch((error) => {
+      topicCommentsSchemaPromise = null;
+      throw error;
+    });
+  }
+  await topicCommentsSchemaPromise;
+}
+
+export async function getTopicComments(topicId: string, userId: number | null = null, anonymousToken: string | null = null) {
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
 
   // TiDB's deployed table uses camelCase physical column names. Keep this
   // read path explicit so a stale ORM dialect cannot turn identifiers into
   // string literals or silently translate them to snake_case.
-  const [rawRows] = await _pool.promise().query(
+  const [rawRows] = await pool.promise().query(
     "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId],
   );
@@ -171,13 +203,14 @@ export async function getTopicComments(topicId: string, userId: number | null = 
 }
 
 export async function getAdminComments(search = "") {
-  if (!_pool) await getDb();
-  if (!_pool) throw new Error("Database is not available");
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
 
   const normalizedSearch = search.trim();
   const conditions = normalizedSearch ? "WHERE `topicId` LIKE ? OR `authorName` LIKE ? OR `body` LIKE ?" : "";
   const searchValue = `%${normalizedSearch}%`;
-  const [rawRows] = await _pool.promise().query(
+  const [rawRows] = await pool.promise().query(
     `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
     normalizedSearch ? [searchValue, searchValue, searchValue] : [],
   );
@@ -204,12 +237,13 @@ export async function deleteTopicCommentAsAdmin(commentId: number): Promise<"del
 }
 
 export async function createTopicComment(comment: InsertTopicComment): Promise<void> {
-  if (!_pool) await getDb();
-  if (!_pool) throw new Error("Database is not available");
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
 
   // Keep anonymous writes explicit for TiDB/Vercel. This avoids a deployed
   // Drizzle dialect translating nullable camelCase columns unexpectedly.
-  await _pool.promise().query(
+  await pool.promise().query(
     "INSERT INTO `topic_comments` (`topicId`, `userId`, `anonymousToken`, `authorName`, `avatarId`, `body`) VALUES (?, ?, ?, ?, ?, ?)",
     [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body],
   );
