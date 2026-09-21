@@ -7,6 +7,7 @@ import { ENV } from './_core/env';
 let _db: ReturnType<typeof drizzle> | null = null;
 let _pool: Pool | null = null;
 let topicCommentsSchemaPromise: Promise<void> | null = null;
+let topicCommentsColumns: Set<string> | null = null;
 const DEFAULT_DATABASE = "test";
 
 function createDatabasePool(databaseUrl: string): Pool {
@@ -150,22 +151,28 @@ async function ensureTopicCommentsSchema() {
       const [rawUserIdColumns] = await pool.promise().query("SHOW COLUMNS FROM `users` LIKE 'id'");
       const userIdColumns = rawUserIdColumns as Array<{ Type: string }>;
       const referencedType = userIdColumns[0]?.Type ?? "int";
-      if (!/^(tinyint|smallint|mediumint|int|bigint)(\\(\\d+\\))?(\\s+unsigned)?$/i.test(referencedType)) {
-        throw new Error("Unsupported users.id type for topic_comments.userId migration");
-      }
-      const compatibleUserIdType = referencedType.toUpperCase();
       const [rawColumns] = await pool.promise().query("SHOW COLUMNS FROM `topic_comments`");
       const columns = rawColumns as Array<{ Field: string; Type: string; Null: string }>;
+      topicCommentsColumns = new Set(columns.map((column) => column.Field));
       const userIdColumn = columns.find((column) => column.Field === "userId");
       const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
 
+      const [foreignKeys] = await pool.promise().query(
+        "SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'topic_comments' AND CONSTRAINT_NAME = 'topic_comments_user_id_fk'",
+      );
+      if ((foreignKeys as Array<{ CONSTRAINT_NAME: string }>).length > 0) {
+        await pool.promise().query("ALTER TABLE `topic_comments` DROP FOREIGN KEY `topic_comments_user_id_fk`");
+      }
+
       if (!userIdColumn) {
-        await pool.promise().query(`ALTER TABLE \`topic_comments\` ADD COLUMN \`userId\` ${compatibleUserIdType} NULL AFTER \`topicId\``);
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `userId` INT NULL AFTER `topicId`");
+        topicCommentsColumns.add("userId");
       } else if (userIdColumn.Null !== "YES" || userIdColumn.Type.toLowerCase() !== referencedType.toLowerCase()) {
-        await pool.promise().query(`ALTER TABLE \`topic_comments\` MODIFY COLUMN \`userId\` ${compatibleUserIdType} NULL`);
+        await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `userId` INT NULL");
       }
       if (!avatarIdColumn) {
         await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `avatarId` VARCHAR(32) NULL AFTER `authorName`");
+        topicCommentsColumns.add("avatarId");
       } else if (!/^varchar\(32\)/i.test(avatarIdColumn.Type)) {
         await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `avatarId` VARCHAR(32) NULL");
       }
@@ -250,9 +257,17 @@ export async function createTopicComment(comment: InsertTopicComment): Promise<v
 
   // Keep anonymous writes explicit for TiDB/Vercel. This avoids a deployed
   // Drizzle dialect translating nullable camelCase columns unexpectedly.
+  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body"];
+  const values: unknown[] = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body];
+  if (topicCommentsColumns?.has("content")) {
+    columns.push("content");
+    values.push(comment.body);
+  }
+  const quotedColumns = columns.map((column) => `\`${column}\``).join(", ");
+  const placeholders = columns.map(() => "?").join(", ");
   await pool.promise().query(
-    "INSERT INTO `topic_comments` (`topicId`, `userId`, `anonymousToken`, `authorName`, `avatarId`, `body`) VALUES (?, ?, ?, ?, ?, ?)",
-    [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body],
+    `INSERT INTO \`topic_comments\` (${quotedColumns}) VALUES (${placeholders})`,
+    values,
   );
 }
 
