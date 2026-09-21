@@ -259,9 +259,12 @@ async function deleteTopicCommentAsAdmin(commentId) {
   return affectedRows > 0 ? "deleted" : "not_found";
 }
 async function createTopicComment(comment) {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
-  await db.insert(topicComments).values(comment);
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
+  await _pool.promise().query(
+    "INSERT INTO `topic_comments` (`topicId`, `userId`, `anonymousToken`, `authorName`, `avatarId`, `body`) VALUES (?, ?, ?, ?, ?, ?)",
+    [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body]
+  );
 }
 async function deleteTopicComment(commentId, userId, anonymousToken = null) {
   const db = await getDb();

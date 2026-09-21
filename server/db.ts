@@ -204,9 +204,15 @@ export async function deleteTopicCommentAsAdmin(commentId: number): Promise<"del
 }
 
 export async function createTopicComment(comment: InsertTopicComment): Promise<void> {
-  const db = await getDb();
-  if (!db) throw new Error("Database is not available");
-  await db.insert(topicComments).values(comment);
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
+
+  // Keep anonymous writes explicit for TiDB/Vercel. This avoids a deployed
+  // Drizzle dialect translating nullable camelCase columns unexpectedly.
+  await _pool.promise().query(
+    "INSERT INTO `topic_comments` (`topicId`, `userId`, `anonymousToken`, `authorName`, `avatarId`, `body`) VALUES (?, ?, ?, ?, ?, ?)",
+    [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body],
+  );
 }
 
 export async function deleteTopicComment(
