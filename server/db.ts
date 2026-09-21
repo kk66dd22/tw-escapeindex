@@ -170,6 +170,39 @@ export async function getTopicComments(topicId: string, userId: number | null = 
   }));
 }
 
+export async function getAdminComments(search = "") {
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
+
+  const normalizedSearch = search.trim();
+  const conditions = normalizedSearch ? "WHERE `topicId` LIKE ? OR `authorName` LIKE ? OR `body` LIKE ?" : "";
+  const searchValue = `%${normalizedSearch}%`;
+  const [rawRows] = await _pool.promise().query(
+    `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
+    normalizedSearch ? [searchValue, searchValue, searchValue] : [],
+  );
+  return rawRows as Array<{
+    id: number;
+    topicId: string;
+    userId: number | null;
+    authorName: string | null;
+    anonymousToken: string | null;
+    avatarId: string | null;
+    body: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }>;
+}
+
+export async function deleteTopicCommentAsAdmin(commentId: number): Promise<"deleted" | "not_found"> {
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
+
+  const [result] = await _pool.promise().query("DELETE FROM `topic_comments` WHERE `id` = ?", [commentId]);
+  const affectedRows = (result as { affectedRows?: number }).affectedRows ?? 0;
+  return affectedRows > 0 ? "deleted" : "not_found";
+}
+
 export async function createTopicComment(comment: InsertTopicComment): Promise<void> {
   const db = await getDb();
   if (!db) throw new Error("Database is not available");

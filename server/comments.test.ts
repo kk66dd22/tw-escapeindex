@@ -5,7 +5,9 @@ import type { TrpcContext } from "./_core/context";
 
 const dbMocks = vi.hoisted(() => ({
   getTopicComments: vi.fn(),
+  getAdminComments: vi.fn(),
   createTopicComment: vi.fn(),
+  deleteTopicCommentAsAdmin: vi.fn(),
   deleteTopicComment: vi.fn(),
   updateTopicComment: vi.fn(),
   normalizeTopicCommentAuthor: (authorName: string | null | undefined) => authorName?.trim() || "探索者",
@@ -24,6 +26,28 @@ function createContext(): TrpcContext {
 const token = "11111111-1111-4111-8111-111111111111";
 
 describe("comments router", () => {
+  it("lists comments for the administrator with the configured secret", async () => {
+    process.env.ADMIN_SECRET_KEY = "test-admin-secret";
+    dbMocks.getAdminComments.mockResolvedValueOnce([{ id: 1, body: "待審核留言" }]);
+    const result = await appRouter.createCaller(createContext()).comments.adminList({ adminKey: "test-admin-secret", search: "待審核" });
+    expect(result).toEqual([{ id: 1, body: "待審核留言" }]);
+    expect(dbMocks.getAdminComments).toHaveBeenCalledWith("待審核");
+  });
+
+  it("rejects an invalid administrator secret and does not delete", async () => {
+    process.env.ADMIN_SECRET_KEY = "test-admin-secret";
+    const caller = appRouter.createCaller(createContext());
+    await expect(caller.comments.adminDelete({ adminKey: "wrong-secret", id: 1 })).rejects.toThrow("管理員密碼不正確");
+    expect(dbMocks.deleteTopicCommentAsAdmin).not.toHaveBeenCalled();
+  });
+
+  it("force deletes a comment with the administrator secret", async () => {
+    process.env.ADMIN_SECRET_KEY = "test-admin-secret";
+    dbMocks.deleteTopicCommentAsAdmin.mockResolvedValueOnce("deleted");
+    await expect(appRouter.createCaller(createContext()).comments.adminDelete({ adminKey: "test-admin-secret", id: 12 })).resolves.toEqual({ success: true });
+    expect(dbMocks.deleteTopicCommentAsAdmin).toHaveBeenCalledWith(12);
+  });
+
   it("normalizes missing public comment author names", () => {
     expect(normalizeTopicCommentAuthor("  玩家  ")).toBe("玩家");
     expect(normalizeTopicCommentAuthor(null)).toBe("探索者");

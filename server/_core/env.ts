@@ -1,5 +1,6 @@
 export const ENV = {
   databaseUrl: process.env.DATABASE_URL ?? "",
+  adminSecretKey: process.env.ADMIN_SECRET_KEY ?? "",
   ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",

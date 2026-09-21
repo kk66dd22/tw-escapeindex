@@ -11,6 +11,7 @@ import { TRPCError } from "@trpc/server";
 // server/_core/env.ts
 var ENV = {
   databaseUrl: process.env.DATABASE_URL ?? "",
+  adminSecretKey: process.env.ADMIN_SECRET_KEY ?? "",
   ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
@@ -130,6 +131,9 @@ var systemRouter = router({
   })
 });
 
+// server/routers.ts
+import { timingSafeEqual } from "node:crypto";
+
 // server/db.ts
 import { and, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
@@ -234,6 +238,25 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
     authorName: normalizeTopicCommentAuthor(row.authorName),
     canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken
   }));
+}
+async function getAdminComments(search = "") {
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
+  const normalizedSearch = search.trim();
+  const conditions = normalizedSearch ? "WHERE `topicId` LIKE ? OR `authorName` LIKE ? OR `body` LIKE ?" : "";
+  const searchValue = `%${normalizedSearch}%`;
+  const [rawRows] = await _pool.promise().query(
+    `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
+    normalizedSearch ? [searchValue, searchValue, searchValue] : []
+  );
+  return rawRows;
+}
+async function deleteTopicCommentAsAdmin(commentId) {
+  if (!_pool) await getDb();
+  if (!_pool) throw new Error("Database is not available");
+  const [result] = await _pool.promise().query("DELETE FROM `topic_comments` WHERE `id` = ?", [commentId]);
+  const affectedRows = result.affectedRows ?? 0;
+  return affectedRows > 0 ? "deleted" : "not_found";
 }
 async function createTopicComment(comment) {
   const db = await getDb();
@@ -6858,6 +6881,14 @@ var ANONYMOUS_AVATAR_IDS = z2.enum([
   "clue-seeker",
   "stargazer"
 ]);
+var adminKeyInput = z2.string().trim().min(1, "\u8ACB\u8F38\u5165\u7BA1\u7406\u54E1\u5BC6\u78BC").max(256);
+function verifyAdminKey(candidate) {
+  const expected = process.env.ADMIN_SECRET_KEY ?? "";
+  const candidateBuffer = Buffer.from(candidate);
+  const expectedBuffer = Buffer.from(expected);
+  const valid = Boolean(expected) && candidateBuffer.length === expectedBuffer.length && timingSafeEqual(candidateBuffer, expectedBuffer);
+  if (!valid) throw new TRPCError2({ code: "UNAUTHORIZED", message: "\u7BA1\u7406\u54E1\u5BC6\u78BC\u4E0D\u6B63\u78BA" });
+}
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -6868,6 +6899,16 @@ var appRouter = router({
     searchEscapeVenues: adminProcedure.input(z2.object({ query: z2.string().trim().min(2).max(80) })).query(({ input }) => searchEscapeVenues(input.query))
   }),
   comments: router({
+    adminList: publicProcedure.input(z2.object({ adminKey: adminKeyInput, search: z2.string().trim().max(100).default("") })).query(async ({ input }) => {
+      verifyAdminKey(input.adminKey);
+      return getAdminComments(input.search);
+    }),
+    adminDelete: publicProcedure.input(z2.object({ adminKey: adminKeyInput, id: z2.number().int().positive() })).mutation(async ({ input }) => {
+      verifyAdminKey(input.adminKey);
+      const result = await deleteTopicCommentAsAdmin(input.id);
+      if (result === "not_found") throw new TRPCError2({ code: "NOT_FOUND", message: "\u627E\u4E0D\u5230\u9019\u5247\u7559\u8A00\uFF0C\u53EF\u80FD\u5DF2\u7D93\u88AB\u522A\u9664\u3002" });
+      return { success: true };
+    }),
     list: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(async ({ input }) => {
       try {
         return await getTopicComments(input.topicId, null, null);

@@ -5,6 +5,7 @@ import NotFound from "@/pages/NotFound";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Home from "@/pages/Home";
+import AdminComments from "@/pages/AdminComments";
 import Privacy from "@/pages/Privacy";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -14,6 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/admin/comments" component={AdminComments} />
       <Route path="/about" component={About} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/contact" component={Contact} />

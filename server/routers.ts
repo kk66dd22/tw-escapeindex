@@ -1,6 +1,7 @@
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
-import { createContactMessage, createTopicComment, deleteTopicComment, getTopicComments, updateTopicComment } from "./db";
+import { timingSafeEqual } from "node:crypto";
+import { createContactMessage, createTopicComment, deleteTopicComment, deleteTopicCommentAsAdmin, getAdminComments, getTopicComments, updateTopicComment } from "./db";
 
 import topics from "../data/topics.json";
 import { searchEscapeVenues } from "./places";
@@ -31,6 +32,16 @@ const ANONYMOUS_AVATAR_IDS = z.enum([
   "stargazer",
 ]);
 
+const adminKeyInput = z.string().trim().min(1, "請輸入管理員密碼").max(256);
+
+function verifyAdminKey(candidate: string) {
+  const expected = process.env.ADMIN_SECRET_KEY ?? "";
+  const candidateBuffer = Buffer.from(candidate);
+  const expectedBuffer = Buffer.from(expected);
+  const valid = Boolean(expected) && candidateBuffer.length === expectedBuffer.length && timingSafeEqual(candidateBuffer, expectedBuffer);
+  if (!valid) throw new TRPCError({ code: "UNAUTHORIZED", message: "管理員密碼不正確" });
+}
+
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -45,6 +56,20 @@ export const appRouter = router({
   }),
 
   comments: router({
+    adminList: publicProcedure
+      .input(z.object({ adminKey: adminKeyInput, search: z.string().trim().max(100).default("") }))
+      .query(async ({ input }) => {
+        verifyAdminKey(input.adminKey);
+        return getAdminComments(input.search);
+      }),
+    adminDelete: publicProcedure
+      .input(z.object({ adminKey: adminKeyInput, id: z.number().int().positive() }))
+      .mutation(async ({ input }) => {
+        verifyAdminKey(input.adminKey);
+        const result = await deleteTopicCommentAsAdmin(input.id);
+        if (result === "not_found") throw new TRPCError({ code: "NOT_FOUND", message: "找不到這則留言，可能已經被刪除。" });
+        return { success: true } as const;
+      }),
     list: publicProcedure
       .input(z.object({ topicId: z.string().refine((topicId) => topics.some((topic) => topic.id === topicId), "主題不存在") }))
       .query(async ({ input }) => {
