@@ -105,6 +105,10 @@ const ANONYMOUS_TOKEN_KEY = "escape-index-anonymous-token";
 const ANONYMOUS_NAME_KEY = "escape-index-anonymous-name";
 const ANONYMOUS_AVATAR_KEY = "escape-index-anonymous-avatar";
 const HELPFUL_COMMENTS_KEY = "escape-index-helpful-comments";
+const COMMENT_LAST_SUBMITTED_KEY = "escape-index-comment-last-submitted";
+const COMMENT_RATE_LIMIT_MS = 30_000;
+
+type ClearStatus = "none" | "success" | "failed";
 
 function readHelpfulCommentIds(): number[] {
   if (typeof window === "undefined") return [];
@@ -118,6 +122,12 @@ function readHelpfulCommentIds(): number[] {
 
 function saveHelpfulCommentIds(ids: number[]) {
   window.localStorage.setItem(HELPFUL_COMMENTS_KEY, JSON.stringify(Array.from(new Set(ids))));
+}
+
+function readLastCommentSubmittedAt() {
+  if (typeof window === "undefined") return 0;
+  const timestamp = Number(window.localStorage.getItem(COMMENT_LAST_SUBMITTED_KEY) || 0);
+  return Number.isFinite(timestamp) ? timestamp : 0;
 }
 
 function randomAvatarId() {
@@ -784,21 +794,40 @@ export function HomeAuthControls() {
 export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
   const utils = trpc.useUtils();
   const [body, setBody] = useState("");
+  const [clearStatus, setClearStatus] = useState<ClearStatus>("none");
+  const [hasSpoiler, setHasSpoiler] = useState(false);
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
   const [nicknameOpen, setNicknameOpen] = useState(false);
   const [pendingBody, setPendingBody] = useState("");
+  const [pendingClearStatus, setPendingClearStatus] = useState<ClearStatus>("none");
+  const [pendingHasSpoiler, setPendingHasSpoiler] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingBody, setEditingBody] = useState("");
   const [helpfulCommentIds, setHelpfulCommentIds] = useState<number[]>(readHelpfulCommentIds);
+  const [revealedSpoilerIds, setRevealedSpoilerIds] = useState<number[]>([]);
+  const [lastCommentSubmittedAt, setLastCommentSubmittedAt] = useState(readLastCommentSubmittedAt);
+  const [rateLimitClock, setRateLimitClock] = useState(() => Date.now());
   const commentsQuery = trpc.comments.list.useQuery({ topicId });
   useEffect(() => {
     const syncIdentity = () => setIdentity(getAnonymousIdentity());
     window.addEventListener("escape-index-nickname-change", syncIdentity);
     return () => window.removeEventListener("escape-index-nickname-change", syncIdentity);
   }, []);
+  useEffect(() => {
+    if (lastCommentSubmittedAt <= 0) return;
+    const timer = window.setInterval(() => setRateLimitClock(Date.now()), 1000);
+    return () => window.clearInterval(timer);
+  }, [lastCommentSubmittedAt]);
+  const rateLimitSeconds = Math.ceil(Math.max(0, COMMENT_RATE_LIMIT_MS - (rateLimitClock - lastCommentSubmittedAt)) / 1000);
   const createComment = trpc.comments.create.useMutation({
     onSuccess: async () => {
+      const submittedAt = Date.now();
       setBody("");
+      setClearStatus("none");
+      setHasSpoiler(false);
+      window.localStorage.setItem(COMMENT_LAST_SUBMITTED_KEY, String(submittedAt));
+      setLastCommentSubmittedAt(submittedAt);
+      setRateLimitClock(submittedAt);
       await utils.comments.list.invalidate({ topicId });
     },
   });
@@ -819,12 +848,15 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     event.preventDefault();
     const trimmedBody = body.trim();
     if (!trimmedBody || !identity.token) return;
+    if (rateLimitSeconds > 0) return;
     if (!window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim()) {
       setPendingBody(trimmedBody);
+      setPendingClearStatus(clearStatus);
+      setPendingHasSpoiler(hasSpoiler);
       setNicknameOpen(true);
       return;
     }
-    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token, avatarId: avatarForSeed(identity.avatarId, identity.token).id });
+    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token, avatarId: avatarForSeed(identity.avatarId, identity.token).id, clearStatus, hasSpoiler });
   };
 
   const confirmNicknameAndSend = (name: string, avatarId: string) => {
@@ -835,7 +867,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     setIdentity((current) => ({ ...current, name, avatarId }));
     setNicknameOpen(false);
     setPendingBody("");
-    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token, avatarId: avatarForSeed(avatarId, identity.token).id });
+    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token, avatarId: avatarForSeed(avatarId, identity.token).id, clearStatus: pendingClearStatus, hasSpoiler: pendingHasSpoiler });
   };
 
   const currentToken = typeof window === "undefined"
@@ -847,6 +879,10 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     const nextIds = [...helpfulCommentIds, commentId];
     setHelpfulCommentIds(nextIds);
     saveHelpfulCommentIds(nextIds);
+  };
+
+  const revealSpoiler = (commentId: number) => {
+    setRevealedSpoilerIds((current) => current.includes(commentId) ? current : [...current, commentId]);
   };
 
   return (
@@ -902,7 +938,21 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                   </div>
                 </div>
               ) : (
-                <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
+                <>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {comment.clearStatus === "success" && <span className="border border-emerald-300/30 bg-emerald-400/10 px-2 py-0.5 font-mono text-[10px] text-emerald-200">成功通關</span>}
+                    {comment.clearStatus === "failed" && <span className="border border-rose-300/30 bg-rose-400/10 px-2 py-0.5 font-mono text-[10px] text-rose-200">挑戰失敗</span>}
+                    {comment.hasSpoiler && <span className="border border-[#c89b5c]/30 bg-[#c89b5c]/10 px-2 py-0.5 font-mono text-[10px] text-[#e0bd83]">含暴雷</span>}
+                  </div>
+                  {comment.hasSpoiler && !revealedSpoilerIds.includes(comment.id) ? (
+                    <button type="button" onClick={() => revealSpoiler(comment.id)} aria-label={`顯示留言 ${comment.id} 的暴雷內容`} className="mt-2 w-full border border-[#c89b5c]/25 bg-[#0c0e0d]/75 px-3 py-3 text-left transition hover:border-[#c89b5c]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]">
+                      <span className="block select-none text-xs leading-6 text-white/70 blur-sm sm:text-sm">{comment.body}</span>
+                      <span className="mt-2 block font-mono text-[10px] tracking-wider text-[#e0bd83]">點擊查看暴雷內容</span>
+                    </button>
+                  ) : (
+                    <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
+                  )}
+                </>
               )}
               <div className="mt-3 flex justify-end border-t border-white/10 pt-2">
                 <button
@@ -927,16 +977,31 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       <form onSubmit={submitComment} className="mt-4 space-y-2">
         <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
         <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
-        <div className="flex items-center justify-between gap-3">
+        <div className="grid gap-3 border border-white/10 bg-[#111412]/55 p-3 sm:grid-cols-[1fr_auto] sm:items-end">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="flex flex-col gap-1 font-mono text-[10px] tracking-wider text-white/50">
+              通關狀態
+              <select aria-label="通關狀態" value={clearStatus} onChange={(event) => setClearStatus(event.target.value as ClearStatus)} className="border border-white/15 bg-[#0c0e0d] px-2 py-2 text-xs text-[#d5e0dc] outline-none focus:border-[#c89b5c]">
+                <option value="none">無</option>
+                <option value="success">成功通關</option>
+                <option value="failed">挑戰失敗</option>
+              </select>
+            </label>
+            <label className="flex items-center gap-2 self-end pb-2 font-mono text-[10px] leading-5 text-white/55">
+              <input type="checkbox" checked={hasSpoiler} onChange={(event) => setHasSpoiler(event.target.checked)} className="size-4 accent-[#c89b5c]" />
+              包含暴雷內容
+            </label>
+          </div>
           <span className="font-mono text-[10px] text-white/35">訪客留言 · {body.length}/2000</span>
-          <button type="submit" disabled={createComment.isPending || !body.trim()} className="inline-flex items-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
-            <Send size={14} /> {createComment.isPending ? "送出中⋯" : "發表評論"}
+          <button type="submit" disabled={createComment.isPending || !body.trim() || rateLimitSeconds > 0} className="inline-flex items-center justify-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
+            <Send size={14} /> {createComment.isPending ? "送出中⋯" : rateLimitSeconds > 0 ? `${rateLimitSeconds} 秒後可留言` : "發表評論"}
           </button>
         </div>
         <p className="text-[10px] leading-5 text-white/35">暱稱與匿名識別碼只儲存在本瀏覽器；請勿填寫個人敏感資料。</p>
+        {rateLimitSeconds > 0 && <p className="text-xs text-[#e0bd83]">為避免重複發送，還需等待 {rateLimitSeconds} 秒。</p>}
         {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
       </form>
-      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} initialAvatarId={identity.avatarId} onOpenChange={(open) => { setNicknameOpen(open); if (!open) setPendingBody(""); }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
+      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} initialAvatarId={identity.avatarId} onOpenChange={(open) => { setNicknameOpen(open); if (!open) { setPendingBody(""); setPendingClearStatus("none"); setPendingHasSpoiler(false); } }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
     </section>
   );
 }

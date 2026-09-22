@@ -175,6 +175,8 @@ var topicComments = mysqlTable("topic_comments", {
   authorName: varchar("authorName", { length: 120 }),
   avatarId: varchar("avatarId", { length: 32 }),
   body: text("body").notNull(),
+  clearStatus: varchar("clearStatus", { length: 16 }).default("none").notNull(),
+  hasSpoiler: int("hasSpoiler").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull()
 });
@@ -241,6 +243,8 @@ async function ensureTopicCommentsSchema() {
       topicCommentsColumns = new Set(columns.map((column) => column.Field));
       const userIdColumn = columns.find((column) => column.Field === "userId");
       const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
+      const clearStatusColumn = columns.find((column) => column.Field === "clearStatus");
+      const hasSpoilerColumn = columns.find((column) => column.Field === "hasSpoiler");
       const [foreignKeys] = await pool.promise().query(
         "SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'topic_comments' AND CONSTRAINT_NAME = 'topic_comments_user_id_fk'"
       );
@@ -259,6 +263,14 @@ async function ensureTopicCommentsSchema() {
       } else if (!/^varchar\(32\)/i.test(avatarIdColumn.Type)) {
         await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `avatarId` VARCHAR(32) NULL");
       }
+      if (!clearStatusColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `clearStatus` VARCHAR(16) NOT NULL DEFAULT 'none' AFTER `body`");
+        topicCommentsColumns.add("clearStatus");
+      }
+      if (!hasSpoilerColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `hasSpoiler` INT NOT NULL DEFAULT 0 AFTER `clearStatus`");
+        topicCommentsColumns.add("hasSpoiler");
+      }
     })().catch((error) => {
       topicCommentsSchemaPromise = null;
       throw error;
@@ -271,7 +283,7 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
   const pool = _pool;
   if (!pool) throw new Error("Database is not available");
   const [rawRows] = await pool.promise().query(
-    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `clearStatus`, `hasSpoiler`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId]
   );
   const rows = rawRows;
@@ -279,6 +291,8 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
     ...row,
     anonymousToken: storedToken,
     authorName: normalizeTopicCommentAuthor(row.authorName),
+    clearStatus: row.clearStatus === "success" || row.clearStatus === "failed" ? row.clearStatus : "none",
+    hasSpoiler: Boolean(row.hasSpoiler),
     canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken
   }));
 }
@@ -290,7 +304,7 @@ async function getAdminComments(search = "") {
   const conditions = normalizedSearch ? "WHERE `topicId` LIKE ? OR `authorName` LIKE ? OR `body` LIKE ?" : "";
   const searchValue = `%${normalizedSearch}%`;
   const [rawRows] = await pool.promise().query(
-    `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
+    `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`clearStatus\`, \`hasSpoiler\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
     normalizedSearch ? [searchValue, searchValue, searchValue] : []
   );
   return rawRows;
@@ -306,8 +320,8 @@ async function createTopicComment(comment) {
   await ensureTopicCommentsSchema();
   const pool = _pool;
   if (!pool) throw new Error("Database is not available");
-  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body"];
-  const values = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body];
+  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body", "clearStatus", "hasSpoiler"];
+  const values = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body, comment.clearStatus ?? "none", comment.hasSpoiler ? 1 : 0];
   if (topicCommentsColumns?.has("content")) {
     columns.push("content");
     values.push(comment.body);
@@ -318,6 +332,19 @@ async function createTopicComment(comment) {
     `INSERT INTO \`topic_comments\` (${quotedColumns}) VALUES (${placeholders})`,
     values
   );
+}
+async function getLatestTopicCommentByAnonymousToken(anonymousToken) {
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
+  const [rawRows] = await pool.promise().query(
+    "SELECT `createdAt` FROM `topic_comments` WHERE `anonymousToken` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 1",
+    [anonymousToken]
+  );
+  const rows = rawRows;
+  if (!rows[0]?.createdAt) return null;
+  const createdAt = new Date(rows[0].createdAt);
+  return Number.isNaN(createdAt.getTime()) ? null : createdAt;
 }
 async function deleteTopicComment(commentId, userId, anonymousToken = null) {
   const db = await getDb();
@@ -6938,6 +6965,8 @@ var ANONYMOUS_AVATAR_IDS = z2.enum([
   "stargazer"
 ]);
 var adminKeyInput = z2.string().trim().min(1, "\u8ACB\u8F38\u5165\u7BA1\u7406\u54E1\u5BC6\u78BC").max(256);
+var CLEAR_STATUS = z2.enum(["none", "success", "failed"]);
+var COMMENT_RATE_LIMIT_MS = 3e4;
 function verifyAdminKey(candidate) {
   const expected = process.env.ADMIN_SECRET_KEY ?? "";
   const candidateBuffer = Buffer.from(candidate);
@@ -6978,11 +7007,18 @@ var appRouter = router({
       body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57"),
       authorName: z2.string().trim().min(1, "\u8ACB\u8F38\u5165\u66B1\u7A31").max(120, "\u66B1\u7A31\u4E0D\u53EF\u8D85\u904E 120 \u5B57"),
       anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA"),
-      avatarId: ANONYMOUS_AVATAR_IDS
+      avatarId: ANONYMOUS_AVATAR_IDS,
+      clearStatus: CLEAR_STATUS.default("none"),
+      hasSpoiler: z2.boolean().default(false)
     })).mutation(async ({ input }) => {
       const moderation = moderateComment(input.body);
       if (!moderation.allowed) {
         throw new TRPCError2({ code: "BAD_REQUEST", message: moderation.message });
+      }
+      const latestCommentAt = await getLatestTopicCommentByAnonymousToken(input.anonymousToken);
+      if (latestCommentAt && Date.now() - latestCommentAt.getTime() < COMMENT_RATE_LIMIT_MS) {
+        const secondsRemaining = Math.ceil((COMMENT_RATE_LIMIT_MS - (Date.now() - latestCommentAt.getTime())) / 1e3);
+        throw new TRPCError2({ code: "TOO_MANY_REQUESTS", message: `\u7559\u8A00\u9593\u9694\u9700\u81F3\u5C11 30 \u79D2\uFF0C\u8ACB\u7D04 ${secondsRemaining} \u79D2\u5F8C\u518D\u8A66\u3002` });
       }
       await createTopicComment({
         topicId: input.topicId,
@@ -6990,7 +7026,9 @@ var appRouter = router({
         anonymousToken: input.anonymousToken,
         authorName: input.authorName,
         avatarId: input.avatarId,
-        body: input.body
+        body: input.body,
+        clearStatus: input.clearStatus,
+        hasSpoiler: input.hasSpoiler ? 1 : 0
       });
       return { success: true };
     }),

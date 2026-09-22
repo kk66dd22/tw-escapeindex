@@ -1,7 +1,7 @@
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { timingSafeEqual } from "node:crypto";
-import { createContactMessage, createTopicComment, deleteTopicComment, deleteTopicCommentAsAdmin, getAdminComments, getTopicComments, updateTopicComment } from "./db";
+import { createContactMessage, createTopicComment, deleteTopicComment, deleteTopicCommentAsAdmin, getAdminComments, getLatestTopicCommentByAnonymousToken, getTopicComments, updateTopicComment } from "./db";
 
 import topics from "../data/topics.json";
 import { searchEscapeVenues } from "./places";
@@ -33,6 +33,8 @@ const ANONYMOUS_AVATAR_IDS = z.enum([
 ]);
 
 const adminKeyInput = z.string().trim().min(1, "請輸入管理員密碼").max(256);
+const CLEAR_STATUS = z.enum(["none", "success", "failed"]);
+const COMMENT_RATE_LIMIT_MS = 30_000;
 
 function verifyAdminKey(candidate: string) {
   const expected = process.env.ADMIN_SECRET_KEY ?? "";
@@ -87,11 +89,18 @@ export const appRouter = router({
         authorName: z.string().trim().min(1, "請輸入暱稱").max(120, "暱稱不可超過 120 字"),
         anonymousToken: z.string().uuid("匿名識別碼格式不正確"),
         avatarId: ANONYMOUS_AVATAR_IDS,
+        clearStatus: CLEAR_STATUS.default("none"),
+        hasSpoiler: z.boolean().default(false),
       }))
       .mutation(async ({ input }) => {
         const moderation = moderateComment(input.body);
         if (!moderation.allowed) {
           throw new TRPCError({ code: "BAD_REQUEST", message: moderation.message });
+        }
+        const latestCommentAt = await getLatestTopicCommentByAnonymousToken(input.anonymousToken);
+        if (latestCommentAt && Date.now() - latestCommentAt.getTime() < COMMENT_RATE_LIMIT_MS) {
+          const secondsRemaining = Math.ceil((COMMENT_RATE_LIMIT_MS - (Date.now() - latestCommentAt.getTime())) / 1000);
+          throw new TRPCError({ code: "TOO_MANY_REQUESTS", message: `留言間隔需至少 30 秒，請約 ${secondsRemaining} 秒後再試。` });
         }
         await createTopicComment({
           topicId: input.topicId,
@@ -100,6 +109,8 @@ export const appRouter = router({
           authorName: input.authorName,
           avatarId: input.avatarId,
           body: input.body,
+          clearStatus: input.clearStatus,
+          hasSpoiler: input.hasSpoiler ? 1 : 0,
         });
         return { success: true } as const;
       }),

@@ -47,6 +47,8 @@ export const topicComments = mysqlTable("topic_comments", {
   authorName: varchar("authorName", { length: 120 }),
   avatarId: varchar("avatarId", { length: 32 }),
   body: text("body").notNull(),
+  clearStatus: varchar("clearStatus", { length: 16 }).default("none").notNull(),
+  hasSpoiler: int("hasSpoiler").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

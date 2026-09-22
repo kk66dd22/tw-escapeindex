@@ -43,6 +43,13 @@
       "when": 1789885825228,
       "tag": "0005_steady_raider",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1790090202605,
+      "tag": "0006_massive_riptide",
+      "breakpoints": true
     }
   ]
 }

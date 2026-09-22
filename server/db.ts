@@ -156,6 +156,8 @@ async function ensureTopicCommentsSchema() {
       topicCommentsColumns = new Set(columns.map((column) => column.Field));
       const userIdColumn = columns.find((column) => column.Field === "userId");
       const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
+      const clearStatusColumn = columns.find((column) => column.Field === "clearStatus");
+      const hasSpoilerColumn = columns.find((column) => column.Field === "hasSpoiler");
 
       const [foreignKeys] = await pool.promise().query(
         "SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'topic_comments' AND CONSTRAINT_NAME = 'topic_comments_user_id_fk'",
@@ -176,6 +178,14 @@ async function ensureTopicCommentsSchema() {
       } else if (!/^varchar\(32\)/i.test(avatarIdColumn.Type)) {
         await pool.promise().query("ALTER TABLE `topic_comments` MODIFY COLUMN `avatarId` VARCHAR(32) NULL");
       }
+      if (!clearStatusColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `clearStatus` VARCHAR(16) NOT NULL DEFAULT 'none' AFTER `body`");
+        topicCommentsColumns.add("clearStatus");
+      }
+      if (!hasSpoilerColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `hasSpoiler` INT NOT NULL DEFAULT 0 AFTER `clearStatus`");
+        topicCommentsColumns.add("hasSpoiler");
+      }
     })().catch((error) => {
       topicCommentsSchemaPromise = null;
       throw error;
@@ -193,7 +203,7 @@ export async function getTopicComments(topicId: string, userId: number | null = 
   // read path explicit so a stale ORM dialect cannot turn identifiers into
   // string literals or silently translate them to snake_case.
   const [rawRows] = await pool.promise().query(
-    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `clearStatus`, `hasSpoiler`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId],
   );
   const rows = rawRows as Array<{
@@ -204,6 +214,8 @@ export async function getTopicComments(topicId: string, userId: number | null = 
     anonymousToken: string | null;
     avatarId: string | null;
     body: string;
+    clearStatus: string | null;
+    hasSpoiler: number | boolean;
     createdAt: Date;
     updatedAt: Date;
   }>;
@@ -212,6 +224,8 @@ export async function getTopicComments(topicId: string, userId: number | null = 
     ...row,
     anonymousToken: storedToken,
     authorName: normalizeTopicCommentAuthor(row.authorName),
+    clearStatus: row.clearStatus === "success" || row.clearStatus === "failed" ? row.clearStatus : "none",
+    hasSpoiler: Boolean(row.hasSpoiler),
     canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken,
   }));
 }
@@ -225,7 +239,7 @@ export async function getAdminComments(search = "") {
   const conditions = normalizedSearch ? "WHERE `topicId` LIKE ? OR `authorName` LIKE ? OR `body` LIKE ?" : "";
   const searchValue = `%${normalizedSearch}%`;
   const [rawRows] = await pool.promise().query(
-    `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
+    `SELECT \`id\`, \`topicId\`, \`userId\`, \`authorName\`, \`anonymousToken\`, \`avatarId\`, \`body\`, \`clearStatus\`, \`hasSpoiler\`, \`createdAt\`, \`updatedAt\` FROM \`topic_comments\` ${conditions} ORDER BY \`createdAt\` DESC, \`id\` DESC LIMIT 500`,
     normalizedSearch ? [searchValue, searchValue, searchValue] : [],
   );
   return rawRows as Array<{
@@ -236,6 +250,8 @@ export async function getAdminComments(search = "") {
     anonymousToken: string | null;
     avatarId: string | null;
     body: string;
+    clearStatus: string;
+    hasSpoiler: number;
     createdAt: Date;
     updatedAt: Date;
   }>;
@@ -257,8 +273,8 @@ export async function createTopicComment(comment: InsertTopicComment): Promise<v
 
   // Keep anonymous writes explicit for TiDB/Vercel. This avoids a deployed
   // Drizzle dialect translating nullable camelCase columns unexpectedly.
-  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body"];
-  const values: unknown[] = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body];
+  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body", "clearStatus", "hasSpoiler"];
+  const values: unknown[] = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body, comment.clearStatus ?? "none", comment.hasSpoiler ? 1 : 0];
   if (topicCommentsColumns?.has("content")) {
     columns.push("content");
     values.push(comment.body);
@@ -269,6 +285,21 @@ export async function createTopicComment(comment: InsertTopicComment): Promise<v
     `INSERT INTO \`topic_comments\` (${quotedColumns}) VALUES (${placeholders})`,
     values,
   );
+}
+
+export async function getLatestTopicCommentByAnonymousToken(anonymousToken: string): Promise<Date | null> {
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
+
+  const [rawRows] = await pool.promise().query(
+    "SELECT `createdAt` FROM `topic_comments` WHERE `anonymousToken` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 1",
+    [anonymousToken],
+  );
+  const rows = rawRows as Array<{ createdAt: Date | string }>;
+  if (!rows[0]?.createdAt) return null;
+  const createdAt = new Date(rows[0].createdAt);
+  return Number.isNaN(createdAt.getTime()) ? null : createdAt;
 }
 
 export async function deleteTopicComment(

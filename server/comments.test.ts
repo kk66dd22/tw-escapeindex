@@ -7,6 +7,7 @@ const dbMocks = vi.hoisted(() => ({
   getTopicComments: vi.fn(),
   getAdminComments: vi.fn(),
   createTopicComment: vi.fn(),
+  getLatestTopicCommentByAnonymousToken: vi.fn(),
   deleteTopicCommentAsAdmin: vi.fn(),
   deleteTopicComment: vi.fn(),
   updateTopicComment: vi.fn(),
@@ -68,6 +69,8 @@ describe("comments router", () => {
       authorName: "探險家_1234",
       anonymousToken: token,
       avatarId: "detective",
+      clearStatus: "success",
+      hasSpoiler: true,
     });
     expect(result).toEqual({ success: true });
     expect(dbMocks.createTopicComment).toHaveBeenCalledWith({
@@ -77,7 +80,23 @@ describe("comments router", () => {
       authorName: "探險家_1234",
       avatarId: "detective",
       body: "訪客體驗",
+      clearStatus: "success",
+      hasSpoiler: 1,
     });
+  });
+
+  it("rejects anonymous comments submitted within 30 seconds", async () => {
+    dbMocks.createTopicComment.mockClear();
+    dbMocks.getLatestTopicCommentByAnonymousToken.mockResolvedValueOnce(new Date(Date.now() - 5_000));
+    const caller = appRouter.createCaller(createContext());
+    await expect(caller.comments.create({
+      topicId: "popular-101",
+      body: "太快了",
+      authorName: "探險家_1234",
+      anonymousToken: token,
+      avatarId: "detective",
+    })).rejects.toThrow(/留言間隔需至少 30 秒/);
+    expect(dbMocks.createTopicComment).not.toHaveBeenCalled();
   });
 
   it("blocks moderated content before writing a new comment", async () => {

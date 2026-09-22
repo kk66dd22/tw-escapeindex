@@ -6,7 +6,7 @@ import { TopicComments } from "./Home";
 
 const state = vi.hoisted(() => ({
   auth: { user: null as { id: number } | null, isAuthenticated: false, loading: false },
-  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; anonymousToken?: string | null; avatarId?: string | null; avatarUrl?: string | null; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
+  query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; anonymousToken?: string | null; avatarId?: string | null; avatarUrl?: string | null; clearStatus?: "none" | "success" | "failed"; hasSpoiler?: boolean; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
   createMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   deleteMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   updateMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
@@ -50,6 +50,7 @@ describe("TopicComments", () => {
     window.localStorage.setItem("escape-index-anonymous-token", "11111111-1111-4111-8111-111111111111");
     window.localStorage.setItem("escape-index-anonymous-name", "測試探險家");
     window.localStorage.removeItem("escape-index-helpful-comments");
+    window.localStorage.removeItem("escape-index-comment-last-submitted");
   });
   afterEach(() => {
     cleanup();
@@ -89,6 +90,15 @@ describe("TopicComments", () => {
     expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ topicId: "popular-101", body: "這是我的實際遊玩體驗", authorName: expect.any(String), anonymousToken: expect.any(String) }));
   });
 
+  it("submits clear status and spoiler preferences with a comment", () => {
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "含有提示的遊玩心得" } });
+    fireEvent.change(screen.getByLabelText("通關狀態"), { target: { value: "success" } });
+    fireEvent.click(screen.getByLabelText("包含暴雷內容"));
+    fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
+    expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ clearStatus: "success", hasSpoiler: true }));
+  });
+
   it("opens nickname setup before the first comment and sends after confirmation", () => {
     window.localStorage.removeItem("escape-index-anonymous-name");
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
@@ -103,7 +113,7 @@ describe("TopicComments", () => {
     const savedName = window.localStorage.getItem("escape-index-anonymous-name");
     expect(savedName).toMatch(/^解謎新手_[0-9a-f]{4}$/);
     expect(window.localStorage.getItem("escape-index-anonymous-avatar")).toBe("lockbreaker");
-    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111", avatarId: expect.any(String) });
+    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111", avatarId: expect.any(String), clearStatus: "none", hasSpoiler: false });
   });
 
   it("renders author initials without requiring a users-table avatar join", () => {
@@ -136,6 +146,20 @@ describe("TopicComments", () => {
     unmount();
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect((screen.getByRole("button", { name: /已覺得有幫助/ }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("hides spoiler content until the visitor reveals it", () => {
+    state.query = {
+      data: [{ id: 22, userId: null, body: "結局提示內容", authorName: "匿名探索者", clearStatus: "success", hasSpoiler: true, createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
+    const { container } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    const revealButton = screen.getByRole("button", { name: "顯示留言 22 的暴雷內容" });
+    expect(container.querySelector(".blur-sm")).toBeTruthy();
+    fireEvent.click(revealButton);
+    expect(screen.queryByRole("button", { name: "顯示留言 22 的暴雷內容" })).toBeNull();
+    expect(container.querySelector(".blur-sm")).toBeNull();
   });
 
   it("shows the delete control for the anonymous comment owner", () => {
