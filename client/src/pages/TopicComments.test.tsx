@@ -49,6 +49,7 @@ describe("TopicComments", () => {
     resetState();
     window.localStorage.setItem("escape-index-anonymous-token", "11111111-1111-4111-8111-111111111111");
     window.localStorage.setItem("escape-index-anonymous-name", "測試探險家");
+    window.localStorage.removeItem("escape-index-helpful-comments");
   });
   afterEach(() => {
     cleanup();
@@ -117,6 +118,24 @@ describe("TopicComments", () => {
     const { container } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     expect(container.querySelectorAll("img")).toHaveLength(0);
     expect(container.querySelectorAll('[aria-label*="的角色頭像"]')).toHaveLength(2);
+  });
+
+  it("marks a comment helpful once and persists the state in localStorage", () => {
+    state.query = {
+      data: [{ id: 21, userId: null, body: "很實用的心得", authorName: "匿名探索者", createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
+    const { unmount } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    const helpfulButton = screen.getByRole("button", { name: /覺得有幫助/ });
+    fireEvent.click(helpfulButton);
+    expect(helpfulButton.getAttribute("aria-pressed")).toBe("true");
+    expect((helpfulButton as HTMLButtonElement).disabled).toBe(true);
+    expect(window.localStorage.getItem("escape-index-helpful-comments")).toBe("[21]");
+
+    unmount();
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    expect((screen.getByRole("button", { name: /已覺得有幫助/ }) as HTMLButtonElement).disabled).toBe(true);
   });
 
   it("shows the delete control for the anonymous comment owner", () => {

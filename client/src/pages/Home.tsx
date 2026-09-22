@@ -55,6 +55,7 @@ import {
   Crown,
   CircleHelp,
   Telescope,
+  ThumbsUp,
   X,
 } from "lucide-react";
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
@@ -103,6 +104,21 @@ type AvatarId = (typeof AVATAR_OPTIONS)[number]["id"];
 const ANONYMOUS_TOKEN_KEY = "escape-index-anonymous-token";
 const ANONYMOUS_NAME_KEY = "escape-index-anonymous-name";
 const ANONYMOUS_AVATAR_KEY = "escape-index-anonymous-avatar";
+const HELPFUL_COMMENTS_KEY = "escape-index-helpful-comments";
+
+function readHelpfulCommentIds(): number[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(HELPFUL_COMMENTS_KEY) || "[]");
+    return Array.isArray(parsed) ? parsed.filter((id): id is number => Number.isInteger(id) && id > 0) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveHelpfulCommentIds(ids: number[]) {
+  window.localStorage.setItem(HELPFUL_COMMENTS_KEY, JSON.stringify(Array.from(new Set(ids))));
+}
 
 function randomAvatarId() {
   return AVATAR_OPTIONS[Math.floor(Math.random() * AVATAR_OPTIONS.length)].id;
@@ -773,6 +789,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const [pendingBody, setPendingBody] = useState("");
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingBody, setEditingBody] = useState("");
+  const [helpfulCommentIds, setHelpfulCommentIds] = useState<number[]>(readHelpfulCommentIds);
   const commentsQuery = trpc.comments.list.useQuery({ topicId });
   useEffect(() => {
     const syncIdentity = () => setIdentity(getAnonymousIdentity());
@@ -824,6 +841,13 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const currentToken = typeof window === "undefined"
     ? identity.token
     : window.localStorage.getItem(ANONYMOUS_TOKEN_KEY) || identity.token;
+
+  const markHelpful = (commentId: number) => {
+    if (helpfulCommentIds.includes(commentId)) return;
+    const nextIds = [...helpfulCommentIds, commentId];
+    setHelpfulCommentIds(nextIds);
+    saveHelpfulCommentIds(nextIds);
+  };
 
   return (
     <section aria-label={`《${topicName}》評論`} className="mt-6 border-t border-white/10 pt-5">
@@ -880,6 +904,18 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
               ) : (
                 <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
               )}
+              <div className="mt-3 flex justify-end border-t border-white/10 pt-2">
+                <button
+                  type="button"
+                  onClick={() => markHelpful(comment.id)}
+                  disabled={helpfulCommentIds.includes(comment.id)}
+                  aria-pressed={helpfulCommentIds.includes(comment.id)}
+                  className={`inline-flex items-center gap-1.5 px-2 py-1 font-mono text-[10px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] ${helpfulCommentIds.includes(comment.id) ? "cursor-default text-[#c89b5c]" : "text-white/40 hover:text-[#e0bd83]"}`}
+                >
+                  <ThumbsUp size={13} fill={helpfulCommentIds.includes(comment.id) ? "currentColor" : "none"} />
+                  {helpfulCommentIds.includes(comment.id) ? "已覺得有幫助" : "覺得有幫助"} 👍
+                </button>
+              </div>
             </article>
             );
           })}
