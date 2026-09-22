@@ -90,13 +90,12 @@ describe("TopicComments", () => {
     expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ topicId: "popular-101", body: "這是我的實際遊玩體驗", authorName: expect.any(String), anonymousToken: expect.any(String) }));
   });
 
-  it("submits clear status and spoiler preferences with a comment", () => {
+  it("submits the spoiler preference with a comment", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "含有提示的遊玩心得" } });
-    fireEvent.change(screen.getByLabelText("通關狀態"), { target: { value: "success" } });
     fireEvent.click(screen.getByLabelText("包含暴雷內容"));
     fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
-    expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ clearStatus: "success", hasSpoiler: true }));
+    expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ hasSpoiler: true }));
   });
 
   it("opens nickname setup before the first comment and sends after confirmation", () => {
@@ -113,7 +112,7 @@ describe("TopicComments", () => {
     const savedName = window.localStorage.getItem("escape-index-anonymous-name");
     expect(savedName).toMatch(/^解謎新手_[0-9a-f]{4}$/);
     expect(window.localStorage.getItem("escape-index-anonymous-avatar")).toBe("lockbreaker");
-    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111", avatarId: expect.any(String), clearStatus: "none", hasSpoiler: false });
+    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111", avatarId: expect.any(String), hasSpoiler: false });
   });
 
   it("renders author initials without requiring a users-table avatar join", () => {

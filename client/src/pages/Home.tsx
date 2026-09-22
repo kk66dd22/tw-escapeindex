@@ -108,8 +108,6 @@ const HELPFUL_COMMENTS_KEY = "escape-index-helpful-comments";
 const COMMENT_LAST_SUBMITTED_KEY = "escape-index-comment-last-submitted";
 const COMMENT_RATE_LIMIT_MS = 30_000;
 
-type ClearStatus = "none" | "success" | "failed";
-
 function readHelpfulCommentIds(): number[] {
   if (typeof window === "undefined") return [];
   try {
@@ -794,12 +792,10 @@ export function HomeAuthControls() {
 export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
   const utils = trpc.useUtils();
   const [body, setBody] = useState("");
-  const [clearStatus, setClearStatus] = useState<ClearStatus>("none");
   const [hasSpoiler, setHasSpoiler] = useState(false);
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
   const [nicknameOpen, setNicknameOpen] = useState(false);
   const [pendingBody, setPendingBody] = useState("");
-  const [pendingClearStatus, setPendingClearStatus] = useState<ClearStatus>("none");
   const [pendingHasSpoiler, setPendingHasSpoiler] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingBody, setEditingBody] = useState("");
@@ -823,7 +819,6 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     onSuccess: async () => {
       const submittedAt = Date.now();
       setBody("");
-      setClearStatus("none");
       setHasSpoiler(false);
       window.localStorage.setItem(COMMENT_LAST_SUBMITTED_KEY, String(submittedAt));
       setLastCommentSubmittedAt(submittedAt);
@@ -851,12 +846,11 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     if (rateLimitSeconds > 0) return;
     if (!window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim()) {
       setPendingBody(trimmedBody);
-      setPendingClearStatus(clearStatus);
       setPendingHasSpoiler(hasSpoiler);
       setNicknameOpen(true);
       return;
     }
-    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token, avatarId: avatarForSeed(identity.avatarId, identity.token).id, clearStatus, hasSpoiler });
+    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token, avatarId: avatarForSeed(identity.avatarId, identity.token).id, hasSpoiler });
   };
 
   const confirmNicknameAndSend = (name: string, avatarId: string) => {
@@ -867,7 +861,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     setIdentity((current) => ({ ...current, name, avatarId }));
     setNicknameOpen(false);
     setPendingBody("");
-    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token, avatarId: avatarForSeed(avatarId, identity.token).id, clearStatus: pendingClearStatus, hasSpoiler: pendingHasSpoiler });
+    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token, avatarId: avatarForSeed(avatarId, identity.token).id, hasSpoiler: pendingHasSpoiler });
   };
 
   const currentToken = typeof window === "undefined"
@@ -977,23 +971,13 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       <form onSubmit={submitComment} className="mt-4 space-y-2">
         <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
         <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
-        <div className="grid gap-3 border border-white/10 bg-[#111412]/55 p-3 sm:grid-cols-[1fr_auto] sm:items-end">
-          <div className="grid gap-3 sm:grid-cols-2">
-            <label className="flex flex-col gap-1 font-mono text-[10px] tracking-wider text-white/50">
-              通關狀態
-              <select aria-label="通關狀態" value={clearStatus} onChange={(event) => setClearStatus(event.target.value as ClearStatus)} className="border border-white/15 bg-[#0c0e0d] px-2 py-2 text-xs text-[#d5e0dc] outline-none focus:border-[#c89b5c]">
-                <option value="none">無</option>
-                <option value="success">成功通關</option>
-                <option value="failed">挑戰失敗</option>
-              </select>
-            </label>
-            <label className="flex items-center gap-2 self-end pb-2 font-mono text-[10px] leading-5 text-white/55">
-              <input type="checkbox" checked={hasSpoiler} onChange={(event) => setHasSpoiler(event.target.checked)} className="size-4 accent-[#c89b5c]" />
-              包含暴雷內容
-            </label>
-          </div>
-          <span className="font-mono text-[10px] text-white/35">訪客留言 · {body.length}/2000</span>
-          <button type="submit" disabled={createComment.isPending || !body.trim() || rateLimitSeconds > 0} className="inline-flex items-center justify-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-2 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
+        <div className="flex flex-wrap items-center justify-between gap-3 border border-white/10 bg-[#111412]/55 px-3 py-2.5">
+          <label className="inline-flex cursor-pointer items-center gap-2 font-mono text-[10px] leading-5 text-white/55 transition hover:text-[#e0bd83]">
+            <input type="checkbox" checked={hasSpoiler} onChange={(event) => setHasSpoiler(event.target.checked)} className="size-4 accent-[#c89b5c]" />
+            <span>包含暴雷內容</span>
+          </label>
+          <span className="font-mono text-[10px] text-white/35">{body.length}/2000</span>
+          <button type="submit" disabled={createComment.isPending || !body.trim() || rateLimitSeconds > 0} className="inline-flex items-center justify-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-1.5 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
             <Send size={14} /> {createComment.isPending ? "送出中⋯" : rateLimitSeconds > 0 ? `${rateLimitSeconds} 秒後可留言` : "發表評論"}
           </button>
         </div>
@@ -1001,7 +985,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
         {rateLimitSeconds > 0 && <p className="text-xs text-[#e0bd83]">為避免重複發送，還需等待 {rateLimitSeconds} 秒。</p>}
         {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
       </form>
-      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} initialAvatarId={identity.avatarId} onOpenChange={(open) => { setNicknameOpen(open); if (!open) { setPendingBody(""); setPendingClearStatus("none"); setPendingHasSpoiler(false); } }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
+      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} initialAvatarId={identity.avatarId} onOpenChange={(open) => { setNicknameOpen(open); if (!open) { setPendingBody(""); setPendingHasSpoiler(false); } }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
     </section>
   );
 }
