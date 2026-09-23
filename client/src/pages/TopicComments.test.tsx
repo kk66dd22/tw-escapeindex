@@ -98,6 +98,15 @@ describe("TopicComments", () => {
     expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ hasSpoiler: true }));
   });
 
+  it("inserts a quick emoji at the textarea cursor position", () => {
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    const input = screen.getByLabelText("分享你對《冥婚》的體驗") as HTMLTextAreaElement;
+    fireEvent.change(input, { target: { value: "精彩心得" } });
+    input.setSelectionRange(2, 2);
+    fireEvent.click(screen.getByRole("button", { name: "插入🧩" }));
+    expect(input.value).toBe("精彩🧩心得");
+  });
+
   it("opens nickname setup before the first comment and sends after confirmation", () => {
     window.localStorage.removeItem("escape-index-anonymous-name");
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);

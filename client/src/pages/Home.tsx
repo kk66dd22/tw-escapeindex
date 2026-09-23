@@ -107,6 +107,7 @@ const ANONYMOUS_AVATAR_KEY = "escape-index-anonymous-avatar";
 const HELPFUL_COMMENTS_KEY = "escape-index-helpful-comments";
 const COMMENT_LAST_SUBMITTED_KEY = "escape-index-comment-last-submitted";
 const COMMENT_RATE_LIMIT_MS = 30_000;
+const QUICK_COMMENT_EMOJIS = ["🧩", "👻", "👍", "🔐", "⏳", "🔥"] as const;
 
 function readHelpfulCommentIds(): number[] {
   if (typeof window === "undefined") return [];
@@ -791,6 +792,7 @@ export function HomeAuthControls() {
 
 export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
   const utils = trpc.useUtils();
+  const commentInputRef = useRef<HTMLTextAreaElement>(null);
   const [body, setBody] = useState("");
   const [hasSpoiler, setHasSpoiler] = useState(false);
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
@@ -878,6 +880,19 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
 
   const revealSpoiler = (commentId: number) => {
     setRevealedSpoilerIds((current) => current.includes(commentId) ? current : [...current, commentId]);
+  };
+
+  const insertQuickEmoji = (emoji: string) => {
+    const input = commentInputRef.current;
+    const start = input?.selectionStart ?? body.length;
+    const end = input?.selectionEnd ?? start;
+    const nextBody = `${body.slice(0, start)}${emoji}${body.slice(end)}`;
+    const nextCursor = start + emoji.length;
+    setBody(nextBody);
+    window.requestAnimationFrame(() => {
+      input?.focus();
+      input?.setSelectionRange(nextCursor, nextCursor);
+    });
   };
 
   return (
@@ -971,7 +986,15 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       {updateComment.isError && <p className="mt-3 text-xs text-rose-200/80">{updateComment.error.message}</p>}
       <form onSubmit={submitComment} className="mt-4 space-y-2">
         <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
-        <textarea id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
+        <textarea ref={commentInputRef} id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
+        <div aria-label="快捷表情" className="flex items-center gap-1 border-x border-b border-white/10 bg-[#111412]/35 px-2 py-1.5">
+          <span className="mr-1 font-mono text-[10px] text-white/35">快速插入</span>
+          {QUICK_COMMENT_EMOJIS.map((emoji) => (
+            <button key={emoji} type="button" onClick={() => insertQuickEmoji(emoji)} aria-label={`插入${emoji}`} className="flex size-7 items-center justify-center rounded border border-transparent text-base transition hover:border-[#c89b5c]/50 hover:bg-[#c89b5c]/10 focus-visible:border-[#c89b5c] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]">
+              {emoji}
+            </button>
+          ))}
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-3 border border-white/10 bg-[#111412]/55 px-3 py-2.5">
           <label className="inline-flex cursor-pointer items-center gap-2 font-mono text-[10px] leading-5 text-white/55 transition hover:text-[#e0bd83]">
             <input type="checkbox" checked={hasSpoiler} onChange={(event) => setHasSpoiler(event.target.checked)} className="size-4 accent-[#c89b5c]" />
