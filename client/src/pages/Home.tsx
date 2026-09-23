@@ -868,9 +868,10 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     ? identity.token
     : window.localStorage.getItem(ANONYMOUS_TOKEN_KEY) || identity.token;
 
-  const markHelpful = (commentId: number) => {
-    if (helpfulCommentIds.includes(commentId)) return;
-    const nextIds = [...helpfulCommentIds, commentId];
+  const toggleHelpful = (commentId: number) => {
+    const nextIds = helpfulCommentIds.includes(commentId)
+      ? helpfulCommentIds.filter((id) => id !== commentId)
+      : [...helpfulCommentIds, commentId];
     setHelpfulCommentIds(nextIds);
     saveHelpfulCommentIds(nextIds);
   };
@@ -951,13 +952,13 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
               <div className="mt-3 flex justify-end border-t border-white/10 pt-2">
                 <button
                   type="button"
-                  onClick={() => markHelpful(comment.id)}
-                  disabled={helpfulCommentIds.includes(comment.id)}
+                  onClick={() => toggleHelpful(comment.id)}
                   aria-pressed={helpfulCommentIds.includes(comment.id)}
+                  title={helpfulCommentIds.includes(comment.id) ? "收回讚" : "讚"}
                   className={`inline-flex items-center gap-1.5 px-2 py-1 font-mono text-[10px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] ${helpfulCommentIds.includes(comment.id) ? "cursor-default text-[#c89b5c]" : "text-white/40 hover:text-[#e0bd83]"}`}
                 >
                   <ThumbsUp size={13} fill={helpfulCommentIds.includes(comment.id) ? "currentColor" : "none"} />
-                  {helpfulCommentIds.includes(comment.id) ? "已覺得有幫助" : "覺得有幫助"} 👍
+                  讚👍
                 </button>
               </div>
             </article>

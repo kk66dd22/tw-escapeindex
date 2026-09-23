@@ -129,22 +129,25 @@ describe("TopicComments", () => {
     expect(container.querySelectorAll('[aria-label*="的角色頭像"]')).toHaveLength(2);
   });
 
-  it("marks a comment helpful once and persists the state in localStorage", () => {
+  it("toggles a comment like and persists the state in localStorage", () => {
     state.query = {
       data: [{ id: 21, userId: null, body: "很實用的心得", authorName: "匿名探索者", createdAt: new Date("2026-01-01T00:00:00Z") }],
       isLoading: false,
       isError: false,
     };
     const { unmount } = render(<TopicComments topicId="popular-101" topicName="冥婚" />);
-    const helpfulButton = screen.getByRole("button", { name: /覺得有幫助/ });
+    const helpfulButton = screen.getByRole("button", { name: /讚/ });
     fireEvent.click(helpfulButton);
     expect(helpfulButton.getAttribute("aria-pressed")).toBe("true");
-    expect((helpfulButton as HTMLButtonElement).disabled).toBe(true);
     expect(window.localStorage.getItem("escape-index-helpful-comments")).toBe("[21]");
+
+    fireEvent.click(helpfulButton);
+    expect(helpfulButton.getAttribute("aria-pressed")).toBe("false");
+    expect(window.localStorage.getItem("escape-index-helpful-comments")).toBe("[]");
 
     unmount();
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
-    expect((screen.getByRole("button", { name: /已覺得有幫助/ }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.getByRole("button", { name: /讚/ }).getAttribute("aria-pressed")).toBe("false");
   });
 
   it("hides spoiler content until the visitor reveals it", () => {
