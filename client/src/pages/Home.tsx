@@ -958,7 +958,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                   className={`inline-flex items-center gap-1.5 px-2 py-1 font-mono text-[10px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] ${helpfulCommentIds.includes(comment.id) ? "cursor-default text-[#c89b5c]" : "text-white/40 hover:text-[#e0bd83]"}`}
                 >
                   <ThumbsUp size={13} fill={helpfulCommentIds.includes(comment.id) ? "currentColor" : "none"} />
-                  讚👍
+                  讚
                 </button>
               </div>
             </article>
