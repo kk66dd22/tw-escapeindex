@@ -634,6 +634,8 @@ function Method({ icon, title, children }: { icon: React.ReactNode; title: strin
 }
 
 function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = false, isJumpRefMounted = false, onCardRef }: { topic: (typeof topics)[number]; index: number; isFavorite: boolean; onToggleFavorite: () => void; isFocused?: boolean; isJumpRefMounted?: boolean; onCardRef?: (element: HTMLElement | null) => void }) {
+  const reviewStatsQuery = trpc.comments.stats.useQuery({ topicId: topic.id });
+  const reviewStats = reviewStatsQuery.data;
   const image = index % 3 === 0
     ? "/media/card-archival-room_28840e3c.png"
     : index % 3 === 1
@@ -669,7 +671,12 @@ function TopicCard({ topic, index, isFavorite, onToggleFavorite, isFocused = fal
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-1.5 font-mono text-base text-[#c89b5c]">
           <Star size={17} fill="currentColor" />
-          {topic.google_rating ? <><strong>{topic.google_rating.toFixed(1)}</strong><span className="text-xs text-white/45 sm:text-sm">工作室評分</span></> : <strong className="text-sm">依官網公告</strong>}
+          {reviewStats?.recommendationAverage ? <><strong>{reviewStats.recommendationAverage.toFixed(1)}</strong><span className="text-xs text-white/45 sm:text-sm">玩家推薦 ({reviewStats.reviewCount})</span></> : topic.google_rating ? <><strong>{topic.google_rating.toFixed(1)}</strong><span className="text-xs text-white/45 sm:text-sm">工作室評分</span></> : <strong className="text-sm">尚無評分</strong>}
+        </div>
+        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 border border-[#c89b5c]/20 bg-[#111412]/55 px-3 py-2 font-mono text-[10px] text-white/55 sm:text-xs">
+          <span className="text-[#e0bd83]">平均推薦度 {reviewStats?.recommendationAverage ? `⭐ ${reviewStats.recommendationAverage.toFixed(1)}` : "尚無評分"}</span>
+          <span>平均難度 {reviewStats?.difficultyAverage ? `🧩 ${reviewStats.difficultyAverage.toFixed(1)}` : "尚無評分"}</span>
+          <span className="text-white/35">({reviewStats?.reviewCount ?? 0} 則評論)</span>
         </div>
         <div className="mt-5 grid grid-cols-2 gap-2 border-y border-white/10 py-4">
           <Metric icon={<Users size={17} />} label="建議人數" value={playerLabel(topic.players)} />
@@ -802,11 +809,15 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const emojiPickerRef = useRef<HTMLDivElement>(null);
   const [body, setBody] = useState("");
   const [hasSpoiler, setHasSpoiler] = useState(false);
+  const [recommendationRating, setRecommendationRating] = useState(0);
+  const [difficultyRating, setDifficultyRating] = useState(0);
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
   const [nicknameOpen, setNicknameOpen] = useState(false);
   const [pendingBody, setPendingBody] = useState("");
   const [pendingHasSpoiler, setPendingHasSpoiler] = useState(false);
+  const [pendingRecommendationRating, setPendingRecommendationRating] = useState(0);
+  const [pendingDifficultyRating, setPendingDifficultyRating] = useState(0);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingBody, setEditingBody] = useState("");
   const [helpfulCommentIds, setHelpfulCommentIds] = useState<number[]>(readHelpfulCommentIds);
@@ -814,6 +825,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const [lastCommentSubmittedAt, setLastCommentSubmittedAt] = useState(readLastCommentSubmittedAt);
   const [rateLimitClock, setRateLimitClock] = useState(() => Date.now());
   const commentsQuery = trpc.comments.list.useQuery({ topicId });
+  const commentStatsQuery = trpc.comments.stats.useQuery({ topicId });
   useEffect(() => {
     const syncIdentity = () => setIdentity(getAnonymousIdentity());
     window.addEventListener("escape-index-nickname-change", syncIdentity);
@@ -838,15 +850,19 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       const submittedAt = Date.now();
       setBody("");
       setHasSpoiler(false);
+      setRecommendationRating(0);
+      setDifficultyRating(0);
       window.localStorage.setItem(COMMENT_LAST_SUBMITTED_KEY, String(submittedAt));
       setLastCommentSubmittedAt(submittedAt);
       setRateLimitClock(submittedAt);
       await utils.comments.list.invalidate({ topicId });
+      await utils.comments.stats.invalidate({ topicId });
     },
   });
   const deleteComment = trpc.comments.delete.useMutation({
     onSuccess: async () => {
       await utils.comments.list.invalidate({ topicId });
+      await utils.comments.stats.invalidate({ topicId });
     },
   });
   const updateComment = trpc.comments.update.useMutation({
@@ -854,6 +870,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       setEditingId(null);
       setEditingBody("");
       await utils.comments.list.invalidate({ topicId });
+      await utils.comments.stats.invalidate({ topicId });
     },
   });
 
@@ -865,10 +882,12 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     if (!window.localStorage.getItem(ANONYMOUS_NAME_KEY)?.trim()) {
       setPendingBody(trimmedBody);
       setPendingHasSpoiler(hasSpoiler);
+      setPendingRecommendationRating(recommendationRating);
+      setPendingDifficultyRating(difficultyRating);
       setNicknameOpen(true);
       return;
     }
-    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token, avatarId: avatarForSeed(identity.avatarId, identity.token).id, hasSpoiler });
+    createComment.mutate({ topicId, body: trimmedBody, authorName: identity.name.trim(), anonymousToken: identity.token, avatarId: avatarForSeed(identity.avatarId, identity.token).id, hasSpoiler, recommendationRating, difficultyRating });
   };
 
   const confirmNicknameAndSend = (name: string, avatarId: string) => {
@@ -879,7 +898,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     setIdentity((current) => ({ ...current, name, avatarId }));
     setNicknameOpen(false);
     setPendingBody("");
-    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token, avatarId: avatarForSeed(avatarId, identity.token).id, hasSpoiler: pendingHasSpoiler });
+    if (nextBody) createComment.mutate({ topicId, body: nextBody, authorName: name, anonymousToken: identity.token, avatarId: avatarForSeed(avatarId, identity.token).id, hasSpoiler: pendingHasSpoiler, recommendationRating: pendingRecommendationRating, difficultyRating: pendingDifficultyRating });
   };
 
   const currentToken = typeof window === "undefined"
@@ -918,7 +937,10 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
           <MessageCircle size={16} /> 玩家評論
           {commentsQuery.data && <span className="text-white/40">({commentsQuery.data.length})</span>}
         </h4>
-        <span className="font-mono text-[10px] text-white/35">真實使用者分享</span>
+        <div className="flex flex-wrap justify-end gap-2 font-mono text-[10px] text-white/40">
+          <span>推薦 {commentStatsQuery.data?.recommendationAverage ? `⭐ ${commentStatsQuery.data.recommendationAverage.toFixed(1)}` : "—"}</span>
+          <span>難度 {commentStatsQuery.data?.difficultyAverage ? `🧩 ${commentStatsQuery.data.difficultyAverage.toFixed(1)}` : "—"}</span>
+        </div>
       </div>
 
       {commentsQuery.isLoading && <p className="mt-3 text-xs text-white/45">正在載入評論⋯</p>}
@@ -1026,6 +1048,10 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
             </button>
           ))}
         </div>
+        <div className="grid gap-2 border border-white/10 bg-[#111412]/55 p-2.5 sm:grid-cols-2">
+          <RatingInput label="推薦指數 ⭐️" value={recommendationRating} onChange={setRecommendationRating} />
+          <RatingInput label="謎題難度 🧩" value={difficultyRating} onChange={setDifficultyRating} />
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-3 border border-white/10 bg-[#111412]/55 px-3 py-2.5">
           <label className="inline-flex cursor-pointer items-center gap-2 font-mono text-[10px] leading-5 text-white/55 transition hover:text-[#e0bd83]">
             <input type="checkbox" checked={hasSpoiler} onChange={(event) => setHasSpoiler(event.target.checked)} className="size-4 accent-[#c89b5c]" />
@@ -1040,7 +1066,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
         {rateLimitSeconds > 0 && <p className="text-xs text-[#e0bd83]">為避免重複發送，還需等待 {rateLimitSeconds} 秒。</p>}
         {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
       </form>
-      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} initialAvatarId={identity.avatarId} onOpenChange={(open) => { setNicknameOpen(open); if (!open) { setPendingBody(""); setPendingHasSpoiler(false); } }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
+      <NicknameDialog open={nicknameOpen} initialName={identity.name || makeSuggestedName(identity.token)} initialAvatarId={identity.avatarId} onOpenChange={(open) => { setNicknameOpen(open); if (!open) { setPendingBody(""); setPendingHasSpoiler(false); setPendingRecommendationRating(0); setPendingDifficultyRating(0); } }} onConfirm={confirmNicknameAndSend} submitLabel="確認並發送留言" />
     </section>
   );
 }
@@ -1072,4 +1098,19 @@ function ScoreDots({ value, tone }: { value: number | null; tone: "horror" | "br
 
 function Metric({ icon, label, value }: { icon: React.ReactNode; label: string; value: React.ReactNode }) {
   return <div className="min-w-0"><div className="flex items-center gap-1.5 font-mono text-xs tracking-wider text-white/50 sm:text-sm">{icon}{label}</div><div className="mt-2 font-mono text-xs text-[#d5e0dc] sm:text-sm">{value}</div></div>;
+}
+
+function RatingInput({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
+  return (
+    <div className="flex min-w-0 items-center justify-between gap-3 border border-white/10 bg-[#111412]/45 px-3 py-2">
+      <span className="font-mono text-[10px] text-white/55">{label}</span>
+      <div className="flex items-center gap-0.5" role="group" aria-label={label}>
+        {Array.from({ length: 5 }, (_, index) => {
+          const rating = index + 1;
+          return <button key={rating} type="button" onClick={() => onChange(value === rating ? 0 : rating)} aria-label={`${label} ${rating} 星`} aria-pressed={value >= rating} className="p-0.5 text-[#c89b5c] transition hover:scale-110 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]"><Star size={16} fill={value >= rating ? "currentColor" : "none"} /></button>;
+        })}
+        <span className="ml-1 min-w-5 text-right font-mono text-[10px] text-white/35">{value || "—"}</span>
+      </div>
+    </div>
+  );
 }

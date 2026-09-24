@@ -1,7 +1,7 @@
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { timingSafeEqual } from "node:crypto";
-import { createContactMessage, createTopicComment, deleteTopicComment, deleteTopicCommentAsAdmin, getAdminComments, getLatestTopicCommentByAnonymousToken, getTopicComments, updateTopicComment } from "./db";
+import { createContactMessage, createTopicComment, deleteTopicComment, deleteTopicCommentAsAdmin, getAdminComments, getLatestTopicCommentByAnonymousToken, getTopicCommentStats, getTopicComments, updateTopicComment } from "./db";
 
 import topics from "../data/topics.json";
 import { searchEscapeVenues } from "./places";
@@ -82,6 +82,16 @@ export const appRouter = router({
           return [];
         }
       }),
+    stats: publicProcedure
+      .input(z.object({ topicId: z.string().refine((topicId) => topics.some((topic) => topic.id === topicId), "主題不存在") }))
+      .query(async ({ input }) => {
+        try {
+          return await getTopicCommentStats(input.topicId);
+        } catch (error) {
+          console.error("[Comments] Public stats unavailable", error);
+          return { recommendationAverage: null, difficultyAverage: null, reviewCount: 0 };
+        }
+      }),
     create: publicProcedure
       .input(z.object({
         topicId: z.string().refine((topicId) => topics.some((topic) => topic.id === topicId), "主題不存在"),
@@ -91,6 +101,8 @@ export const appRouter = router({
         avatarId: ANONYMOUS_AVATAR_IDS,
         clearStatus: CLEAR_STATUS.default("none"),
         hasSpoiler: z.boolean().default(false),
+        recommendationRating: z.number().int().min(0).max(5).default(0),
+        difficultyRating: z.number().int().min(0).max(5).default(0),
       }))
       .mutation(async ({ input }) => {
         const moderation = moderateComment(input.body);
@@ -111,6 +123,8 @@ export const appRouter = router({
           body: input.body,
           clearStatus: input.clearStatus,
           hasSpoiler: input.hasSpoiler ? 1 : 0,
+          recommendationRating: input.recommendationRating,
+          difficultyRating: input.difficultyRating,
         });
         return { success: true } as const;
       }),

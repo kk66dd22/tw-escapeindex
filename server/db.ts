@@ -158,6 +158,8 @@ async function ensureTopicCommentsSchema() {
       const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
       const clearStatusColumn = columns.find((column) => column.Field === "clearStatus");
       const hasSpoilerColumn = columns.find((column) => column.Field === "hasSpoiler");
+      const recommendationRatingColumn = columns.find((column) => column.Field === "recommendationRating");
+      const difficultyRatingColumn = columns.find((column) => column.Field === "difficultyRating");
 
       const [foreignKeys] = await pool.promise().query(
         "SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'topic_comments' AND CONSTRAINT_NAME = 'topic_comments_user_id_fk'",
@@ -186,6 +188,14 @@ async function ensureTopicCommentsSchema() {
         await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `hasSpoiler` INT NOT NULL DEFAULT 0 AFTER `clearStatus`");
         topicCommentsColumns.add("hasSpoiler");
       }
+      if (!recommendationRatingColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `recommendationRating` INT NOT NULL DEFAULT 0 AFTER `hasSpoiler`");
+        topicCommentsColumns.add("recommendationRating");
+      }
+      if (!difficultyRatingColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `difficultyRating` INT NOT NULL DEFAULT 0 AFTER `recommendationRating`");
+        topicCommentsColumns.add("difficultyRating");
+      }
     })().catch((error) => {
       topicCommentsSchemaPromise = null;
       throw error;
@@ -203,7 +213,7 @@ export async function getTopicComments(topicId: string, userId: number | null = 
   // read path explicit so a stale ORM dialect cannot turn identifiers into
   // string literals or silently translate them to snake_case.
   const [rawRows] = await pool.promise().query(
-    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `clearStatus`, `hasSpoiler`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `clearStatus`, `hasSpoiler`, `recommendationRating`, `difficultyRating`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId],
   );
   const rows = rawRows as Array<{
@@ -216,6 +226,8 @@ export async function getTopicComments(topicId: string, userId: number | null = 
     body: string;
     clearStatus: string | null;
     hasSpoiler: number | boolean;
+    recommendationRating: number | null;
+    difficultyRating: number | null;
     createdAt: Date;
     updatedAt: Date;
   }>;
@@ -226,8 +238,27 @@ export async function getTopicComments(topicId: string, userId: number | null = 
     authorName: normalizeTopicCommentAuthor(row.authorName),
     clearStatus: row.clearStatus === "success" || row.clearStatus === "failed" ? row.clearStatus : "none",
     hasSpoiler: Boolean(row.hasSpoiler),
+    recommendationRating: Number(row.recommendationRating) || 0,
+    difficultyRating: Number(row.difficultyRating) || 0,
     canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken,
   }));
+}
+
+export async function getTopicCommentStats(topicId: string) {
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
+  const [rawRows] = await pool.promise().query(
+    "SELECT AVG(NULLIF(`recommendationRating`, 0)) AS recommendationAverage, AVG(NULLIF(`difficultyRating`, 0)) AS difficultyAverage, COUNT(*) AS reviewCount FROM `topic_comments` WHERE `topicId` = ?",
+    [topicId],
+  );
+  const row = (rawRows as Array<{ recommendationAverage: number | string | null; difficultyAverage: number | string | null; reviewCount: number | string }>)[0];
+  const toAverage = (value: number | string | null) => value === null ? null : Math.round(Number(value) * 10) / 10;
+  return {
+    recommendationAverage: toAverage(row?.recommendationAverage ?? null),
+    difficultyAverage: toAverage(row?.difficultyAverage ?? null),
+    reviewCount: Number(row?.reviewCount ?? 0),
+  };
 }
 
 export async function getAdminComments(search = "") {
@@ -273,8 +304,8 @@ export async function createTopicComment(comment: InsertTopicComment): Promise<v
 
   // Keep anonymous writes explicit for TiDB/Vercel. This avoids a deployed
   // Drizzle dialect translating nullable camelCase columns unexpectedly.
-  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body", "clearStatus", "hasSpoiler"];
-  const values: unknown[] = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body, comment.clearStatus ?? "none", comment.hasSpoiler ? 1 : 0];
+  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body", "clearStatus", "hasSpoiler", "recommendationRating", "difficultyRating"];
+  const values: unknown[] = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body, comment.clearStatus ?? "none", comment.hasSpoiler ? 1 : 0, comment.recommendationRating ?? 0, comment.difficultyRating ?? 0];
   if (topicCommentsColumns?.has("content")) {
     columns.push("content");
     values.push(comment.body);

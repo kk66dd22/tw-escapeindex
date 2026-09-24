@@ -7,6 +7,7 @@ import { TopicComments } from "./Home";
 const state = vi.hoisted(() => ({
   auth: { user: null as { id: number } | null, isAuthenticated: false, loading: false },
   query: { data: [] as Array<{ id: number; userId: number | null; body: string; authorName: string; anonymousToken?: string | null; avatarId?: string | null; avatarUrl?: string | null; clearStatus?: "none" | "success" | "failed"; hasSpoiler?: boolean; canDelete?: boolean; createdAt: Date }>, isLoading: false, isError: false },
+  stats: { data: { recommendationAverage: null as number | null, difficultyAverage: null as number | null, reviewCount: 0 }, isLoading: false, isError: false },
   createMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   deleteMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
   updateMutation: { mutate: vi.fn(), isPending: false, isError: false, error: null as Error | null },
@@ -25,9 +26,10 @@ vi.mock("@/components/ui/avatar", () => ({
 
 vi.mock("@/lib/trpc", () => ({
   trpc: {
-    useUtils: () => ({ comments: { list: { invalidate: vi.fn() } } }),
+    useUtils: () => ({ comments: { list: { invalidate: vi.fn() }, stats: { invalidate: vi.fn() } } }),
     comments: {
       list: { useQuery: (input: { topicId: string }) => { state.queryInput = input; return state.query; } },
+      stats: { useQuery: () => state.stats },
       create: { useMutation: () => state.createMutation },
       delete: { useMutation: () => state.deleteMutation },
       update: { useMutation: () => state.updateMutation },
@@ -38,6 +40,7 @@ vi.mock("@/lib/trpc", () => ({
 function resetState() {
   state.auth = { user: null, isAuthenticated: false, loading: false };
   state.query = { data: [], isLoading: false, isError: false };
+  state.stats = { data: { recommendationAverage: null, difficultyAverage: null, reviewCount: 0 }, isLoading: false, isError: false };
   state.createMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
   state.deleteMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
   state.updateMutation = { mutate: vi.fn(), isPending: false, isError: false, error: null };
@@ -98,6 +101,15 @@ describe("TopicComments", () => {
     expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ hasSpoiler: true }));
   });
 
+  it("submits optional recommendation and difficulty ratings", () => {
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    fireEvent.click(screen.getByRole("button", { name: "推薦指數 ⭐️ 4 星" }));
+    fireEvent.click(screen.getByRole("button", { name: "謎題難度 🧩 3 星" }));
+    fireEvent.change(screen.getByLabelText("分享你對《冥婚》的體驗"), { target: { value: "有評分的遊玩心得" } });
+    fireEvent.click(screen.getByRole("button", { name: "發表評論" }));
+    expect(state.createMutation.mutate).toHaveBeenCalledWith(expect.objectContaining({ recommendationRating: 4, difficultyRating: 3 }));
+  });
+
   it("inserts a quick emoji at the textarea cursor position", () => {
     render(<TopicComments topicId="popular-101" topicName="冥婚" />);
     const input = screen.getByLabelText("分享你對《冥婚》的體驗") as HTMLTextAreaElement;
@@ -139,7 +151,7 @@ describe("TopicComments", () => {
     const savedName = window.localStorage.getItem("escape-index-anonymous-name");
     expect(savedName).toMatch(/^解謎新手_[0-9a-f]{4}$/);
     expect(window.localStorage.getItem("escape-index-anonymous-avatar")).toBe("lockbreaker");
-    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111", avatarId: expect.any(String), hasSpoiler: false });
+    expect(state.createMutation.mutate).toHaveBeenCalledWith({ topicId: "popular-101", body: "第一次留言", authorName: savedName, anonymousToken: "11111111-1111-4111-8111-111111111111", avatarId: expect.any(String), hasSpoiler: false, recommendationRating: 0, difficultyRating: 0 });
   });
 
   it("renders author initials without requiring a users-table avatar join", () => {

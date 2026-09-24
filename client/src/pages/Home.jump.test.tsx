@@ -9,9 +9,10 @@ vi.mock("@/_core/hooks/useAuth", () => ({
 
 vi.mock("@/lib/trpc", () => ({
   trpc: {
-    useUtils: () => ({ comments: { list: { invalidate: vi.fn() } } }),
-    comments: {
-      list: { useQuery: () => ({ data: [], isLoading: false, isError: false }) },
+      useUtils: () => ({ comments: { list: { invalidate: vi.fn() } } }),
+      comments: {
+        list: { useQuery: () => ({ data: [], isLoading: false, isError: false }) },
+        stats: { useQuery: () => ({ data: { recommendationAverage: null, difficultyAverage: null, reviewCount: 0 }, isLoading: false, isError: false }) },
       create: { useMutation: () => ({ mutate: vi.fn(), isPending: false, isError: false, error: null }) },
       delete: { useMutation: () => ({ mutate: vi.fn(), isPending: false }) },
       update: { useMutation: () => ({ mutate: vi.fn(), isPending: false, isError: false, error: null }) },

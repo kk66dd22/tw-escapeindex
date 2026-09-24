@@ -177,6 +177,8 @@ var topicComments = mysqlTable("topic_comments", {
   body: text("body").notNull(),
   clearStatus: varchar("clearStatus", { length: 16 }).default("none").notNull(),
   hasSpoiler: int("hasSpoiler").default(0).notNull(),
+  recommendationRating: int("recommendationRating").default(0).notNull(),
+  difficultyRating: int("difficultyRating").default(0).notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull()
 });
@@ -245,6 +247,8 @@ async function ensureTopicCommentsSchema() {
       const avatarIdColumn = columns.find((column) => column.Field === "avatarId");
       const clearStatusColumn = columns.find((column) => column.Field === "clearStatus");
       const hasSpoilerColumn = columns.find((column) => column.Field === "hasSpoiler");
+      const recommendationRatingColumn = columns.find((column) => column.Field === "recommendationRating");
+      const difficultyRatingColumn = columns.find((column) => column.Field === "difficultyRating");
       const [foreignKeys] = await pool.promise().query(
         "SELECT CONSTRAINT_NAME FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'topic_comments' AND CONSTRAINT_NAME = 'topic_comments_user_id_fk'"
       );
@@ -271,6 +275,14 @@ async function ensureTopicCommentsSchema() {
         await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `hasSpoiler` INT NOT NULL DEFAULT 0 AFTER `clearStatus`");
         topicCommentsColumns.add("hasSpoiler");
       }
+      if (!recommendationRatingColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `recommendationRating` INT NOT NULL DEFAULT 0 AFTER `hasSpoiler`");
+        topicCommentsColumns.add("recommendationRating");
+      }
+      if (!difficultyRatingColumn) {
+        await pool.promise().query("ALTER TABLE `topic_comments` ADD COLUMN `difficultyRating` INT NOT NULL DEFAULT 0 AFTER `recommendationRating`");
+        topicCommentsColumns.add("difficultyRating");
+      }
     })().catch((error) => {
       topicCommentsSchemaPromise = null;
       throw error;
@@ -283,7 +295,7 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
   const pool = _pool;
   if (!pool) throw new Error("Database is not available");
   const [rawRows] = await pool.promise().query(
-    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `clearStatus`, `hasSpoiler`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
+    "SELECT `id`, `topicId`, `userId`, `authorName`, `anonymousToken`, `avatarId`, `body`, `clearStatus`, `hasSpoiler`, `recommendationRating`, `difficultyRating`, `createdAt`, `updatedAt` FROM `topic_comments` WHERE `topicId` = ? ORDER BY `createdAt` DESC, `id` DESC LIMIT 100",
     [topicId]
   );
   const rows = rawRows;
@@ -293,8 +305,26 @@ async function getTopicComments(topicId, userId = null, anonymousToken = null) {
     authorName: normalizeTopicCommentAuthor(row.authorName),
     clearStatus: row.clearStatus === "success" || row.clearStatus === "failed" ? row.clearStatus : "none",
     hasSpoiler: Boolean(row.hasSpoiler),
+    recommendationRating: Number(row.recommendationRating) || 0,
+    difficultyRating: Number(row.difficultyRating) || 0,
     canDelete: userId !== null ? row.userId === userId : row.userId === null && Boolean(anonymousToken) && storedToken === anonymousToken
   }));
+}
+async function getTopicCommentStats(topicId) {
+  await ensureTopicCommentsSchema();
+  const pool = _pool;
+  if (!pool) throw new Error("Database is not available");
+  const [rawRows] = await pool.promise().query(
+    "SELECT AVG(NULLIF(`recommendationRating`, 0)) AS recommendationAverage, AVG(NULLIF(`difficultyRating`, 0)) AS difficultyAverage, COUNT(*) AS reviewCount FROM `topic_comments` WHERE `topicId` = ?",
+    [topicId]
+  );
+  const row = rawRows[0];
+  const toAverage = (value) => value === null ? null : Math.round(Number(value) * 10) / 10;
+  return {
+    recommendationAverage: toAverage(row?.recommendationAverage ?? null),
+    difficultyAverage: toAverage(row?.difficultyAverage ?? null),
+    reviewCount: Number(row?.reviewCount ?? 0)
+  };
 }
 async function getAdminComments(search = "") {
   await ensureTopicCommentsSchema();
@@ -320,8 +350,8 @@ async function createTopicComment(comment) {
   await ensureTopicCommentsSchema();
   const pool = _pool;
   if (!pool) throw new Error("Database is not available");
-  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body", "clearStatus", "hasSpoiler"];
-  const values = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body, comment.clearStatus ?? "none", comment.hasSpoiler ? 1 : 0];
+  const columns = ["topicId", "userId", "anonymousToken", "authorName", "avatarId", "body", "clearStatus", "hasSpoiler", "recommendationRating", "difficultyRating"];
+  const values = [comment.topicId, comment.userId ?? null, comment.anonymousToken ?? null, comment.authorName ?? null, comment.avatarId ?? null, comment.body, comment.clearStatus ?? "none", comment.hasSpoiler ? 1 : 0, comment.recommendationRating ?? 0, comment.difficultyRating ?? 0];
   if (topicCommentsColumns?.has("content")) {
     columns.push("content");
     values.push(comment.body);
@@ -7002,6 +7032,14 @@ var appRouter = router({
         return [];
       }
     }),
+    stats: publicProcedure.input(z2.object({ topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728") })).query(async ({ input }) => {
+      try {
+        return await getTopicCommentStats(input.topicId);
+      } catch (error) {
+        console.error("[Comments] Public stats unavailable", error);
+        return { recommendationAverage: null, difficultyAverage: null, reviewCount: 0 };
+      }
+    }),
     create: publicProcedure.input(z2.object({
       topicId: z2.string().refine((topicId) => topics_default.some((topic) => topic.id === topicId), "\u4E3B\u984C\u4E0D\u5B58\u5728"),
       body: z2.string().trim().min(1, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u70BA\u7A7A").max(2e3, "\u8A55\u8AD6\u5167\u5BB9\u4E0D\u53EF\u8D85\u904E 2000 \u5B57"),
@@ -7009,7 +7047,9 @@ var appRouter = router({
       anonymousToken: z2.string().uuid("\u533F\u540D\u8B58\u5225\u78BC\u683C\u5F0F\u4E0D\u6B63\u78BA"),
       avatarId: ANONYMOUS_AVATAR_IDS,
       clearStatus: CLEAR_STATUS.default("none"),
-      hasSpoiler: z2.boolean().default(false)
+      hasSpoiler: z2.boolean().default(false),
+      recommendationRating: z2.number().int().min(0).max(5).default(0),
+      difficultyRating: z2.number().int().min(0).max(5).default(0)
     })).mutation(async ({ input }) => {
       const moderation = moderateComment(input.body);
       if (!moderation.allowed) {
@@ -7028,7 +7068,9 @@ var appRouter = router({
         avatarId: input.avatarId,
         body: input.body,
         clearStatus: input.clearStatus,
-        hasSpoiler: input.hasSpoiler ? 1 : 0
+        hasSpoiler: input.hasSpoiler ? 1 : 0,
+        recommendationRating: input.recommendationRating,
+        difficultyRating: input.difficultyRating
       });
       return { success: true };
     }),

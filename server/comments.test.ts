@@ -5,6 +5,7 @@ import type { TrpcContext } from "./_core/context";
 
 const dbMocks = vi.hoisted(() => ({
   getTopicComments: vi.fn(),
+  getTopicCommentStats: vi.fn(),
   getAdminComments: vi.fn(),
   createTopicComment: vi.fn(),
   getLatestTopicCommentByAnonymousToken: vi.fn(),
@@ -61,6 +62,13 @@ describe("comments router", () => {
     expect(dbMocks.getTopicComments).toHaveBeenCalledWith("popular-101", null, null);
   });
 
+  it("returns the public average recommendation and difficulty ratings", async () => {
+    dbMocks.getTopicCommentStats.mockResolvedValueOnce({ recommendationAverage: 4.5, difficultyAverage: 3.2, reviewCount: 12 });
+    const result = await appRouter.createCaller(createContext()).comments.stats({ topicId: "popular-101" });
+    expect(result).toEqual({ recommendationAverage: 4.5, difficultyAverage: 3.2, reviewCount: 12 });
+    expect(dbMocks.getTopicCommentStats).toHaveBeenCalledWith("popular-101");
+  });
+
   it("creates an anonymous comment with nickname and token", async () => {
     dbMocks.createTopicComment.mockResolvedValueOnce(undefined);
     const result = await appRouter.createCaller(createContext()).comments.create({
@@ -82,6 +90,8 @@ describe("comments router", () => {
       body: "訪客體驗",
       clearStatus: "success",
       hasSpoiler: 1,
+      recommendationRating: 0,
+      difficultyRating: 0,
     });
   });
 

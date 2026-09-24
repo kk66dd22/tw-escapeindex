@@ -50,6 +50,13 @@
       "when": 1790090202605,
       "tag": "0006_massive_riptide",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1790260008561,
+      "tag": "0007_cynical_wolfpack",
+      "breakpoints": true
     }
   ]
 }
