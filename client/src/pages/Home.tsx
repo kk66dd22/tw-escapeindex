@@ -1027,7 +1027,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
         <textarea ref={commentInputRef} id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
         <div aria-label="快捷表情" className="flex items-center gap-1 border-x border-b border-white/10 bg-[#111412]/35 px-2 py-1.5">
           <div ref={emojiPickerRef} className="relative">
-            <button type="button" onClick={() => setEmojiPickerOpen((open) => !open)} aria-expanded={emojiPickerOpen} aria-haspopup="dialog" className="inline-flex items-center gap-1 rounded border border-[#c89b5c]/30 px-2 py-1 font-mono text-[10px] text-[#d5e0dc] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]">
+            <button type="button" onClick={() => setEmojiPickerOpen((open) => !open)} aria-expanded={emojiPickerOpen} aria-haspopup="dialog" className="inline-flex items-center gap-1 rounded border border-[#c89b5c]/30 px-2 py-1 font-mono text-xs text-[#d5e0dc] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]">
               <span aria-hidden="true">😀</span> 表情
             </button>
             {emojiPickerOpen && (
@@ -1041,7 +1041,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
             )}
           </div>
           <span className="mx-1 h-4 w-px bg-white/10" aria-hidden="true" />
-          <span className="mr-1 font-mono text-[10px] text-white/35">快捷</span>
+          <span className="mr-1 font-mono text-xs text-white/45">快捷</span>
           {QUICK_COMMENT_EMOJIS.map((emoji) => (
             <button key={emoji} type="button" onClick={() => insertQuickEmoji(emoji)} aria-label={`插入${emoji}`} className="flex size-7 items-center justify-center rounded border border-transparent text-base transition hover:border-[#c89b5c]/50 hover:bg-[#c89b5c]/10 focus-visible:border-[#c89b5c] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]">
               {emoji}
@@ -1053,16 +1053,16 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
           <RatingInput label="謎題難度 🧩" value={difficultyRating} onChange={setDifficultyRating} />
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 border border-white/10 bg-[#111412]/55 px-3 py-2.5">
-          <label className="inline-flex cursor-pointer items-center gap-2 font-mono text-[10px] leading-5 text-white/55 transition hover:text-[#e0bd83]">
+          <label className="inline-flex cursor-pointer items-center gap-2 font-mono text-xs leading-5 text-white/65 transition hover:text-[#e0bd83]">
             <input type="checkbox" checked={hasSpoiler} onChange={(event) => setHasSpoiler(event.target.checked)} className="size-4 accent-[#c89b5c]" />
             <span>包含暴雷內容</span>
           </label>
-          <span className="font-mono text-[10px] text-white/35">{body.length}/2000</span>
+          <span className="font-mono text-xs text-white/45">{body.length}/2000</span>
           <button type="submit" disabled={createComment.isPending || !body.trim() || rateLimitSeconds > 0} className="inline-flex items-center justify-center gap-2 border border-[#c89b5c]/70 bg-[#c89b5c] px-3 py-1.5 font-mono text-xs font-bold text-[#0c0e0d] transition hover:bg-[#e0bd83] disabled:cursor-not-allowed disabled:opacity-45">
             <Send size={14} /> {createComment.isPending ? "送出中⋯" : rateLimitSeconds > 0 ? `${rateLimitSeconds} 秒後可留言` : "發表評論"}
           </button>
         </div>
-        <p className="text-[10px] leading-5 text-white/35">暱稱與匿名識別碼只儲存在本瀏覽器；請勿填寫個人敏感資料。</p>
+        <p className="text-xs leading-5 text-white/45">暱稱與匿名識別碼只儲存在本瀏覽器；請勿填寫個人敏感資料。</p>
         {rateLimitSeconds > 0 && <p className="text-xs text-[#e0bd83]">為避免重複發送，還需等待 {rateLimitSeconds} 秒。</p>}
         {createComment.isError && <p className="text-xs text-rose-200/80">{createComment.error.message}</p>}
       </form>
@@ -1103,13 +1103,13 @@ function Metric({ icon, label, value }: { icon: React.ReactNode; label: string; 
 function RatingInput({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
   return (
     <div className="flex min-w-0 items-center justify-between gap-3 border border-white/10 bg-[#111412]/45 px-3 py-2">
-      <span className="font-mono text-[10px] text-white/55">{label}</span>
+      <span className="font-mono text-xs text-white/65 sm:text-sm">{label}</span>
       <div className="flex items-center gap-0.5" role="group" aria-label={label}>
         {Array.from({ length: 5 }, (_, index) => {
           const rating = index + 1;
-          return <button key={rating} type="button" onClick={() => onChange(value === rating ? 0 : rating)} aria-label={`${label} ${rating} 星`} aria-pressed={value >= rating} className="p-0.5 text-[#c89b5c] transition hover:scale-110 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]"><Star size={16} fill={value >= rating ? "currentColor" : "none"} /></button>;
+          return <button key={rating} type="button" onClick={() => onChange(value === rating ? 0 : rating)} aria-label={`${label} ${rating} 星`} aria-pressed={value >= rating} className="p-0.5 text-[#c89b5c] transition hover:scale-110 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]"><Star size={18} fill={value >= rating ? "currentColor" : "none"} /></button>;
         })}
-        <span className="ml-1 min-w-5 text-right font-mono text-[10px] text-white/35">{value || "—"}</span>
+        <span className="ml-1 min-w-5 text-right font-mono text-xs text-white/45">{value || "—"}</span>
       </div>
     </div>
   );
