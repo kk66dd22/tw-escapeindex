@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import React from "react";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { TopicComments } from "./Home";
 
@@ -105,6 +105,24 @@ describe("TopicComments", () => {
     input.setSelectionRange(2, 2);
     fireEvent.click(screen.getByRole("button", { name: "插入🧩" }));
     expect(input.value).toBe("精彩🧩心得");
+  });
+
+  it("opens the emoji picker, inserts an emoji, and closes when clicking outside", () => {
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    const input = screen.getByLabelText("分享你對《冥婚》的體驗") as HTMLTextAreaElement;
+    fireEvent.change(input, { target: { value: "好玩" } });
+    input.setSelectionRange(2, 2);
+    fireEvent.click(screen.getByRole("button", { name: "表情" }));
+    expect(screen.getByRole("dialog", { name: "Emoji 表情選擇器" })).toBeTruthy();
+    expect(within(screen.getByRole("dialog", { name: "Emoji 表情選擇器" })).getAllByRole("button", { name: /選擇表情/ })).toHaveLength(37);
+    fireEvent.click(screen.getByRole("button", { name: "選擇表情😍" }));
+    expect(input.value).toBe("好玩😍");
+    expect(screen.queryByRole("dialog", { name: "Emoji 表情選擇器" })).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: "表情" }));
+    expect(screen.getByRole("dialog", { name: "Emoji 表情選擇器" })).toBeTruthy();
+    fireEvent.mouseDown(document.body);
+    expect(screen.queryByRole("dialog", { name: "Emoji 表情選擇器" })).toBeNull();
   });
 
   it("opens nickname setup before the first comment and sends after confirmation", () => {

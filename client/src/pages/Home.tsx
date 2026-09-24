@@ -108,6 +108,12 @@ const HELPFUL_COMMENTS_KEY = "escape-index-helpful-comments";
 const COMMENT_LAST_SUBMITTED_KEY = "escape-index-comment-last-submitted";
 const COMMENT_RATE_LIMIT_MS = 30_000;
 const QUICK_COMMENT_EMOJIS = ["🧩", "👻", "👍", "🔐", "⏳", "🔥"] as const;
+const COMMENT_EMOJI_OPTIONS = [
+  "😂", "❤️", "🤣", "🥰", "😗", "😢", "😌", "😊", "👍",
+  "😁", "🙏", "😍", "😔", "😄", "😭", "💋", "😒", "😳",
+  "😜", "🙈", "😉", "😃", "😝", "😱", "😡", "😏", "😞",
+  "😅", "😚", "🙊", "😴", "🙃", "😋", "😆", "👌", "😐", "🙁",
+] as const;
 
 function readHelpfulCommentIds(): number[] {
   if (typeof window === "undefined") return [];
@@ -793,8 +799,10 @@ export function HomeAuthControls() {
 export function TopicComments({ topicId, topicName }: { topicId: string; topicName: string }) {
   const utils = trpc.useUtils();
   const commentInputRef = useRef<HTMLTextAreaElement>(null);
+  const emojiPickerRef = useRef<HTMLDivElement>(null);
   const [body, setBody] = useState("");
   const [hasSpoiler, setHasSpoiler] = useState(false);
+  const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
   const [identity, setIdentity] = useState(() => getAnonymousIdentity());
   const [nicknameOpen, setNicknameOpen] = useState(false);
   const [pendingBody, setPendingBody] = useState("");
@@ -816,6 +824,14 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     const timer = window.setInterval(() => setRateLimitClock(Date.now()), 1000);
     return () => window.clearInterval(timer);
   }, [lastCommentSubmittedAt]);
+  useEffect(() => {
+    if (!emojiPickerOpen) return;
+    const closeOnOutsideClick = (event: MouseEvent) => {
+      if (!emojiPickerRef.current?.contains(event.target as Node)) setEmojiPickerOpen(false);
+    };
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    return () => document.removeEventListener("mousedown", closeOnOutsideClick);
+  }, [emojiPickerOpen]);
   const rateLimitSeconds = Math.ceil(Math.max(0, COMMENT_RATE_LIMIT_MS - (rateLimitClock - lastCommentSubmittedAt)) / 1000);
   const createComment = trpc.comments.create.useMutation({
     onSuccess: async () => {
@@ -988,7 +1004,22 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
         <label htmlFor={`comment-${topicId}`} className="sr-only">分享你對《{topicName}》的體驗</label>
         <textarea ref={commentInputRef} id={`comment-${topicId}`} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} rows={3} placeholder="分享你的實際遊玩體驗⋯（訪客即可留言）" className="w-full resize-y border border-white/15 bg-[#0c0e0d] px-3 py-2 text-xs leading-6 text-[#e8e4db] outline-none transition placeholder:text-white/30 focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c] sm:text-sm" />
         <div aria-label="快捷表情" className="flex items-center gap-1 border-x border-b border-white/10 bg-[#111412]/35 px-2 py-1.5">
-          <span className="mr-1 font-mono text-[10px] text-white/35">快速插入</span>
+          <div ref={emojiPickerRef} className="relative">
+            <button type="button" onClick={() => setEmojiPickerOpen((open) => !open)} aria-expanded={emojiPickerOpen} aria-haspopup="dialog" className="inline-flex items-center gap-1 rounded border border-[#c89b5c]/30 px-2 py-1 font-mono text-[10px] text-[#d5e0dc] transition hover:border-[#c89b5c] hover:bg-[#c89b5c]/10 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]">
+              <span aria-hidden="true">😀</span> 表情
+            </button>
+            {emojiPickerOpen && (
+              <div role="dialog" aria-label="Emoji 表情選擇器" className="absolute bottom-full left-0 z-20 mb-2 grid w-[min(19rem,calc(100vw-2rem))] grid-cols-9 gap-1 border border-white/15 bg-[#111412] p-2 shadow-[0_12px_30px_rgba(0,0,0,0.45)]">
+                {COMMENT_EMOJI_OPTIONS.map((emoji) => (
+                  <button key={emoji} type="button" onClick={() => { insertQuickEmoji(emoji); setEmojiPickerOpen(false); }} aria-label={`選擇表情${emoji}`} className="flex size-7 items-center justify-center rounded text-base transition hover:bg-[#c89b5c]/15 focus-visible:bg-[#c89b5c]/15 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]">
+                    {emoji}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          <span className="mx-1 h-4 w-px bg-white/10" aria-hidden="true" />
+          <span className="mr-1 font-mono text-[10px] text-white/35">快捷</span>
           {QUICK_COMMENT_EMOJIS.map((emoji) => (
             <button key={emoji} type="button" onClick={() => insertQuickEmoji(emoji)} aria-label={`插入${emoji}`} className="flex size-7 items-center justify-center rounded border border-transparent text-base transition hover:border-[#c89b5c]/50 hover:bg-[#c89b5c]/10 focus-visible:border-[#c89b5c] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c89b5c]">
               {emoji}
