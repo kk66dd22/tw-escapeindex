@@ -189,6 +189,21 @@ describe("TopicComments", () => {
     expect(screen.getByRole("button", { name: /讚/ }).getAttribute("aria-pressed")).toBe("false");
   });
 
+  it("copies a comment anchor link and shows the copied confirmation", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
+    state.query = {
+      data: [{ id: 31, userId: null, body: "值得一玩的心得", authorName: "匿名探索者", createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    fireEvent.click(screen.getByRole("button", { name: "分享這則評論" }));
+    await vi.waitFor(() => expect(writeText).toHaveBeenCalledWith(`${window.location.origin}${window.location.pathname}#comment-popular-101-31`));
+    await vi.waitFor(() => expect(screen.getByRole("button", { name: "分享這則評論" }).textContent).toContain("已複製連結"));
+    expect(document.getElementById("comment-popular-101-31")).toBeTruthy();
+  });
+
   it("hides spoiler content until the visitor reveals it", () => {
     state.query = {
       data: [{ id: 22, userId: null, body: "結局提示內容", authorName: "匿名探索者", clearStatus: "success", hasSpoiler: true, createdAt: new Date("2026-01-01T00:00:00Z") }],

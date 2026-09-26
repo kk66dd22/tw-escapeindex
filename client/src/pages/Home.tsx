@@ -56,6 +56,7 @@ import {
   CircleHelp,
   Telescope,
   ThumbsUp,
+  Link,
   X,
 } from "lucide-react";
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
@@ -821,6 +822,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editingBody, setEditingBody] = useState("");
   const [helpfulCommentIds, setHelpfulCommentIds] = useState<number[]>(readHelpfulCommentIds);
+  const [copiedShareCommentId, setCopiedShareCommentId] = useState<number | null>(null);
   const [revealedSpoilerIds, setRevealedSpoilerIds] = useState<number[]>([]);
   const [lastCommentSubmittedAt, setLastCommentSubmittedAt] = useState(readLastCommentSubmittedAt);
   const [rateLimitClock, setRateLimitClock] = useState(() => Date.now());
@@ -917,6 +919,29 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     setRevealedSpoilerIds((current) => current.includes(commentId) ? current : [...current, commentId]);
   };
 
+  const shareComment = async (commentId: number) => {
+    const shareUrl = `${window.location.origin}${window.location.pathname}#comment-${topicId}-${commentId}`;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        const fallbackInput = document.createElement("textarea");
+        fallbackInput.value = shareUrl;
+        fallbackInput.setAttribute("readonly", "");
+        fallbackInput.style.position = "fixed";
+        fallbackInput.style.opacity = "0";
+        document.body.appendChild(fallbackInput);
+        fallbackInput.select();
+        document.execCommand("copy");
+        fallbackInput.remove();
+      }
+      setCopiedShareCommentId(commentId);
+      window.setTimeout(() => setCopiedShareCommentId((current) => current === commentId ? null : current), 1800);
+    } catch {
+      setCopiedShareCommentId(null);
+    }
+  };
+
   const insertQuickEmoji = (emoji: string) => {
     const input = commentInputRef.current;
     const start = input?.selectionStart ?? body.length;
@@ -953,7 +978,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
           {commentsQuery.data.map((comment) => {
             const isOwnComment = comment.anonymousToken === currentToken;
             return (
-            <article key={comment.id} className={`border p-3 transition ${isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
+            <article id={`comment-${topicId}-${comment.id}`} key={comment.id} className={`border p-3 transition ${isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2">
                   {(() => { const avatar = avatarForSeed(comment.avatarId, comment.anonymousToken || comment.authorName); const AvatarIcon = avatar.icon; return <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#202925] text-[#c89b5c]" aria-label={`${comment.authorName} 的角色頭像`}><AvatarIcon size={18} aria-hidden="true" /></span>; })()}
@@ -1003,6 +1028,16 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                 </>
               )}
               <div className="mt-3 flex justify-end border-t border-white/10 pt-2">
+                <button
+                  type="button"
+                  onClick={() => void shareComment(comment.id)}
+                  aria-label="分享這則評論"
+                  title="複製評論連結"
+                  className="mr-2 inline-flex items-center gap-1.5 px-2 py-1 font-mono text-[10px] text-white/40 transition hover:text-[#e0bd83] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]"
+                >
+                  <Link size={13} />
+                  {copiedShareCommentId === comment.id ? "已複製連結" : "🔗 分享"}
+                </button>
                 <button
                   type="button"
                   onClick={() => toggleHelpful(comment.id)}
