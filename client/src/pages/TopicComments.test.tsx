@@ -189,6 +189,24 @@ describe("TopicComments", () => {
     expect(screen.getByRole("button", { name: /讚/ }).getAttribute("aria-pressed")).toBe("false");
   });
 
+  it("switches between latest and locally liked comment order", () => {
+    state.query = {
+      data: [
+        { id: 41, userId: null, body: "較新的評論", authorName: "新玩家", createdAt: new Date("2026-01-02T00:00:00Z") },
+        { id: 42, userId: null, body: "較早但已按讚", authorName: "老玩家", createdAt: new Date("2026-01-01T00:00:00Z") },
+      ],
+      isLoading: false,
+      isError: false,
+    };
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    const sortSelect = screen.getByLabelText("排序");
+    const articles = () => Array.from(document.querySelectorAll("article")).map((article) => article.textContent ?? "");
+    expect(articles()[0]).toContain("較新的評論");
+    fireEvent.click(screen.getAllByRole("button", { name: /讚/ })[1]);
+    fireEvent.change(sortSelect, { target: { value: "liked" } });
+    expect(articles()[0]).toContain("較早但已按讚");
+  });
+
   it("copies a comment anchor link and shows the copied confirmation", async () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });

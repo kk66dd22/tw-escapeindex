@@ -64,6 +64,7 @@ import topics from "../../../data/topics.json";
 
 type Filter = "all" | "2-4" | "5-plus" | "beginner" | "brainy" | "horror" | "puzzle";
 type SortMode = "rating" | "horror" | "brain";
+type CommentSortMode = "latest" | "liked";
 type TopicJumpRequest = ReturnType<typeof prepareTopicJump>;
 
 const PAGE_SIZE = 10;
@@ -824,6 +825,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const [helpfulCommentIds, setHelpfulCommentIds] = useState<number[]>(readHelpfulCommentIds);
   const [copiedShareCommentId, setCopiedShareCommentId] = useState<number | null>(null);
   const [sharedCommentId, setSharedCommentId] = useState<number | null>(null);
+  const [commentSortMode, setCommentSortMode] = useState<CommentSortMode>("latest");
   const [revealedSpoilerIds, setRevealedSpoilerIds] = useState<number[]>([]);
   const [lastCommentSubmittedAt, setLastCommentSubmittedAt] = useState(readLastCommentSubmittedAt);
   const [rateLimitClock, setRateLimitClock] = useState(() => Date.now());
@@ -919,6 +921,17 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     ? identity.token
     : window.localStorage.getItem(ANONYMOUS_TOKEN_KEY) || identity.token;
 
+  const sortedComments = useMemo(() => {
+    const comments = commentsQuery.data ?? [];
+    return [...comments].sort((a, b) => {
+      if (commentSortMode === "liked") {
+        const likedDifference = Number(helpfulCommentIds.includes(b.id)) - Number(helpfulCommentIds.includes(a.id));
+        if (likedDifference !== 0) return likedDifference;
+      }
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
+  }, [commentSortMode, commentsQuery.data, helpfulCommentIds]);
+
   const toggleHelpful = (commentId: number) => {
     const nextIds = helpfulCommentIds.includes(commentId)
       ? helpfulCommentIds.filter((id) => id !== commentId)
@@ -980,6 +993,14 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
         </div>
       </div>
 
+      <div className="mt-3 flex items-center justify-end gap-2 font-mono text-xs text-white/50">
+        <label htmlFor={`comment-sort-${topicId}`}>排序</label>
+        <select id={`comment-sort-${topicId}`} value={commentSortMode} onChange={(event) => setCommentSortMode(event.target.value as CommentSortMode)} className="border border-white/15 bg-[#111412] px-2 py-1.5 text-xs text-[#d5e0dc] outline-none transition focus:border-[#c89b5c] focus:ring-1 focus:ring-[#c89b5c]">
+          <option value="latest">最新留言</option>
+          <option value="liked">按讚數最多</option>
+        </select>
+      </div>
+
       {commentsQuery.isLoading && <p className="mt-3 text-xs text-white/45">正在載入評論⋯</p>}
       {commentsQuery.isError && <p className="mt-3 text-xs text-rose-200/80">評論暫時無法載入，請稍後再試。</p>}
       {!commentsQuery.isLoading && !commentsQuery.isError && commentsQuery.data?.length === 0 && (
@@ -987,7 +1008,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
       )}
       {!!commentsQuery.data?.length && (
         <div className="mt-3 space-y-3">
-          {commentsQuery.data.map((comment) => {
+          {sortedComments.map((comment) => {
             const isOwnComment = comment.anonymousToken === currentToken;
             return (
             <article id={`comment-${topicId}-${comment.id}`} key={comment.id} className={`border p-3 transition ${sharedCommentId === comment.id ? "border-[#e0bd83] bg-[#3a2d19]/80 shadow-[0_0_24px_rgba(224,189,131,0.38)]" : isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
@@ -1035,7 +1056,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                       <span className="mt-2 block font-mono text-xs tracking-wider text-[#e0bd83]">點擊查看暴雷內容</span>
                     </button>
                   ) : (
-                    <p className="mt-2 whitespace-pre-wrap break-words text-sm leading-7 text-white/75 sm:text-base">{comment.body}</p>
+                    <p className="mt-2 whitespace-pre-wrap break-words text-[13px] leading-6 text-white/75 sm:text-sm">{comment.body}</p>
                   )}
                 </>
               )}
