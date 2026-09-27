@@ -1056,7 +1056,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                       <span className="mt-2 block font-mono text-xs tracking-wider text-[#e0bd83]">點擊查看暴雷內容</span>
                     </button>
                   ) : (
-                    <p className="mt-2 whitespace-pre-wrap break-words text-[13px] leading-6 text-white/75 sm:text-sm">{comment.body}</p>
+                    <p className="mt-2 whitespace-pre-wrap break-words text-[14px] leading-6 text-white/75 sm:text-sm">{comment.body}</p>
                   )}
                 </>
               )}
