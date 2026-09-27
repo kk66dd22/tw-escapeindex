@@ -204,6 +204,23 @@ describe("TopicComments", () => {
     expect(document.getElementById("comment-popular-101-31")).toBeTruthy();
   });
 
+  it("scrolls to and highlights a comment when opened with its shared hash", async () => {
+    window.history.replaceState({}, "", "/#comment-popular-101-32");
+    const scrollIntoView = vi.fn();
+    state.query = {
+      data: [{ id: 32, userId: null, body: "分享連結定位測試", authorName: "匿名探索者", createdAt: new Date("2026-01-01T00:00:00Z") }],
+      isLoading: false,
+      isError: false,
+    };
+    render(<TopicComments topicId="popular-101" topicName="冥婚" />);
+    const comment = document.getElementById("comment-popular-101-32");
+    expect(comment).toBeTruthy();
+    Object.defineProperty(comment, "scrollIntoView", { configurable: true, value: scrollIntoView });
+    await vi.waitFor(() => expect(scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth", block: "center" }));
+    await vi.waitFor(() => expect(comment?.className).toContain("border-[#e0bd83]"));
+    window.history.replaceState({}, "", "/");
+  });
+
   it("hides spoiler content until the visitor reveals it", () => {
     state.query = {
       data: [{ id: 22, userId: null, body: "結局提示內容", authorName: "匿名探索者", clearStatus: "success", hasSpoiler: true, createdAt: new Date("2026-01-01T00:00:00Z") }],

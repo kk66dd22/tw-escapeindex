@@ -823,6 +823,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
   const [editingBody, setEditingBody] = useState("");
   const [helpfulCommentIds, setHelpfulCommentIds] = useState<number[]>(readHelpfulCommentIds);
   const [copiedShareCommentId, setCopiedShareCommentId] = useState<number | null>(null);
+  const [sharedCommentId, setSharedCommentId] = useState<number | null>(null);
   const [revealedSpoilerIds, setRevealedSpoilerIds] = useState<number[]>([]);
   const [lastCommentSubmittedAt, setLastCommentSubmittedAt] = useState(readLastCommentSubmittedAt);
   const [rateLimitClock, setRateLimitClock] = useState(() => Date.now());
@@ -846,6 +847,17 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
     document.addEventListener("mousedown", closeOnOutsideClick);
     return () => document.removeEventListener("mousedown", closeOnOutsideClick);
   }, [emojiPickerOpen]);
+  useEffect(() => {
+    const hashTarget = window.location.hash.match(/^#comment-(.+)-(\d+)$/);
+    if (!hashTarget || hashTarget[1] !== topicId || !commentsQuery.data?.some((comment) => comment.id === Number(hashTarget[2]))) return;
+    const commentId = Number(hashTarget[2]);
+    const timer = window.setTimeout(() => {
+      document.getElementById(`comment-${topicId}-${commentId}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setSharedCommentId(commentId);
+      window.setTimeout(() => setSharedCommentId((current) => current === commentId ? null : current), 2400);
+    }, 50);
+    return () => window.clearTimeout(timer);
+  }, [commentsQuery.data, topicId]);
   const rateLimitSeconds = Math.ceil(Math.max(0, COMMENT_RATE_LIMIT_MS - (rateLimitClock - lastCommentSubmittedAt)) / 1000);
   const createComment = trpc.comments.create.useMutation({
     onSuccess: async () => {
@@ -978,13 +990,13 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
           {commentsQuery.data.map((comment) => {
             const isOwnComment = comment.anonymousToken === currentToken;
             return (
-            <article id={`comment-${topicId}-${comment.id}`} key={comment.id} className={`border p-3 transition ${isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
+            <article id={`comment-${topicId}-${comment.id}`} key={comment.id} className={`border p-3 transition ${sharedCommentId === comment.id ? "border-[#e0bd83] bg-[#3a2d19]/80 shadow-[0_0_24px_rgba(224,189,131,0.38)]" : isOwnComment ? "border-[#c89b5c] bg-[#2a2114]/75 shadow-[0_0_18px_rgba(200,155,92,0.18)]" : "border-white/10 bg-[#111412]/70"}`}>
               <div className="flex items-start justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2">
                   {(() => { const avatar = avatarForSeed(comment.avatarId, comment.anonymousToken || comment.authorName); const AvatarIcon = avatar.icon; return <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#202925] text-[#c89b5c]" aria-label={`${comment.authorName} 的角色頭像`}><AvatarIcon size={18} aria-hidden="true" /></span>; })()}
                   <div className="min-w-0">
-                    <div className={`font-mono text-xs ${isOwnComment ? "font-bold text-[#e0bd83]" : "text-[#b7cdc7]"}`}>{comment.authorName}{isOwnComment && <span className="ml-1 font-bold text-[#f1c27d]">(你)</span>}</div>
-                  <time className="mt-1 block font-mono text-[10px] text-white/35" dateTime={new Date(comment.createdAt).toISOString()}>
+                    <div className={`font-mono text-sm ${isOwnComment ? "font-bold text-[#e0bd83]" : "text-[#b7cdc7]"}`}>{comment.authorName}{isOwnComment && <span className="ml-1 font-bold text-[#f1c27d]">(你)</span>}</div>
+                  <time className="mt-1 block font-mono text-xs text-white/45" dateTime={new Date(comment.createdAt).toISOString()}>
                     {new Date(comment.createdAt).toLocaleDateString("zh-TW")}
                     </time>
                   </div>
@@ -1013,17 +1025,17 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
               ) : (
                 <>
                   <div className="mt-2 flex flex-wrap gap-1.5">
-                    {comment.clearStatus === "success" && <span className="border border-emerald-300/30 bg-emerald-400/10 px-2 py-0.5 font-mono text-[10px] text-emerald-200">成功通關</span>}
-                    {comment.clearStatus === "failed" && <span className="border border-rose-300/30 bg-rose-400/10 px-2 py-0.5 font-mono text-[10px] text-rose-200">挑戰失敗</span>}
-                    {comment.hasSpoiler && <span className="border border-[#c89b5c]/30 bg-[#c89b5c]/10 px-2 py-0.5 font-mono text-[10px] text-[#e0bd83]">含暴雷</span>}
+                    {comment.clearStatus === "success" && <span className="border border-emerald-300/30 bg-emerald-400/10 px-2 py-0.5 font-mono text-xs text-emerald-200">成功通關</span>}
+                    {comment.clearStatus === "failed" && <span className="border border-rose-300/30 bg-rose-400/10 px-2 py-0.5 font-mono text-xs text-rose-200">挑戰失敗</span>}
+                    {comment.hasSpoiler && <span className="border border-[#c89b5c]/30 bg-[#c89b5c]/10 px-2 py-0.5 font-mono text-xs text-[#e0bd83]">含暴雷</span>}
                   </div>
                   {comment.hasSpoiler && !revealedSpoilerIds.includes(comment.id) ? (
                     <button type="button" onClick={() => revealSpoiler(comment.id)} aria-label={`顯示留言 ${comment.id} 的暴雷內容`} className="mt-2 w-full border border-[#c89b5c]/25 bg-[#0c0e0d]/75 px-3 py-3 text-left transition hover:border-[#c89b5c]/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]">
-                      <span className="block select-none text-xs leading-6 text-white/70 blur-sm sm:text-sm">{comment.body}</span>
-                      <span className="mt-2 block font-mono text-[10px] tracking-wider text-[#e0bd83]">點擊查看暴雷內容</span>
+                      <span className="block select-none text-sm leading-7 text-white/70 blur-sm sm:text-base">{comment.body}</span>
+                      <span className="mt-2 block font-mono text-xs tracking-wider text-[#e0bd83]">點擊查看暴雷內容</span>
                     </button>
                   ) : (
-                    <p className="mt-2 whitespace-pre-wrap break-words text-xs leading-6 text-white/70 sm:text-sm">{comment.body}</p>
+                    <p className="mt-2 whitespace-pre-wrap break-words text-sm leading-7 text-white/75 sm:text-base">{comment.body}</p>
                   )}
                 </>
               )}
@@ -1033,7 +1045,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                   onClick={() => void shareComment(comment.id)}
                   aria-label="分享這則評論"
                   title="複製評論連結"
-                  className="mr-2 inline-flex items-center gap-1.5 px-2 py-1 font-mono text-[10px] text-white/40 transition hover:text-[#e0bd83] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]"
+                  className="mr-2 inline-flex items-center gap-1.5 px-2 py-1 font-mono text-xs text-white/50 transition hover:text-[#e0bd83] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c]"
                 >
                   <Link size={13} />
                   {copiedShareCommentId === comment.id ? "已複製連結" : "🔗 分享"}
@@ -1043,7 +1055,7 @@ export function TopicComments({ topicId, topicName }: { topicId: string; topicNa
                   onClick={() => toggleHelpful(comment.id)}
                   aria-pressed={helpfulCommentIds.includes(comment.id)}
                   title={helpfulCommentIds.includes(comment.id) ? "收回讚" : "讚"}
-                  className={`inline-flex items-center gap-1.5 px-2 py-1 font-mono text-[10px] transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] ${helpfulCommentIds.includes(comment.id) ? "cursor-default text-[#c89b5c]" : "text-white/40 hover:text-[#e0bd83]"}`}
+                  className={`inline-flex items-center gap-1.5 px-2 py-1 font-mono text-xs transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c89b5c] ${helpfulCommentIds.includes(comment.id) ? "cursor-default text-[#c89b5c]" : "text-white/50 hover:text-[#e0bd83]"}`}
                 >
                   <ThumbsUp size={13} fill={helpfulCommentIds.includes(comment.id) ? "currentColor" : "none"} />
                   讚
